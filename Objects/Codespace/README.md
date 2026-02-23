@@ -1,100 +1,110 @@
 # Codespace
 
 ## Description
-A codespace in NeTEx is a namespace used to scope all @id and @ref values, ensuring globally unique identifiers across datasets and deliveries. By prefixing identifiers with a constant codespace, collisions are avoided when data is exchanged or merged.
+A codespace is the namespace for NeTEx @id and @ref values. It ensures global uniqueness across datasets and deliveries by prefixing identifiers so that there are no collisions when data is exchanged or merged.
 
-In this profile, the codespace is fixed to ERP and must be used consistently for all identifiers and references.
+Governance: The codespace is designated by the receiver of the delivery. In this documentation, "ERP" is used only as an example. Replace "ERP" with the actual codespace agreed with the receiver.
 
-## Profile Requirements
-- All identifiers (@id) and references (@ref) MUST be prefixed with the codespace ERP.
-- The recommended identifier pattern is: ERP:{ObjectType}:{LocalId}
-- The codespace MUST be reflected in PublicationDelivery headers via ParticipantRef = "ERP".
+Recommended identifier pattern: {CODESPACE}:{ObjectType}:{LocalId}
+- CODESPACE: The receiver-assigned short code for the namespace (e.g., ERP, OPR, NSR)
+- ObjectType: The concrete NeTEx element type (e.g., Line, JourneyPattern, Quay, Operator)
+- LocalId: A stable, producer-defined identifier that is unique within the chosen codespace for the given ObjectType
 
-### Identifier and Reference Rules
-| Property | Requirement | Example |
-|---|---|---|
-| Codespace prefix | MUST be ERP | ERP:Line:10 |
-| Identifier pattern | MUST follow ERP:{ObjectType}:{LocalId} | ERP:JourneyPattern:JP_10_1 |
-| References | MUST point to existing ERP-scoped ids | ref="ERP:Quay:12345" |
-| PublicationDelivery.ParticipantRef | MUST be set to ERP | <ParticipantRef>ERP</ParticipantRef> |
+## Table
+Examples of recommended identifier formatting across multiple objects:
 
-## Naming Conventions by Object Type
-Use the pattern ERP:{ObjectType}:{LocalId}. Examples:
-- Line: ERP:Line:10
-- JourneyPattern: ERP:JourneyPattern:JP_10_1
-- Quay: ERP:Quay:12345
-- StopPlace: ERP:StopPlace:SP_987
+| Object        | Recommended pattern                      | Example (with CODESPACE=ERP) |
+|--------------|-------------------------------------------|------------------------------|
+| Line         | {CODESPACE}:Line:{LocalId}                | ERP:Line:10                  |
+| JourneyPattern | {CODESPACE}:JourneyPattern:{LocalId}    | ERP:JourneyPattern:JP_10_1   |
+| Quay         | {CODESPACE}:Quay:{LocalId}                | ERP:Quay:Q_100               |
+| Operator     | {CODESPACE}:Operator:{LocalId}            | ERP:Operator:OPR_1           |
 
-Choose LocalId values that are stable within the producing system. Avoid whitespace and special characters; use letters, digits, underscore.
+Notes:
+- ObjectType should match the NeTEx element names used in the delivery.
+- LocalId should be stable across updates; use the NeTEx version attribute for change tracking.
 
-## PublicationDelivery Header Template
-A minimal header that mirrors the codespace usage:
+## PublicationDelivery
+ParticipantRef MUST match the chosen {CODESPACE} (the receiver’s designation). All @id/@ref values in the delivery MUST be scoped with the same {CODESPACE}: prefix.
 
+## Minimal XML example (using {CODESPACE})
 ```xml
 <PublicationDelivery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                    xmlns="http://www.netex.org.uk/netex"
-                    version="1.09">
-  <ParticipantRef>ERP</ParticipantRef>
-  <PublicationTimestamp>2025-01-01T00:00:00Z</PublicationTimestamp>
-  <Description>ERP scoped delivery</Description>
-  <!-- DataObjects go here -->
+                    version="1.0">
+  <ParticipantRef>{CODESPACE}</ParticipantRef>
+  <Description>Minimal example showing consistent codespace usage</Description>
+  <dataObjects>
+    <CompositeFrame id="{CODESPACE}:CompositeFrame:CF_1" version="1">
+      <frames>
+        <ServiceFrame id="{CODESPACE}:ServiceFrame:SF_1" version="1">
+          <lines>
+            <Line id="{CODESPACE}:Line:10" version="1"/>
+          </lines>
+          <journeyPatterns>
+            <JourneyPattern id="{CODESPACE}:JourneyPattern:JP_10_1" version="1">
+              <RouteRef ref="{CODESPACE}:Route:R_10"/>
+            </JourneyPattern>
+          </journeyPatterns>
+          <operators>
+            <Operator id="{CODESPACE}:Operator:OPR_1" version="1"/>
+          </operators>
+        </ServiceFrame>
+        <SiteFrame id="{CODESPACE}:SiteFrame:ST_1" version="1">
+          <quays>
+            <Quay id="{CODESPACE}:Quay:Q_100" version="1"/>
+          </quays>
+        </SiteFrame>
+      </frames>
+    </CompositeFrame>
+  </dataObjects>
 </PublicationDelivery>
 ```
 
-## Validation Checklist
-- All @id values start with ERP: and follow ERP:{ObjectType}:{LocalId}.
-- All @ref values point to existing @id values with the ERP: prefix.
-- ParticipantRef is exactly ERP.
-- ObjectType matches the actual element type (e.g., Line, JourneyPattern, Quay).
-
-Common pitfalls:
-- Missing ERP prefix on either @id or @ref.
-- Mismatch between ObjectType in the id and the element (e.g., ERP:Quay:… on a StopPlace).
-- ParticipantRef left empty or set to a different value.
-
-## Minimal XML Example (ERP Codespace)
-The example shows PublicationDelivery with ERP codespace applied to @id and @ref across Line, JourneyPattern and Quay.
-
+## Minimal XML example (with CODESPACE=ERP)
+This example is provided to align with documentation rules that require at least one example using the codespace "ERP". Replace "ERP" with the receiver-assigned codespace in real deliveries.
 ```xml
 <PublicationDelivery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                    xmlns="http://www.netex.org.uk/netex"
-                    version="1.09">
+                    version="1.0">
   <ParticipantRef>ERP</ParticipantRef>
-  <PublicationTimestamp>2025-01-01T00:00:00Z</PublicationTimestamp>
-  <DataObjects>
+  <Description>Minimal example using ERP as the codespace</Description>
+  <dataObjects>
     <CompositeFrame id="ERP:CompositeFrame:CF_1" version="1">
       <frames>
         <ServiceFrame id="ERP:ServiceFrame:SF_1" version="1">
           <lines>
-            <Line id="ERP:Line:10" version="1">
-              <Name>Line 10</Name>
-            </Line>
+            <Line id="ERP:Line:10" version="1"/>
           </lines>
           <journeyPatterns>
             <JourneyPattern id="ERP:JourneyPattern:JP_10_1" version="1">
-              <Name>Line 10 Pattern 1</Name>
+              <RouteRef ref="ERP:Route:R_10"/>
             </JourneyPattern>
           </journeyPatterns>
+          <operators>
+            <Operator id="ERP:Operator:OPR_1" version="1"/>
+          </operators>
         </ServiceFrame>
-        <SiteFrame id="ERP:SiteFrame:Sites_1" version="1">
+        <SiteFrame id="ERP:SiteFrame:ST_1" version="1">
           <quays>
-            <Quay id="ERP:Quay:12345" version="1">
-              <Name>Quay A</Name>
-            </Quay>
+            <Quay id="ERP:Quay:Q_100" version="1"/>
           </quays>
         </SiteFrame>
       </frames>
-      <frameDefaults>
-        <DefaultLocale>
-          <TimeZone>UTC</TimeZone>
-          <DefaultLanguage>en</DefaultLanguage>
-        </DefaultLocale>
-      </frameDefaults>
     </CompositeFrame>
-  </DataObjects>
+  </dataObjects>
 </PublicationDelivery>
 ```
 
-## Notes
-- The ERP prefix is case-sensitive and must be used exactly as shown.
-- LocalId values are producer-assigned; ensure stability over time to avoid identifier churn.
+## Validation checklist
+- ParticipantRef equals the chosen {CODESPACE}; do not include a trailing colon in ParticipantRef.
+- Every @id and @ref begins with "{CODESPACE}:" and uses the recommended pattern {CODESPACE}:{ObjectType}:{LocalId}.
+- The same {CODESPACE} is used consistently within one delivery unless the receiver explicitly requires multiple codespaces.
+- ObjectType segment reflects the NeTEx element type in use.
+- LocalId is stable across versions; use the version attribute for updates.
+- Case and punctuation are consistent (codespaces and ObjectType names are case-sensitive; avoid double colons, spaces, or trailing colons).
+
+## Common pitfalls
+- Treating "ERP" as a mandatory profile requirement (it is not); the receiver designates the codespace.
+- Mismatch between ParticipantRef and the prefix used in @id/@ref.
+- Omitting the ObjectType segment or mixing naming styles across objects.
+- Mixing different codespaces within a single delivery without receiver approval.
+- Changing LocalId between deliveries, breaking referential stability.
