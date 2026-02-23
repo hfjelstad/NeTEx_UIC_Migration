@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DayType id="ERP:DayType:Weekdays">
+    <Name>Weekdays</Name>
+    <Description>Represents Monday to Friday operational days</Description>
+</DayType>
