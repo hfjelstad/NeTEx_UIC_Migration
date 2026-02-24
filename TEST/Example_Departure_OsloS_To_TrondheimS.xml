@@ -13,7 +13,7 @@
                         </Operator>
                     </organisations>
                 </ResourceFrame>
-                <ServiceCalendarFrame id="SCF:Example:1" version="1">
+                <ServiceCalendarFrame id="ERP:Example:1" version="1">
                     <operatingDays>
                         <OperatingDay version="1" id="OD:2026-03-01" >
                             <CalendarDate>2026-03-01</CalendarDate>
