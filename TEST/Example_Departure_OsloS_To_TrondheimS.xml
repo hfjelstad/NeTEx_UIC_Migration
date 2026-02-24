@@ -4,7 +4,7 @@
     <ParticipantRef>ENTUR</ParticipantRef>
     <Description>Eksempel: DatedServiceJourney avgang Oslo S til Trondheim S</Description>
     <dataObjects>
-        <CompositeFrame id="CF:Example:1" version="1">
+        <CompositeFrame id="ERP:Example:1" version="1">
             <frames>
                 <ResourceFrame version="1" id="ERP:resources">
                     <organisations>
