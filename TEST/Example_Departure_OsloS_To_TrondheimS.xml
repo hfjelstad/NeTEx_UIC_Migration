@@ -1,25 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<DatedServiceJourneyExample version="1.0">
-  <Description>Eksempel: Avgang fra Oslo S til Trondheim S</Description>
-  <DatedServiceJourney id="DSJ:OsloS-TrondheimS:1">
-    <OperatingDay>2026-03-01</OperatingDay>
-    <LineRef ref="LINE:RE10"/>
-    <OperatorRef ref="OP:VY"/>
-    <PublicCode>RE10</PublicCode>
-    <PrivateCode>OSL-TRD-0802</PrivateCode>
-    <DatedCalls>
-      <DatedCall order="1" stopPlaceName="Oslo S">
-        <StopPlaceRef ref="NSR:StopPlace:OSLOS"/>
-        <QuayRef ref="NSR:Quay:OSLOS-1"/>
-        <AimedDepartureTime>2026-03-01T08:02:00+01:00</AimedDepartureTime>
-        <ExpectedDepartureTime>2026-03-01T08:02:00+01:00</ExpectedDepartureTime>
-      </DatedCall>
-      <DatedCall order="2" stopPlaceName="Trondheim S">
-        <StopPlaceRef ref="NSR:StopPlace:TRONDHEIMS"/>
-        <QuayRef ref="NSR:Quay:TRONDHEIMS-3"/>
-        <AimedArrivalTime>2026-03-01T14:05:00+01:00</AimedArrivalTime>
-        <ExpectedArrivalTime>2026-03-01T14:05:00+01:00</ExpectedArrivalTime>
-      </DatedCall>
-    </DatedCalls>
-  </DatedServiceJourney>
-</DatedServiceJourneyExample>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2">
+  <PublicationTimestamp>2026-03-01T00:00:00Z</PublicationTimestamp>
+  <ParticipantRef>ENTUR</ParticipantRef>
+  <Description>Eksempel: DatedServiceJourney avgang Oslo S til Trondheim S</Description>
+  <DataObjects>
+    <CompositeFrame id="CF:Example:1" version="1">
+      <frames>
+        <ServiceCalendarFrame id="SCF:Example:1" version="1">
+          <OperatingDays>
+            <OperatingDay id="OD:2026-03-01" calendarDate="2026-03-01"/>
+          </OperatingDays>
+        </ServiceCalendarFrame>
+        <ServiceFrame id="SF:Example:1" version="1">
+          <Lines>
+            <Line id="LINE:RE10" version="1">
+              <Name>RE10</Name>
+              <PublicCode>RE10</PublicCode>
+            </Line>
+          </Lines>
+          <ScheduledStopPoints>
+            <ScheduledStopPoint id="SSP:OSLOS" version="1">
+              <Name>Oslo S</Name>
+            </ScheduledStopPoint>
+            <ScheduledStopPoint id="SSP:TRONDHEIMS" version="1">
+              <Name>Trondheim S</Name>
+            </ScheduledStopPoint>
+          </ScheduledStopPoints>
+          <Operators>
+            <Operator id="OP:VY" version="1">
+              <Name>Vy</Name>
+            </Operator>
+          </Operators>
+        </ServiceFrame>
+        <TimetableFrame id="TTF:Example:1" version="1">
+          <DatedServiceJourneys>
+            <DatedServiceJourney id="DSJ:OsloS-TrondheimS:1" version="1">
+              <Name>RE10 Oslo S - Trondheim S</Name>
+              <OperatingDayRef ref="OD:2026-03-01"/>
+              <LineRef ref="LINE:RE10"/>
+              <OperatorRef ref="OP:VY"/>
+              <DatedCalls>
+                <DatedCall order="1">
+                  <ScheduledStopPointRef ref="SSP:OSLOS"/>
+                  <AimedDepartureTime>2026-03-01T08:02:00+01:00</AimedDepartureTime>
+                </DatedCall>
+                <DatedCall order="2">
+                  <ScheduledStopPointRef ref="SSP:TRONDHEIMS"/>
+                  <AimedArrivalTime>2026-03-01T14:05:00+01:00</AimedArrivalTime>
+                </DatedCall>
+              </DatedCalls>
+            </DatedServiceJourney>
+          </DatedServiceJourneys>
+        </TimetableFrame>
+      </frames>
+    </CompositeFrame>
+  </DataObjects>
+</PublicationDelivery>
