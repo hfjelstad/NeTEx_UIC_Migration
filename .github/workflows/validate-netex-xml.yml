@@ -1,0 +1,32 @@
+name: Validate NeTEx XML
+
+on:
+  pull_request:
+    paths:
+      - "**/*.xml"
+  push:
+    paths:
+      - "**/*.xml"
+
+jobs:
+  validate-netex-xml:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install xmllint
+        run: sudo apt-get update && sudo apt-get install -y libxml2-utils
+
+      - name: Validate XML files against NeTEx XSD
+        run: |
+          SCHEMA="XSD 2.0/xsd/NeTEx_publication.xsd"
+
+          echo "Using schema: $SCHEMA"
+          echo "Searching for XML files…"
+
+          find . -name "*.xml" | while read xmlfile; do
+            echo "Validating $xmlfile"
+            xmllint --schema "$SCHEMA" --noout "$xmlfile"
+          done
