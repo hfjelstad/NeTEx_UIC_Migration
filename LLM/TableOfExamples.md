@@ -4,6 +4,7 @@
 - CompositeFrame example
 - ResourceFrame example
 - ServiceFrame example
+- **Example_PublicationDelivery.xml**: Komplett eksempel på PublicationDelivery med CompositeFrame, ResourceFrame og ServiceFrame.
 
 ## Objects
 - **Operator**: Example_Operator.xml
