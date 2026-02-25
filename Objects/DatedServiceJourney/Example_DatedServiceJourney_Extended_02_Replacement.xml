@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
   Example_DatedServiceJourney_Extended_02_Replacement.xml
   Scenario: Replacement
@@ -9,7 +10,6 @@
     + replacedJourneys / DatedVehicleJourneyRef (new)
     - DatedServiceJourneyRef (removed)
 -->
-<?xml version="1.0" encoding="UTF-8"?>
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:siri="http://www.siri.org.uk/siri" version="1.0">
     <PublicationTimestamp>2026-03-01T10:00:00Z</PublicationTimestamp>
     <ParticipantRef>ERP</ParticipantRef>  
