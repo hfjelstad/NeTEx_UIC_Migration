@@ -1,5 +1,46 @@
 # Changelog
 
+## v2.0.0
+
+This is a major release, with work going back to as far as late 2020.
+
+### How to test your feeds & upgrade them
+
+Data producers are encouraged to use XSD validation tooling in order to detect & upgrade their data feeds. To do so, clone the repository locally & validate against `xsd/NeTEx_publication.xsd` (the entry point).
+
+If you think you found a bug, or have a question, [please provide feedback here](https://github.com/NeTEx-CEN/NeTEx/issues).
+
+### Structural changes:
+
+* BREAKING: many version schemas now enforce stricter validation semantics: mandatory `id`/`ref`/`version` attributes were introduced or tightened in numerous object/ref structures.
+* BREAKING: Several constraints were reshaped (including removal of `@order` from some keys and selective cardinality/type adjustments), which can change pass/fail outcomes for existing XML instances.
+* Key/unique/keyref definitions were expanded or renamed across frames and domain modules; reference integrity checks are broader and stricter in v2.0 validation contexts.
+* Publication-level schemas add or adjust integrity scopes and align naming of site/path navigation key sets.
+
+### Functional changes (technically non-BREAKING) include:
+
+Functional evolutions are largely additive, but existing datasets should be revalidated out of precaution.
+
+* Addition of DECK PLAN and all related elements
+* Addition of languages attributes when using MultilingualString to handle translations of names, instead of using AlternativeName
+* Creation of privateCodes allowing several PrivateCode for the same element (e.g., ticketing, scheduling, etc.)
+* Changes to BookingArrangement and its use for flexible services, including relation to ServiceJourneyPattern
+* Addition of a relation between Facilities and Line
+* Clarification of abstracts elements
+* Addition and/or correction of values in enumerations (e.g., MedicalFacility, PassengerCommsFacility, SameZone, QuayType, PurchaseMoment, etc.)
+* Addition of enumerations such as PropulsionTypes, FuelTypes
+* Deprecation marking for several elements such as Order, PrivateCode, FlexibleLine, BaselineVersionRef, ExternalOperatorRef, PropulsionType, FuelType
+
+## v1.3.1 (EPIAP)
+
+* EPIAP to Master by @skinkie in https://github.com/NeTEx-CEN/NeTEx/pull/705
+* Add properties to describe the height of a Lift by @juliustens-db in https://github.com/NeTEx-CEN/NeTEx/pull/696
+* Fix typo by @skinkie in https://github.com/NeTEx-CEN/NeTEx/pull/722
+* Update neTactileActuators attribute on Escalators and Travelators #665tex_ifopt_equipmentAccess_version.xsd by @ue71603 in https://github.com/NeTEx-CEN/NeTEx/pull/720
+* Update netex_facility_support.xsd by @ue71603 in https://github.com/NeTEx-CEN/NeTEx/pull/724
+* TypeOfEntity is abstract by @skinkie in https://github.com/NeTEx-CEN/NeTEx/pull/723
+* Fixes from #721 by @skinkie in https://github.com/NeTEx-CEN/NeTEx/pull/725
+
 ## Version 1.2.2 - Revised to add New Modes
 The Part 1, Part 2, & Part 3 Schemas include   corrections and enhancements since the issue of the Version 1.2 CEN Specification documents for NeTEx.
 A new Part5 is added for new modes, with examples
