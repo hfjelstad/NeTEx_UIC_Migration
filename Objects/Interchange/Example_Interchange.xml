@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Interchange id="ERP:Interchange:1" version="1.0" xmlns="http://www.netex.org.uk/netex">
-    <FromJourneyRef ref="ERP:ServiceJourney:1001"/>
-    <ToJourneyRef ref="ERP:ServiceJourney:2001"/>
-    <Guaranteed>true</Guaranteed>
-    <MinimumTransferTime>PT5M</MinimumTransferTime>
-    <MaximumWaitTime>PT10M</MaximumWaitTime>
-</Interchange>
-
-<ServiceJourney id="ERP:ServiceJourney:1001" version="1.0">
-    <Name>Route A - Departure 08:00</Name>
-</ServiceJourney>
-
-<ServiceJourney id="ERP:ServiceJourney:2001" version="1.0">
-    <Name>Route B - Departure 08:15</Name>
-</ServiceJourney>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  version="2.0">
+  <PublicationTimestamp>2026-02-25T14:22:00Z</PublicationTimestamp>
+  <ParticipantRef>ENTUR</ParticipantRef>
+  <DataObjects>
+    <CompositeFrame id="ENT:CompositeFrame:InterchangeExample:1" version="1">
+      <frames>
+        <ServiceFrame id="ENT:ServiceFrame:1" version="1">
+          <interchanges>
+            <Interchange id="ENT:Interchange:IC_001:1" version="1">
+              <Name>Example Interchange</Name>
+              <StaySeated>false</StaySeated>
+            </Interchange>
+          </interchanges>
+        </ServiceFrame>
+      </frames>
+    </CompositeFrame>
+  </DataObjects>
+</PublicationDelivery>
