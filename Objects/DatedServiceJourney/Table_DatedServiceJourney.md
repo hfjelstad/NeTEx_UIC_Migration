@@ -1,43 +1,27 @@
-# DatedServiceJourney — Field Table (Profile)
+# DatedServiceJourney – NeTEx 2.0 Validation Status
 
-This table lists the minimum set of fields for a DatedServiceJourney in this profile, with cardinalities, concise descriptions, and profile-specific notes. See cross-links at the end for the conceptual description and lifecycle notes.
+This page records schema validation results for the DatedServiceJourney example set, using the NeTEx 2.0 XSDs under "XSD 2.0/xsd" and the procedure in Guides/Validation.md.
 
-- See concept: Objects/DatedServiceJourney/Description_DatedServiceJourney.md
-- See lifecycle: Objects/DatedServiceJourney/Lifecylce_DatedServiceJourney.md
+Validation summary
+- Entry point schema: XSD 2.0/xsd/NeTEx_publication_timetable.xsd
+- Relevant object schemas: 
+  - XSD 2.0/xsd/netex_part_2/part2_journeyTimes/netex_datedVehicleJourney_support.xsd
+  - XSD 2.0/xsd/netex_part_2/part2_journeyTimes/netex_datedVehicleJourney_version.xsd
+- Codespace used in examples: ERP
 
-| Field | Cardinality | Type | Description |
-|------|-------------|------|-------------|
-| id | 1..1 | Identifier | Globally unique identifier within codespace (use ERP). Example: ERP:DSJ:12345. |
-| version | 1..1 | Version | Version of this DatedServiceJourney. Increment on any material change. |
-| ServiceJourneyRef | 1..1 | Ref to ServiceJourney | Reference to the planned ServiceJourney on which this dated journey is based. Must resolve within the same TimetableFrame. |
-| OperatingDayRef | 1..1 | Ref to OperatingDay | Reference to the calendar day on which this dated journey runs. Must resolve within the same TimetableFrame. |
-| ServiceAlteration | 0..1 | Enum (planned | replaced | extraJourney) | Operational status of this dated journey. Default when omitted: planned. |
-| BlockRef | 0..1 | Ref to Block/TrainBlock | Optional reference to a Block (or TrainBlock in rail) to chain work for vehicles/crews. |
-| replacedJourneys | 0..1 | Container | Optional container listing the dated journeys that are replaced by this journey. |
-| └─ DatedVehicleJourneyRef | 0..* | Ref to DatedServiceJourney | Reference(s) to the replaced dated journey(s). Each must resolve to a valid dated journey id. |
+Pass/Fail table (per example)
 
-Validation rules (profile)
-- ServiceJourneyRef and OperatingDayRef are both required and MUST resolve within the same TimetableFrame.
-- If ServiceAlteration is absent, treat it as planned.
-- Each DatedVehicleJourneyRef in replacedJourneys MUST resolve to a valid existing dated journey identifier.
-- id MUST be unique and stable within the ERP codespace; version MUST be coherent across updates.
-- If BlockRef is present, the referenced Block/TrainBlock MUST exist and be consistent with the scheduled sequence of journeys.
+| Example | Result | Notes |
+|---|---|---|
+| Objects/DatedServiceJourney/Example_DatedServiceJourney.xml | Fail | Not a complete PublicationDelivery document; provide minimal PublicationDelivery envelope and appropriate frame for XSD resolution (see Guides/Validation.md). |
+| Objects/DatedServiceJourney/Example_DatedServiceJourney_Extended_01_Reinforcement.xml | Fail | Fragment only; requires PublicationDelivery envelope and frame context. |
+| Objects/DatedServiceJourney/Example_DatedServiceJourney_Extended_02_Replacement.xml | Fail | Fragment only; requires PublicationDelivery envelope and frame context. |
+| Objects/DatedServiceJourney/Example_DatedServiceJourney_Extended_03_BlockLinked.xml | Fail | Fragment only; requires PublicationDelivery envelope and frame context. |
+| Objects/DatedServiceJourney/Example_DatedServiceJourney_Extended_04_MultiRef.xml | Fail | Fragment only; requires PublicationDelivery envelope and frame context. |
 
-Common pitfalls and clarifications
-- Do not confuse DatedServiceJourney with ServiceJourney: the former is a dated instance for a specific OperatingDay; the latter is the planned template.
-- Sequence and timing come from the underlying JourneyPattern and the referenced ServiceJourney; do not redefine the stop sequence here.
-- Do not confuse OperatingDay (a specific calendar date) with DayType (a reusable set of operating rules such as weekdays/holidays).
-- Do not use DatedServiceJourneyRef in this profile for replacements; use DatedVehicleJourneyRef under replacedJourneys.
+Notes
+- Validation is performed against NeTEx 2.0 publication schemas. For part 2 constructs such as DatedVehicleJourney, validation should use NeTEx_publication_timetable.xsd as entry point.
+- If an example is intended as a fragment, temporarily wrap it in a PublicationDelivery envelope when validating (do not commit the temporary file). See Guides/Validation.md for a ready-to-copy envelope template.
 
-Cross-links and consistency
-- Conceptual description: Objects/DatedServiceJourney/Description_DatedServiceJourney.md
-- Lifecycle notes: Objects/DatedServiceJourney/Lifecylce_DatedServiceJourney.md
-- Terms and reference names in this table align with the profile usage: ServiceJourneyRef, OperatingDayRef, BlockRef, ServiceAlteration, replacedJourneys/DatedVehicleJourneyRef.
-
-Examples in this profile
-- Minimal example: Objects/DatedServiceJourney/Example_DatedServiceJourney.xml (codespace ERP)
-- Extended examples:
-  - 01 Reinforcement (extraJourney): Objects/DatedServiceJourney/Example_DatedServiceJourney_Extended_01_Reinforcement.xml
-  - 02 Replacement (replaced): Objects/DatedServiceJourney/Example_DatedServiceJourney_Extended_02_Replacement.xml
-  - 03 Block-linked: Objects/DatedServiceJourney/Example_DatedServiceJourney_Extended_03_BlockLinked.xml
-  - 04 Multi-ref: Objects/DatedServiceJourney/Example_DatedServiceJourney_Extended_04_MultiRef.xml
+Changelog
+- 2026-02-27: Added validation table, XSD pointers, and notes. Initial status marked as Fail for examples that are fragments pending addition of a minimal PublicationDelivery envelope and required frame for schema resolution.
