@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Interchange id="ERP:Interchange:1" version="1.0" xmlns="http://www.netex.org.uk/netex">
-    <FromJourneyRef ref="ERP:ServiceJourney:1001"/>
-    <ToJourneyRef ref="ERP:ServiceJourney:2001"/>
-    <Guaranteed>true</Guaranteed>
-    <MinimumTransferTime>PT5M</MinimumTransferTime>
-    <MaximumWaitTime>PT10M</MaximumWaitTime>
-</Interchange>
-
-<ServiceJourney id="ERP:ServiceJourney:1001" version="1.0">
-    <Name>Route A - Departure 08:00</Name>
-</ServiceJourney>
-
-<ServiceJourney id="ERP:ServiceJourney:2001" version="1.0">
-    <Name>Route B - Departure 08:15</Name>
-</ServiceJourney>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
+  <PublicationTimestamp>2026-02-28T01:47:03Z</PublicationTimestamp>
+  <ParticipantRef>ENT:participant:ENTUR</ParticipantRef>
+  <dataObjects>
+    <CompositeFrame id="ENT:CompositeFrame:InterchangeDemo:1" version="1">
+      <frames>
+        <TimetableFrame id="ENT:TimetableFrame:1" version="1">
+          <vehicleJourneys>
+            <ServiceJourney id="ENT:ServiceJourney:1001" version="1">
+              <Name>Demo A</Name>
+            </ServiceJourney>
+            <ServiceJourney id="ENT:ServiceJourney:1002" version="1">
+              <Name>Demo B</Name>
+            </ServiceJourney>
+          </vehicleJourneys>
+          <journeyInterchanges>
+            <ServiceJourneyInterchange id="ENT:ServiceJourneyInterchange:1001_to_1002" version="1">
+              <FromJourneyRef ref="ENT:ServiceJourney:1001"/>
+              <ToJourneyRef ref="ENT:ServiceJourney:1002"/>
+            </ServiceJourneyInterchange>
+          </journeyInterchanges>
+        </TimetableFrame>
+      </frames>
+    </CompositeFrame>
+  </dataObjects>
+</PublicationDelivery>
