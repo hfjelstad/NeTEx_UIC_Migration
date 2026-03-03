@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" version="2.0">
+  <PublicationTimestamp>2026-03-03T00:00:00Z</PublicationTimestamp>
+  <ParticipantRef>ERP:Profile</ParticipantRef>
+  <dataObjects>
+    <ResourceFrame id="ERP:ResourceFrame:RF:1" version="1">
+      <codespaces>
+        <Codespace id="ERP:Codespace:ERP">
+          <Xmlns>ERP</Xmlns>
+          <XmlnsUrl>http://example.org/ERP</XmlnsUrl>
+        </Codespace>
+      </codespaces>
+      <organisations>
+        <Authority id="ERP:Authority:AUTH:1" version="1">
+          <Name>Example PTA</Name>
+        </Authority>
+        <Operator id="ERP:Operator:OP:1" version="1">
+          <Name>Example Operator</Name>
+        </Operator>
+      </organisations>
+      <responsibilitySets>
+        <ResponsibilitySet id="ERP:ResponsibilitySet:RS:1" version="1">
+          <members>
+            <ResponsibilityRoleAssignment id="ERP:ResponsibilityRoleAssignment:RRA:1" version="1">
+              <ResponsibleOrganisationRef ref="ERP:Authority:AUTH:1" version="1"/>
+            </ResponsibilityRoleAssignment>
+            <ResponsibilityRoleAssignment id="ERP:ResponsibilityRoleAssignment:RRA:2" version="1">
+              <ResponsibleOrganisationRef ref="ERP:Operator:OP:1" version="1"/>
+            </ResponsibilityRoleAssignment>
+          </members>
+        </ResponsibilitySet>
+      </responsibilitySets>
+      <responsibilitySetAssignments>
+        <ResponsibilitySetAssignment id="ERP:ResponsibilitySetAssignment:RSA:1" version="1">
+          <ResponsibilitySetRef ref="ERP:ResponsibilitySet:RS:1" version="1"/>
+          <ContractRef ref="ERP:Contract:C:1" version="1"/>
+          <View>
+            <ResourceFrameRef ref="ERP:ResourceFrame:RF:1" version="1"/>
+          </View>
+        </ResponsibilitySetAssignment>
+      </responsibilitySetAssignments>
+    </ResourceFrame>
+  </dataObjects>
+</PublicationDelivery>
