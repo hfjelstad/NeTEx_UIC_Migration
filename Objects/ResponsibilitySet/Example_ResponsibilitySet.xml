@@ -18,18 +18,20 @@
           <Name>Example Operator</Name>
         </Operator>
       </organisations>
-      <responsibilitySets>
-        <ResponsibilitySet id="ERP:ResponsibilitySet:RS:1" version="1">
-          <members>
-            <ResponsibilityRoleAssignment id="ERP:ResponsibilityRoleAssignment:RRA:1" version="1">
-              <ResponsibleOrganisationRef ref="ERP:Authority:AUTH:1" version="1"/>
-            </ResponsibilityRoleAssignment>
-            <ResponsibilityRoleAssignment id="ERP:ResponsibilityRoleAssignment:RRA:2" version="1">
-              <ResponsibleOrganisationRef ref="ERP:Operator:OP:1" version="1"/>
-            </ResponsibilityRoleAssignment>
-          </members>
-        </ResponsibilitySet>
-      </responsibilitySets>
+      <ResourceFrame id="ERP:ResourceFrame:RESOURCES_1" version="1">
+                    <responsibilitySets>
+                        <ResponsibilitySet id="ERP:ResponsibilitySet:EXAMPLE_1" version="1">
+                            <Name>Eksempel ansvarsett</Name>
+                            <roles> 
+                                <ResponsibilityRoleAssignment id="ERP:RespRoleAssignment:2" version="1">
+                                    <AssociatedContract>
+                                        <ContractRef ref="NOC:Contract:XYZ"/>
+                                    </AssociatedContract>
+                                </ResponsibilityRoleAssignment>
+                            </roles>
+                        </ResponsibilitySet>
+                    </responsibilitySets>
+                </ResourceFrame>
       <responsibilitySetAssignments>
         <ResponsibilitySetAssignment id="ERP:ResponsibilitySetAssignment:RSA:1" version="1">
           <ResponsibilitySetRef ref="ERP:ResponsibilitySet:RS:1" version="1"/>
