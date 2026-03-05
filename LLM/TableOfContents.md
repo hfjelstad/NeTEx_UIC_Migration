@@ -1,6 +1,7 @@
 # Repository Navigation Guide (Table of Contents)
 
 This table of contents is intended to help quickly navigate the documentation and resources in this repository.
+Keep this table "up-to-date", never delete anything in this table, only mark things that are removed.
 
 Quick links:
 - [Validate XML](#validate-xml)
@@ -42,6 +43,7 @@ Core NeTEx object categories, grouped for discoverability.
 - [Codespace](../Objects/Codespace/)
 - [DatedServiceJourney](../Objects/DatedServiceJourney/)
 - [DayType](../Objects/DayType/)
+- [GroupOfLines](../Objects/GroupOfLines/)
 - [Interchange](../Objects/Interchange/)
 - [JourneyPattern](../Objects/JourneyPattern/)
 - [Line](../Objects/Line/)

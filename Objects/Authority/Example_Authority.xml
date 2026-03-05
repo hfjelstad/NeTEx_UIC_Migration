@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.netex.org.uk/netex https://raw.githubusercontent.com/NeTEx-CEN/NeTEx/master/xsd/NeTEx_publication.xsd"
-  version="2.0">
-  <PublicationTimestamp>2026-02-25T14:00:00Z</PublicationTimestamp>
-  <ParticipantRef>EnStandard</ParticipantRef>
-  <Description>Minimal valid Authority example</Description>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" version="2.0">
+  <PublicationTimestamp>2026-03-04T00:00:00Z</PublicationTimestamp>
+  <ParticipantRef>ERP:Participant:1</ParticipantRef>
+  <Description>Authority example using ERP codespace</Description>
   <dataObjects>
-    <ResourceFrame id="ENT:ResourceFrame:Authority:1" version="1">
+    <ResourceFrame id="ERP:ResourceFrame:Authority:1" version="1">
+      <codespaces>
+        <Codespace id="ERP">
+          <Xmlns>erp</Xmlns>
+          <XmlnsUrl>http://www.entur.org/erp</XmlnsUrl>
+        </Codespace>
+      </codespaces>
       <organisations>
-        <Authority id="ENT:Authority:Example:1" version="1">
-          <Name>Example Authority</Name>
+        <Authority id="ERP:Authority:AUTH1" version="1">
+          <TradingName>Example Authority</TradingName>
         </Authority>
       </organisations>
     </ResourceFrame>
