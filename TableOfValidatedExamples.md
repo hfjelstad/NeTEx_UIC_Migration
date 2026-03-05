@@ -4,7 +4,7 @@ This index provides an at-a-glance timestamp for examples that have been explici
 
 | Object                | Example file                                                                 | Codespace | ValidatedAt (UTC)       | Validation commit |
 |-----------------------|-------------------------------------------------------------------------------|----------|-------------------------|-------------------|
-| Authority             | Objects/Authority/Example_Authority.xml                                       | ERP      | 2026-03-04T18:59:50Z    | 85576af77e49b39f87a1ada3f9a8b957b7332ac7 |
+| Authority             | Objects/Authority/Example_Authority.xml                                       | ERP      | 2026-03-04T23:55:44Z    | 762278be9fcbdd3c47cfe1eb49e539b75cc7c4cf |
 | Operator              | Objects/Operator/Example_Operator.xml                                         | ERP      | 2026-03-04T23:54:31Z    | aaa60cc0b70232ff25749a9bc1d2b6bb8a167c87 |
 | Line                  | Objects/Line/Example_Line.xml                                                 | ERP      | 2026-03-04T18:11:31Z    | d21973d4c854c43ddfe1458e82711e8e2c46ac6a |
 | GroupOfLines          | Objects/GroupOfLines/Example_GroupOfLines.xml                                  | ERP      | 2026-03-04T18:12:28Z    | 25a2c306c8b75b9fe5e9fe9ec62a27edd0112afd |
