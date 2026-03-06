@@ -7,7 +7,7 @@
       <frames>
         <ServiceFrame id="ERP:ServiceFrame:1" version="1">
           <lines>
-            <Line id="ERP:Line:1" version="1">
+            <Line id="ERP:Line:1" version="1" responsibilitySetRef="ERP:ResponsibilitySet:Test">
               <Name>Line 1</Name>
               <TransportMode>bus</TransportMode>
               <OperatorRef ref="ERP:Operator:OP1"/>
