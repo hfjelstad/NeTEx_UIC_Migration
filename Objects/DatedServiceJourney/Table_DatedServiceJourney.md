@@ -2,7 +2,7 @@
 
 The table below separates structural cardinality defined by the CEN NeTEx XSD from profile-specific constraints defined by ERP (European Recommended Profile). Use both columns together: XSD expresses what the schema allows; ERP expresses what the profile requires within those bounds.
 
-| Field | Description | Type | Cardinality (XSD) | Cardinality (ERP) |
+| Field | Description | NeTEx Type | Cardinality (XSD) | Cardinality (ERP) |
 |---|---|---|---|---|
 | id | Globally unique identifier of the DatedServiceJourney | Attribute | 1..1 | 1..1 |
 | version | Version of the element instance | Attribute | 0..1 | 1..1 |
