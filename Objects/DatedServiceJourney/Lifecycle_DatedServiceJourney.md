@@ -1,101 +1,32 @@
-# DatedServiceJourney – Lifecycle
+# Lifecycle — DatedServiceJourney
 
-This page describes how a DatedServiceJourney (DSJ) is created, evolves, and is validated in relation to its base ServiceJourney and OperatingDay. It also outlines how reinforcement, replacement and cancellation are handled, the versioning rules, and required reference integrity checks.
+Profile term: DatedServiceJourney (NeTEx Part 2: DatedVehicleJourney)
 
-## 1. Creation
-A DSJ is created by combining:
-- ServiceJourneyRef → the planned ServiceJourney to be run
-- OperatingDayRef → the specific calendar date the journey is executed on
-- Optionally BlockRef → the operational block the journey is assigned to
+Purpose
+- Describe the allowed lifecycle states and transitions for a DatedServiceJourney on a specific OperatingDay.
 
-Creation rules:
-- DSJ.id MUST be unique in the codespace and SHOULD follow the profile’s naming convention (e.g. ERP:DatedServiceJourney:<key>). 
-- OperatingDayRef MUST point to an OperatingDay that matches the calendar date the DSJ is executed on.
-- ServiceJourneyRef MUST point to a valid ServiceJourney defining the path and timing baseline.
-- BlockRef, when used, MUST point to an existing Block for the same date and operational context.
+Lifecycle states
+- planned: The journey is produced from the planned ServiceJourney and published for the OperatingDay.
+- reinforcement: The journey is an extra dated run created to increase capacity, referencing the journey it reinforces.
+- replacement: The journey substitutes another dated journey (typically when the original is cancelled), and references the cancelled journey.
+- cancelled: The journey is cancelled and must not be operated.
 
-## 2. Change handling (reinforcement, replacement, cancellation)
-Change types are expressed on the DSJ level and apply only to that dated instance:
-- Reinforcement (extra journey): an additional DSJ on the same ServiceJourney and OperatingDay to increase capacity. Mark the DSJ as an extra journey.
-- Replacement: a DSJ that replaces another DSJ on the same date and corridor. Mark the DSJ as a replacement and reference the replaced DSJ.
-- Cancellation: the DSJ is not operated on that date. Mark the DSJ as cancelled.
+State transitions
+- planned → reinforcement: Create an extra dated run (ReinforcementForRef required). Original remains planned.
+- planned → replacement: Create a substitute dated run (ReplacementForRef required). Original may transition to cancelled.
+- planned → cancelled: Cancel a previously planned dated run.
+- reinforcement → cancelled: Cancel the extra dated run.
+- replacement → cancelled: Cancel the substitute dated run.
 
-Recommended encoding on DSJ:
-- JourneyAlteration: one of [extraJourney, replacement, cancellation]
-- ReplacedJourneyRef (only for replacement): reference to the replaced DSJ
+Transition constraints
+- A journey cannot be both reinforcement and replacement simultaneously.
+- ReinforcementForRef (0..1) is mandatory when state = reinforcement.
+- ReplacementForRef (0..1) is mandatory when state = replacement.
+- JourneyStatus SHOULD reflect the state (planned | reinforcement | replacement | cancelled) when provided.
 
-Effects:
-- Reinforcement: both original and extra DSJ may coexist; passenger information should distinguish them (e.g. vehicle/Block assignment, notices).
-- Replacement: the replaced DSJ should be treated as cancelled for operations and information; the replacing DSJ becomes the passenger-facing service for that date.
-- Cancellation: the cancelled DSJ must not be dispatched or published as running.
+Operational notes
+- A cancelled journey MUST NOT be allocated to a Block unless explicitly retained for historical trace; do not operate.
+- Replacement and reinforcement journeys must carry the same JourneyPattern as the original unless a deviation is intentionally modelled.
 
-## 3. Versioning rules
-- DSJ.version is independent of the underlying ServiceJourney.version. A DSJ version MUST increase only when the DSJ’s own state or assignments for that date change (e.g. JourneyAlteration, BlockRef assignment, notices).
-- Changing OperatingDayRef or ServiceJourneyRef effectively makes a different DSJ; such structural changes SHOULD be made by superseding with a new DSJ id.
-- For replacement: the replacing DSJ is a separate DSJ. The replaced DSJ may be versioned to set cancellation, while the replacing DSJ is created (or versioned) to indicate replacement.
-- For cancellation: increment DSJ.version and set JourneyAlteration=cancellation.
-
-## 4. Reference integrity checks
-A DSJ MUST pass the following checks:
-- OperatingDayRef: MUST resolve to an existing OperatingDay with date equal to the DSJ’s operating date.
-- ServiceJourneyRef: MUST resolve to an existing ServiceJourney. The ServiceJourney SHOULD be compatible with the calendar/line context of the DSJ.
-- BlockRef (optional): when present, MUST resolve to an existing Block that is valid on the same OperatingDay; if multiple DSJs share a Block, the operational sequence MUST be coherent (no overlapping vehicle occupancy).
-- ReplacedJourneyRef (for replacement): MUST resolve to an existing DSJ on the same OperatingDay.
-
-## 5. State diagram (simplified)
-```
-           +----------------+
-           |   PLANNED      |
-           +----------------+
-                 |  \
-     reinforcement|   \ replacement
-                 v    v
-           +----------------+       cancellation
-           |   REINFORCED   |----------------------+
-           +----------------+                      |
-                 |                                  v
-                 |                          +----------------+
-                 +------------------------> |   CANCELLED    |
-                                            +----------------+
-```
-Notes:
-- REINFORCED indicates an “extra” DSJ (JourneyAlteration=extraJourney) in addition to the planned one.
-- REPLACED is represented by creating a new DSJ (JourneyAlteration=replacement) that points to the replaced DSJ; the replaced DSJ is typically also set to CANCELLED for the date.
-
-## 6. Short before/after example (illustrative fragment)
-The following snippet shows only the DSJ element to convey the idea; full NeTEx documents in this repository provide complete, schema-valid examples. Codespace used: ERP.
-
-Before (planned):
-```xml
-<!-- Illustrative fragment: DSJ planned on 2026-03-10 -->
-<DatedServiceJourney id="ERP:DatedServiceJourney:DSJ_1001" version="1">
-  <ServiceJourneyRef ref="ERP:ServiceJourney:SJ_5001"/>
-  <OperatingDayRef ref="ERP:OperatingDay:2026-03-10"/>
-  <!-- optional when known -->
-  <BlockRef ref="ERP:Block:BL_42"/>
-  <!-- implied default: JourneyAlteration=planned -->
-</DatedServiceJourney>
-```
-
-After (cancelled for the same date):
-```xml
-<!-- Illustrative fragment: DSJ cancelled on 2026-03-10 -->
-<DatedServiceJourney id="ERP:DatedServiceJourney:DSJ_1001" version="2">
-  <ServiceJourneyRef ref="ERP:ServiceJourney:SJ_5001"/>
-  <OperatingDayRef ref="ERP:OperatingDay:2026-03-10"/>
-  <BlockRef ref="ERP:Block:BL_42"/>
-  <JourneyAlteration>cancellation</JourneyAlteration>
-</DatedServiceJourney>
-```
-
-For a replacement, create a new replacing DSJ and reference the replaced one:
-```xml
-<DatedServiceJourney id="ERP:DatedServiceJourney:DSJ_1002" version="1">
-  <ServiceJourneyRef ref="ERP:ServiceJourney:SJ_5001"/>
-  <OperatingDayRef ref="ERP:OperatingDay:2026-03-10"/>
-  <JourneyAlteration>replacement</JourneyAlteration>
-  <ReplacedJourneyRef ref="ERP:DatedServiceJourney:DSJ_1001"/>
-</DatedServiceJourney>
-```
-
-See the object’s XML examples in this folder for complete, schema-valid documents (including frames, codespaces and calendars).
+References
+- See Description_DatedServiceJourney.md for mapping and field cardinalities.
