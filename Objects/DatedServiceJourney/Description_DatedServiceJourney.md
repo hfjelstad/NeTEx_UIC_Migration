@@ -56,7 +56,7 @@ All extended examples include a header **DIFF SUMMARY** and inline `<!-- DIFF: .
 - Using deprecated `DatedServiceJourneyRef` in new profiles. Use `replacedJourneys` + `DatedVehicleJourneyRef` instead. Keep legacy identifiers stable.
 
 ## Lifecycle (Conceptual)
-A simplified lifecycle is described in `Lifecylce_DatedServiceJourney.md`:
+A simplified lifecycle is described in `Lifecycle_DatedServiceJourney.md`:
 
 ```
 ServiceJourney (planned template)
