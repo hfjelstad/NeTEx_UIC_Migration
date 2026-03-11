@@ -1,13 +1,5 @@
 # Table: DatedServiceJourney (DatedVehicleJourney)
 
-This table lists attributes and elements observed across the three example inputs and maps their per-example cardinalities. Cells are left blank if the element/attribute is not present in that example file.
-
-Sources considered:
-- Example_DatedServiceJourney_MIN.xml (MIN)
-- Example_DatedServiceJourney_ERP.xml (ERP)
-- Example_DatedServiceJourney_NP.xml (NP)
-
-Columns: Element | Type | MIN Cardinality | ERP Cardinality | NP Cardinality | Description
 
 | Element | Type | MIN | ERP | NP | Description |
 |---|---|---|---|---|---|
