@@ -1,13 +1,21 @@
-# DatedServiceJourney — Schema vs Profile requirements
+# DatedServiceJourney – Elements Table
 
-This table explicitly distinguishes the NeTEx XSD (schema) cardinality from the profile-level requirements used for day-specific timetable publications.
+The table below summarises the DatedServiceJourney structure and the required/optional elements across MIN, ERP and NP profiles. Attribute rows are prefixed with @.
 
-| Element | XSD cardinality | ERP cardinality | Description |
-|---|---|---|---|
-| @id | 1..1 | 1..1 | ERP scoped identifier, e.g. ERP:DatedServiceJourney:2026-01-01-12345 |
-| @version | 1..1 | 1..1 | Use profile-compliant versioning. |
-| JourneyRef | 1..1 | 1..1 | Reference to the underlying ServiceJourney. |
-| OperatingDayRef | 1..1 | 1..1 | Operating day of this DatedServiceJourney. |
-| ServiceAlteration | 0..1 | 0..1 | Status of the journey (e.g. cancellation, replacement, reinforcement). |
-| DatedCalls | 0..1 | TBD..TBD | Container for one or more DatedCall elements. |
-| DatedCall | 0..* | TBD..TBD | Stop-level dated timing and references. |
+| Element | Type | MIN Cardinality | ERP Cardinality | NP Cardinality | Description |
+|---|---|---:|---:|---:|---|
+| DatedServiceJourney | element | 1..1 | 1..1 | 1..1 | Root element representing an operational run on a specific operating day. |
+| @id | xs:string | 1..1 | 1..1 | 1..1 | Unique identifier in the publishing codespace. |
+| @version | xs:integer | 1..1 | 1..1 | 1..1 | Version of the element. |
+| ServiceJourneyRef | element | 1..1 | 1..1 | 1..1 | Reference to the planned ServiceJourney. |
+| ServiceJourneyRef/@ref | xs:anyURI | 1..1 | 1..1 | 1..1 | Identifier of the referenced ServiceJourney. |
+| OperatingDayRef | element | 1..1 | 1..1 | 1..1 | Reference to the OperatingDay for which this journey is valid. |
+| OperatingDayRef/@ref | xs:anyURI | 1..1 | 1..1 | 1..1 | Identifier of the referenced OperatingDay. |
+| DatedCalls | element | 1..1 | 1..1 | 1..1 | Container of dated calls (stop times) for this journey. |
+| DatedCall | element | 1..* | 1..* | 1..* | A stop-specific timing instance on the dated journey. |
+| StopPointInJourneyPatternRef | element | 1..1 | 1..1 | 1..1 | Reference to the StopPointInJourneyPattern that this call corresponds to. |
+| StopPointInJourneyPatternRef/@ref | xs:anyURI | 1..1 | 1..1 | 1..1 | Identifier of the referenced StopPointInJourneyPattern. |
+| AimedArrivalTime | xs:dateTime | 0..1 | 0..1 | 0..1 | Targeted arrival time at the stop for the dated journey. |
+| AimedDepartureTime | xs:dateTime | 0..1 | 0..1 | 0..1 | Targeted departure time at the stop for the dated journey. |
+| BlockRef | element | 0..0 | 0..1 | 0..1 | Link to the operational block this DatedServiceJourney is part of (when applicable). |
+| BlockRef/@ref | xs:anyURI | 0..0 | 0..1 | 0..1 | Identifier of the referenced Block. |
