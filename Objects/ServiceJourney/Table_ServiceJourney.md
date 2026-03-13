@@ -1,29 +1,50 @@
-# ServiceJourney – Felter (minimum)
+# Table — ServiceJourney
 
-Denne tabellen oppsummerer de viktigste feltene for ServiceJourney i norsk NeTEx‑profil. Se også konseptuell beskrivelse og feltforklaringer i Entur‐håndboken for «timetable» (ServiceJourney) og tilhørende datamodeller.
+Purpose — Summarize core fields, cardinality, and conventions so producers and consumers can validate structure consistently across objects. The order and structure below are aligned to the Example_ServiceJourney.xml and Example_ServiceJourney_NP.xml examples.
 
-| Type       | Navn                      | Type (XSD/Ref)                | Kardinalitet | Beskrivelse |
-|------------|---------------------------|-------------------------------|--------------|-------------|
-| Element    | ServiceAlteration         | ServiceAlterationEnumeration  | 0:1          | Angir type av avgang: planned, extraJourney, replaced, cancellation. |
-| Element    | DepartureTime             | xsd:time                      | 0:1          | Avgangstid (for enkelrepresentasjon uten full passingTimes). |
-| Element    | Frequency                 | Frequency                     | 0:1          | Frekvens/interval for avganger (brukes for frekvensruter). |
-| Element    | JourneyDuration           | xsd:duration                  | 0:1          | Total varighet for reisen. |
-| Referanse  | dayTypes                  | DayTypeRef                    | 1:*          | Referanser til DayType som beskriver hvilke dager avgangen gjelder. |
-| Referanse  | JourneyPatternRef         | JourneyPatternRef             | 1:1          | Referanse til JourneyPattern som definerer stoppsekvensen. |
-| Referanse  | JourneyFrequencyGroupRef  | JourneyFrequencyGroupRef      | 0:1          | Referanse til JourneyFrequencyGroup (for rytme-/intervallavgang). |
-| Referanse  | VehicleTypeRef            | VehicleTypeRef                | 0:1          | Referanse til kjøretøytype. |
-| Referanse  | OperatorRef               | OperatorRef                   | 0:1          | Referanse til operatør. |
-| Referanser | trainNumbers              | TrainNumberRef                | 0:*          | Referanser til TrainNumber. |
-| Elementer  | passingTimes              | TimetabledPassingTime         | 1:*          | Planlagte passeringstider per stopp langs reisen. |
-| Elementer  | parts                     | JourneyPart                   | 0:*          | Delstrekninger (for spesialtilfeller, f.eks. sammensatte tog). |
-| Elementer  | checkConstraints          | CheckConstraint               | 0:*          | Informasjon om kontroller/sperrer som kan gi forsinkelse. |
-| Element    | TrainSize                 | TrainSize                     | 0:1          | Størrelse/struktur for tog. |
-| Element    | FlexibleServiceProperties | FlexibleServiceProperties     | 0:1          | Egenskaper for fleksibel (bestillings-)transport på avgangen. |
+Notes
+- Columns: Element, Type, MIN, ERP, NP, Description
+- Sub‑elements are represented using slash notation
+- MIN uses NeTEx cardinality semantics (e.g., 1..1, 0..1, 1..*, 0..*)
+- ERP/NP indicate whether the element typically appears in the ERP example and/or the NP example (left blank when unknown)
 
-Merknader
-- Minst to stopp må være definert for en ServiceJourney via passingTimes. Stoppene er gitt av StopPointInJourneyPattern på det refererte JourneyPattern.  
-- ServiceJourney er en VehicleJourney for passasjertrafikk og modelleres i TimetableFrame.
+| Element | Type | MIN | ERP | NP | Description |
+|---|---|---:|:--:|:--:|---|
+| ServiceJourney/@id | xsd:ID | 1..1 |  |  | Unique identifier following {CODESPACE}:ServiceJourney:{LocalId} |
+| ServiceJourney/@version | xsd:string | 1..1 |  |  | Version label (e.g., "1"). Increment on changes. |
+| Name | xsd:string | 0..1 |  |  | Human‑readable name of the journey |
+| PrivateCode | xsd:normalizedString | 0..1 |  |  | Internal non‑public code (e.g., trip or train number) |
+| Description | xsd:string | 0..1 |  |  | Free‑text description |
+| TransportMode | TransportModeEnumeration | 0..1 |  |  | Public transport mode (e.g., bus, rail) |
+| TransportSubmode/BusSubmode | BusSubmodeEnumeration | 0..1 |  |  | Submode for bus services |
+| TransportSubmode/RailSubmode | RailSubmodeEnumeration | 0..1 |  |  | Submode for rail services |
+| JourneyPatternRef/@ref | VersionedRef | 1..1 |  |  | Reference to a JourneyPattern that defines the stop sequence |
+| LineRef/@ref | VersionedRef | 0..1 |  |  | Reference to the served Line |
+| FlexibleLineRef/@ref | VersionedRef | 0..1 |  |  | Reference to a FlexibleLine (for on‑demand services) |
+| OperatorRef/@ref | VersionedRef | 0..1 |  |  | Reference to an Operator |
+| dayTypes/DayTypeRef/@ref | VersionedRef | 0..* |  |  | DayType(s) on which the journey operates |
+| passingTimes/TimetabledPassingTime | TimetabledPassingTime | 1..* |  |  | Collection of scheduled passing/stop times |
+| passingTimes/TimetabledPassingTime/@id | xsd:ID | 0..1 |  |  | Optional identifier for the TimetabledPassingTime element |
+| passingTimes/TimetabledPassingTime/StopPointInJourneyPatternRef/@ref | VersionedRef | 1..1 |  |  | Reference to a StopPointInJourneyPattern in the JourneyPattern |
+| passingTimes/TimetabledPassingTime/ArrivalTime | xsd:time | 0..1 |  |  | Planned arrival time at the stop |
+| passingTimes/TimetabledPassingTime/DepartureTime | xsd:time | 0..1 |  |  | Planned departure time from the stop |
+| passingTimes/TimetabledPassingTime/ArrivalDayOffset | xsd:integer | 0..1 |  |  | Day offset applied to ArrivalTime (e.g., 1 if arrival is on the next day) |
+| passingTimes/TimetabledPassingTime/DepartureDayOffset | xsd:integer | 0..1 |  |  | Day offset applied to DepartureTime |
+| passingTimes/TimetabledPassingTime/EarliestDepartureTime | xsd:time | 0..1 |  |  | Earliest pick‑up time (often used for flexible/on‑demand) |
+| passingTimes/TimetabledPassingTime/LatestArrivalTime | xsd:time | 0..1 |  |  | Latest drop‑off time (often used for flexible/on‑demand) |
+| keyList/KeyValue | KeyValue | 0..* |  |  | Arbitrary key/value metadata on the journey |
+| parts/JourneyPart | JourneyPart | 0..* |  |  | Used for combined journeys or split/merge operations |
+| BlockRef/@ref | VersionedRef | 0..1 |  |  | Reference to a Block or TrainBlock for vehicle working |
 
-Kilder (normative/autoritative)
-- Entur håndbok – «timetable» (ServiceJourney) inkl. felttabell og kardinalitet.  
-- Entur håndbok – «Data models» (sammenhenger mellom ServiceJourney, JourneyPattern og DayType).  
+Identifier and codespace conventions
+- Use a single codespace consistently across PublicationDelivery.
+- Recommended pattern for @id: {CODESPACE}:ServiceJourney:{LocalId}
+- ParticipantRef in PublicationDelivery must equal the dataset codespace.
+
+Validation rule
+- Always validate raw XML examples against NeTEx 2.0 XSD prior to publication.
+
+Cross‑references
+- JourneyPattern: defines the ordered stop sequence for the ServiceJourney
+- DayType: dates on which the ServiceJourney runs
+- Operator and Line: operator and public‑facing line context
