@@ -65,4 +65,3 @@ ServiceJourney
 | [KeyValue](../KeyValue/Table_KeyValue.md) | KeyValue | 0..* |  |  | Arbitrary key/value metadata on the journey | keyList/KeyValue |
 | [JourneyPart](../JourneyPart/Table_JourneyPart.md) | JourneyPart | 0..* |  |  | Used for combined or split journeys | parts/JourneyPart |
 | BlockRef/@ref | VersionedRef | 0..1 |  |  | Reference to a Block or TrainBlock (vehicle working) | BlockRef/@ref |
-``
