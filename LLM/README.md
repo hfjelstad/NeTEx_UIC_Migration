@@ -39,8 +39,8 @@ Every object under `Objects/<ObjectName>/` must contain the following files:
 
 ### 2. Table_<ObjectName>.md (mandatory)
 
-[Template](../LLM/Templates/Object_Struture_and_Table_Template.md)
+[Table template](../LLM/Templates/Object_Struture_and_Table_Template.md)
 
 ### 3. Description_<ObjectName>.md (mandatory)
 
-[Template](../LLM/Templates/Object_Description_Template.md)
+[Description template](../LLM/Templates/Object_Description_Template.md)

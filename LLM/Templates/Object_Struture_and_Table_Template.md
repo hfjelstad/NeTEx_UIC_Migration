@@ -19,7 +19,7 @@ The Structure Overview must:
  └─ <ReferenceElement/@ref>
  ```
 
-## 2. Table_<ObjectName>.md (mandatory)
+## 2. `Table_<ObjectName>.md` (mandatory)
 
 The flat table provides a normalized, machine‑readable representation of the object's structure.  
 It must always be placed below the Structure Overview.
