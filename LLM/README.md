@@ -5,7 +5,7 @@ The contents here describe
 **how documentation must be structured**,
 **how objects link to each other**, 
 **how tables are generated**, and **how XML examples are constructed**.
-  
+
 All agents and contributors must treat these rules as authoritative.
 
 ---
@@ -41,10 +41,10 @@ Every object under `Objects/<ObjectName>/` must contain the following files:
 - A XML example validated against the current XSD.
 - All XML examples that use a ProfileCode and validate against the current XSD act as authoritative sources for determining the element order used in both the Structure Overview and the Table. Other XML files may appear for guidance or illustration but must not influence structural ordering.
 
-### 2. Table_<ObjectName>.md (mandatory)
+### 2. `Table_<ObjectName>.md` (mandatory)
 
 [Table template](../LLM/Templates/Object_Struture_and_Table_Template.md)
 
-### 3. Description_<ObjectName>.md (mandatory)
+### 3. `Description_<ObjectName>.md` (mandatory)
 
 [Description template](../LLM/Templates/Object_Description_Template.md)
