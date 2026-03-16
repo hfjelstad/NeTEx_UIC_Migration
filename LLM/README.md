@@ -43,7 +43,7 @@ Every object under `Objects/<ObjectName>/` must contain the following files:
 
 ### 3.2. `Table_<ObjectName>.md` (mandatory)
 
-[Object Table Template](../LLM/Templates/Object_Struture_and_Table_Template.md) 
+Details on how to construct the Table can be found here: [Object Table Template](../LLM/Templates/Object_Struture_and_Table_Template.md) 
 
 The table file defines the complete structural specification of the object.  
 It includes:
@@ -58,7 +58,7 @@ synchronized with its XML examples.
 
 ### 3.3. `Description_<ObjectName>.md` (mandatory)
 
-[Object Description Template](../LLM/Templates/Object_Description_Template.md)
+Details on how to construct the Description file can be found here: [Object Description Template](../LLM/Templates/Object_Description_Template.md)
 
 A human‑readable explanation of the object. Includes:
 - purpose and role in the model,
