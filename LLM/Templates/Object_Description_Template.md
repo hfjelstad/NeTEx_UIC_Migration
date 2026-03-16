@@ -4,27 +4,18 @@
 A short explanation of the object’s intent, scope, and the role it plays within the NeTEx model.  
 This text must be derived from the XML examples, the Structure Overview, and the Table.
 
-
 ## 2. Structure Overview
-A human‑friendly outline of the object’s structure as defined in the `Table_<ObjectName>.md` file.  
-This overview must visually reflect the same ordering and element hierarchy as the table.
+The Structure Overview provides a readable, icon‑based representation of the object's structure.
+It must follow the ordering and hierarchy shown in `Table_<ObjectName>.md`.
 
-Use the following style with icons to indicate semantic roles:
-
-- 📄 = simple element or attribute  
-- 🔗 = reference to another object (Ref element)  
-- 📁 = container element  
-
-### Structure Overview — <ObjectName>
-
+### Structure Overview — `<ObjectName>`
 ```text
-📄 @id  
-📄 @version  
-📄 <ElementA>  
-📄 <ElementB>  
-📁 <ContainerA>  
-└── 📄 <ChildElement> (0..*)  
-🔗 <ReferenceElement/@ref>  
+📄 @id
+📄 @version
+📄 <ElementA>
+📁 <ContainerA>
+└── 📄 <ChildElement> (0..*)
+🔗 <ReferenceElement/@ref>
 ```
 
 ## 3. Key Elements
@@ -39,3 +30,7 @@ Optional modeling details, recommended usage, or clarifications.
 
 ## 6. Additional Information (optional)
 Any extra information relevant to understanding the object.
+
+### Section Rules
+Only the numbered top‑level sections defined in this template may be used.  
+Sections marked as optional may be omitted entirely when not relevant, but the numbering of other sections must remain unchanged.
