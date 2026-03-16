@@ -1,5 +1,9 @@
 
 # NeTEx Profile Documentation
+<!-- 
+LLM Documentation:
+All automated agents must use LLM/README.md as the authoritative source for rules and templates.
+-->
 A practical reference, learning resource, and example library for working with NeTEx.
 
 This repository is designed as a human-friendly entry point to NeTEx: a place to learn the structure of the standard, explore real examples, and understand how frames and objects relate to each other in practice.
