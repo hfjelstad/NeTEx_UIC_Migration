@@ -15,13 +15,6 @@ This overview shows the primary relationships of DatedServiceJourney and where t
     └── DatedVehicleJourneyRef/@ref (0..*)
 ```
 
-Related object documentation:
-- [ServiceJourney](../ServiceJourney/Description_ServiceJourney.md)
-- [OperatingPeriod](../OperatingPeriod/Description_OperatingPeriod.md)
-- [DayType](../DayType/Description_DayType.md)
-- [TrainBlock](../TrainBlock/Description_TrainBlock.md)
-- [ResponsibilitySet](../ResponsibilitySet/Description_ResponsibilitySet.md)
-
 | Element | Type | MIN | ERP | NP | Description | Path |
 |--------|------|-----|-----|----|-------------|------|
 | @id | xsd:NMTOKEN | 1..1 | 1..1 | 1..1 | Unique identifier for the dated journey instance. | DatedServiceJourney/@id |
