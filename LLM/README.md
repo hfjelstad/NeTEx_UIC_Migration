@@ -1,67 +1,46 @@
-# Documentation Templates for the NeTEx Profile (LLM)
+# LLM Documentation Hub  
+This folder defines the documentation conventions, rules, and templates used by both humans and AI agents when creating or updating documentation for the NeTEx profile in this repository.
 
-Scope
-- This guide defines the templates and conventions for documentation and examples used in this profile (ERP - European Recommended Profile). It covers: folder structure, file naming, required documentation sections, description formatting, table formatting, and XML example formatting.
+The contents here describe **how documentation must be structured**, **how objects link to each other**, **how tables are generated**, and **how XML examples are constructed**.  
+All agents and contributors must treat these rules as authoritative.
 
-Folder structure
-- Root (excerpt): Guides/, Frames/, Objects/, LLM/
-- Per Frame: Frames/<FrameName>/{Description_<FrameName>.md, Table_<FrameName>.md, Example_<FrameName>.xml}
-- Per Object: Objects/<ObjectName>/{Description_<ObjectName>.md, Table_<ObjectName>.md, Example_<ObjectName>.xml}
-- Keep overview entries and links updated in navigation lists where applicable.
+---
 
-File naming conventions
-- Examples: Example_<ObjectOrFrame>.xml
-- Descriptions: Description_<ObjectOrFrame>.md
-- Tables: Table_<ObjectOrFrame>.md
-- Use the ERP codespace for XML ids in examples (e.g., ERP:DayType:WKD).
-- Maintain alphabetical ordering in overview lists and verify that links resolve correctly.
+## 1. Purpose of this folder
+The purpose of the `LLM/` folder is to provide a single, authoritative source for:
 
-Required documentation sections (Description_*.md)
-- Title: "<Name> – description"
-- Purpose: one-paragraph summary of intent and scope.
-- Typical elements: bullet list of key child containers/elements.
-- Keys: identifiers, versioning, and reference elements (e.g., *XxxRef*).
-- Optionally: pointers to examples and XSD sections.
+- documentation rules  
+- generation rules  
+- templates for new objects  
+- standards for tables, structure overviews, and XML examples  
+- naming conventions  
+- cross-reference patterns  
+- file and folder layout  
 
-Description formatting
-- Keep language concise and normative.
-- Use bullet lists for Typical elements and Keys.
-- Use relative links to related guides or frames when helpful.
+The agent must always consult this folder when reading, validating, or generating documentation.
 
-Table formatting (Table_*.md)
-- Purpose: a quick structural overview.
-- Recommended columns:
-  - Element
-  - Type (NeTEx class/type)
-  - Cardinality
-  - Notes (constraints, references, profile rules)
-- Ensure the table reflects the current profile and example file.
+---
 
-XML example formatting
-- Container structure:
-  - PublicationDelivery (xmlns="http://www.netex.org.uk/netex", version="1.0")
-  - dataObjects → CompositeFrame → frames → [Frames/Objects]
-- Conventions:
-  - Use lowerCamelCase for list/collection elements (e.g., dataObjects, dayTypes, operatingPeriods).
-  - Timestamps as xs:dateTime with timezone (e.g., 2026-02-25T14:22:00Z).
-  - Consistent id strategy and version values (e.g., ERP:<Type>:<LocalId>). Use *Ref elements to link related objects.
-- Keep examples minimal yet valid against NeTEx 2.0 XSD.
+## 2. Profiles
 
-Workflow notes
-- When adding a new item under Objects/ or Frames/, always provide the trio: Description_*.md, Table_*.md, and Example_*.xml using the patterns above.
-- Update lists or indexes that reference the new files and verify that all links resolve.
+| ProfileCode | Profile Description |
+| -- | -- |
+| MIN | Minimum profile | 
+| ERP | European Recomended Profile |
+| NP | Nordic Profile |
 
-Validation
-- Validate all XML examples against the NeTEx 2.0 schemas included under XSD 2.0/.
+## 3. Documentation Structure for Each Object
 
-Appendix: Minimal skeletons
-- Description_<Name>.md
-  - <Name> – description
-  - Purpose: ...
-  - Typical elements: ...
-  - Keys: ...
-- Table_<Name>.md
-  - Columns: Element | Type | XSD Cardinality | ERP Cardinality | Description
-  - Attributes should have @ as prefix, like @id and @version
-- Example_<Name>.xml
-  - PublicationDelivery → dataObjects → CompositeFrame → frames → <Name>
+Every object under `Objects/<ObjectName>/` must contain the following files:
+
+### 1. Example_<ObjectName>_<ProfileCode>.xml (at least one required)
+- A XML example validated against the current XSD.
+- All XML examples that use a ProfileCode and validate against the current XSD act as authoritative sources for determining the element order used in both the Structure Overview and the Table. Other XML files may appear for guidance or illustration but must not influence structural ordering.
+
+### 2. Table_<ObjectName>.md (mandatory)
+
+[Template](../LLM/Templates/Object_Struture_and_Table_Template.md)
+
+### 3. Description_<ObjectName>.md (mandatory)
+
+[Template](../LLM/Templates/Object_Description_Template.md)
