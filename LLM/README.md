@@ -1,7 +1,11 @@
 # LLM Documentation Hub  
 This folder defines the documentation conventions, rules, and templates used by both humans and AI agents when creating or updating documentation for the NeTEx profile in this repository.
 
-The contents here describe **how documentation must be structured**, **how objects link to each other**, **how tables are generated**, and **how XML examples are constructed**.  
+The contents here describe 
+**how documentation must be structured**,
+**how objects link to each other**, 
+**how tables are generated**, and **how XML examples are constructed**.
+  
 All agents and contributors must treat these rules as authoritative.
 
 ---

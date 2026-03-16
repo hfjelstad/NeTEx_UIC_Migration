@@ -1,4 +1,4 @@
-## 1. Structure Overview (placed at the top of Table_<ObjectName>.md)
+## 1. Structure Overview (placed at the top of `Table_<ObjectName>.md`)
 The Structure Overview must:
 - follow the exact element order from the XML examples,
 - show nesting using a monospace tree diagram,
