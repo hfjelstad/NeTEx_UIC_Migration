@@ -8,7 +8,9 @@ This text must be derived from the XML examples, the Structure Overview, and the
 The Structure Overview provides a readable, icon‑based representation of the object's structure.
 It must follow the ordering and hierarchy shown in `Table_<ObjectName>.md`.
 
+Structure example:
 ### Structure Overview — `<ObjectName>`
+
 ```text
 📄 @id
 📄 @version
