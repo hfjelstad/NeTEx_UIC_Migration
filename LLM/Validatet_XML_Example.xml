@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2">
     <PublicationTimestamp>2026-03-01T00:00:00Z</PublicationTimestamp>
-    <ParticipantRef>ENTUR</ParticipantRef>
+    <ParticipantRef>EuPro</ParticipantRef>
     <Description>Eksempel: DatedServiceJourney avgang Oslo S til Trondheim S</Description>
     <dataObjects>
         <CompositeFrame id="ERP:Example:1" version="1">
