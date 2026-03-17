@@ -1,161 +1,46 @@
+# NeTEx Profile Documentation – Canonical Entry Point
 
-# NeTEx Profile Documentation
-<!-- 
-LLM Documentation:
-All automated agents must use LLM/README.md as the authoritative source for rules and templates.
--->
-A practical reference, learning resource, and example library for working with NeTEx.
+This repository contains the canonical, English-language documentation for the NeTEx profile used in this organization. All object documentation follows the master template in `LLM/README.md` and must adhere to its folder structure, file naming, required sections, description formatting, table formatting, and XML example formatting.
 
-This repository is designed as a human-friendly entry point to NeTEx: a place to learn the structure of the standard, explore real examples, and understand how frames and objects relate to each other in practice.
+Link to master template: ./LLM/README.md
 
-Its goals are:
-- 📘 **Introduce** the concepts and structure of NeTEx
-- 🧭 **Guide** readers through frames, objects, and modeling patterns
-- 🗂️ **Provide** a high-quality example library
-- 🛠️ **Define** conventions for profiling and documentation
-- 🔎 **Serve** as a reference for navigation and discovery
+How to navigate the profile documentation
+- Start at the top-level domain folders (e.g., Network, Timetable, Fares). Each object has its own folder and a README that strictly follows the template in `LLM/README.md`.
+- Within each object folder, use the “Description”, “Table” (with all required fields), and the “XML example(s)” sections to understand how the profile constrains NeTEx.
+- Look for cross-references to Frames (ServiceFrame, ResourceFrame, FareFrame, etc.) and to reusable example files in the `XSD 2.0/examples` tree.
 
----
+Seat/space reservation modelling
+The following guidance defines where to place booking rules, how to override them at the ServiceJourney level, how to express booking windows and contacts, how to represent capacity, and how to model the fares-side supplement for seat reservations.
 
-## 🎯 What This Repository Contains
+Where BookingArrangement can be attached
+- Operator: Use to define a network-wide default booking policy for all services run by the operator.
+- Line: Use to define a default for a specific Line when it differs from the operator default.
+- JourneyPattern: Use to set a pattern-level default when a subset of journeys on a line share the same booking rules.
+- ServiceJourney: Use for the concrete departure (day/time-specific) policy and for overrides of higher-level defaults.
+- Flexible vs fixed: For flexible/on-demand services, booking is typically mandatory and attached at the ServiceJourney (or via FlexibleServiceProperties) to ensure request/offer workflows are enabled. For fixed-schedule services, booking is often optional and inherited from Operator/Line/JourneyPattern, with specific ServiceJourney overrides as needed.
 
-### 1. **High‑quality NeTEx examples**
-Each example is:
-- Minimal, but complete enough to be meaningful
-- Structured consistently using the ERP codespace
-- Designed to illustrate a single concept or object clearly
-- Built using a unified pattern:
+ServiceJourney-level overrides (examples)
+- Example 1 (override default optional booking): Operator/Line policy allows optional booking until 2 hours before departure; one particular ServiceJourney is highly utilized and is set to mandatory booking with a latest booking time at 18:00 the previous day.
+- Example 2 (temporary disruption): A set of ServiceJourneys on a Line are configured with a temporary rule requiring booking due to reduced capacity during works; the rule is attached directly to the affected ServiceJourneys.
 
-```
-PublicationDelivery → dataObjects → CompositeFrame → frames → …
-```
+Booking details to include
+- BookingContact: Provide contact person/centre, phone, email, URL and any instructions for the customer.
+- BookWhen: Specify when customers are allowed or required to book (e.g., in advance only, at time of travel, etc.).
+- LatestBookingTime: Provide a cut-off time (e.g., HH:MM:SS) on or before the day of operation, aligned with the selected BookWhen policy.
 
-### 2. **Human‑oriented documentation**
-For every frame or object, you will find:
-- A description file explaining purpose, usage, and relationships
-- A structured table outlining elements, cardinality, and type information
-- One or more XML examples showing how to model the entity
+Capacity modelling
+- Use `VehicleType.PassengerCapacity` to state the operational capacity used in planning. This may include total capacity, seated capacity, standing capacity, and dedicated places (e.g., wheelchairs, prams, bicycles). ServiceJourney-level booking policies should be consistent with the available capacity on the referenced VehicleType.
 
-### 3. **A centralized navigation index**
-Located at:
-```
-LLM/TableOfExamples.md
-```
-This file provides an alphabetically ordered list of all examples, together with links to documentation and tables.
+Fares-side reservation supplement
+- Model seat reservation as a `SupplementProduct` in the Fares domain.
+- Mandatory vs optional:
+  - Mandatory when a reservation must be purchased/held to travel on the ServiceJourney (e.g., long-distance or high-demand segments).
+  - Optional when reservation is allowed for comfort/choice but not required to travel.
+- Pricing, availability, and conditions for the `SupplementProduct` should be linked to the corresponding ServiceJourney(s), Lines, or Operator scope, depending on the rule that triggers the reservation requirement.
 
----
+Cross-links to reservation-related examples
+- Booking arrangements in a general frame: XSD 2.0/examples/functions/bookingArrangements/generalframe.xml
+- TAP TSI-related reservation constructs: XSD 2.0/examples/standards/tap_tsi/
 
-## 🗂️ Repository Structure
-
-```
-Root
-│
-├── Guides/                 → Introductory material and conceptual explanations
-├── Frames/                 → Documentation and examples grouped by Frame
-│     └── <FrameName>/
-│          ├── Description_*.md
-│          ├── Table_*.md
-│          └── Example_*.xml
-│
-├── Objects/                → Documentation and examples for individual NeTEx objects
-│     └── <ObjectName>/
-│          ├── Description_*.md
-│          ├── Table_*.md
-│          └── Example_*.xml
-│
-├── LLM/
-│     ├── README.md
-│     └── TableOfExamples.md → Central index of all examples
-```
-
----
-
-## 🧱 Conventions
-
-### **File naming**
-| Type | Naming | 
-|------|--------|
-| XML examples | `Example_*.xml` |
-| Descriptions | `Description_*.md` |
-| Tables | `Table_*.md` |
-
-### **Codespace**
-All XML identifiers use the `ERP` codespace:
-```
-ERP:<ObjectType>:<Identifier>
-```
-Example:
-```
-ERP:DayType:WKD
-```
-
-### **XML structure principles**
-- Consistent element naming (`lowerCamelCase` for collections)
-- `*Ref` elements used for relationships
-- Minimal but valid examples
-- Time values use timezone-aware `xs:dateTime`
-  → `2026-02-25T14:22:00Z`
-
----
-
-## 🔄 How to Add or Update an Example
-
-### 1. Add three files in the correct directory
-- `Example_<Name>.xml`
-- `Description_<Name>.md`
-- `Table_<Name>.md`
-
-Use the master templates found in the Guides/ folder whenever applicable.
-
-### 2. Update the navigation index
-In:
-```
-LLM/TableOfExamples.md
-```
-Add a new row with:
-- Relative path to the XML example
-- Links to description and table
-- Alphabetical ordering
-- Verified working links
-
-### 3. Verify links in the target branch
-All links must resolve correctly before opening a pull request.
-
----
-
-## 🧩 Template Structures
-
-### **Description_*.md**
-Should include:
-- Purpose
-- Typical elements
-- Key relationships
-- Notes related to examples
-
-### **Table_*.md**
-Standard columns:
-| Element | Type | Cardinality | Notes |
-
-### **Example_*.xml**
-A minimal but correct XML example, using ERP codespace and consistent structure.
-
----
-
-## 📚 How to Use This Repository for Learning
-1. Begin in `Guides/` to understand the overall context
-2. Explore `Frames/` for structural patterns
-3. Dive into `Objects/` for detailed reference material
-4. Use the index in `LLM/TableOfExamples.md` for quick lookup
-5. Compare XML examples with table documentation
-6. Read description files to understand modeling intent
-
----
-
-## ✨ Goal of This Repository
-This project exists to make NeTEx easier to understand and apply by providing:
-- Clear documentation
-- Consistent modeling patterns
-- A rich library of examples
-- A unified reference structure
-
-It is designed to help both newcomers and experienced practitioners work with NeTEx in a predictable, well-documented, and transparent way.
+Note
+- All object documentation must include at least one XML example using the `ERP` codespace and must strictly follow the template in `LLM/README.md`. Validate any raw XML examples against NeTEx 2.0 before committing.
