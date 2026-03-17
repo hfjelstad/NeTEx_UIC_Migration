@@ -33,30 +33,30 @@ Parking
 
 ## Table
 
-| Element | Type | Description | Path |
-|---------|------|-------------|------|
-| @id | ID | Unique identifier for the parking facility | Parking/@id |
-| @version | String | Version number for change tracking | Parking/@version |
-| Name | String | Human-readable name of the parking facility | Parking/Name |
-| keyList | Container | Arbitrary key/value metadata | Parking/keyList |
-| KeyValue | Element | Key-value pair | Parking/keyList/KeyValue |
-| Description | String | Free-text description of the parking facility | Parking/Description |
-| Centroid | Element | Geographic location | Parking/Centroid |
-| Location | Element | Coordinate container | Parking/Centroid/Location |
-| Longitude | Decimal | WGS84 longitude | Parking/Centroid/Location/Longitude |
-| Latitude | Decimal | WGS84 latitude | Parking/Centroid/Location/Latitude |
-| Covered | Enum | Whether parking is covered (e.g., outdoors) | Parking/Covered |
-| ParentSiteRef/@ref | Reference | Reference to the parent StopPlace | Parking/ParentSiteRef/@ref |
-| ParkingType | Enum | Type of parking (e.g., parkAndRide, urbanParking) | Parking/ParkingType |
-| ParkingVehicleTypes | String | Types of vehicles accepted (e.g., car, pedalCycle) | Parking/ParkingVehicleTypes |
-| ParkingLayout | Enum | Layout of the parking (e.g., openSpace) | Parking/ParkingLayout |
-| TotalCapacity | Integer | Total number of parking spaces | Parking/TotalCapacity |
-| RechargingAvailable | Boolean | Whether electric vehicle recharging is available | Parking/RechargingAvailable |
-| ParkingPaymentProcess | String | Payment process description | Parking/ParkingPaymentProcess |
-| parkingProperties | Container | Collection of parking property definitions | Parking/parkingProperties |
-| ParkingProperties | Element | Parking property definition | Parking/parkingProperties/ParkingProperties |
-| spaces | Container | Collection of parking capacity definitions | Parking/parkingProperties/ParkingProperties/spaces |
-| ParkingCapacity | Element | Capacity for a specific user type | Parking/parkingProperties/ParkingProperties/spaces/ParkingCapacity |
-| ParkingUserType | Enum | User type (allUsers, registeredDisabled) | Parking/parkingProperties/ParkingProperties/spaces/ParkingCapacity/ParkingUserType |
-| NumberOfSpaces | Integer | Number of parking spaces for this user type | Parking/parkingProperties/ParkingProperties/spaces/ParkingCapacity/NumberOfSpaces |
-| NumberOfSpacesWithRechargePoint | Integer | Spaces with electric recharging | Parking/parkingProperties/ParkingProperties/spaces/ParkingCapacity/NumberOfSpacesWithRechargePoint |
+| Element | Type | MIN | NP | Description | Path |
+|---------|------|-----|-----|-------------|------|
+| @id | ID | 1..1 | 1..1 | Unique identifier for the parking facility | Parking/@id |
+| @version | String | 1..1 | 1..1 | Version number for change tracking | Parking/@version |
+| Name | String | 1..1 | 1..1 | Human-readable name of the parking facility | Parking/Name |
+| keyList | Container |  |  | Arbitrary key/value metadata | Parking/keyList |
+| KeyValue | Element |  |  | Key-value pair | Parking/keyList/KeyValue |
+| Description | String |  |  | Free-text description of the parking facility | Parking/Description |
+| Centroid | Element |  | 0..1 | Geographic location | Parking/Centroid |
+| Location | Element |  | 1..1 | Coordinate container | Parking/Centroid/Location |
+| Longitude | Decimal |  | 1..1 | WGS84 longitude | Parking/Centroid/Location/Longitude |
+| Latitude | Decimal |  | 1..1 | WGS84 latitude | Parking/Centroid/Location/Latitude |
+| Covered | Enum |  | 0..1 | Whether parking is covered (e.g., outdoors) | Parking/Covered |
+| ParentSiteRef/@ref | Reference |  | 0..1 | Reference to the parent StopPlace | Parking/ParentSiteRef/@ref |
+| ParkingType | Enum | 0..1 | 0..1 | Type of parking (e.g., parkAndRide, urbanParking) | Parking/ParkingType |
+| ParkingVehicleTypes | String |  | 0..1 | Types of vehicles accepted (e.g., car, pedalCycle) | Parking/ParkingVehicleTypes |
+| ParkingLayout | Enum |  | 0..1 | Layout of the parking (e.g., openSpace) | Parking/ParkingLayout |
+| TotalCapacity | Integer |  | 0..1 | Total number of parking spaces | Parking/TotalCapacity |
+| RechargingAvailable | Boolean |  | 0..1 | Whether electric vehicle recharging is available | Parking/RechargingAvailable |
+| ParkingPaymentProcess | String |  | 0..1 | Payment process description | Parking/ParkingPaymentProcess |
+| parkingProperties | Container |  | 0..1 | Collection of parking property definitions | Parking/parkingProperties |
+| ParkingProperties | Element |  | 0..n | Parking property definition | Parking/parkingProperties/ParkingProperties |
+| spaces | Container |  | 0..1 | Collection of parking capacity definitions | Parking/parkingProperties/ParkingProperties/spaces |
+| ParkingCapacity | Element |  | 0..n | Capacity for a specific user type | Parking/parkingProperties/ParkingProperties/spaces/ParkingCapacity |
+| ParkingUserType | Enum |  | 1..1 | User type (allUsers, registeredDisabled) | Parking/parkingProperties/ParkingProperties/spaces/ParkingCapacity/ParkingUserType |
+| NumberOfSpaces | Integer |  | 0..1 | Number of parking spaces for this user type | Parking/parkingProperties/ParkingProperties/spaces/ParkingCapacity/NumberOfSpaces |
+| NumberOfSpacesWithRechargePoint | Integer |  | 0..1 | Spaces with electric recharging | Parking/parkingProperties/ParkingProperties/spaces/ParkingCapacity/NumberOfSpacesWithRechargePoint |
