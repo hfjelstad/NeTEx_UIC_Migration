@@ -25,6 +25,8 @@ A **FareFrame** contains fare data, products, and pricing rules for a public tra
        └── 📁 salesOfferPackageElements (0..1)
            └── 📄 SalesOfferPackageElement (0..n)
                └── 🔗 PreassignedFareProductRef/@ref (1..1)
+📁 fareZones (0..1)
+   └── 📄 FareZone (0..n)
 ```
 
 ## 3. Contained Elements

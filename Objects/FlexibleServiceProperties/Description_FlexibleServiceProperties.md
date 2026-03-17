@@ -10,9 +10,10 @@ The **FlexibleServiceProperties** defines the scheduling and operational charact
 📄 FlexibleServiceProperties
   ├─ 📄 @id (1..1)
   ├─ 📄 @version (1..1)
-  └─ 📁 ValidBetween (0..1)
-     ├─ 📄 FromDate (1..1)
-     └─ 📄 ToDate (1..1)
+  ├─ 📄 BookingMethods (0..1)
+  ├─ 📄 BookingAccess (0..1)
+  ├─ 📄 BookWhen (0..1)
+  └─ 📄 LatestBookingTime (0..1)
 ```
 
 ## 3. Key Elements

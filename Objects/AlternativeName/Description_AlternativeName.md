@@ -8,6 +8,7 @@ The **AlternativeName** provides additional name variants for a NeTEx object, su
 
 ```
 📄 AlternativeName
+  ├─ 📄 NameType (0..1)
   ├─ 📄 Name (1..1)
   └─ 📄 QualifierName (0..1)
 ```

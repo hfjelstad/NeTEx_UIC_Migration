@@ -11,10 +11,12 @@ Route
  ├─ PrivateCode (0..1)
  ├─ LineRef/@ref (1..1)
  ├─ DirectionType (0..1)
+ ├─ InverseRouteRef/@ref (0..1)
  └─ PointsInSequence (1..1)
     └─ PointOnRoute (1..n)
        ├─ @order (1..1)
-       └─ ScheduledStopPointRef/@ref (1..1)
+       ├─ ScheduledStopPointRef/@ref (1..1)
+       └─ RoutePointRef/@ref (0..1)
 ```
 
 ## Table
@@ -32,3 +34,5 @@ Route
 | DirectionType | Enum | Direction indicator (inbound, outbound, clockwise, counterclockwise) | Route/DirectionType |
 | @order | Integer | Sequence number for the point in the route | Route/pointsInSequence/PointOnRoute/@order |
 | [ScheduledStopPoint](../ScheduledStopPoint/Table_ScheduledStopPoint.md)@ref | Reference | Reference to a ScheduledStopPoint | Route/pointsInSequence/PointOnRoute/ScheduledStopPointRef/@ref |
+| RoutePointRef/@ref | Reference | Reference to a RoutePoint (used in NP profile) | Route/pointsInSequence/PointOnRoute/RoutePointRef/@ref |
+| InverseRouteRef/@ref | Reference | Reference to the inverse (return) route | Route/InverseRouteRef/@ref |

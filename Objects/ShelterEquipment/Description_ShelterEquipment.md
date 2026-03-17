@@ -10,9 +10,9 @@ The **ShelterEquipment** describes weather shelter facilities available at a sto
 📄 ShelterEquipment
   ├─ 📄 @id (1..1)
   ├─ 📄 @version (1..1)
-  └─ 📁 ValidBetween (0..1)
-     ├─ 📄 FromDate (1..1)
-     └─ 📄 ToDate (1..1)
+  ├─ 📄 Seats (0..1)
+  ├─ 📄 StepFree (0..1)
+  └─ 📄 Enclosed (0..1)
 ```
 
 ## 3. Key Elements

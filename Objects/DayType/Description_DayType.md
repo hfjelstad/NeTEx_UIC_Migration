@@ -13,7 +13,8 @@ A **DayType** represents a classification of days on which a specific set of tra
   ├─ 📄 Name (1..1)
   ├─ 📄 Description (0..1)
   └─ 📁 properties (0..1)
-     └─ 📄 PropertyOfDay (0..n)
+     └─ 📁 PropertyOfDay (0..n)
+        └─ 📄 DaysOfWeek (0..1)
 ```
 
 ## 3. Key Elements

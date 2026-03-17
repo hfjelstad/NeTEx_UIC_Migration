@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" version="2.0">
+  <PublicationTimestamp>2026-03-17T12:00:00Z</PublicationTimestamp>
+  <ParticipantRef>ENTUR</ParticipantRef>
+  <dataObjects>
+    <TimetableFrame id="AKT:TimetableFrame:ic:1" version="1">
+      <journeyInterchanges>
+        <ServiceJourneyInterchange id="AKT:ServiceJourneyInterchange:1330756_1_1" version="1">
+          <Guaranteed>true</Guaranteed>
+          <FromPointRef ref="AKT:ScheduledStopPoint:9060006_1"/>
+          <ToPointRef ref="AKT:ScheduledStopPoint:9060006_1"/>
+          <FromJourneyRef ref="AKT:ServiceJourney:15044_371"/>
+          <ToJourneyRef ref="AKT:ServiceJourney:15045_372" version="1"/>
+        </ServiceJourneyInterchange>
+      </journeyInterchanges>
+    </TimetableFrame>
+  </dataObjects>
+</PublicationDelivery>

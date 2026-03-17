@@ -15,10 +15,12 @@ The **Route** represents the logical geographic path definition for a Line with 
   ├─ 📄 PrivateCode (0..1)
   ├─ 🔗 LineRef/@ref (1..1)
   ├─ 📄 DirectionType (0..1)
+  ├─ 🔗 InverseRouteRef/@ref (0..1)
   └─ 📁 PointsInSequence (1..1)
      └─ 📁 PointOnRoute (1..n)
         ├─ 📄 @order (1..1)
-        └─ 🔗 ScheduledStopPointRef/@ref (1..1)
+        ├─ 🔗 ScheduledStopPointRef/@ref (1..1)
+        └─ 🔗 RoutePointRef/@ref (0..1)
 ```
 
 ## 3. Key Elements
