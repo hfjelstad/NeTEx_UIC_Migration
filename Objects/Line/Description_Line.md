@@ -1,51 +1,51 @@
 # Line
 
-The Line object represents a public transport line within a ServiceFrame.
+## 1. Purpose
+The **Line** represents a public transport service line within a ServiceFrame. It is a core organizational entity that groups together related routes and journeys providing the same public transport service (e.g., "Bus Line 5" or "Train Line 101"). A Line identifies the operator, provides visual presentation properties (colors), and serves as the container for route patterns and scheduled journeys.
 
-Schema/XSD observations for the current variant used in this repository:
-- TransportMode is not present directly under Line. If line classification is required, use an allowed alternative modelling pattern (e.g., OperationalContextRef) or document it as a profile-specific rule. Do not place TransportMode under Line for this XSD variant.
-- TypeOfLineRef is not accepted directly under Line in this schema variant. If needed by the profile, reference it via an allowed context or profile construct, not as a direct child of Line.
-- Presentation must be a direct child of Line. Do not add @id or @version to Presentation. Colour and TextColour shall be six uppercase hexadecimal digits without a leading # (e.g., 005EB8, FFFFFF).
-- Use lowerCamelCase for collection elements in examples and guidance: dataObjects, frames, lines, organisations.
-
-Validated minimal example (ERP codespace)
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" version="1.0">
-  <PublicationTimestamp>2026-02-27T12:59:00Z</PublicationTimestamp>
-  <ParticipantRef>ERP</ParticipantRef>
-  <dataObjects>
-    <CompositeFrame id="ERP:CompositeFrame:LineExample:1" version="1">
-      <frames>
-        <ResourceFrame id="ERP:ResourceFrame:LineExample:1" version="1">
-          <organisations>
-            <Operator id="ERP:Operator:OP1" version="1">
-              <Name>Example Operator</Name>
-            </Operator>
-          </organisations>
-        </ResourceFrame>
-        <ServiceFrame id="ERP:ServiceFrame:LineExample:1" version="1">
-          <lines>
-            <Line id="ERP:Line:1" version="1">
-              <Name>Line 1</Name>
-              <OperatorRef ref="ERP:Operator:OP1" version="1"/>
-              <Presentation>
-                <Colour>005EB8</Colour>
-                <TextColour>FFFFFF</TextColour>
-              </Presentation>
-            </Line>
-          </lines>
-        </ServiceFrame>
-      </frames>
-    </CompositeFrame>
-  </dataObjects>
-</PublicationDelivery>
+## 2. Structure Overview
+```
+📄 Line
+  ├─ 📄 @id (identifier, mandatory)
+  ├─ 📄 @version (string)
+  ├─ 📄 Name (mandatory)
+  ├─ 🔗 OperatorRef (mandatory reference)
+  └─ 📁 Presentation (optional)
+     ├─ 📄 Colour (6-digit hex code)
+     └─ 📄 TextColour (6-digit hex code)
 ```
 
-Notes
-- The XML above has been validated against the repository's XSD setup and demonstrates the required structure and constraints for Line, including resolution of OperatorRef in ResourceFrame and the permitted Presentation structure.
+## 3. Key Elements
+- **Name**: Human-readable line identifier displayed in timetables and passenger information; must be unique within the service delivery scope.
+- **OperatorRef**: Mandatory reference to the Operator responsible for running this Line; must resolve to an Operator defined in ResourceFrame.
+- **Presentation**: Optional container for visual presentation properties; defines line color and text color for passenger-facing displays.
+- **Colour**: Hexadecimal color code (6 uppercase digits without `#`) for the line's visual representation; e.g., `005EB8` for blue.
+- **TextColour**: Hexadecimal color code for text displayed on the line; typically contrasts with Colour for readability; e.g., `FFFFFF` for white.
 
-See also
-- Objects/Line/Table_Line.md for the synchronized requirements table.
-- Objects/Line/Example_Line.xml for the standalone example file matching the snippet above.
+## 4. References
+- [Operator](../Operator/Table_Operator.md) – Organization responsible for operating this Line
+- [Route](../Route/Table_Route.md) – Geographic path definition for journeys on this Line
+- [JourneyPattern](../JourneyPattern/Table_JourneyPattern.md) – Stop sequence patterns served by this Line
+
+## 5. Usage Notes
+
+### 5a. Consistency Rules
+- A Line should have a unique Name within the scope of its Operator to avoid confusion in passenger communication and system references.
+- The OperatorRef must be defined in ResourceFrame/organisations before the Line is referenced by Routes, JourneyPatterns, or ServiceJourneys.
+- Presentation colors (Colour and TextColour) should be consistent across all visual touchpoints (websites, signage, information systems) to reinforce brand identity.
+
+### 5b. Validation Requirements
+- **Name is mandatory** – Every Line must have a Name element for public identification.
+- **OperatorRef is mandatory** – Every Line must reference exactly one Operator with @ref attribute; cardinality is 1..1.
+- **@id and @version are mandatory** – Must follow codespace conventions (e.g., `ERP:Line:1`); version typically "1" or incremental.
+- **Colour format is strict** – If Presentation is used, Colour must be exactly 6 uppercase hexadecimal digits (0–9, A–F) without a leading # character.
+- **TextColour format is strict** – Same format requirements as Colour; recommended to ensure text-to-background contrast for accessibility.
+
+### 5c. Common Pitfalls
+- **TransportMode confusion**: XML examples may show `<TransportMode>` directly under Line, but this is not permitted in the current XSD schema variant. Do NOT include TransportMode as a direct child; use alternative patterns if line classification is required.
+- **TypeOfLineRef not supported**: The schema does not accept `TypeOfLineRef` directly under Line. If line type classification is needed, document it as a profile rule or use alternative constructs.
+- **Presentation element mistakes**: Do NOT add `@id` or `@version` attributes to the Presentation element; it is a simple container with only child text elements.
+- **Colour format errors**: Common mistakes include using lowercase hexadecimal (e.g., `005eb8` instead of `005EB8`), including a leading `#` (invalid), or using color names instead of hex codes (invalid).
+
+## 6. Additional Information
+See [Table_Line.md](Table_Line.md) for detailed attribute specifications, cardinality rules, and XSD constraints. See [Example_Line.xml](Example_Line.xml) for a complete, validated XML instance based on the ERP profile.
