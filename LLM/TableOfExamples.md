@@ -2,6 +2,26 @@
 
 This document lists all Example_*.xml files in the repository. For each entry, the full relative path is provided along with a short description and links to the corresponding Description and Table documents for the object. Examples use the MIN (minimum), NP (Nordic Profile), or ERP (European Recommended Profile) codespace as indicated.
 
+## Guides
+
+- [FramesOverview.md](../Guides/FramesOverview.md) — Overview of NeTEx frame structure
+- [GetStarted_Guide.md](../Guides/GetStarted_Guide.md) — Getting started guide
+- [Glossary.md](../Guides/Glossary.md) — Glossary of NeTEx terms
+- [NeTEx_Conventions.md](../Guides/NeTEx_Conventions.md) — NeTEx conventions and naming
+- [SeparationOfConcerns.md](../Guides/SeparationOfConcerns.md) — Separation of concerns guide
+- [Validation.md](../Guides/Validation.md) — Validation guide
+
+## Frames
+
+- `Frames/Example_PublicationDelivery.xml` — Sample PublicationDelivery wrapper
+- `Frames/FareFrame/Example_FareFrame.xml` — Sample FareFrame ([Description](../Frames/FareFrame/Description_FareFrame.md))
+- `Frames/ResourceFrame/Example_ResourceFrame.xml` — Sample ResourceFrame ([Description](../Frames/ResourceFrame/Description_ResourceFrame.md))
+- `Frames/ServiceCalendarFrame/Example_ServiceCalendarFrame.xml` — Sample ServiceCalendarFrame ([Description](../Frames/ServiceCalendarFrame/Description_ServiceCalendarFrame.md))
+- `Frames/ServiceFrame/Example_ServiceFrame.xml` — Sample ServiceFrame ([Description](../Frames/ServiceFrame/Description_ServiceFrame.md))
+- `Frames/SiteFrame/Example_SiteFrame.xml` — Sample SiteFrame ([Description](../Frames/SiteFrame/Description_SiteFrame.md))
+- `Frames/TimetableFrame/Example_TimetableFrame.xml` — Sample TimetableFrame ([Description](../Frames/TimetableFrame/Description_TimetableFrame.md))
+- `Frames/VehicleScheduleFrame/Example_VehicleScheduleFrame.xml` — Sample VehicleScheduleFrame ([Description](../Frames/VehicleScheduleFrame/Description_VehicleScheduleFrame.md))
+
 ## Objects
 
 <details open>
@@ -283,26 +303,6 @@ This document lists all Example_*.xml files in the repository. For each entry, t
 - `Objects/WaitingRoomEquipment/Example_WaitingRoomEquipment_NP.xml` — Nordic Profile sample ([Description](../Objects/WaitingRoomEquipment/Description_WaitingRoomEquipment.md) | [Table](../Objects/WaitingRoomEquipment/Table_WaitingRoomEquipment.md))
 
 </details>
-
-## Frames
-
-- `Frames/Example_PublicationDelivery.xml` — Sample PublicationDelivery wrapper
-- `Frames/FareFrame/Example_FareFrame.xml` — Sample FareFrame ([Description](../Frames/FareFrame/Description_FareFrame.md))
-- `Frames/ResourceFrame/Example_ResourceFrame.xml` — Sample ResourceFrame ([Description](../Frames/ResourceFrame/Description_ResourceFrame.md))
-- `Frames/ServiceCalendarFrame/Example_ServiceCalendarFrame.xml` — Sample ServiceCalendarFrame ([Description](../Frames/ServiceCalendarFrame/Description_ServiceCalendarFrame.md))
-- `Frames/ServiceFrame/Example_ServiceFrame.xml` — Sample ServiceFrame ([Description](../Frames/ServiceFrame/Description_ServiceFrame.md))
-- `Frames/SiteFrame/Example_SiteFrame.xml` — Sample SiteFrame ([Description](../Frames/SiteFrame/Description_SiteFrame.md))
-- `Frames/TimetableFrame/Example_TimetableFrame.xml` — Sample TimetableFrame ([Description](../Frames/TimetableFrame/Description_TimetableFrame.md))
-- `Frames/VehicleScheduleFrame/Example_VehicleScheduleFrame.xml` — Sample VehicleScheduleFrame ([Description](../Frames/VehicleScheduleFrame/Description_VehicleScheduleFrame.md))
-
-## Guides
-
-- [FramesOverview.md](../Guides/FramesOverview.md) — Overview of NeTEx frame structure
-- [GetStarted_Guide.md](../Guides/GetStarted_Guide.md) — Getting started guide
-- [Glossary.md](../Guides/Glossary.md) — Glossary of NeTEx terms
-- [NeTEx_Conventions.md](../Guides/NeTEx_Conventions.md) — NeTEx conventions and naming
-- [SeparationOfConcerns.md](../Guides/SeparationOfConcerns.md) — Separation of concerns guide
-- [Validation.md](../Guides/Validation.md) — Validation guide
 
 ## How to maintain this list
 

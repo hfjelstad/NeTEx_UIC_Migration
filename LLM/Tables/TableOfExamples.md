@@ -2,6 +2,17 @@
 
 Complete index of all XML examples in the repository.
 
+## Frames
+
+- [Example_PublicationDelivery.xml](../../Frames/Example_PublicationDelivery.xml) – Root container with composite frame structure
+- [Example_FareFrame.xml](../../Frames/FareFrame/Example_FareFrame.xml) – Fares and tariffs structure with products and validations
+- [Example_ResourceFrame.xml](../../Frames/ResourceFrame/Example_ResourceFrame.xml) – Organizations, operators, and resources
+- [Example_ServiceCalendarFrame.xml](../../Frames/ServiceCalendarFrame/Example_ServiceCalendarFrame.xml) – Service calendars and day types
+- [Example_ServiceFrame.xml](../../Frames/ServiceFrame/Example_ServiceFrame.xml) – Lines, routes, and patterns
+- [Example_SiteFrame.xml](../../Frames/SiteFrame/Example_SiteFrame.xml) – Stop places and physical infrastructure
+- [Example_TimetableFrame.xml](../../Frames/TimetableFrame/Example_TimetableFrame.xml) – Service journeys and vehicle schedules
+- [Example_VehicleScheduleFrame.xml](../../Frames/VehicleScheduleFrame/Example_VehicleScheduleFrame.xml) – Vehicle scheduling and assignments
+
 ## Objects
 
 <details open>
@@ -283,17 +294,6 @@ Complete index of all XML examples in the repository.
 - [Example_WaitingRoomEquipment_NP.xml](../../Objects/WaitingRoomEquipment/Example_WaitingRoomEquipment_NP.xml) – Nordic Profile example
 
 </details>
-
-## Frames
-
-- [Example_PublicationDelivery.xml](../../Frames/Example_PublicationDelivery.xml) – Root container with composite frame structure
-- [Example_FareFrame.xml](../../Frames/FareFrame/Example_FareFrame.xml) – Fares and tariffs structure with products and validations
-- [Example_ResourceFrame.xml](../../Frames/ResourceFrame/Example_ResourceFrame.xml) – Organizations, operators, and resources
-- [Example_ServiceCalendarFrame.xml](../../Frames/ServiceCalendarFrame/Example_ServiceCalendarFrame.xml) – Service calendars and day types
-- [Example_ServiceFrame.xml](../../Frames/ServiceFrame/Example_ServiceFrame.xml) – Lines, routes, and patterns
-- [Example_SiteFrame.xml](../../Frames/SiteFrame/Example_SiteFrame.xml) – Stop places and physical infrastructure
-- [Example_TimetableFrame.xml](../../Frames/TimetableFrame/Example_TimetableFrame.xml) – Service journeys and vehicle schedules
-- [Example_VehicleScheduleFrame.xml](../../Frames/VehicleScheduleFrame/Example_VehicleScheduleFrame.xml) – Vehicle scheduling and assignments
 
 ## How to maintain this list
 
