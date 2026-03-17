@@ -1,38 +1,52 @@
 # TrainBlock
 
-Short definition and purpose
-- TrainBlock is a rail-specific specialisation of a Block that represents an operational context for a single train. It may consist of one or more ServiceJourney or DatedServiceJourney instances that are operated as one operational run for a train on a given day.
+## 1. Purpose
 
-Relationship to Block/VehicleBlock
-- TrainBlock is a rail variant/subclass of Block in this profile. It can be used as the target of DatedServiceJourney.BlockRef. Generic Block (or VehicleBlock where applicable) remains valid; TrainBlock narrows the semantics to rail operations.
+A **TrainBlock** is a rail-specific specialisation of Block that represents an operational grouping for a single train on a given operating day. It may consist of one or more DatedServiceJourneys that are operated as a continuous run by the same physical train. DatedServiceJourneys reference a TrainBlock via BlockRef to indicate vehicle continuity across consecutive journeys.
 
-Cardinality and usage in the profile
-- DatedServiceJourney.BlockRef [0..1] may reference either a Block or a TrainBlock. If provided, it identifies the operational grouping the journey belongs to for the operating day. Absence means the journey is not assigned to any operational block in the profile.
+## 2. Structure Overview
 
-Key elements and references
-- id (required): Stable identifier of the TrainBlock.
-- version (required): Version of the TrainBlock object.
-- Name (optional): Human-readable name.
-- PublicCode (optional): Short code used for communication.
-- OperatorRef (optional): Reference to the operating organisation.
-- Associations: One or more ServiceJourney and/or DatedServiceJourney instances can reference the TrainBlock via BlockRef.
+```text
+📄 Block (TrainBlock)
+  ├─ 📄 @id (1..1)
+  ├─ 📄 @version (1..1)
+  ├─ 📄 Name (0..1)
+  ├─ 📄 PublicCode (0..1)
+  └─ 🔗 OperatorRef/@ref (0..1)
+```
 
-XSD pointer
-- BlockRef element: DatedServiceJourney/BlockRef of type BlockRefStructure as defined by NeTEx (Public Transport Timetable and Scheduling). In this profile, BlockRef accepts references to Block or TrainBlock.
-  Example path: PublicationDelivery/dataObjects/*Frame/vehicleJourneys/DatedServiceJourney/BlockRef
+## 3. Key Elements
 
-Minimal XML example
-- See Objects/TrainBlock/Example_TrainBlock.xml for a minimal PublicationDelivery containing:
-  a) A TrainBlock defined in a VehicleSchedulingFrame (with id and version), and
-  b) A DatedServiceJourney that refers to the TrainBlock through BlockRef, with mandatory ServiceJourneyRef and OperatingDayRef supplied.
+- **Name**: Human-readable label for the train block (e.g., "TrainBlock TB:1"); used in operational displays.
+- **PublicCode**: Short code for operational communication between dispatch and crew.
+- **OperatorRef**: Optional reference to the operating organisation responsible for this block.
 
-Validation rules and consistency checklist
-- Id uniqueness: Every TrainBlock id must be globally unique within the dataset/context.
-- Resolvable references: All BlockRef occurrences from DatedServiceJourney must resolve to either a Block or a TrainBlock that exists in the same PublicationDelivery or its referenced dataset.
-- Version coherence: If versions are used for TrainBlock, ensure references point to compatible or intended versions.
-- Profile rule: DatedServiceJourney.BlockRef cardinality is [0..1]. Do not include more than one BlockRef per DatedServiceJourney.
+## 4. References
 
-Common pitfalls and recommendations
-- Reuse the same TrainBlock for contiguous train runs of the same physical train on the same operating day instead of creating many tiny blocks.
-- Do not confuse TrainBlock (vehicle/operation-level grouping) with Duty (crew/roster-level assignment). They are different concepts and live in separate domains.
-- For multi-day operations, use distinct TrainBlock instances per operating day or use dated blocks; avoid mixing days within a single TrainBlock.
+- [DatedServiceJourney](../DatedServiceJourney/Table_DatedServiceJourney.md) – Journeys that reference this block via BlockRef for vehicle continuity
+- [Operator](../Operator/Table_Operator.md) – Organisation operating the train block
+
+## 5. Usage Notes
+
+### 5a. Consistency Rules
+
+- TrainBlock is represented as a `Block` element in XML with rail-specific semantics; it is placed in VehicleScheduleFrame/blocks.
+- All DatedServiceJourneys referencing the same BlockRef must be time-compatible without vehicle overlap on the same operating day.
+
+### 5b. Validation Requirements
+
+- **@id and @version are mandatory** — follow codespace conventions (e.g., `ERP:TrainBlock:TB:1`).
+- **DatedServiceJourney.BlockRef cardinality is 0..1** — at most one BlockRef per journey.
+- **All BlockRef entries must resolve** to an existing Block/TrainBlock in the dataset.
+
+### 5c. Common Pitfalls
+
+- **TrainBlock vs. Duty confusion**: TrainBlock groups journeys by vehicle (operational); Duty groups by crew assignment (roster). They are separate concepts.
+- **Multi-day blocks**: Use distinct TrainBlock instances per operating day; avoid mixing dates within a single block.
+- **Creating too many blocks**: Reuse the same TrainBlock for contiguous runs of the same train on the same day.
+
+## 6. Additional Information
+
+See [Table_TrainBlock.md](Table_TrainBlock.md) for detailed attribute specifications.
+
+Example XML: [Example_TrainBlock.xml](Example_TrainBlock.xml)

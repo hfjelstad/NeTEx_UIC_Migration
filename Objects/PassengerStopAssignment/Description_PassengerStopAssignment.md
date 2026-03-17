@@ -1,18 +1,58 @@
 # PassengerStopAssignment
 
-**Purpose and Usage**
-PassengerStopAssignment is used to specify the exact passenger facility (typically a Quay) to be used for a planned stop in a journey. It links a ScheduledStopPoint to a physical platform within a StopPlace, ensuring accurate passenger information and operational planning.
+## 1. Purpose
 
-**Key Points:**
-- Defines the physical quay for a logical stop.
-- Can be applied as a default for a JourneyPattern or overridden for specific departures.
-- Improves clarity for passengers and operators.
+A **PassengerStopAssignment** links a logical ScheduledStopPoint to a physical Quay within a StopPlace, bridging the gap between timetable planning and physical infrastructure. It determines which platform passengers should use for a given stop, and can be overridden for specific dated journeys to handle operational changes such as platform reassignments.
 
-**Relationships:**
-- **ScheduledStopPointRef**: Logical stop in the timetable.
-- **QuayRef**: Physical platform.
-- **StopPlaceRef**: Optional reference to the stop place.
+## 2. Structure Overview
 
-**Validation Rules:**
-- QuayRef must belong to StopPlaceRef if provided.
-- All references must be resolvable within the same frame.
+```text
+📄 PassengerStopAssignment
+  ├─ 📄 @id (1..1)
+  ├─ 📄 @version (1..1)
+  ├─ 📄 @order (1..1)
+  ├─ 🔗 ScheduledStopPointRef/@ref (1..1)
+  ├─ 🔗 QuayRef/@ref (1..1)
+  ├─ 🔗 StopPlaceRef/@ref (0..1)
+  └─ 🔗 ForDatedVehicleJourneyRef/@ref (0..1)
+```
+
+## 3. Key Elements
+
+- **ScheduledStopPointRef**: Mandatory reference to the logical timetable stop being assigned to a physical platform.
+- **QuayRef**: Mandatory reference to the physical boarding/alighting position (Quay) within a StopPlace.
+- **StopPlaceRef**: Optional explicit reference to the parent StopPlace; can be inferred from the Quay's containment.
+- **ForDatedVehicleJourneyRef**: Optional reference to a specific DatedServiceJourney; when present, this assignment overrides the default for that journey only.
+- **@order**: Technical sequence number; mandatory but carries no business meaning.
+
+## 4. References
+
+- [ScheduledStopPoint](../ScheduledStopPoint/Table_ScheduledStopPoint.md) – The logical timetable stop being assigned
+- [Quay](../Quay/Table_Quay.md) – The physical platform assigned to the stop
+- [StopPlace](../StopPlace/Table_StopPlace.md) – The stop location containing the assigned Quay
+- [DatedServiceJourney](../DatedServiceJourney/Table_DatedServiceJourney.md) – Specific journey for override assignments
+
+## 5. Usage Notes
+
+### 5a. Consistency Rules
+
+- The referenced QuayRef must belong to the referenced StopPlaceRef (if provided), or to a StopPlace that logically contains it.
+- All references must resolve to objects within the same dataset or an externally referenced frame.
+
+### 5b. Validation Requirements
+
+- **ScheduledStopPointRef and QuayRef are both mandatory** — every assignment must link a logical stop to a physical platform.
+- **@id and @version are mandatory** — follow codespace conventions (e.g., `ERP:PassengerStopAssignment:1001`).
+- **ForDatedVehicleJourneyRef must reference a valid DatedServiceJourney** if present.
+
+### 5c. Common Pitfalls
+
+- **Missing assignments**: A ScheduledStopPoint without a PassengerStopAssignment cannot be resolved to a physical platform, breaking journey planning and passenger information.
+- **QuayRef not belonging to StopPlaceRef**: If both are specified, the Quay must be contained within the referenced StopPlace; mismatches create data integrity errors.
+- **Override without base assignment**: A ForDatedVehicleJourneyRef override only makes sense when a default (non-override) assignment also exists for the same ScheduledStopPoint.
+
+## 6. Additional Information
+
+See [Table_PassengerStopAssignment.md](Table_PassengerStopAssignment.md) for detailed attribute specifications.
+
+Example XML: [Example_PassengerStopAssignment.xml](Example_PassengerStopAssignment.xml)

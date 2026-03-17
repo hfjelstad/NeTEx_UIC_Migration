@@ -1,17 +1,58 @@
-# Contract – description
+# Contract
 
-Purpose: Defines the legal or commercial agreement that governs responsibilities, rights, and obligations between parties (e.g., an Authority and an Operator) for providing, operating, selling, or publishing public transport services or data. Contract is part of NeTEx v2.0 (Part 3) and is referenced across frames to indicate governance and accountability.
+## 1. Purpose
 
-Typical elements:
-- ContractType: Form of contract (e.g., written, oral, formal). Enumeration in the XSD.
-- LegalStatus: Optional description of legal status or registration details.
-- ContractGoverningLaw: Jurisdiction or legal code (e.g., country code) governing the contract.
-- contractees: The party or parties benefiting from the contract (each Contractee has an OrganisationRef).
-- contractors: The party or parties performing under the contract (each Contractor has an OrganisationRef).
-- Name/Description: Optional descriptive labeling.
-- ValidBetween / validityConditions: Optional validity windows.
+A **Contract** defines the legal or commercial agreement that governs responsibilities, rights, and obligations between parties — typically an Authority (as contractee) and an Operator (as contractor) — for providing public transport services. It captures the form, legal status, and governing law of the agreement, and serves as a governance anchor referenced by ResponsibilitySet elements.
 
-Keys:
-- Identification: @id and @version are mandatory for the Contract object and follow the profile’s codespace conventions (use ERP:Contract:{LocalId}).
-- References: ContractRef is a reference structure with attributes ref, versionRef, and nameOfRefClass, and is used by other elements to point to a Contract. In this profile, ContractRef is used by ResponsibilitySetAssignment and ResponsibilityRoleAssignment to express which Contract applies to a given scope or role.
-- Placement: In NeTEx v2.0, Contract instances are defined under SalesTransactionFrame (Part 3). In this profile’s examples, documentation for Contract is grouped under Objects, and cross-referenced from relevant frames.
+## 2. Structure Overview
+
+```text
+📄 Contract
+  ├─ 📄 @id (1..1)
+  ├─ 📄 @version (1..1)
+  ├─ 📄 Name (0..1)
+  ├─ 📄 ContractType (0..1)
+  ├─ 📄 LegalStatus (0..1)
+  ├─ 📄 ContractGoverningLaw (0..1)
+  ├─ 📁 contractees (0..1)
+  │  └─ 🔗 OrganisationRef/@ref (0..n)
+  └─ 📁 contractors (0..1)
+     └─ 🔗 OrganisationRef/@ref (0..n)
+```
+
+## 3. Key Elements
+
+- **ContractType**: Classification of the agreement form (e.g., `written`, `oral`, `formal`); an XSD enumeration.
+- **LegalStatus**: Description of the contract's legal standing or registration (e.g., `binding`).
+- **ContractGoverningLaw**: Jurisdiction or legal code governing the contract (e.g., country code `NO`).
+- **contractees**: Container for client-side organisations receiving the service (typically an Authority).
+- **contractors**: Container for supplier-side organisations delivering the service (typically an Operator).
+
+## 4. References
+
+- [Authority](../Authority/Table_Authority.md) – Typically referenced as contractee (service planning organisation)
+- [Operator](../Operator/Table_Operator.md) – Typically referenced as contractor (service delivery organisation)
+- [ResponsibilitySet](../ResponsibilitySet/Table_ResponsibilitySet.md) – References Contract via ContractRef to express governance scope
+
+## 5. Usage Notes
+
+### 5a. Consistency Rules
+
+- A Contract should clearly distinguish contractees (who benefits) from contractors (who delivers).
+- All OrganisationRef entries must resolve to existing Authority or Operator objects in the dataset.
+
+### 5b. Validation Requirements
+
+- **@id and @version are mandatory** — follow codespace conventions (e.g., `ERP:Contract:CON-001`).
+- **OrganisationRef entries must resolve** to existing organisations within the same dataset or referenced frame.
+
+### 5c. Common Pitfalls
+
+- **Contract vs. FareContract confusion**: Contract is an administrative/legal agreement between organisations; FareContract is a customer-facing agreement for the right to travel. They serve different purposes.
+- **Missing organisation references**: A Contract without any contractees or contractors provides no governance value.
+
+## 6. Additional Information
+
+See [Table_Contract.md](Table_Contract.md) for detailed attribute specifications.
+
+Example XML: [Example_Contract_Minimal.xml](Example_Contract_Minimal.xml)

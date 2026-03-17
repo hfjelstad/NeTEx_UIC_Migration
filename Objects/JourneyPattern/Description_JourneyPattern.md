@@ -1,63 +1,63 @@
 # JourneyPattern
 
-Kort oppsummering
-- JourneyPattern beskriver den faktiske stoppsekvensen som en linje kjører for en retning på en rute, dvs. hvilke planlagte holdeplasspunkter som inngår og i hvilken rekkefølge.
-- ServiceJourney peker til ett (og bare ett) JourneyPattern for å indikere hvilken sekvens av stopp den følger.
+## 1. Purpose
 
-Mål og bruksområde
-- Gi produsenter og konsumenter et entydig grunnlag for å forstå hvilken trasé en tjenestereise følger, uavhengig av kalender og passeringstider.
-- Brukes når samme rute har flere varianter (avstikkere, kort-/langløp, retning). Hver variant beskrives som et eget JourneyPattern.
+A **JourneyPattern** defines the ordered sequence of scheduled stop points that a transport service follows for a specific variant of a Route. It specifies which stops are served and in what order, serving as the authoritative stop sequence referenced by ServiceJourneys. Multiple JourneyPatterns can exist for the same Route to represent operational variants (e.g., short-run vs. full-run, or detours).
 
-Relasjoner til andre objekter
-- Route: JourneyPattern må referere til én Route (RouteRef) som det er en variant av.
-- ServiceJourney: Hver ServiceJourney refererer til nøyaktig ett JourneyPattern.
-- StopPointInJourneyPattern: En ordnet liste (1..n) som utgjør selve sekvensen. Hvert element peker til ett ScheduledStopPoint.
-- JourneyPatternSection (valgfritt): Kan brukes for å gjenbruke delstrekninger (lenkesekvenser) på tvers av mønstre.
+## 2. Structure Overview
 
-Kjernefelt (minstekrav i profilen)
-- id (Netex ID)
-- version (ofte "1" for første versjon)
-- name (menneskelesbart navn, f.eks. "Linje 10 Retning Ut" eller kort variantnavn)
-- RouteRef (lenker til ruten som mønsteret tilhører)
-- DirectionType (inbound | outbound | clockwise | anticlockwise | unknown). Brukes når det er relevant for linjen.
-- pointsInSequence/StopPointInJourneyPattern (1..n) med:
-  - order (1..n, uten hull i sekvensen)
-  - ScheduledStopPointRef (ref til planlagt stoppunkt)
-
-Regler og anbefalinger
-- Sekvensen må være sammenhengende: order starter på 1 og øker med 1 for hvert nytt punkt.
-- Alle ScheduledStopPointRef i patternet skal tilhøre samme Route som RouteRef peker på.
-- Angi DirectionType konsekvent for hele linjen der det gir mening (f.eks. outbound for fra sentrum, inbound for mot sentrum).
-- Bruk name som gjør varianten lett å skille fra andre mønstre på samme rute (f.eks. "A-løp via Torget" vs. "B-løp via Sykehuset").
-
-Eksempel (forkortet)
-```xml
-<!-- Minimal, illustrativt eksempel. Kommentarer er på engelsk for gjenbruk i tooling. -->
-<JourneyPattern id="ERP:JourneyPattern:JP_10_out" version="1" name="Line 10 Outbound">
-  <RouteRef ref="ERP:Route:10"/>
-  <DirectionType>outbound</DirectionType>
-  <pointsInSequence>
-    <StopPointInJourneyPattern id="ERP:SPiJP:JP_10_out:1" version="1" order="1">
-      <ScheduledStopPointRef ref="ERP:ScheduledStopPoint:10:001"/>
-    </StopPointInJourneyPattern>
-    <StopPointInJourneyPattern id="ERP:SPiJP:JP_10_out:2" version="1" order="2">
-      <ScheduledStopPointRef ref="ERP:ScheduledStopPoint:10:002"/>
-    </StopPointInJourneyPattern>
-    <StopPointInJourneyPattern id="ERP:SPiJP:JP_10_out:3" version="1" order="3">
-      <ScheduledStopPointRef ref="ERP:ScheduledStopPoint:10:003"/>
-    </StopPointInJourneyPattern>
-  </pointsInSequence>
-</JourneyPattern>
+```text
+📄 JourneyPattern
+  ├─ 📄 @id (1..1)
+  ├─ 📄 @version (1..1)
+  ├─ 📄 Name (0..1)
+  ├─ 🔗 RouteRef/@ref (1..1)
+  ├─ 📄 DirectionType (0..1)
+  └─ 📁 pointsInSequence (1..1)
+     └─ 📁 StopPointInJourneyPattern (1..n)
+        ├─ 📄 @id (1..1)
+        ├─ 📄 @version (1..1)
+        ├─ 📄 @order (1..1)
+        └─ 🔗 ScheduledStopPointRef/@ref (1..1)
 ```
 
-Vanlige valideringer
-- Det finnes minst ett StopPointInJourneyPattern.
-- order-verdier er unike og uten hull (1..n).
-- Alle ScheduledStopPointRef finnes og er konsistente med tilhørende Route.
+## 3. Key Elements
 
-Avgrensninger og notater
-- JourneyPattern beskriver kun rekkefølgen av stopp, ikke passeringstider. Passeringstider hører til ServiceJourney (via passingTimes).
-- Når mange mønstre deler lange like delstrekninger, vurder bruk av JourneyPatternSection for å unngå duplisering.
+- **RouteRef**: Mandatory reference to the Route this pattern belongs to; establishes the geographic context.
+- **pointsInSequence**: Ordered list of StopPointInJourneyPattern elements defining the stop sequence; must contain at least one entry.
+- **StopPointInJourneyPattern**: Individual stop in the sequence; each has a sequential @order attribute and a reference to a ScheduledStopPoint.
+- **DirectionType**: Optional directional classifier (inbound, outbound, clockwise, anticlockwise); aids in distinguishing pattern variants.
+- **Name**: Optional human-readable label for the pattern variant (e.g., "Line 10 Outbound via Hospital").
 
-Endringslogg
-- v1 (2026-02-13): Første komplette beskrivelse med eksempel og valideringsregler.
+## 4. References
+
+- [Route](../Route/Table_Route.md) – The geographic path this pattern is a variant of
+- [ScheduledStopPoint](../ScheduledStopPoint/Table_ScheduledStopPoint.md) – Logical stops referenced by each StopPointInJourneyPattern
+- [ServiceJourney](../ServiceJourney/Table_ServiceJourney.md) – Journeys that follow this stop sequence
+
+## 5. Usage Notes
+
+### 5a. Consistency Rules
+
+- A JourneyPattern must reference exactly one Route via RouteRef.
+- All ScheduledStopPointRef entries must reference valid ScheduledStopPoints that belong to the same Route.
+- The @order attributes must start at 1 and increment by 1 without gaps.
+
+### 5b. Validation Requirements
+
+- **RouteRef is mandatory** — a JourneyPattern without a Route reference is invalid.
+- **pointsInSequence must contain at least one StopPointInJourneyPattern** — empty patterns are invalid.
+- **@order values must be sequential integers** — starting from 1 with no duplicates or gaps.
+- **@id and @version are mandatory** — follow codespace conventions (e.g., `ERP:JourneyPattern:JP_10_out`).
+
+### 5c. Common Pitfalls
+
+- **JourneyPattern vs. Route confusion**: Route defines the logical geographic path; JourneyPattern defines which stops on that path are actually served in a specific variant. Do not duplicate stop sequences in both.
+- **Non-sequential order attributes**: Using gaps (1, 3, 5) or unordered values breaks stop sequence logic.
+- **Including passing times in JourneyPattern**: JourneyPattern defines only the stop order. Passing times (ArrivalTime, DepartureTime) belong to ServiceJourney via TimetabledPassingTime.
+
+## 6. Additional Information
+
+See [Table_JourneyPattern.md](Table_JourneyPattern.md) for detailed attribute specifications.
+
+Example XML: [Example_JourneyPattern.xml](Example_JourneyPattern.xml)

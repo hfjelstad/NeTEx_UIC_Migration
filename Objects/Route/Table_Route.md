@@ -1,23 +1,34 @@
-# Route – feltoversikt
+## Structure Overview
 
-Denne tabellen beskriver de viktigste feltene for NeTEx Route slik de brukes i profilen. Struktur og kolonner følger samme mal som for ServiceJourney og DatedServiceJourney.
+```text
+Route
+ ├─ @id (1..1)
+ ├─ @version (1..1)
+ ├─ Name (1..1)
+ ├─ ShortName (0..1)
+ ├─ PublicCode (0..1)
+ ├─ Description (0..1)
+ ├─ PrivateCode (0..1)
+ ├─ LineRef/@ref (1..1)
+ ├─ DirectionType (0..1)
+ └─ PointsInSequence (1..1)
+    └─ PointOnRoute (1..n)
+       ├─ @order (1..1)
+       └─ ScheduledStopPointRef/@ref (1..1)
+```
 
-| Felt | Type | Kardinalitet | Påkrevd | Beskrivelse |
-|---|---|---:|:---:|---|
-| id | xs:ID | 1..1 | Ja | Global unik identifikator for Route. |
-| version | xs:integer | 0..1 | Nei | Versjon av objektet. Standard 1 hvis ikke oppgitt. |
-| Name | MultilingualString | 1..1 | Ja | Visningsnavn for ruten. |
-| ShortName | xs:string | 0..1 | Nei | Kortnavn/nummer for ruten. |
-| PublicCode | xs:string | 0..1 | Nei | Offentlig kode/nummer som vises til kunder. |
-| Description | MultilingualString | 0..1 | Nei | Utfyllende beskrivelse. |
-| PrivateCode | xs:string | 0..1 | Nei | Intern kode. |
-| LineRef | VersionRef | 1..1 | Ja | Referanse til Line som ruten tilhører. |
-| DirectionType | DirectionTypeEnumeration | 0..1 | Nei | Retningsangivelse (inbound, outbound, clockwise, counterclockwise). |
-| PointsInSequence | complex | 1..n | Ja | Sekvens av PointOnRoute som beskriver rekkefølgen av stopp langs ruten. |
-| PointOnRoute@order | xs:integer | 1..1 | Ja | Rekkefølgenummer for punktet i ruten. |
-| PointOnRoute.ScheduledStopPointRef@ref | VersionRef | 1..1 | Ja | Referanse til ScheduledStopPoint. |
+## Table
 
-Merknader
-- Route beskriver den topologiske rekkefølgen av stopp for en gitt Line og retning.
-- For konsistens: bruk samme navngivnings- og versjonspraksis som i ServiceJourney og DatedServiceJourney.
-- Dersom flere delruter finnes for samme Line og DirectionType, skill dem med egne id-er og/eller PrivateCode.
+| Element | Type | Description | Path |
+|---------|------|-------------|------|
+| @id | ID | Unique identifier for the Route | Route/@id |
+| @version | String | Version label | Route/@version |
+| Name | String | Display name for the route | Route/Name |
+| ShortName | String | Short name or number | Route/ShortName |
+| PublicCode | String | Public-facing code or number | Route/PublicCode |
+| Description | String | Extended description | Route/Description |
+| PrivateCode | String | Internal code | Route/PrivateCode |
+| [Line](../Line/Table_Line.md)@ref | Reference | Reference to the Line this route belongs to | Route/LineRef/@ref |
+| DirectionType | Enum | Direction indicator (inbound, outbound, clockwise, counterclockwise) | Route/DirectionType |
+| @order | Integer | Sequence number for the point in the route | Route/pointsInSequence/PointOnRoute/@order |
+| [ScheduledStopPoint](../ScheduledStopPoint/Table_ScheduledStopPoint.md)@ref | Reference | Reference to a ScheduledStopPoint | Route/pointsInSequence/PointOnRoute/ScheduledStopPointRef/@ref |

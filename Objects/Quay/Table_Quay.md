@@ -1,19 +1,28 @@
-# Quay – Property specification
+## Structure Overview
 
-This table defines the minimal profile subset for a Quay.
+```text
+Quay
+ ├─ @id (1..1)
+ ├─ @version (1..1)
+ ├─ Name (1..1)
+ ├─ PublicCode (0..1)
+ ├─ StopPlaceRef/@ref (1..1)
+ ├─ Centroid (1..1)
+ │  └─ Location (1..1)
+ │     ├─ Longitude (1..1)
+ │     └─ Latitude (1..1)
+ └─ Description (0..1)
+```
 
-| Property      | Type    | Card. | Description                                                                                 | Example                 |
-|---------------|---------|-------|---------------------------------------------------------------------------------------------|-------------------------|
-| id            | string  | 1     | ERP-scoped NeTEx identifier. Use the pattern `ERP:Quay:<localId>`                           | ERP:Quay:1001          |
-| version       | string  | 1     | Version of this Quay object                                                                  | 1                       |
-| Name          | string  | 1     | Passenger-facing quay name                                                                   | Platform A              |
-| PublicCode    | string  | 0..1  | Short public code printed on signage                                                         | A                       |
-| StopPlaceRef  | ref     | 1     | Reference to parent StopPlace. If Quay is embedded inside StopPlace, this may be implicit.  | ERP:StopPlace:100       |
-| Centroid.Lat  | decimal | 1     | WGS84 latitude                                                                               | 59.9127                 |
-| Centroid.Lon  | decimal | 1     | WGS84 longitude                                                                              | 10.7461                 |
-| Description   | string  | 0..1  | Optional free text description                                                               | Northbound boarding bay |
+## Table
 
-Notes
-- All examples and identifiers must use the ERP codespace (e.g., ERP:Quay:1001) and follow NeTEx conventions.
-- A Quay must belong to exactly one StopPlace (via StopPlaceRef when delivered standalone, or by being embedded under that StopPlace).
-- Provide a Centroid with both Latitude and Longitude.
+| Element | Type | Description | Path |
+|---------|------|-------------|------|
+| @id | ID | Unique identifier for the Quay (e.g., ERP:Quay:1001) | Quay/@id |
+| @version | String | Version label | Quay/@version |
+| Name | String | Passenger-facing quay name | Quay/Name |
+| PublicCode | String | Short public code printed on signage | Quay/PublicCode |
+| [StopPlace](../StopPlace/Table_StopPlace.md)@ref | Reference | Reference to parent StopPlace | Quay/StopPlaceRef/@ref |
+| Longitude | Decimal | WGS84 longitude | Quay/Centroid/Location/Longitude |
+| Latitude | Decimal | WGS84 latitude | Quay/Centroid/Location/Latitude |
+| Description | String | Optional free-text description | Quay/Description |
