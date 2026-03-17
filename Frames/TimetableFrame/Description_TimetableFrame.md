@@ -1,22 +1,22 @@
-# TimetableFrame – description
+# TimetableFrame
 
-**Purpose:** Operational journeys/times for the public; departure and arrival times.
+## 1. Purpose
 
-**Typical elements:** ServiceJourney/VehicleJourney, DayType associations, PassingTimes.
+A **TimetableFrame** contains the operational journey definitions — the actual trips that run on the network. It groups ServiceJourneys, DatedServiceJourneys, DeadRuns, coupled journeys, and interchange rules that together describe the timetabled service offering.
 
-**Keys:** id, version, journeyPatternRef/serviceJourneyPatternRef, dayTypeRef.
+## 2. Contained Elements
 
-**Example:**
-```xml
-<netex:TimetableFrame id="NO:TimetableFrame:1" version="1">
-  <netex:vehicleJourneys>
-    <netex:ServiceJourney id="NO:SJ:10-1" version="1" lineRef="NO:Line:10">
-      <netex:passingTimes>
-        <netex:TimetabledPassingTime stopPointInJourneyPatternRef="NO:SPJP:1" departureTime="08:00:00"/>
-      </netex:passingTimes>
-    </netex:ServiceJourney>
-  </netex:vehicleJourneys>
-</netex:TimetableFrame>
-```
+- **vehicleJourneys** – Collection of journey types:
+  - [ServiceJourney](../../Objects/ServiceJourney/Table_ServiceJourney.md) – Planned passenger-carrying trips on a recurring schedule
+  - [DatedServiceJourney](../../Objects/DatedServiceJourney/Table_DatedServiceJourney.md) – Date-specific instances of a ServiceJourney
+  - DatedVehicleJourney – Date-specific vehicle journey (may include non-passenger moves)
+  - DeadRun – Non-passenger vehicle repositioning movement
+- **coupledJourneys** – Collection of CoupledJourney definitions linking journeys that run coupled together
+- **interchangeRules** – Collection of InterchangeRule definitions for guaranteed or timed connections between journeys
 
-**XSD:** See TimetableFrame in NeTEx.
+## 3. Frame Relationships
+
+TimetableFrame depends on **ServiceFrame** for JourneyPatterns and Lines referenced by ServiceJourneys. It depends on **ResourceFrame** for Operator definitions. **VehicleScheduleFrame** may reference journeys defined here for block and duty scheduling. TimetableFrame is typically wrapped in a **CompositeFrame** within a PublicationDelivery.
+
+For the full structural specification, see [Table — TimetableFrame](Table_TimetableFrame.md).
+Example XML: [Example_TimetableFrame.xml](Example_TimetableFrame.xml)

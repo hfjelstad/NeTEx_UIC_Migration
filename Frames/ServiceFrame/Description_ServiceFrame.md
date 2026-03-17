@@ -1,21 +1,16 @@
-# ServiceFrame – description
+# ServiceFrame
 
-**Purpose:** Network and route offer; lines, routes, and patterns for traffic.
+## 1. Purpose
 
-**Typical elements:** Lines, Routes, RoutePoints/Links, ServiceLinks, DestinationDisplays, StopAssignments.
+A **ServiceFrame** contains the network and route definitions for a public transport delivery. It groups Lines, Routes, JourneyPatterns, ScheduledStopPoints, DestinationDisplays, and PassengerStopAssignments — the structural elements that describe where and how services run.
 
-**Keys:** id, version, routeRef/serviceLinkRef/lineRef.
+## 2. Contained Elements
 
-**Example:**
-```xml
-<netex:ServiceFrame id="NO:ServiceFrame:1" version="1">
-  <netex:lines>
-    <netex:Line id="NO:Line:10" version="1" name="Linje 10"/>
-  </netex:lines>
-  <netex:routes>
-    <netex:Route id="NO:Route:10A" version="1"/>
-  </netex:routes>
-</netex:ServiceFrame>
-```
+- **lines** – Collection of [Line](../../Objects/Line/Table_Line.md) definitions describing transport services
 
-**XSD:** See ServiceFrame in NeTEx.
+## 3. Frame Relationships
+
+ServiceFrame depends on **ResourceFrame** for Operator and Authority definitions referenced by Lines. **TimetableFrame** depends on ServiceFrame for JourneyPatterns and Lines used by ServiceJourneys. **SiteFrame** provides the physical stop infrastructure (StopPlaces, Quays) that PassengerStopAssignments link to. All frames are typically wrapped in a **CompositeFrame** within a PublicationDelivery.
+
+For the full structural specification, see [Table — ServiceFrame](Table_ServiceFrame.md).
+Example XML: [Example_ServiceFrame.xml](Example_ServiceFrame.xml)

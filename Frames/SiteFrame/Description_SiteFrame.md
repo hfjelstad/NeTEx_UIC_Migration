@@ -1,22 +1,16 @@
-# SiteFrame – description
+# SiteFrame
 
-**Purpose:** Site model (stop places, terminals, entrances, walking links).
+## 1. Purpose
 
-**Typical elements:** StopPlace (with Quay), Access/Entrance, PathLink, NavigationPath, Parking.
+A **SiteFrame** contains the physical infrastructure model for public transport — stop places, quays, entrances, parking facilities, and topographic context. It defines the spatial elements that passengers interact with and that other frames reference for stop assignments.
 
-**Keys:** id, version, stopPlaceRef/quayRef/pathLinkRef.
+## 2. Contained Elements
 
-**Example:**
-```xml
-<netex:SiteFrame id="NO:SiteFrame:1" version="1">
-  <netex:stopPlaces>
-    <netex:StopPlace id="NO:StopPlace:123" version="1" name="Jernbanetorget">
-      <netex:quays>
-        <netex:Quay id="NO:Quay:123-1" version="1"/>
-      </netex:quays>
-    </netex:StopPlace>
-  </netex:stopPlaces>
-</netex:SiteFrame>
-```
+- **stopPlaces** – Collection of [StopPlace](../../Objects/StopPlace/Table_StopPlace.md) definitions, each containing one or more [Quay](../../Objects/Quay/Table_Quay.md) elements
 
-**XSD:** See SiteFrame in NeTEx.
+## 3. Frame Relationships
+
+SiteFrame is independent of other frames but provides the physical stop infrastructure that **ServiceFrame** references through PassengerStopAssignments. **TimetableFrame** indirectly depends on SiteFrame through the JourneyPattern stop sequence. SiteFrame is typically wrapped in a **CompositeFrame** within a PublicationDelivery.
+
+For the full structural specification, see [Table — SiteFrame](Table_SiteFrame.md).
+Example XML: [Example_SiteFrame.xml](Example_SiteFrame.xml)

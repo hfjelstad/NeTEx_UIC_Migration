@@ -103,16 +103,22 @@ Every frame under `Frames/<FrameName>/` must contain the following files:
 
 A validated XML example demonstrating the frame structure, contained sub-frames, and element composition.
 
-### 5.2. `Description_<FrameName>.md` (mandatory)
+### 5.2. `Table_<FrameName>.md` (mandatory)
 
-A human‑readable explanation of the frame (optional Table file at this time).
+The structural specification file. See [Frame Table Template](Templates/Frame_Structure_and_Table_Template.md) for detailed guidance.
 
-Should include:
-- Name and purpose of the frame
-- Role and scope within the NeTEx data model
-- Contained child frames and key elements
-- Relationships to other frames
-- Typical usage patterns and data flow
+Must contain a Structure Overview and flat table with all collections, child elements, and attributes.
+
+### 5.3. `Description_<FrameName>.md` (mandatory)
+
+The semantic explanation file. See [Frame Description Template](Templates/Frame_Description_Template.md) for detailed guidance.
+
+**Must follow the mandatory 4-section template structure in exact order:**
+
+1. **Purpose** (mandatory) – Brief explanation of the frame's role and scope
+2. **Contained Elements** (mandatory) – Bulleted list of key collections with links to Object Table files
+3. **Frame Relationships** (mandatory) – Dependencies upstream and downstream
+4. **Usage Notes** (optional) – Non-obvious constraints or common mistakes
 
 ---
 
@@ -137,6 +143,7 @@ Objects/
 Frames/
 ├── <FrameName>/
 │   ├── Description_<FrameName>.md
+│   ├── Table_<FrameName>.md
 │   └── Example_<FrameName>.xml
 └── ...
 ```
