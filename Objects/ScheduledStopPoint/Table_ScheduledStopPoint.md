@@ -5,7 +5,9 @@ ScheduledStopPoint
  ├─ @id (1..1)
  ├─ @version (1..1)
  ├─ Name (0..1)
- └─ TimingPointStatus (0..1)
+ ├─ TimingPointStatus (0..1)
+ └─ ValidBetween (0..1)
+    └─ FromDate (0..1)
 ```
 
 ## Table
@@ -16,3 +18,5 @@ ScheduledStopPoint
 | @version | String | Version label | ScheduledStopPoint/@version |
 | Name | String | Human-readable name of the stop point | ScheduledStopPoint/Name |
 | TimingPointStatus | Enum | Whether this is a timing point (timingPoint, notTimingPoint) | ScheduledStopPoint/TimingPointStatus |
+| ValidBetween | Period | Validity period for the stop point | ScheduledStopPoint/ValidBetween |
+| FromDate | DateTime | Start date of validity | ScheduledStopPoint/ValidBetween/FromDate |

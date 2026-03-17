@@ -6,9 +6,9 @@
 ShelterEquipment
   ├─ @id (1..1)
   ├─ @version (1..1)
-  └─ ValidBetween (0..1)
-     ├─ FromDate (1..1)
-     └─ ToDate (1..1)
+  ├─ Seats (0..1)
+  ├─ StepFree (0..1)
+  └─ Enclosed (0..1)
 ```
 
 ## Table
@@ -17,6 +17,6 @@ ShelterEquipment
 |---------|------|-------------|------|
 | @id | ID | Unique identifier for the shelter equipment | ShelterEquipment/@id |
 | @version | String | Version number for change tracking | ShelterEquipment/@version |
-| ValidBetween | Period | Validity period for the equipment | ShelterEquipment/ValidBetween |
-| FromDate | DateTime | Start date of the validity period | ShelterEquipment/ValidBetween/FromDate |
-| ToDate | DateTime | End date of the validity period | ShelterEquipment/ValidBetween/ToDate |
+| Seats | Integer | Number of seats in the shelter | ShelterEquipment/Seats |
+| StepFree | Boolean | Whether the shelter has step-free access | ShelterEquipment/StepFree |
+| Enclosed | Boolean | Whether the shelter is enclosed | ShelterEquipment/Enclosed |

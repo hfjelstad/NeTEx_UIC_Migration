@@ -6,15 +6,20 @@ The **TopographicPlace** represents a named geographic area such as a city, muni
 
 ## 2. Structure Overview
 
-```
-📄 TopographicPlace
+```text
+TopographicPlace
   ├─ 📄 @id (1..1)
   ├─ 📄 @version (1..1)
+  ├─ 📁 ValidBetween (0..1)
+  │  └─ 📄 FromDate (1..1)
   ├─ 📁 Descriptor (1..1)
   │  ├─ 📄 Name (1..1)
   │  └─ 📄 ShortName (0..1)
+  ├─ 📄 IsoCode (0..1)
   ├─ 📄 TopographicPlaceType (0..1)
-  └─ 🔗 CountryRef/@ref (0..1)
+  ├─ 🔗 CountryRef/@ref (0..1)
+  ├─ 🔗 ParentTopographicPlaceRef/@ref (0..1)
+  └─ 📄 Polygon (0..1)
 ```
 
 ## 3. Key Elements

@@ -6,11 +6,13 @@ The **DestinationDisplay** defines the text shown on the front or side of a publ
 
 ## 2. Structure Overview
 
-```
-📄 DestinationDisplay
+```text
+DestinationDisplay
   ├─ 📄 @id (1..1)
   ├─ 📄 @version (1..1)
-  └─ 📄 FrontText (1..1)
+  ├─ 📄 Name (0..1)
+  ├─ 📄 FrontText (1..1)
+  └─ 📄 SideText (0..1)
 ```
 
 ## 3. Key Elements

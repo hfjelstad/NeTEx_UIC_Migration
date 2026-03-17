@@ -12,6 +12,8 @@ An **Interchange** (modelled as `ServiceJourneyInterchange` in XML) represents a
   ├─ 📄 @version (1..1)
   ├─ 🔗 FromJourneyRef/@ref (1..1)
   ├─ 🔗 ToJourneyRef/@ref (1..1)
+  ├─ 🔗 FromPointRef/@ref (0..1)
+  ├─ 🔗 ToPointRef/@ref (0..1)
   ├─ 📄 Guaranteed (0..1)
   ├─ 📄 MinimumTransferTime (0..1)
   ├─ 📄 MaximumWaitTime (0..1)

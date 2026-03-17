@@ -4,16 +4,24 @@
 The **Operator** represents an organization that provides public transport services under contract with an Authority. It is a core organizational entity that identifies the legal or commercial entity responsible for executing transport operations, including the operation of lines, schedules, and individual journeys. Operators enable the separation of network planning (Authority responsibility) from service delivery (Operator responsibility).
 
 ## 2. Structure Overview
-```
-📄 Operator
-  ├─ 📄 @id (1..1)
-  ├─ 📄 @version (1..1)
-  ├─ 📄 Name (1..1)
-  ├─ 📄 ShortName (0..1)
-  ├─ 📁 ContactDetails (0..1)
-  ├─ 📄 OrganisationType (0..1)
-  ├─ 🔗 AuthorityRef/@ref (0..1)
-  └─ 🔗 ResponsibilitySetRef/@ref (0..1)
+```text
+Operator
+ ├─ 📄 @id (1..1)
+ ├─ 📄 @version (1..1)
+ ├─ 📄 Name (1..1)
+ ├─ 📄 CompanyNumber (0..1)
+ ├─ 📄 ShortName (0..1)
+ ├─ 📄 LegalName (0..1)
+ ├─ 📁 ContactDetails (0..1)
+ │  ├─ 📄 Phone (0..1)
+ │  └─ 📄 Url (0..1)
+ ├─ 📁 CustomerServiceContactDetails (0..1)
+ │  ├─ 📄 Email (0..1)
+ │  ├─ 📄 Phone (0..1)
+ │  └─ 📄 Url (0..1)
+ ├─ 📄 OrganisationType (0..1)
+ ├─ 🔗 AuthorityRef/@ref (0..1)
+ └─ 🔗 ResponsibilitySetRef/@ref (0..1)
 ```
 
 ## 3. Key Elements

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" version="2.0">
+  <PublicationTimestamp>2026-03-17T12:00:00Z</PublicationTimestamp>
+  <ParticipantRef>ENTUR</ParticipantRef>
+  <dataObjects>
+    <ServiceFrame id="AKT:ServiceFrame:routes:1" version="1">
+      <routes>
+        <Route id="AKT:Route:49747_1" version="1">
+          <Name>Arendal bussterminal -&gt; Kristiansand rutebilstasjon</Name>
+          <ShortName>Arendal -&gt; Kristiansand</ShortName>
+          <LineRef ref="AKT:Line:100" version="1"/>
+          <DirectionType>outbound</DirectionType>
+          <pointsInSequence>
+            <PointOnRoute order="1" version="1" id="AKT:PointOnRoute:3555907">
+              <RoutePointRef ref="AKT:RoutePoint:9060006_1"/>
+            </PointOnRoute>
+            <PointOnRoute order="2" version="1" id="AKT:PointOnRoute:3555908">
+              <RoutePointRef ref="AKT:RoutePoint:10013457_1"/>
+            </PointOnRoute>
+          </pointsInSequence>
+        </Route>
+      </routes>
+    </ServiceFrame>
+  </dataObjects>
+</PublicationDelivery>

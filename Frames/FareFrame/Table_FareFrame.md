@@ -20,13 +20,15 @@ FareFrame
  │       │       └─ ValidableElementRef/@ref (1..1)
  │       └─ tariffs (0..1)
  │           └─ TariffRef/@ref (0..n)
- └─ salesOfferPackages (0..1)
-     └─ SalesOfferPackage (0..n)
-         ├─ Name (0..1)
-         └─ salesOfferPackageElements (0..1)
-             └─ SalesOfferPackageElement (0..n)
-                 ├─ @order (1..1)
-                 └─ PreassignedFareProductRef/@ref (1..1)
+ ├─ salesOfferPackages (0..1)
+ │   └─ SalesOfferPackage (0..n)
+ │       ├─ Name (0..1)
+ │       └─ salesOfferPackageElements (0..1)
+ │           └─ SalesOfferPackageElement (0..n)
+ │               ├─ @order (1..1)
+ │               └─ PreassignedFareProductRef/@ref (1..1)
+ └─ fareZones (0..1)
+     └─ FareZone (0..n)
 ```
 
 ## Table
@@ -56,3 +58,5 @@ FareFrame
 | SalesOfferPackageElement | Element | Individual element within a sales offer package | FareFrame/salesOfferPackages/SalesOfferPackage/salesOfferPackageElements/SalesOfferPackageElement |
 | @order | Integer | Order of the element within the package | FareFrame/salesOfferPackages/SalesOfferPackage/salesOfferPackageElements/SalesOfferPackageElement/@order |
 | PreassignedFareProductRef/@ref | Reference | Reference to a PreassignedFareProduct | FareFrame/salesOfferPackages/SalesOfferPackage/salesOfferPackageElements/SalesOfferPackageElement/PreassignedFareProductRef/@ref |
+| fareZones | Container | Collection of FareZone definitions | FareFrame/fareZones |
+| FareZone | Element | Fare zone with member stops and boundaries | FareFrame/fareZones/FareZone |

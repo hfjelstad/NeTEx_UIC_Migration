@@ -7,18 +7,28 @@ A **JourneyPattern** defines the ordered sequence of scheduled stop points that 
 ## 2. Structure Overview
 
 ```text
-📄 JourneyPattern
-  ├─ 📄 @id (1..1)
-  ├─ 📄 @version (1..1)
-  ├─ 📄 Name (0..1)
-  ├─ 🔗 RouteRef/@ref (1..1)
-  ├─ 📄 DirectionType (0..1)
-  └─ 📁 pointsInSequence (1..1)
-     └─ 📁 StopPointInJourneyPattern (1..n)
-        ├─ 📄 @id (1..1)
-        ├─ 📄 @version (1..1)
-        ├─ 📄 @order (1..1)
-        └─ 🔗 ScheduledStopPointRef/@ref (1..1)
+JourneyPattern
+ ├─ 📄 @id (1..1)
+ ├─ 📄 @version (1..1)
+ ├─ 📄 Name (0..1)
+ ├─ 🔗 RouteRef/@ref (1..1)
+ ├─ 📄 DirectionType (0..1)
+ ├─ 📁 pointsInSequence (1..1)
+ │  └─ 📁 StopPointInJourneyPattern (1..n)
+ │     ├─ 📄 @id (1..1)
+ │     ├─ 📄 @version (1..1)
+ │     ├─ 📄 @order (1..1)
+ │     ├─ 🔗 ScheduledStopPointRef/@ref (1..1)
+ │     ├─ 📄 ForAlighting (0..1)
+ │     ├─ 📄 ForBoarding (0..1)
+ │     ├─ 🔗 DestinationDisplayRef/@ref (0..1)
+ │     └─ 📄 RequestStop (0..1)
+ └─ 📁 linksInSequence (0..1)
+    └─ 📁 ServiceLinkInJourneyPattern (1..n)
+       ├─ 📄 @id (1..1)
+       ├─ 📄 @version (1..1)
+       ├─ 📄 @order (1..1)
+       └─ 🔗 ServiceLinkRef/@ref (1..1)
 ```
 
 ## 3. Key Elements

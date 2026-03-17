@@ -16,6 +16,8 @@ A **ResourceFrame** contains shared resources used across other frames in a NeTE
    └── 📄 VehicleType (0..n)
 📁 vehicles (0..1)
    └── 📄 Vehicle (0..n)
+📁 typesOfValue (0..1)
+   └── 📄 PurposeOfGrouping (0..n)
 ```
 
 ## 3. Contained Elements

@@ -4,18 +4,29 @@
 The **Quay** represents a specific boarding or alighting position (such as a platform, stand, or bay) within a StopPlace where passengers physically meet vehicles. It provides precise geospatial location information and passenger-facing identification, enabling accurate passenger navigation, vehicle docking, and real-time passenger information displays. A Quay is a spatial anchor point critical for journey planning and accessibility services.
 
 ## 2. Structure Overview
-```
-📄 Quay
-  ├─ 📄 @id (1..1)
-  ├─ 📄 @version (1..1)
-  ├─ 📄 Name (1..1)
-  ├─ 📄 PublicCode (0..1)
-  ├─ 🔗 StopPlaceRef/@ref (1..1)
-  ├─ 📁 Centroid (1..1)
-  │  └─ 📄 Location (1..1)
-  │     ├─ 📄 Longitude (1..1)
-  │     └─ 📄 Latitude (1..1)
-  └─ 📄 Description (0..1)
+```text
+Quay
+ ├─ 📄 @id (1..1)
+ ├─ 📄 @version (1..1)
+ ├─ 📄 Name (1..1)
+ ├─ 📄 PublicCode (0..1)
+ ├─ 🔗 StopPlaceRef/@ref (1..1)
+ ├─ 📁 Centroid (1..1)
+ │  └─ 📁 Location (1..1)
+ │     ├─ 📄 Longitude (1..1)
+ │     └─ 📄 Latitude (1..1)
+ ├─ 📄 Description (0..1)
+ ├─ 📄 PrivateCode (0..1)
+ ├─ 📄 CompassBearing (0..1)
+ ├─ 📁 AccessibilityAssessment (0..1)
+ │  ├─ 📄 MobilityImpairedAccess (1..1)
+ │  └─ 📁 limitations (0..1)
+ │     └─ 📁 AccessibilityLimitation (1..n)
+ │        ├─ 📄 WheelchairAccess (0..1)
+ │        └─ 📄 StepFreeAccess (0..1)
+ ├─ 📁 placeEquipments (0..1)
+ └─ 📁 boardingPositions (0..1)
+    └─ 📄 BoardingPosition (1..n)
 ```
 
 ## 3. Key Elements

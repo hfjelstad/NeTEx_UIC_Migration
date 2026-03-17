@@ -6,11 +6,14 @@ The **TariffZone** defines a geographic fare zone used for ticketing and pricing
 
 ## 2. Structure Overview
 
-```
-📄 TariffZone
+```text
+TariffZone
   ├─ 📄 @id (1..1)
   ├─ 📄 @version (1..1)
-  └─ 📄 Name (1..1)
+  ├─ 📄 Name (1..1)
+  ├─ 📁 ValidBetween (0..1)
+  │  └─ 📄 FromDate (1..1)
+  └─ 📄 Polygon (0..1)
 ```
 
 ## 3. Key Elements
