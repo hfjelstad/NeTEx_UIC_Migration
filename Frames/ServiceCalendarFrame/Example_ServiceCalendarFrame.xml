@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" version="1.0">
   <PublicationTimestamp>2026-02-27T23:30:00Z</PublicationTimestamp>
-  <ParticipantRef>ERP:ENTUR</ParticipantRef>
+  <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
     <CompositeFrame id="ERP:CompositeFrame:1" version="1">
       <frames>
