@@ -1,30 +1,43 @@
-# StopPlace – feltoversikt
+## Structure Overview
 
-| Type | Name | SubElement | Beskrivelse | Kardinalitet |
-|---|---|---|---|---|
-| Attribute | id |  | Globalt identifikator (ERP:StopPlace:…) | 1:1 |
-| Attribute | version |  | Versjonsnummer | 1:1 |
-| Attribute | created |  | Opprettet-dato | 0:1 |
-| Attribute | changed |  | Endret-dato | 0:1 |
-| Attribute | modification |  | Endringstype (f.eks. delete ved avvikling) | 0:1 |
-| Element | Name |  | Navn på stoppestedet | 1:1 |
-| Element | alternativeNames | AlternativeName | Alternative navn/alias | 0:* |
-| Element | TransportMode |  | Hovedmodus (bus, rail, metro, tram, water, …) | 1:1 |
-| Element | AirSubmode / BusSubmode / … |  | Valgfri underkategori for modus | 0:1 |
-| Element | StopPlaceType |  | onstreetBus, railStation, metroStation, busStation, … (påkrevd når Quay finnes) | 0:1 |
-| Reference | TopographicPlaceRef |  | Referanse til by/område | 0:1 |
-| Reference | ParentSiteRef |  | Referanse til multimodal parent StopPlace | 0:1 |
-| List | keyList | KeyValue | Alternative nøkler (eks. eksterne ID-er) | 0:1 |
-| Element | Centroid | Location | Geometrisk punktrepresentasjon | 0:1 |
-| List | tariffZones | TariffZoneRef | Referanser til takstsoner | 0:* |
-| List | quays | Quay | Underliggende holdeplassposisjoner (ikke på multimodal parent) | 0:* |
-| List | ValidBetween | FromDate/ToDate | Enkel gyldighetsperiode | 0:* |
-| List | adjacentSites | SiteRef | Nærliggende/tilknyttede sites | 0:* |
-| List | accessSpaces | AccessSpace | Ventearealer/interne arealer | 0:* |
-| List | pathLinks | PathLink | Gående lenker | 0:* |
-| List | pathJunctions | PathJunction | Kryss i gangnett | 0:* |
-| List | navigationPaths | NavigationPath | Gangebeskrivelser/overstyringer | 0:* |
+```text
+StopPlace (Monomodal)
+ ├─ @id (1..1)
+ ├─ @version (1..1)
+ ├─ Name (1..1)
+ ├─ TransportMode (1..1)
+ ├─ StopPlaceType (0..1)
+ ├─ TopographicPlaceRef/@ref (0..1)
+ ├─ Centroid (0..1)
+ ├─ tariffZones (0..n)
+ └─ quays (1..n)
 
-Merknader
-- Multimodal StopPlace (parent) har ingen quays.
-- Monomodal StopPlace må ha minst én Quay og kan kun ha én transporttype.
+StopPlace (Multimodal Parent)
+ ├─ @id (1..1)
+ ├─ @version (1..1)
+ ├─ Name (1..1)
+ ├─ TopographicPlaceRef/@ref (0..1)
+ └─ (NO quays; NO TransportMode)
+```
+
+## Table
+
+| Element | Type | Description | Path |
+|---------|------|-------------|------|
+| @id | ID | Unique identifier (e.g., ERP:StopPlace:1001) | StopPlace/@id |
+| @version | String | Version number | StopPlace/@version |
+| @created | DateTime | Creation date | StopPlace/@created |
+| @changed | DateTime | Last modification date | StopPlace/@changed |
+| @modification | String | Modification type (e.g., delete for decommissioning) | StopPlace/@modification |
+| Name | String | Name of the stop place | StopPlace/Name |
+| AlternativeName | String | Alternative names or aliases | StopPlace/alternativeNames/AlternativeName |
+| TransportMode | Enum | Primary mode (bus, rail, metro, tram, water, etc.) | StopPlace/TransportMode |
+| BusSubmode / RailSubmode / ... | Enum | Optional submode category | StopPlace/BusSubmode |
+| StopPlaceType | Enum | Functional type (onstreetBus, railStation, metroStation, busStation, etc.) | StopPlace/StopPlaceType |
+| [TopographicPlace](../TopographicPlace/Table_TopographicPlace.md)@ref | Reference | Reference to city or region | StopPlace/TopographicPlaceRef/@ref |
+| ParentSiteRef/@ref | Reference | Reference to multimodal parent StopPlace | StopPlace/ParentSiteRef/@ref |
+| KeyValue | KeyValue | Alternative keys (e.g., external IDs) | StopPlace/keyList/KeyValue |
+| Centroid | Location | Geographic point representation | StopPlace/Centroid/Location |
+| TariffZoneRef/@ref | Reference | References to tariff zones | StopPlace/tariffZones/TariffZoneRef/@ref |
+| [Quay](../Quay/Table_Quay.md) | Quay | Boarding/alighting positions (not on multimodal parent) | StopPlace/quays/Quay |
+| ValidBetween | Period | Validity period (FromDate, ToDate) | StopPlace/ValidBetween |

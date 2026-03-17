@@ -1,28 +1,56 @@
 # Quay
 
-Overview
-- A Quay represents a specific boarding or alighting position within a StopPlace. It is the precise place where passengers meet the vehicle (for example, a platform, stand, or bay).
+## 1. Purpose
+The **Quay** represents a specific boarding or alighting position (such as a platform, stand, or bay) within a StopPlace where passengers physically meet vehicles. It provides precise geospatial location information and passenger-facing identification, enabling accurate passenger navigation, vehicle docking, and real-time passenger information displays. A Quay is a spatial anchor point critical for journey planning and accessibility services.
 
-Scope and intent
-- Quays are used to provide passenger-facing names/codes and a geospatial position that can be used for wayfinding, passenger information and vehicle docking.
+## 2. Structure Overview
+```
+📄 Quay
+  ├─ 📄 @id (1..1)
+  ├─ 📄 @version (1..1)
+  ├─ 📄 Name (1..1)
+  ├─ 📄 PublicCode (0..1)
+  ├─ 🔗 StopPlaceRef/@ref (1..1)
+  ├─ 📁 Centroid (1..1)
+  │  └─ 📄 Location (1..1)
+  │     ├─ 📄 Longitude (1..1)
+  │     └─ 📄 Latitude (1..1)
+  └─ 📄 Description (0..1)
+```
 
-Key elements (profile subset)
-- id (required): ERP-scoped identifier using the pattern "ERP:Quay:<localId>".
-- version (required): Version of this Quay, typically "1" for first publication.
-- Name (required): Passenger-facing name of the quay.
-- PublicCode (optional): Short public-facing code printed on signage (e.g., "A", "B2").
-- StopPlaceRef (required): Reference to the parent StopPlace.
-- Centroid (required): Geographic position of the quay (WGS84 latitude/longitude).
-- Description (optional): Additional free text description of the quay.
+## 3. Key Elements
+- **Name**: Passenger-facing name of the Quay for signage and information systems; e.g., "Platform A" or "Stand 2".
+- **PublicCode**: Optional short alphanumeric code printed on signage; e.g., "A", "B2"; should be unique within the StopPlace.
+- **StopPlaceRef**: Mandatory reference to the parent StopPlace; may be implicit if Quay is embedded directly under StopPlace in the XML.
+- **Centroid**: Mandatory container holding geographic position; must include both Latitude and Longitude in WGS84 decimal format.
+- **Latitude/Longitude**: Precise geographic coordinates (WGS84) for wayfinding, accessibility routing, and vehicle docking; required to 4+ decimal places for accuracy.
+- **Description**: Optional free text providing additional context (e.g., "Northbound boarding bay", "Level 1 accessible platform").
 
-Profile rules
-- All examples and identifiers must use the ERP codespace (e.g., ERP:Quay:1001) and be valid NeTEx identifiers.
-- A Quay must belong to exactly one StopPlace through StopPlaceRef.
-- Provide a Centroid with both Latitude and Longitude.
-- Use English language for all documentation and example text.
+## 4. References
+- [StopPlace](../StopPlace/Table_StopPlace.md) – Parent location containing this Quay
+- [ScheduledStopPoint](../ScheduledStopPoint/Table_ScheduledStopPoint.md) – Abstract timetable stop optionally mapped to this Quay
 
-Example location
-- See Objects/Quay/Example_Quay.xml for a minimal, ERP-compliant NeTEx example.
+## 5. Usage Notes
 
-Notes
-- Additional properties (accessibility, equipment, level, etc.) may be added as needed by the profile, but are not mandatory in the minimal subset shown here.
+### 5a. Consistency Rules
+- A Quay must be embedded in or explicitly referenced by exactly one StopPlace (cardinality 1..1) to maintain referential integrity.
+- Each Centroid must provide both Latitude and Longitude; partial coordinate pairs are insufficient for passenger navigation and must be rejected.
+- PublicCode should be unique within a given StopPlace to avoid passenger confusion (e.g., do not have two "Platform A" quays under the same stop).
+- Quay names should use consistent capitalization and terminology within a system (e.g., "Platform", "Stand", or "Bay" for same function).
+
+### 5b. Validation Requirements
+- **StopPlaceRef is mandatory** with cardinality 1..1; every Quay must reference a valid StopPlace.
+- **Name is mandatory** – All Quays must have a passenger-facing Name element.
+- **Centroid is mandatory** with both Longitude and Latitude required as WGS84 decimal coordinates; values should have 4+ decimal places (e.g., 59.9127, 10.7461) for sufficient precision.
+- **@id and @version are mandatory** – Follow codespace convention (e.g., `ERP:Quay:1001`); version typically "1" unless updated.
+- **PublicCode format** – If provided, should be a short alphanumeric string (typically 1–3 characters) matching signage conventions.
+
+### 5c. Common Pitfalls
+- **Coordinate order confusion**: Longitude (X/East-West) comes before Latitude (Y/North-South) in XML (`<Longitude>` before `<Latitude>`); reversing this produces geographically incorrect points.
+- **Missing Centroid**: A Quay without a Centroid cannot support passenger wayfinding or vehicle docking; this is a critical omission that must be caught in validation.
+- **Orphaned Quays**: Creating a Quay without embedding it in or referencing a StopPlace breaks the spatial hierarchy and creates data integrity issues.
+- **PublicCode duplicates**: Using the same PublicCode for multiple Quays under the same StopPlace causes passenger confusion and makes signage ambiguous.
+- **Coordinate precision loss**: Using too few decimal places (e.g., 59.91 instead of 59.9127) reduces accuracy for accessibility routing and vehicle docking; recommendation is 4–6 decimal places.
+
+## 6. Additional Information
+See [Table_Quay.md](Table_Quay.md) for detailed property specifications and cardinality constraints. See [Example_Quay.xml](Example_Quay.xml) for a complete, validated XML instance embedded within a StopPlace container.

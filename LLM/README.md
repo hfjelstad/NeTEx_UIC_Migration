@@ -88,6 +88,7 @@ The semantic explanation file. See [Object Description Template](Templates/Objec
 - Section order must be maintained; no reordering
 - No additional sections beyond these 6 (plus optional 5a–5d subsections)
 - Structure Overview must use icon notation (📄, 📁, 🔗) and match the XML example order
+- Structure Overview must use cardinality notation on every element: `(1..1)`, `(1..n)`, `(0..1)`, `(0..n)` — never use words like "mandatory" or "optional" in the tree
 - Key Elements must be selective (3–6 items), not exhaustive
 - All cross-references must be relative markdown links to existing Table files
 - Section 5 should include only subsections (5a–5d) that are relevant; omit others

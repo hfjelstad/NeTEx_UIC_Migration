@@ -1,31 +1,50 @@
 # ScheduledStopPoint
 
-Purpose
-- ScheduledStopPoint represents a logical (planned) stopping point used by service journeys and journey patterns. It is the anchor for passenger stop assignments to physical quays.
+## 1. Purpose
 
-Scope and assumptions
-- ScheduledStopPoint lives in the ServiceFrame and is referenced by StopPointInJourneyPattern via ScheduledStopPointRef.
-- The link to a physical stopping place (Quay) is modelled through PassengerStopAssignment.
+A **ScheduledStopPoint** represents a logical stopping point in the timetable, used by JourneyPatterns and ServiceJourneys to define where vehicles stop. It is an abstract planning concept, distinct from physical infrastructure — the link to a physical platform (Quay) within a StopPlace is established through PassengerStopAssignment.
 
-Identification and namespace
-- All identifiers MUST be scoped to the ERP codespace (e.g., ERP:ScheduledStopPoint:1001).
-- Examples and IDs in this profile use the ERP namespace consistently.
+## 2. Structure Overview
 
-Key relationships
-- ScheduledStopPointRef: Referenced from StopPointInJourneyPattern.
-- PassengerStopAssignment: Maps a ScheduledStopPoint to a Quay (and thus to a StopPlace).
-- Quay/StopPlace: Physical infrastructure elements defined in SiteFrame.
+```text
+📄 ScheduledStopPoint
+  ├─ 📄 @id (1..1)
+  ├─ 📄 @version (1..1)
+  ├─ 📄 Name (0..1)
+  └─ 📄 TimingPointStatus (0..1)
+```
 
-Business rules
-- The combination of id and version uniquely identifies a ScheduledStopPoint.
-- When used for timetables, each referenced ScheduledStopPoint MUST have a valid PassengerStopAssignment to an existing Quay within the same delivery or an external referenced frame.
-- TimingPointStatus SHOULD be set when applicable to support punctuality checks (e.g., timingPoint).
+## 3. Key Elements
 
-Validation checklist
-- [ ] File content is written in English.
-- [ ] All IDs are ERP-scoped (prefix ERP:...).
-- [ ] If used in journey patterns, each ScheduledStopPoint has a corresponding PassengerStopAssignment.
+- **Name**: Human-readable label for the stop point; used in timetables and passenger information.
+- **TimingPointStatus**: Indicates whether this stop is a timing point for schedule adherence (values: `timingPoint`, `notTimingPoint`); supports punctuality monitoring.
 
-See also
-- Objects/ScheduledStopPoint/Table_ScheduledStopPoint.md for the property specification table.
-- Objects/ScheduledStopPoint/Example_ScheduledStopPoint.xml for a minimal NeTEx example with ERP namespace.
+## 4. References
+
+- [PassengerStopAssignment](../PassengerStopAssignment/Table_PassengerStopAssignment.md) – Maps this logical stop to a physical Quay
+- [Quay](../Quay/Table_Quay.md) – Physical boarding position linked via PassengerStopAssignment
+- [StopPlace](../StopPlace/Table_StopPlace.md) – Physical stop location containing the assigned Quay
+- [JourneyPattern](../JourneyPattern/Table_JourneyPattern.md) – References this stop via StopPointInJourneyPattern
+
+## 5. Usage Notes
+
+### 5a. Consistency Rules
+
+- A ScheduledStopPoint must be defined in the ServiceFrame before being referenced by StopPointInJourneyPattern elements.
+- Each ScheduledStopPoint used in timetables should have a corresponding PassengerStopAssignment linking it to an existing Quay.
+
+### 5b. Validation Requirements
+
+- **@id and @version are mandatory** — must follow codespace conventions (e.g., `ERP:ScheduledStopPoint:1001`).
+- **PassengerStopAssignment should exist** for every ScheduledStopPoint used in operational timetables; missing assignments prevent physical stop resolution.
+
+### 5c. Common Pitfalls
+
+- **Confusing ScheduledStopPoint with Quay/StopPlace**: ScheduledStopPoint is a logical planning concept; Quay and StopPlace are physical infrastructure. The two are linked via PassengerStopAssignment.
+- **Missing PassengerStopAssignment**: A ScheduledStopPoint without a corresponding assignment cannot be resolved to a physical platform, breaking journey planning.
+
+## 6. Additional Information
+
+See [Table_ScheduledStopPoint.md](Table_ScheduledStopPoint.md) for detailed attribute specifications.
+
+Example XML: [Example_ScheduledStopPoint.xml](Example_ScheduledStopPoint.xml)

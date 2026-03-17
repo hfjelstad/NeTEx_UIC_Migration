@@ -7,14 +7,14 @@ A **DatedServiceJourney** represents a specific operational instance of a `Servi
 ## 2. Structure Overview
 
 ```text
-📄 @id
-📄 @version
-🔗 ServiceJourneyRef/@ref
-🔗 OperatingDayRef/@ref
+📄 @id (1..1)
+📄 @version (1..1)
+🔗 ServiceJourneyRef/@ref (1..1)
+🔗 OperatingDayRef/@ref (1..1)
 🔗 BlockRef/@ref (0..1)
 📄 ServiceAlteration (0..1)
 📁 replacedJourneys (0..1)
-   └── 🔗 DatedVehicleJourneyRef/@ref (0..*)
+   └── 🔗 DatedVehicleJourneyRef/@ref (0..n)
 ```
 
 ## 3. Key Elements
