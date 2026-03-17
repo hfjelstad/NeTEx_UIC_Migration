@@ -1,53 +1,62 @@
-# Description: ServiceJourney
+# ServiceJourney
 
-This page describes the ServiceJourney object (planned trip) as used in the profile. It mirrors the structure and level of detail from the DatedServiceJourney description, but adapts the content to planned (non-dated) trips.
+## 1. Purpose
 
-Purpose: Provide a concise, operational overview of what a ServiceJourney is, how it connects to related objects, and which fields are central. Detailed field descriptions can be found in the ServiceJourney table.
+A **ServiceJourney** represents a planned trip in the timetable operating on a recurring schedule. It defines the stop sequence via reference to a JourneyPattern, includes scheduled passing times, and specifies operational details such as operator and days of operation. Unlike DatedServiceJourney, which represents a concrete instance on a specific date, ServiceJourney is the reusable template used across multiple dates via DayType definitions.
 
-Related documents:
-- Table for ServiceJourney: Objects/ServiceJourney/Table_ServiceJourney.md
-- Dated instance of a trip: Objects/DatedServiceJourney/Description_DatedServiceJourney.md
+## 2. Structure Overview
 
-## What is a ServiceJourney?
-A ServiceJourney represents a planned trip in the timetable. It references a JourneyPattern to define the stop sequence, and it contains metadata such as operator, codes, and optional linkage to a block/roster. Planned stop times are expressed using passingTimes (TimetabledPassingTime) associated to StopPointInJourneyPattern entries. The dated variant (DatedServiceJourney) expresses the same trip for a specific operating day.
+```text
+📄 @id
+📄 @version
+📄 Name
+📄 PrivateCode
+📁 TransportMode
+📁 TransportSubmode
+🔗 JourneyPatternRef/@ref
+🔗 LineRef/@ref
+🔗 OperatorRef/@ref
+📁 dayTypes
+   └── 🔗 DayTypeRef/@ref (0..*)
+📁 passingTimes
+   └── 📄 TimetabledPassingTime (1..*)
+       ├── 🔗 StopPointInJourneyPatternRef/@ref
+       ├── 📄 ArrivalTime
+       ├── 📄 DepartureTime
+       └── 📄 ArrivalDayOffset / DepartureDayOffset
+📄 KeyValue (0..*)
+🔗 BlockRef/@ref
+```
 
-## Key relationships
-- Line/Route: Associates the trip to a line/route via references.
-- JourneyPattern: Provides the stop sequence and structure used by the trip.
-- Operator: The operator performing the trip.
-- Block/VehicleJourneyGroup (if used): Optional linkage to a vehicle block/roster to ensure continuity between subsequent trips.
-- DayType/OperatingProfile: Specifies on which days the trip normally operates (per-date execution belongs to the dated instances and/or production rules).
+## 3. Key Elements
 
-## Central fields
-See the table Objects/ServiceJourney/Table_ServiceJourney.md for a complete list and cardinalities. Typical identifiers and references include:
-- id, version
-- privateCode/publicCode
-- journeyPatternRef (selected pattern)
-- lineRef/routeRef (owning line/route)
-- operatorRef
-- dayTypeRefs/operatingProfile (days of operation)
-- blockRef (optional roster linkage)
-- passingTimes (list of TimetabledPassingTime) with StopPointInJourneyPatternRef and ArrivalTime/DepartureTime
+- **@id, @version** – Unique identifier and version label
+- **JourneyPatternRef** – Reference to the stop sequence (mandatory; defines which stops are served)
+- **passingTimes** – Collection of TimetabledPassingTime with ArrivalTime and DepartureTime for each stop
+- **dayTypes** – DayType references specifying on which days the journey normally operates
+- **OperatorRef** – Reference to the Operator responsible for this journey
+- **LineRef** – Reference to the served Line
+- **BlockRef** – Optional reference to a Block/TrainBlock for vehicle continuity
 
-## Business rules (overview)
-- A ServiceJourney must reference exactly one valid JourneyPattern. The pattern's stop sequence is authoritative for the trip.
-- A ServiceJourney should belong to a single line/route; inconsistent cross-line references are not allowed.
-- If block/roster is used, trips in the same block must be time-compatible without overlap for the same vehicle.
-- DayType/OperatingProfile governs planned operation; per-date deviations are handled at the DatedServiceJourney level.
+## 4. References
 
-## Comparison with DatedServiceJourney
-- ServiceJourney = template/plan for a trip without a concrete date.
-- DatedServiceJourney = concrete instance of a trip on a given date, with potential alterations (replacement, reinforcement, etc.).
-- Date-specific fields (e.g., ServiceAlteration on a specific day) belong to DatedServiceJourney, not ServiceJourney.
+- [JourneyPattern](../JourneyPattern/Table_JourneyPattern.md) – Provides the authoritative stop sequence
+- [DayType](../DayType/Table_DayType.md) – Specifies operational days
+- [Operator](../Operator/Table_Operator.md) – Identifies the service provider
+- [Line](../Line/Table_Line.md) – The public transport line being served
+- [DatedServiceJourney](../DatedServiceJourney/Description_DatedServiceJourney.md) – Per-date instances and alterations of this journey
+- [Block](../Block/Table_Block.md) – Optional vehicle/roster grouping
 
-## Data quality and validation (recommendations)
-- Validate that journeyPatternRef, lineRef, and operatorRef exist and are consistent.
-- Ensure that DayType/OperatingProfile covers the expected timetable without conflicts.
-- Use privateCode/publicCode consistently for traceability and presentation.
-- Ensure passingTimes are present and aligned with the referenced StopPointInJourneyPattern sequence, using ArrivalTime and/or DepartureTime as appropriate.
+## 5. Usage Notes
 
-## Example
-See Objects/ServiceJourney/Example_ServiceJourney.xml for a minimal example including passingTimes.
+- **Template vs. Instance:** ServiceJourney is the template; DatedServiceJourney represents concrete daily instances.
+- **Consistency:** A ServiceJourney must reference exactly one JourneyPattern. The pattern's stop sequence is authoritative.
+- **Stop Times:** Each stop in the referenced JourneyPattern must have exactly one TimetabledPassingTime entry with ArrivalTime and/or DepartureTime.
+- **Day Governance:** DayType references control on which days the journey operates; per-date deviations belong to DatedServiceJourney.
+- **Validation:** Ensure journeyPatternRef, lineRef, and operatorRef are consistent and reference existing objects.
 
-## Changelog
-- 2026-02-13: Initial version in English, adapted from the DatedServiceJourney template; added note on passingTimes.
+## 6. Additional Information
+
+For a complete list of all elements, attributes, cardinalities, and data types, see [Table — ServiceJourney](Table_ServiceJourney.md).
+
+Example XML: [Example_ServiceJourney.xml](Example_ServiceJourney.xml) and [Example_ServiceJourney_MIN.xml](Example_ServiceJourney_MIN.xml)

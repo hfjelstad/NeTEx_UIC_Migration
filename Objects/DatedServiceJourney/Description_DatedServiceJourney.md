@@ -1,92 +1,94 @@
 # DatedServiceJourney
 
-## Purpose
-A **DatedServiceJourney** represents a specific operational instance of a `ServiceJourney` on a particular calendar day. Where `ServiceJourney` describes the template (planned pattern), `DatedServiceJourney` is the *actual trip occurring on a given date*.
+## 1. Purpose
 
-> Key mandatory references: `ServiceJourneyRef`, `OperatingDayRef`.
-> Optional but common: `ServiceAlteration`, `BlockRef`, **`replacedJourneys` / `DatedVehicleJourneyRef`** (see below).
+A **DatedServiceJourney** represents a specific operational instance of a `ServiceJourney` on a particular calendar day. Where `ServiceJourney` describes the reusable template (planned schedule), `DatedServiceJourney` is the concrete instance that actually operates on a given date, including day-specific modifications such as reinforcements, replacements, or cancellations.
 
-### Structure Overview — DatedServiceJourney
+## 2. Structure Overview
 
-📄 @id  
-📄 @version  
-📄 ServiceAlteration  
-🔗 TrainBlockRef  
-🔗 ServiceJourneyRef  
-📁 replacedJourneys  
-└── 🔗 DatedVehicleJourneyRef (0..*)  
-🔗 OperatingDayRef
-
-## When to Use
-Use **DatedServiceJourney** when you need to:
-- State that a planned `ServiceJourney` runs on a **specific date** (via `OperatingDayRef`).
-- Record **day‑by‑day exceptions**, reinforcements or replacements (`ServiceAlteration`, `replacedJourneys`).
-- Connect planned data with **operational / realtime** processes (e.g., SIRI publication).
-
-## Key Properties
-Below are core fields commonly used for this object (see the table file for the full specification and cardinalities):
-
-- `version` — Object version numbering.
-- `id` — Unique identifier for the DatedServiceJourney instance.
-- `ServiceAlteration` — Enumeration of `planned | replaced | extraJourney` (default `planned` if omitted).
-- `BlockRef` — Reference to an operational `Block`/`TrainBlock`.
-- `ServiceJourneyRef` — **Required** link to the underlying template `ServiceJourney`.
-- `replacedJourneys` — Optional **container** for references to journeys being replaced/reinforced (0..1), containing `DatedVehicleJourneyRef` (0..*).
-- `DatedVehicleJourneyRef` — Reference to a **dated journey** being replaced/reinforced. **Identifiers may still use existing DatedServiceJourney ids** (e.g., `ERP:DatedServiceJourney:Core`).
-
-> **Change note:** In the `next` profile, `DatedServiceJourneyRef` has been **removed** and replaced by `replacedJourneys` containing `DatedVehicleJourneyRef`.
-
-## Examples
-Minimal and scenario‑specific XML examples are provided:
-
-1. **Minimal**
-   - `Example_DatedServiceJourney.xml`
-
-2. **Extended scenarios**
-   - **01 Reinforcement** — `Example_DatedServiceJourney_Extended_01_Reinforcement.xml`
-   - **02 Replacement** — `Example_DatedServiceJourney_Extended_02_Replacement.xml`
-   - **03 Block‑linked** — `Example_DatedServiceJourney_Extended_03_BlockLinked.xml`
-   - **04 Multi‑reference** — `Example_DatedServiceJourney_Extended_04_MultiRef.xml`
-
-All extended examples include a header **DIFF SUMMARY** and inline `<!-- DIFF: ... -->` markers to spotlight what differs from the minimal example.
-**Note:** As of the *next* profile update, `DatedServiceJourneyRef` is replaced by `replacedJourneys` containing one or more `DatedVehicleJourneyRef` elements. Identifiers may still reference existing DatedServiceJourney ids.
-
-## Relationships
-**Depends on**
-- `ServiceJourney` — The template this dated instance realises.
-- `OperatingDay` — The calendar day the service actually runs.
-
-**May reference**
-- `Block` / `TrainBlock` via `BlockRef` (operational run linkage).
-- Other dated journeys via `replacedJourneys` / `DatedVehicleJourneyRef` (reinforcement / replacement).
-
-## Common Pitfalls
-- Confusing `DatedServiceJourney` with `ServiceJourney`. The former is *dated/operational*; the latter is *template/planned*.
-- Assuming `DatedServiceJourney` defines the stop sequence. It **does not**; the sequence comes from the `JourneyPattern` referenced by the `ServiceJourney`.
-- Mixing up `OperatingDay` and `DayType`. `OperatingDay` is a **specific date**, whereas `DayType` represents **sets of dates**.
-- Using deprecated `DatedServiceJourneyRef` in new profiles. Use `replacedJourneys` + `DatedVehicleJourneyRef` instead. Keep legacy identifiers stable.
-
-## Lifecycle (Conceptual)
-A simplified lifecycle is described in `Lifecylce_DatedServiceJourney.md`:
-
-```
-ServiceJourney (planned template)
-    |
-    | instantiated on OperatingDay
-    v
-DatedServiceJourney (dated, operational instance)
-    |
-    | may reinforce or replace other dated journeys
-    | via replacedJourneys + DatedVehicleJourneyRef
-    v
-Operational data exchange (e.g., SIRI)
+```text
+📄 @id
+📄 @version
+🔗 ServiceJourneyRef/@ref
+🔗 OperatingDayRef/@ref
+🔗 BlockRef/@ref (0..1)
+📄 ServiceAlteration (0..1)
+📁 replacedJourneys (0..1)
+   └── 🔗 DatedVehicleJourneyRef/@ref (0..*)
 ```
 
-## Validation Recommendations
-- Exactly **one** `ServiceJourneyRef` **and** exactly **one** `OperatingDayRef` must be present.
-- If `ServiceAlteration` is omitted, treat it as `planned`.
-- If present, `replacedJourneys` should contain one or more `DatedVehicleJourneyRef` entries, each resolving to a valid dated journey identifier (may be an existing DatedServiceJourney id).
+## 3. Key Elements
 
-## References
-- See `Table_DatedServiceJourney.md` for the full list of attributes, elements, and references with cardinalities.
-- See `Example_DatedServiceJourney.xml` (minimal) and scenario‑specific extended examples for concrete XML.
+- **@id, @version** – Unique identifier and version label for the dated instance
+- **ServiceJourneyRef** – Reference to the underlying ServiceJourney template (mandatory)
+- **OperatingDayRef** – Reference to the specific calendar date this journey operates (mandatory)
+- **ServiceAlteration** – Enumeration: `planned`, `replaced`, or `extraJourney` (default: `planned`)
+- **BlockRef** – Optional reference to a Block/TrainBlock for vehicle continuity tracking
+- **replacedJourneys** – Optional container for DatedVehicleJourneyRef entries (reinforcements or replacements)
+
+## 4. References
+
+- [ServiceJourney](../ServiceJourney/Table_ServiceJourney.md) – The reusable template that this dated instance realizes
+- [OperatingDay](../OperatingDay/Table_OperatingDay.md) – The specific calendar day on which this journey operates
+- [TrainBlock](../TrainBlock/Table_TrainBlock.md) – Optional vehicle/block assignment for operational continuity
+- [DatedVehicleJourney](../DatedVehicleJourney/Table_DatedVehicleJourney.md) – Related journeys being reinforced or replaced
+
+## 5. Usage Notes
+
+### 5a. Consistency Rules
+
+- **ServiceJourneyRef and OperatingDayRef** – Both are mandatory and must reference existing objects. The ServiceJourney provides the stop sequence; OperatingDay anchors the specific date.
+- **Stop times** – DatedServiceJourney **does not define stop times**. Stop times come from the referenced ServiceJourney's TimetabledPassingTime elements, which are aligned with the JourneyPattern's stops.
+- **Block continuity** – If BlockRef is used, all DatedServiceJourneys in the same block must be time-compatible without vehicle overlap.
+
+### 5b. Validation Requirements
+
+- Exactly **one** ServiceJourneyRef and exactly **one** OperatingDayRef must be present.
+- If ServiceAlteration is omitted, treat the journey as `planned`.
+- If replacedJourneys is present, it must contain one or more DatedVehicleJourneyRef entries, each resolving to a valid dated journey identifier (which may be an existing DatedServiceJourney id).
+- All references (ServiceJourneyRef, OperatingDayRef, BlockRef) must point to objects that exist in the same dataset.
+
+### 5c. Common Pitfalls
+
+- **Confusing DatedServiceJourney with ServiceJourney** – ServiceJourney is template/planned (recurring across days); DatedServiceJourney is dated/operational (specific to one day).
+- **Expecting stop times in DatedServiceJourney** – Stop times are defined only in ServiceJourney and TimetabledPassingTime. A DatedServiceJourney inherits them via its ServiceJourneyRef.
+- **Mixing OperatingDay and DayType** – OperatingDay is a **specific calendar date**; DayType is a **set of dates** (e.g., weekdays). DatedServiceJourney uses OperatingDay.
+- **Unclear hierarchy with replacements** – replacedJourneys does not mean the current journey is cancelled. It means this journey reinforces or replaces the referenced journeys on this date.
+
+### 5d. Profile-Specific Notes
+
+- **MIN Profile** – Only core fields (@id, @version, ServiceJourneyRef, OperatingDayRef) are required.
+- **ERP Profile** – Adds ServiceAlteration and BlockRef for operational tracking.
+- **Profile Evolution** – In the next profile update, the deprecated `DatedServiceJourneyRef` element is replaced by `replacedJourneys` containing one or more `DatedVehicleJourneyRef` entries. When migrating, keep legacy identifiers stable for backward compatibility.
+
+## 6. Additional Information
+
+For a complete list of all elements, attributes, cardinalities, and data types, see [Table — DatedServiceJourney](Table_DatedServiceJourney.md).
+
+### Examples
+
+Minimal and scenario-specific XML examples are provided:
+
+1. **Minimal** – [Example_DatedServiceJourney.xml](Example_DatedServiceJourney.xml)
+2. **01 Reinforcement** – [Example_DatedServiceJourney_Extended_01_Reinforcement.xml](Example_DatedServiceJourney_Extended_01_Reinforcement.xml) – Additional vehicle/crew added to handle increased demand
+3. **02 Replacement** – [Example_DatedServiceJourney_Extended_02_Replacement.xml](Example_DatedServiceJourney_Extended_02_Replacement.xml) – Substitutes for cancelled or redirected journey
+4. **03 Block-Linked** – [Example_DatedServiceJourney_Extended_03_BlockLinked.xml](Example_DatedServiceJourney_Extended_03_BlockLinked.xml) – Journey linked via BlockRef for vehicle continuity
+5. **04 Multi-Reference** – [Example_DatedServiceJourney_Extended_04_MultiRef.xml](Example_DatedServiceJourney_Extended_04_MultiRef.xml) – Multiple replacedJourneys references
+
+All extended examples include inline `<!-- DIFF: ... -->` comments highlighting what differs from the minimal example.
+
+### Lifecycle Concept
+
+A simplified lifecycle flow is documented in [Lifecycle_DatedServiceJourney.md](Lifecycle_DatedServiceJourney.md):
+
+```
+ServiceJourney (planned, recurring template)
+    ↓
+    instantiated on OperatingDay
+    ↓
+DatedServiceJourney (concrete, dated instance)
+    ↓
+    may reinforce/replace other dated journeys
+    ↓
+Operational data (e.g., SIRI realtime updates)
+```

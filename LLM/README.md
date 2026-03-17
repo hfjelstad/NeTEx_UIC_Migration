@@ -71,7 +71,26 @@ Must contain a Structure Overview and flat table with all elements, attributes, 
 
 The semantic explanation file. See [Object Description Template](Templates/Object_Description_Template.md) for detailed guidance.
 
-Must explain the object's purpose, key relationships, and usage patterns with reference links to related objects.
+**Must follow the mandatory 6-section template structure in exact order:**
+
+1. **Purpose** (mandatory) – Brief explanation of the object's role
+2. **Structure Overview** (mandatory) – Icon-based visual representation
+3. **Key Elements** (mandatory) – 3–6 bullet points of critical elements (do not duplicate the table)
+4. **References** (mandatory) – Linked list of externally referenced objects
+5. **Usage Notes** (optional) – Can include optional subsections:
+   - **5a. Consistency Rules** (optional) – Cross-reference and cardinality constraints
+   - **5b. Validation Requirements** (optional) – Testable validation rules
+   - **5c. Common Pitfalls** (optional) – Describe mistakes and corrections
+   - **5d. Profile-Specific Notes** (optional) – Variations across MIN, ERP, NP profiles
+6. **Additional Information** (optional) – Examples, related guides, supplementary content
+
+**Critical constraints:**
+- Section order must be maintained; no reordering
+- No additional sections beyond these 6 (plus optional 5a–5d subsections)
+- Structure Overview must use icon notation (📄, 📁, 🔗) and match the XML example order
+- Key Elements must be selective (3–6 items), not exhaustive
+- All cross-references must be relative markdown links to existing Table files
+- Section 5 should include only subsections (5a–5d) that are relevant; omit others
 
 ---
 
@@ -79,17 +98,20 @@ Must explain the object's purpose, key relationships, and usage patterns with re
 
 Every frame under `Frames/<FrameName>/` must contain the following files:
 
-### 5.1. `Description_<FrameName>.md` (mandatory)
+### 5.1. `Example_<FrameName>.xml` (at least one required)
 
-A human‑readable explanation of the frame including:
-- purpose and role in the NeTEx data model,
-- contained elements and sub-frames,
-- relationships to other frames,
-- typical usage patterns.
+A validated XML example demonstrating the frame structure, contained sub-frames, and element composition.
 
-### 5.2. `Example_<FrameName>.xml` (at least one required)
+### 5.2. `Description_<FrameName>.md` (mandatory)
 
-A validated XML example demonstrating the frame structure and element composition.
+A human‑readable explanation of the frame (optional Table file at this time).
+
+Should include:
+- Name and purpose of the frame
+- Role and scope within the NeTEx data model
+- Contained child frames and key elements
+- Relationships to other frames
+- Typical usage patterns and data flow
 
 ---
 
