@@ -13,10 +13,10 @@ ShelterEquipment
 
 ## Table
 
-| Element | Type | Description | Path |
-|---------|------|-------------|------|
-| @id | ID | Unique identifier for the shelter equipment | ShelterEquipment/@id |
-| @version | String | Version number for change tracking | ShelterEquipment/@version |
-| Seats | Integer | Number of seats in the shelter | ShelterEquipment/Seats |
-| StepFree | Boolean | Whether the shelter has step-free access | ShelterEquipment/StepFree |
-| Enclosed | Boolean | Whether the shelter is enclosed | ShelterEquipment/Enclosed |
+| Element | Type | MIN | NP | Description | Path |
+|---------|------|-----|-----|-------------|------|
+| @id | ID | 1..1 | 1..1 | Unique identifier for the shelter equipment | ShelterEquipment/@id |
+| @version | String | 1..1 | 1..1 | Version number for change tracking | ShelterEquipment/@version |
+| Seats | Integer |  | 0..1 | Number of seats in the shelter | ShelterEquipment/Seats |
+| StepFree | Boolean |  | 0..1 | Whether the shelter has step-free access | ShelterEquipment/StepFree |
+| Enclosed | Boolean |  | 0..1 | Whether the shelter is enclosed | ShelterEquipment/Enclosed |

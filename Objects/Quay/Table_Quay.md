@@ -27,24 +27,24 @@ Quay
 
 ## Table
 
-| Element | Type | Description | Path |
-|---------|------|-------------|------|
-| @id | ID | Unique identifier for the Quay (e.g., ERP:Quay:1001) | Quay/@id |
-| @version | String | Version label | Quay/@version |
-| Name | String | Passenger-facing quay name | Quay/Name |
-| PublicCode | String | Short public code printed on signage | Quay/PublicCode |
-| [StopPlace](../StopPlace/Table_StopPlace.md)@ref | Reference | Reference to parent StopPlace | Quay/StopPlaceRef/@ref |
-| Longitude | Decimal | WGS84 longitude | Quay/Centroid/Location/Longitude |
-| Latitude | Decimal | WGS84 latitude | Quay/Centroid/Location/Latitude |
-| Description | String | Optional free-text description | Quay/Description |
-| PrivateCode | String | Internal platform identifier (may have type attribute) | Quay/PrivateCode |
-| CompassBearing | Decimal | Compass bearing of the quay in degrees (0-360) | Quay/CompassBearing |
-| AccessibilityAssessment | Element | Accessibility evaluation of the quay | Quay/AccessibilityAssessment |
-| MobilityImpairedAccess | Enum | Overall mobility access status (true, false, unknown) | Quay/AccessibilityAssessment/MobilityImpairedAccess |
-| limitations | Container | Collection of specific accessibility limitations | Quay/AccessibilityAssessment/limitations |
-| AccessibilityLimitation | Element | Specific accessibility limitation assessment | Quay/AccessibilityAssessment/limitations/AccessibilityLimitation |
-| WheelchairAccess | Enum | Wheelchair accessibility (true, false, unknown) | Quay/AccessibilityAssessment/limitations/AccessibilityLimitation/WheelchairAccess |
-| StepFreeAccess | Enum | Step-free access availability (true, false, unknown) | Quay/AccessibilityAssessment/limitations/AccessibilityLimitation/StepFreeAccess |
-| placeEquipments | Container | Equipment installed at the quay | Quay/placeEquipments |
-| boardingPositions | Container | Collection of boarding positions within the quay | Quay/boardingPositions |
-| BoardingPosition | Element | Specific boarding position with location | Quay/boardingPositions/BoardingPosition |
+| Element | Type | MIN | NP | Description | Path |
+|---------|------|-----|-----|-------------|------|
+| @id | ID | 1..1 | 1..1 | Unique identifier for the Quay (e.g., ERP:Quay:1001) | Quay/@id |
+| @version | String | 1..1 | 1..1 | Version label | Quay/@version |
+| Name | String | 1..1 | 1..1 | Passenger-facing quay name | Quay/Name |
+| PublicCode | String | 0..1 | 0..1 | Short public code printed on signage | Quay/PublicCode |
+| [StopPlace](../StopPlace/Table_StopPlace.md)@ref | Reference |  |  | Reference to parent StopPlace | Quay/StopPlaceRef/@ref |
+| Longitude | Decimal | 1..1 | 1..1 | WGS84 longitude | Quay/Centroid/Location/Longitude |
+| Latitude | Decimal | 1..1 | 1..1 | WGS84 latitude | Quay/Centroid/Location/Latitude |
+| Description | String | 0..1 |  | Optional free-text description | Quay/Description |
+| PrivateCode | String |  | 0..1 | Internal platform identifier (may have type attribute) | Quay/PrivateCode |
+| CompassBearing | Decimal |  | 0..1 | Compass bearing of the quay in degrees (0-360) | Quay/CompassBearing |
+| AccessibilityAssessment | Element |  | 0..1 | Accessibility evaluation of the quay | Quay/AccessibilityAssessment |
+| MobilityImpairedAccess | Enum |  | 1..1 | Overall mobility access status (true, false, unknown) | Quay/AccessibilityAssessment/MobilityImpairedAccess |
+| limitations | Container |  | 0..1 | Collection of specific accessibility limitations | Quay/AccessibilityAssessment/limitations |
+| AccessibilityLimitation | Element |  | 1..n | Specific accessibility limitation assessment | Quay/AccessibilityAssessment/limitations/AccessibilityLimitation |
+| WheelchairAccess | Enum |  | 0..1 | Wheelchair accessibility (true, false, unknown) | Quay/AccessibilityAssessment/limitations/AccessibilityLimitation/WheelchairAccess |
+| StepFreeAccess | Enum |  | 0..1 | Step-free access availability (true, false, unknown) | Quay/AccessibilityAssessment/limitations/AccessibilityLimitation/StepFreeAccess |
+| placeEquipments | Container |  |  | Equipment installed at the quay | Quay/placeEquipments |
+| boardingPositions | Container |  | 0..1 | Collection of boarding positions within the quay | Quay/boardingPositions |
+| BoardingPosition | Element |  | 1..n | Specific boarding position with location | Quay/boardingPositions/BoardingPosition |

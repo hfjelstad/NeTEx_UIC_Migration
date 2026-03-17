@@ -18,17 +18,17 @@ Authority
 
 ## Table
 
-| Element | Type | Description | Path |
-|---------|------|-------------|------|
-| @id | ID | Unique identifier for the Authority | Authority/@id |
-| @version | String | Version label | Authority/@version |
-| Name | String | Name of the Authority | Authority/Name |
-| LegalName | String | Official legal name of the authority | Authority/LegalName |
-| ShortName | String | Short name or abbreviation | Authority/ShortName |
-| CompanyNumber | String | Official company registration number | Authority/CompanyNumber |
-| Description | String | Description of the Authority | Authority/Description |
-| ContactDetails | Element | Contact information | Authority/ContactDetails |
-| Phone | String | Contact telephone number | Authority/ContactDetails/Phone |
-| Url | String | Website URL | Authority/ContactDetails/Url |
-| OrganisationType | Enum | Type of organisation (always "authority" for Authority) | Authority/OrganisationType |
-| [ResponsibilitySet](../ResponsibilitySet/Table_ResponsibilitySet.md)@ref | Reference | Reference to a ResponsibilitySet defining roles | Authority/ResponsibilitySetRef/@ref |
+| Element | Type | MIN | NP | Description | Path |
+|---------|------|-----|-----|-------------|------|
+| @id | ID | 1..1 | 1..1 | Unique identifier for the Authority | Authority/@id |
+| @version | String | 1..1 | 1..1 | Version label | Authority/@version |
+| Name | String |  | 1..1 | Name of the Authority | Authority/Name |
+| LegalName | String |  | 0..1 | Official legal name of the authority | Authority/LegalName |
+| ShortName | String |  |  | Short name or abbreviation | Authority/ShortName |
+| CompanyNumber | String |  | 0..1 | Official company registration number | Authority/CompanyNumber |
+| Description | String |  |  | Description of the Authority | Authority/Description |
+| ContactDetails | Element |  | 0..1 | Contact information | Authority/ContactDetails |
+| Phone | String |  | 0..1 | Contact telephone number | Authority/ContactDetails/Phone |
+| Url | String |  | 0..1 | Website URL | Authority/ContactDetails/Url |
+| OrganisationType | Enum |  | 0..1 | Type of organisation (always "authority" for Authority) | Authority/OrganisationType |
+| [ResponsibilitySet](../ResponsibilitySet/Table_ResponsibilitySet.md)@ref | Reference |  |  | Reference to a ResponsibilitySet defining roles | Authority/ResponsibilitySetRef/@ref |

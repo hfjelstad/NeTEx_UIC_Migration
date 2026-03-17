@@ -22,21 +22,21 @@ Operator
 
 ## Table
 
-| Element | Type | Description | Path |
-|---------|------|-------------|------|
-| @id | ID | Unique identifier for the Operator | Operator/@id |
-| @version | String | Version label | Operator/@version |
-| Name | String | Name of the Operator organisation | Operator/Name |
-| CompanyNumber | String | Official company registration number | Operator/CompanyNumber |
-| ShortName | String | Abbreviated name | Operator/ShortName |
-| LegalName | String | Official legal name of the operator | Operator/LegalName |
-| ContactDetails | Element | Contact information (phone, email, website) | Operator/ContactDetails |
-| Phone | String | Contact telephone number | Operator/ContactDetails/Phone |
-| Url | String | Website URL | Operator/ContactDetails/Url |
-| CustomerServiceContactDetails | Element | Public-facing customer service contact details | Operator/CustomerServiceContactDetails |
-| Email | String | Customer service email | Operator/CustomerServiceContactDetails/Email |
-| Phone | String | Customer service phone | Operator/CustomerServiceContactDetails/Phone |
-| Url | String | Customer service URL | Operator/CustomerServiceContactDetails/Url |
-| OrganisationType | String | Type of organisation (e.g., company, cooperative) | Operator/OrganisationType |
-| [Authority](../Authority/Table_Authority.md)@ref | Reference | Reference to the contracting Authority | Operator/AuthorityRef/@ref |
-| [ResponsibilitySet](../ResponsibilitySet/Table_ResponsibilitySet.md)@ref | Reference | Reference to a ResponsibilitySet defining roles | Operator/ResponsibilitySetRef/@ref |
+| Element | Type | MIN | NP | Description | Path |
+|---------|------|-----|-----|-------------|------|
+| @id | ID | 1..1 | 1..1 | Unique identifier for the Operator | Operator/@id |
+| @version | String | 1..1 | 1..1 | Version label | Operator/@version |
+| Name | String |  | 1..1 | Name of the Operator organisation | Operator/Name |
+| CompanyNumber | String |  | 0..1 | Official company registration number | Operator/CompanyNumber |
+| ShortName | String |  |  | Abbreviated name | Operator/ShortName |
+| LegalName | String |  | 0..1 | Official legal name of the operator | Operator/LegalName |
+| ContactDetails | Element |  | 0..1 | Contact information (phone, email, website) | Operator/ContactDetails |
+| Phone | String |  | 0..1 | Contact telephone number | Operator/ContactDetails/Phone |
+| Url | String |  | 0..1 | Website URL | Operator/ContactDetails/Url |
+| CustomerServiceContactDetails | Element |  | 0..1 | Public-facing customer service contact details | Operator/CustomerServiceContactDetails |
+| Email | String |  | 0..1 | Customer service email | Operator/CustomerServiceContactDetails/Email |
+| Phone | String |  | 0..1 | Customer service phone | Operator/CustomerServiceContactDetails/Phone |
+| Url | String |  | 0..1 | Customer service URL | Operator/CustomerServiceContactDetails/Url |
+| OrganisationType | String |  | 0..1 | Type of organisation (e.g., company, cooperative) | Operator/OrganisationType |
+| [Authority](../Authority/Table_Authority.md)@ref | Reference |  |  | Reference to the contracting Authority | Operator/AuthorityRef/@ref |
+| [ResponsibilitySet](../ResponsibilitySet/Table_ResponsibilitySet.md)@ref | Reference |  |  | Reference to a ResponsibilitySet defining roles | Operator/ResponsibilitySetRef/@ref |
