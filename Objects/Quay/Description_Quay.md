@@ -6,16 +6,16 @@ The **Quay** represents a specific boarding or alighting position (such as a pla
 ## 2. Structure Overview
 ```
 📄 Quay
-  ├─ 📄 @id (identifier, mandatory)
-  ├─ 📄 @version (string)
-  ├─ 📄 Name (mandatory)
-  ├─ 📄 PublicCode (optional)
-  ├─ 🔗 StopPlaceRef (mandatory reference)
-  ├─ 📁 Centroid (mandatory)
-  │  └─ 📄 Location
-  │     ├─ 📄 Longitude (decimal, WGS84)
-  │     └─ 📄 Latitude (decimal, WGS84)
-  └─ 📄 Description (optional)
+  ├─ 📄 @id (1..1)
+  ├─ 📄 @version (1..1)
+  ├─ 📄 Name (1..1)
+  ├─ 📄 PublicCode (0..1)
+  ├─ 🔗 StopPlaceRef/@ref (1..1)
+  ├─ 📁 Centroid (1..1)
+  │  └─ 📄 Location (1..1)
+  │     ├─ 📄 Longitude (1..1)
+  │     └─ 📄 Latitude (1..1)
+  └─ 📄 Description (0..1)
 ```
 
 ## 3. Key Elements

@@ -1,11 +1,24 @@
-# Authority Attributes Table
+## Structure Overview
 
-| **Attribute**       | **Type**   | **Usage**      | **Description** |
-|----------------------|-----------|---------------|-----------------|
-| id                   | Identifier| Mandatory     | Unique identifier for the Authority. |
-| version              | String    | Optional      | Version of the element. |
-| name                 | String    | Mandatory     | Name of the Authority. |
-| shortName            | String    | Optional      | Short name or abbreviation. |
-| description          | String    | Optional      | Description of the Authority. |
-| contactDetails       | Contact   | Optional      | Contact information for the Authority. |
-| responsibilitySetRef | Reference | Optional      | Reference to a ResponsibilitySet defining roles. |
+```text
+Authority
+ ├─ @id (1..1)
+ ├─ @version (1..1)
+ ├─ Name (1..1)
+ ├─ ShortName (0..1)
+ ├─ Description (0..1)
+ ├─ ContactDetails (0..1)
+ └─ ResponsibilitySetRef/@ref (0..1)
+```
+
+## Table
+
+| Element | Type | Description | Path |
+|---------|------|-------------|------|
+| @id | ID | Unique identifier for the Authority | Authority/@id |
+| @version | String | Version label | Authority/@version |
+| Name | String | Name of the Authority | Authority/Name |
+| ShortName | String | Short name or abbreviation | Authority/ShortName |
+| Description | String | Description of the Authority | Authority/Description |
+| ContactDetails | Element | Contact information | Authority/ContactDetails |
+| [ResponsibilitySet](../ResponsibilitySet/Table_ResponsibilitySet.md)@ref | Reference | Reference to a ResponsibilitySet defining roles | Authority/ResponsibilitySetRef/@ref |

@@ -6,14 +6,14 @@ The **Operator** represents an organization that provides public transport servi
 ## 2. Structure Overview
 ```
 📄 Operator
-  ├─ 📄 id (identifier)
-  ├─ 📄 version
-  ├─ 📄 Name (mandatory)
-  ├─ 📄 ShortName (optional)
-  ├─ 📁 ContactDetails (optional)
-  ├─ 📄 OrganisationType (optional)
-  ├─ 🔗 AuthorityRef (optional)
-  └─ 🔗 ResponsibilitySetRef (optional)
+  ├─ 📄 @id (1..1)
+  ├─ 📄 @version (1..1)
+  ├─ 📄 Name (1..1)
+  ├─ 📄 ShortName (0..1)
+  ├─ 📁 ContactDetails (0..1)
+  ├─ 📄 OrganisationType (0..1)
+  ├─ 🔗 AuthorityRef/@ref (0..1)
+  └─ 🔗 ResponsibilitySetRef/@ref (0..1)
 ```
 
 ## 3. Key Elements

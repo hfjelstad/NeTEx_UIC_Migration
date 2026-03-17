@@ -7,13 +7,13 @@ An **Authority** is a public transport organization responsible for planning, or
 ## 2. Structure Overview
 
 ```text
-📄 @id
-📄 @version
-📄 Name
-📄 ShortName
-📄 Description
-📁 ContactDetails
-🔗 ResponsibilitySetRef/@ref
+📄 @id (1..1)
+📄 @version (1..1)
+📄 Name (1..1)
+📄 ShortName (0..1)
+📄 Description (0..1)
+📁 ContactDetails (0..1)
+🔗 ResponsibilitySetRef/@ref (0..1)
 ```
 
 ## 3. Key Elements

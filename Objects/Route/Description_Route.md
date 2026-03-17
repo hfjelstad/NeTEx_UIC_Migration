@@ -6,19 +6,19 @@ The **Route** represents the logical geographic path definition for a Line with 
 ## 2. Structure Overview
 ```
 📄 Route
-  ├─ 📄 @id (identifier, mandatory)
-  ├─ 📄 @version (string)
-  ├─ 📄 Name (mandatory)
-  ├─ 📄 ShortName (optional)
-  ├─ 📄 PublicCode (optional)
-  ├─ 📄 Description (optional)
-  ├─ 📄 PrivateCode (optional)
-  ├─ 🔗 LineRef (mandatory reference)
-  ├─ 📄 DirectionType (optional: inbound, outbound, etc.)
-  └─ 📁 PointsInSequence (mandatory)
-     └─ 📁 PointOnRoute[1..n]
-        ├─ 📄 @order (sequence number)
-        └─ 🔗 ScheduledStopPointRef (mandatory reference)
+  ├─ 📄 @id (1..1)
+  ├─ 📄 @version (1..1)
+  ├─ 📄 Name (1..1)
+  ├─ 📄 ShortName (0..1)
+  ├─ 📄 PublicCode (0..1)
+  ├─ 📄 Description (0..1)
+  ├─ 📄 PrivateCode (0..1)
+  ├─ 🔗 LineRef/@ref (1..1)
+  ├─ 📄 DirectionType (0..1)
+  └─ 📁 PointsInSequence (1..1)
+     └─ 📁 PointOnRoute (1..n)
+        ├─ 📄 @order (1..1)
+        └─ 🔗 ScheduledStopPointRef/@ref (1..1)
 ```
 
 ## 3. Key Elements

@@ -1,26 +1,59 @@
 # ResponsibilitySet
 
-## Purpose
-ResponsibilitySet defines the set of roles and organisations responsible for managing data, operations, or contractual obligations within a defined scope in a NeTEx dataset. It is used to express who is accountable for specific responsibilities and how these responsibilities apply within a frame or other scope.
+## 1. Purpose
 
-## Typical elements
-- ResponsibilityRoleAssignment: associates a role with a responsible organisation (e.g., an Authority or an Operator).
-- ResponsibilitySetAssignment (reference): binds a ResponsibilitySet to a concrete scope (e.g., a Frame) and may constrain it by contract.
-- ContractRef usage: used to indicate that the responsibility applies under a specific contract.
-- Links to Authority/Operator: ResponsibilityRoleAssignment typically points to an Authority or an Operator as the responsible organisation.
+A **ResponsibilitySet** defines the set of roles and organisations responsible for managing data, operations, or contractual obligations within a defined scope. It associates responsibility roles with specific organisations (typically an Authority or Operator) and optionally links them to a governing Contract. ResponsibilitySets are defined in the ResourceFrame and referenced across the dataset to express governance and accountability.
 
-## Keys
-- id
-- version
-- ResponsibilitySetRef (used from ResponsibilitySetAssignment)
-- OrganisationRef (used from ResponsibilityRoleAssignment)
-- ContractRef (used from ResponsibilitySetAssignment)
+## 2. Structure Overview
 
-## Placement
-ResourceFrame
+```text
+📄 ResponsibilitySet
+  ├─ 📄 @id (1..1)
+  ├─ 📄 @version (1..1)
+  ├─ 📄 Name (0..1)
+  └─ 📁 roles (0..1)
+     └─ 📁 ResponsibilityRoleAssignment (0..n)
+        ├─ 📄 @id (1..1)
+        ├─ 📄 @version (1..1)
+        ├─ 🔗 ResponsibleOrganisationRef/@ref (0..1)
+        ├─ 🔗 TypeOfResponsibilityRoleRef/@ref (0..1)
+        └─ 📁 AssociatedContract (0..1)
+           └─ 🔗 ContractRef/@ref (0..1)
+```
 
-## See also
-- ../Authority/Description_Authority.md
-- ../Operator/Description_Operator.md
-- ../Contract/Description_Contract.md
-- ../../Frames/ResourceFrame/Description_ResourceFrame.md
+## 3. Key Elements
+
+- **roles**: Container for ResponsibilityRoleAssignment elements that define who is responsible for what.
+- **ResponsibilityRoleAssignment**: Associates a specific role with a responsible organisation; the core building block of the set.
+- **ResponsibleOrganisationRef**: Reference to the Authority or Operator that holds the responsibility.
+- **ContractRef**: Optional reference to the Contract under which the responsibility applies; links governance to legal agreements.
+
+## 4. References
+
+- [Authority](../Authority/Table_Authority.md) – Organisation typically assigned as responsible party (planning/oversight)
+- [Operator](../Operator/Table_Operator.md) – Organisation typically assigned as responsible party (service delivery)
+- [Contract](../Contract/Table_Contract.md) – Legal agreement governing the responsibility scope
+
+## 5. Usage Notes
+
+### 5a. Consistency Rules
+
+- ResponsibilitySet must be defined in a ResourceFrame before being referenced by other elements.
+- All OrganisationRef entries must resolve to existing Authority or Operator objects.
+
+### 5b. Validation Requirements
+
+- **@id and @version are mandatory** — follow codespace conventions (e.g., `ERP:ResponsibilitySet:EXAMPLE_1`).
+- **ResponsibleOrganisationRef must resolve** to an existing organisation if provided.
+- **ContractRef must resolve** to an existing Contract if provided.
+
+### 5c. Common Pitfalls
+
+- **Empty ResponsibilitySet**: A set without any ResponsibilityRoleAssignment entries provides no governance value and should be removed.
+- **Missing organisation reference**: A role assignment without a ResponsibleOrganisationRef leaves accountability undefined.
+
+## 6. Additional Information
+
+See [Table_ResponsibilitySet.md](Table_ResponsibilitySet.md) for detailed attribute specifications.
+
+Example XML: [Example_ResponsibilitySet.xml](Example_ResponsibilitySet.xml)

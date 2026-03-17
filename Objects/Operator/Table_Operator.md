@@ -1,15 +1,26 @@
-# Table: Operator Attributes
+## Structure Overview
 
-| **Attribute**       | **Type**   | **Usage**       | **Description** |
-|----------------------|-----------|-----------------|-----------------|
-| `id`               | Identifier | Mandatory       | Unique identifier for the Operator. |
-| `version`          | String     | Optional        | Version of the Operator element. |
-| `Name`             | String     | Mandatory       | Name of the Operator organization. |
-| `ShortName`        | String     | Optional        | Abbreviated name of the Operator. |
-| `ContactDetails`   | Element    | Optional        | Contact information for the Operator. |
-| `OrganisationType` | String     | Optional        | Type of organization (e.g., company, cooperative). |
+```text
+Operator
+ ├─ @id (1..1)
+ ├─ @version (1..1)
+ ├─ Name (1..1)
+ ├─ ShortName (0..1)
+ ├─ ContactDetails (0..1)
+ ├─ OrganisationType (0..1)
+ ├─ AuthorityRef/@ref (0..1)
+ └─ ResponsibilitySetRef/@ref (0..1)
+```
 
-## Relationships
-- **Authority**: Linked via `AuthorityRef`.
-- **ResponsibilitySet**: Linked via `ResponsibilitySetRef`.
+## Table
 
+| Element | Type | Description | Path |
+|---------|------|-------------|------|
+| @id | ID | Unique identifier for the Operator | Operator/@id |
+| @version | String | Version label | Operator/@version |
+| Name | String | Name of the Operator organisation | Operator/Name |
+| ShortName | String | Abbreviated name | Operator/ShortName |
+| ContactDetails | Element | Contact information (phone, email, website) | Operator/ContactDetails |
+| OrganisationType | String | Type of organisation (e.g., company, cooperative) | Operator/OrganisationType |
+| [Authority](../Authority/Table_Authority.md)@ref | Reference | Reference to the contracting Authority | Operator/AuthorityRef/@ref |
+| [ResponsibilitySet](../ResponsibilitySet/Table_ResponsibilitySet.md)@ref | Reference | Reference to a ResponsibilitySet defining roles | Operator/ResponsibilitySetRef/@ref |

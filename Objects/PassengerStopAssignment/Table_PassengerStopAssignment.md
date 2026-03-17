@@ -1,11 +1,24 @@
-# PassengerStopAssignment Attribute Table
+## Structure Overview
 
-| **Name**                        | **Description**                                      | **Type**   | **Usage**     |
-|---------------------------------|------------------------------------------------------|------------|---------------|
-| id                              | Unique identifier for the assignment                | Identifier | Mandatory     |
-| version                         | Version of the element                              | String     | Mandatory     |
-| order                           | Sequence number (technical, no business meaning)    | Integer    | Mandatory     |
-| ScheduledStopPointRef           | Reference to the logical stop                       | Reference  | Mandatory     |
-| QuayRef                         | Reference to the physical quay                      | Reference  | Mandatory     |
-| StopPlaceRef                    | Reference to the stop place                         | Reference  | Optional      |
-| ForDatedVehicleJourneyRef       | Reference to a specific DatedServiceJourney         | Reference  | Optional      |
+```text
+PassengerStopAssignment
+ ├─ @id (1..1)
+ ├─ @version (1..1)
+ ├─ @order (1..1)
+ ├─ ScheduledStopPointRef/@ref (1..1)
+ ├─ QuayRef/@ref (1..1)
+ ├─ StopPlaceRef/@ref (0..1)
+ └─ ForDatedVehicleJourneyRef/@ref (0..1)
+```
+
+## Table
+
+| Element | Type | Description | Path |
+|---------|------|-------------|------|
+| @id | ID | Unique identifier for the assignment | PassengerStopAssignment/@id |
+| @version | String | Version label | PassengerStopAssignment/@version |
+| @order | Integer | Technical sequence number | PassengerStopAssignment/@order |
+| [ScheduledStopPoint](../ScheduledStopPoint/Table_ScheduledStopPoint.md)@ref | Reference | Reference to the logical timetable stop | PassengerStopAssignment/ScheduledStopPointRef/@ref |
+| [Quay](../Quay/Table_Quay.md)@ref | Reference | Reference to the physical boarding platform | PassengerStopAssignment/QuayRef/@ref |
+| [StopPlace](../StopPlace/Table_StopPlace.md)@ref | Reference | Reference to the parent stop location | PassengerStopAssignment/StopPlaceRef/@ref |
+| [DatedServiceJourney](../DatedServiceJourney/Table_DatedServiceJourney.md)@ref | Reference | Override assignment for a specific dated journey | PassengerStopAssignment/ForDatedVehicleJourneyRef/@ref |

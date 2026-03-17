@@ -6,13 +6,13 @@ The **Line** represents a public transport service line within a ServiceFrame. I
 ## 2. Structure Overview
 ```
 📄 Line
-  ├─ 📄 @id (identifier, mandatory)
-  ├─ 📄 @version (string)
-  ├─ 📄 Name (mandatory)
-  ├─ 🔗 OperatorRef (mandatory reference)
-  └─ 📁 Presentation (optional)
-     ├─ 📄 Colour (6-digit hex code)
-     └─ 📄 TextColour (6-digit hex code)
+  ├─ 📄 @id (1..1)
+  ├─ 📄 @version (1..1)
+  ├─ 📄 Name (1..1)
+  ├─ 🔗 OperatorRef/@ref (1..1)
+  └─ 📁 Presentation (0..1)
+     ├─ 📄 Colour (0..1)
+     └─ 📄 TextColour (0..1)
 ```
 
 ## 3. Key Elements

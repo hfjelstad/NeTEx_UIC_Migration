@@ -34,26 +34,41 @@ Must follow the ordering and hierarchy shown in `Table_<ObjectName>.md`.
 - `📁` = Container element (grouping)
 - `🔗` = Reference to another object (always include @ref suffix)
 
+### Cardinality Notation
+
+Use standard cardinality notation to express element requirements:
+
+| Notation | Meaning |
+| -------- | ------- |
+| `(1..1)` | Mandatory, exactly one |
+| `(1..n)` | Mandatory, one or more |
+| `(0..1)` | Optional, at most one |
+| `(0..n)` | Optional, zero or more |
+
+- Every element in the Structure Overview should include its cardinality.
+- Do **not** use words like "mandatory", "optional", or "required" — use cardinality notation instead.
+- For reference elements (`🔗`), combine cardinality with the `@ref` suffix, e.g. `🔗 LineRef/@ref (1..1)`.
+
 ### Structure Example
 
 ```text
-📄 @id
-📄 @version
-📄 Name
-📁 TransportSubmode
-   ├── 📄 BusSubmode
-   └── 📄 RailSubmode
-🔗 JourneyPatternRef/@ref
-📁 passingTimes
-   └── 📄 TimetabledPassingTime (1..*)
-       ├── 🔗 StopPointInJourneyPatternRef/@ref
-       ├── 📄 ArrivalTime
-       └── 📄 DepartureTime
+📄 @id (1..1)
+📄 @version (1..1)
+📄 Name (1..1)
+📁 TransportSubmode (0..1)
+   ├── 📄 BusSubmode (0..1)
+   └── 📄 RailSubmode (0..1)
+🔗 JourneyPatternRef/@ref (1..1)
+📁 passingTimes (1..1)
+   └── 📄 TimetabledPassingTime (1..n)
+       ├── 🔗 StopPointInJourneyPatternRef/@ref (1..1)
+       ├── 📄 ArrivalTime (0..1)
+       └── 📄 DepartureTime (0..1)
 ```
 
 ### Guidelines
 - Keep structure under 20 lines for brevity
-- Show cardinality only for important 0..* collections
+- Every element must show its cardinality using the notation above
 - Mirror the exact order from the XML examples
 - Use proper indentation and box‑drawing lines (`├──`, `└──`)
 
@@ -174,6 +189,7 @@ Before finalizing a description file, verify all points:
 
 - [ ] **Purpose** is 2–3 sentences, non-technical, and self-contained
 - [ ] **Structure Overview** is under 20 lines and uses icons consistently
+- [ ] **Structure Overview** uses cardinality notation (1..1, 0..1, 1..n, 0..n) on every element — no "mandatory"/"optional" words
 - [ ] **Icon order** exactly matches the XML example and Table file order
 - [ ] **Key Elements** lists 3–6 critical items only (not all 30+ fields from the table)
 - [ ] **Key Elements** describe function/role, not just field names

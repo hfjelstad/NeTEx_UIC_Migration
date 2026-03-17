@@ -1,15 +1,28 @@
-# Contract – table
+## Structure Overview
 
-| Element | Type | Cardinality | Notes |
-|---|---|---:|---|
-| id | Identifier | 1 | Unique identifier within the ERP codespace (e.g., ERP:Contract:CON-001). |
-| version | Version | 1 | Version of the Contract entity. The pair [id + version] must be unique within a document. |
-| Name | xsd:normalizedString | 0..1 | Human-readable name of the contract. Recommended. |
-| Description | xsd:normalizedString | 0..1 | Short description of the agreement and its purpose. |
-| ValidBetween | ValidityConditionsStructure | 0..1 | Overall validity window for the agreement. If omitted, validity may be implied by the enclosing frame or dataset. |
-| contractees | OrganisationRef (list) | 0..* | Client-side organisations that receive the service (e.g., Authority). Use OrganisationRef. |
-| contractors | OrganisationRef (list) | 0..* | Supplier-side organisations that deliver the service (e.g., Operator). Use OrganisationRef. |
-| ResponsibilitySetRef | ResponsibilitySetRef | 0..1 | Optional governance/data stewardship reference for the Contract. |
-| ResponsibilityRoleAssignmentRef | ResponsibilityRoleAssignmentRef | 0..* | Optional references to role assignments relevant to the Contract. |
-| LineRef | LineRef (list) | 0..* | Optional scope reference to Lines covered by the contract. Subject to further study in the profile. |
-| GroupOfLinesRef | GroupOfLinesRef (list) | 0..* | Optional scope reference to groups of lines. Subject to further study in the profile. |
+```text
+Contract
+ ├─ @id (1..1)
+ ├─ @version (1..1)
+ ├─ Name (0..1)
+ ├─ ContractType (0..1)
+ ├─ LegalStatus (0..1)
+ ├─ ContractGoverningLaw (0..1)
+ ├─ contractees (0..1)
+ │  └─ OrganisationRef/@ref (0..n)
+ └─ contractors (0..1)
+    └─ OrganisationRef/@ref (0..n)
+```
+
+## Table
+
+| Element | Type | Description | Path |
+|---------|------|-------------|------|
+| @id | ID | Unique identifier for the Contract | Contract/@id |
+| @version | String | Version label | Contract/@version |
+| Name | String | Human-readable name of the contract | Contract/Name |
+| ContractType | Enum | Form of contract (written, oral, formal) | Contract/ContractType |
+| LegalStatus | String | Legal standing of the contract | Contract/LegalStatus |
+| ContractGoverningLaw | String | Jurisdiction or legal code governing the contract | Contract/ContractGoverningLaw |
+| [Authority](../Authority/Table_Authority.md)@ref | Reference | Client-side organisation (contractee) | Contract/contractees/OrganisationRef/@ref |
+| [Operator](../Operator/Table_Operator.md)@ref | Reference | Supplier-side organisation (contractor) | Contract/contractors/OrganisationRef/@ref |
