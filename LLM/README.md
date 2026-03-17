@@ -113,12 +113,13 @@ Must contain a Structure Overview and flat table with all collections, child ele
 
 The semantic explanation file. See [Frame Description Template](Templates/Frame_Description_Template.md) for detailed guidance.
 
-**Must follow the mandatory 4-section template structure in exact order:**
+**Must follow the mandatory 5-section template structure in exact order:**
 
 1. **Purpose** (mandatory) – Brief explanation of the frame's role and scope
-2. **Contained Elements** (mandatory) – Bulleted list of key collections with links to Object Table files
-3. **Frame Relationships** (mandatory) – Dependencies upstream and downstream
-4. **Usage Notes** (optional) – Non-obvious constraints or common mistakes
+2. **Structure Overview** (mandatory) – Icon-based visual representation of the frame's collections
+3. **Contained Elements** (mandatory) – Bulleted list of key collections with links to Object Table files
+4. **Frame Relationships** (mandatory) – Dependencies upstream and downstream
+5. **Usage Notes** (optional) – Non-obvious constraints or common mistakes
 
 ---
 

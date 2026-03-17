@@ -4,11 +4,24 @@
 
 A **SiteFrame** contains the physical infrastructure model for public transport — stop places, quays, entrances, parking facilities, and topographic context. It defines the spatial elements that passengers interact with and that other frames reference for stop assignments.
 
-## 2. Contained Elements
+## 2. Structure Overview
+
+```text
+📄 @id (1..1)
+📄 @version (1..1)
+📁 stopPlaces (0..1)
+   └── 📄 StopPlace (0..n)
+       ├── 📄 Name (0..1)
+       └── 📁 quays (0..1)
+           └── 📄 Quay (0..n)
+               └── 📄 Name (0..1)
+```
+
+## 3. Contained Elements
 
 - **stopPlaces** – Collection of [StopPlace](../../Objects/StopPlace/Table_StopPlace.md) definitions, each containing one or more [Quay](../../Objects/Quay/Table_Quay.md) elements
 
-## 3. Frame Relationships
+## 4. Frame Relationships
 
 SiteFrame is independent of other frames but provides the physical stop infrastructure that **ServiceFrame** references through PassengerStopAssignments. **TimetableFrame** indirectly depends on SiteFrame through the JourneyPattern stop sequence. SiteFrame is typically wrapped in a **CompositeFrame** within a PublicationDelivery.
 

@@ -6,13 +6,13 @@ This template defines the structure for all Frame description files in the NeTEx
 Frame descriptions are simpler than Object descriptions because Frames are containers that group
 related Objects rather than carrying rich domain data themselves.
 
-All description files must follow this 4-section format in the exact order specified below.
+All description files must follow this 5-section format in the exact order specified below.
 
 ---
 
 ## Mandatory Section Order
 
-**Sections 1–3 are required. Section 4 is optional.**
+**Sections 1–4 are required. Section 5 is optional.**
 All sections must appear in this exact sequence.
 
 ---
@@ -27,7 +27,53 @@ Should clarify where the frame sits in the NeTEx delivery structure (e.g., child
 
 ---
 
-## 2. Contained Elements
+## 2. Structure Overview
+
+**Required.** A visual, icon-based representation of the frame's top-level structure.
+Must follow the ordering and hierarchy shown in `Table_<FrameName>.md`.
+
+### Icon Legend
+- `📄` = Simple element or attribute (primitive data)
+- `📁` = Container element (collection)
+- `🔗` = Reference to another object (always include @ref suffix)
+
+### Cardinality Notation
+
+Use standard cardinality notation to express element requirements:
+
+| Notation | Meaning |
+| -------- | ------- |
+| `(1..1)` | Mandatory, exactly one |
+| `(1..n)` | Mandatory, one or more |
+| `(0..1)` | Optional, at most one |
+| `(0..n)` | Optional, zero or more |
+
+- Every element in the Structure Overview should include its cardinality.
+- Do **not** use words like "mandatory", "optional", or "required" — use cardinality notation instead.
+
+### Structure Example
+
+```text
+📄 @id (1..1)
+📄 @version (1..1)
+📁 organisations (0..1)
+   ├── 📄 Authority (0..n)
+   └── 📄 Operator (0..n)
+📁 vehicleTypes (0..1)
+   └── 📄 VehicleType (0..n)
+📁 vehicles (0..1)
+   └── 📄 Vehicle (0..n)
+```
+
+### Guidelines
+- Keep structure concise — show the frame's collections and their immediate children
+- Every element must show its cardinality using the notation above
+- Mirror the exact order from the XML examples
+- Use proper indentation and box-drawing lines (`├──`, `└──`)
+
+---
+
+## 3. Contained Elements
 
 **Required.** A bulleted list of the key collections and elements carried by this frame.
 Each item should name the container element and briefly describe what it holds, with links to
@@ -42,7 +88,7 @@ the relevant Object Table files where they exist.
 
 ---
 
-## 3. Frame Relationships
+## 4. Frame Relationships
 
 **Required.** Describe how this frame relates to other frames in a typical NeTEx delivery.
 Include which frames it depends on and which frames depend on it.
@@ -54,7 +100,7 @@ Include which frames it depends on and which frames depend on it.
 
 ---
 
-## 4. Usage Notes (optional)
+## 5. Usage Notes (optional)
 
 **Optional.** Any additional guidance on how to use the frame correctly.
 Include only when there are non-obvious constraints, ordering requirements, or common mistakes.
@@ -67,11 +113,13 @@ Include only when there are non-obvious constraints, ordering requirements, or c
 
 ## Section Rules & Constraints
 
-1. **Sections 1–3 are mandatory.** All must be present and in order.
-2. **Section 4 is optional.** Omit if not relevant.
+1. **Sections 1–4 are mandatory.** All must be present and in order.
+2. **Section 5 is optional.** Omit if not relevant.
 3. **No additional top-level sections.** Keep frame descriptions concise.
-4. **Use relative markdown links** to reference Object Table files: `[ObjectName](../../Objects/ObjectName/Table_ObjectName.md)`
-5. **Link to the frame's Table file** at the end of the description if one exists.
+4. **Structure Overview must use icon notation** (📄, 📁, 🔗) and match the XML example order.
+5. **Structure Overview must use cardinality notation** on every element: `(1..1)`, `(1..n)`, `(0..1)`, `(0..n)`.
+6. **Use relative markdown links** to reference Object Table files: `[ObjectName](../../Objects/ObjectName/Table_ObjectName.md)`
+7. **Link to the frame's Table file** at the end of the description if one exists.
 
 ---
 
@@ -80,9 +128,11 @@ Include only when there are non-obvious constraints, ordering requirements, or c
 Before finalizing a frame description file, verify:
 
 - [ ] **Purpose** is 2–3 sentences and clearly states the frame's role
+- [ ] **Structure Overview** uses icons consistently and matches the Table file order
+- [ ] **Structure Overview** uses cardinality notation on every element — no "mandatory"/"optional" words
 - [ ] **Contained Elements** lists all key collections from the XML example
 - [ ] **Contained Elements** links to existing Object Table files where available
 - [ ] **Frame Relationships** describes dependencies upstream and downstream
 - [ ] **Usage Notes** (if present) provides actionable, non-obvious guidance
-- [ ] **No sections beyond the 4 defined here**
+- [ ] **No sections beyond the 5 defined here**
 - [ ] **All relative links** are functional

@@ -4,11 +4,20 @@
 
 A **ServiceFrame** contains the network and route definitions for a public transport delivery. It groups Lines, Routes, JourneyPatterns, ScheduledStopPoints, DestinationDisplays, and PassengerStopAssignments — the structural elements that describe where and how services run.
 
-## 2. Contained Elements
+## 2. Structure Overview
+
+```text
+📄 @id (1..1)
+📄 @version (1..1)
+📁 lines (0..1)
+   └── 📄 Line (0..n)
+```
+
+## 3. Contained Elements
 
 - **lines** – Collection of [Line](../../Objects/Line/Table_Line.md) definitions describing transport services
 
-## 3. Frame Relationships
+## 4. Frame Relationships
 
 ServiceFrame depends on **ResourceFrame** for Operator and Authority definitions referenced by Lines. **TimetableFrame** depends on ServiceFrame for JourneyPatterns and Lines used by ServiceJourneys. **SiteFrame** provides the physical stop infrastructure (StopPlaces, Quays) that PassengerStopAssignments link to. All frames are typically wrapped in a **CompositeFrame** within a PublicationDelivery.
 
