@@ -61,7 +61,7 @@ Each guide lives in its own folder under [`Guides/`](Guides/) and can include su
 | [SeparationOfConcerns](Guides/SeparationOfConcerns/) | Domain separation, coupling strategies, and cross-frame patterns |
 | [Tools](Guides/Tools/) | Editors, plugins, validators, and development workflow |
 | [Validation](Guides/Validation/) | How to validate NeTEx XML against schemas and rules |
-| [InterchangeOnly](Guides/InterchangeOnly/) | Scope and constraints of the Interchange-only profile |
+| [Interchange](Guides/InterchangeOnly/Interchange_Guide.md) | Planned transfers, guaranteed connections, and interchangeOnly stops |
 | [Glossary](Guides/Glossary/) | Terminology and definitions |
 
 ---
