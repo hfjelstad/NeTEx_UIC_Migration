@@ -10,16 +10,16 @@
         <!-- Monomodal StopPlace with Quays -->
         <StopPlace id="ERP:StopPlace:1001" version="1">
           <Name>Oslo gate 1</Name>
-          <TransportMode>bus</TransportMode>
-          <StopPlaceType>onstreetBus</StopPlaceType>
           <Centroid>
             <Location>
               <gml:pos srsName="urn:ogc:def:crs:EPSG::4326">59.9123 10.7461</gml:pos>
             </Location>
           </Centroid>
+          <TransportMode>bus</TransportMode>
           <tariffZones>
             <TariffZoneRef ref="ERP:TariffZone:R1"/>
           </tariffZones>
+          <StopPlaceType>onstreetBus</StopPlaceType>
           <quays>
             <Quay id="ERP:Quay:1001-1" version="1">
               <Name>Retning sentrum</Name>
@@ -48,9 +48,9 @@
         <!-- Child monomodal pointing to parent -->
         <StopPlace id="ERP:StopPlace:3001" version="1">
           <Name>Oslo knutepunkt (buss)</Name>
+          <ParentSiteRef ref="ERP:StopPlace:3000"/>
           <TransportMode>bus</TransportMode>
           <StopPlaceType>busStation</StopPlaceType>
-          <ParentSiteRef ref="ERP:StopPlace:3000"/>
           <quays>
             <Quay id="ERP:Quay:3001-A" version="1">
               <Name>Terminal A</Name>

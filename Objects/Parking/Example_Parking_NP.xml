@@ -15,12 +15,12 @@
           </Centroid>
           <Covered>outdoors</Covered>
           <ParentSiteRef ref="NSR:StopPlace:59977"/>
+          <ParkingType>parkAndRide</ParkingType>
           <ParkingVehicleTypes>car</ParkingVehicleTypes>
           <ParkingLayout>openSpace</ParkingLayout>
           <TotalCapacity>150</TotalCapacity>
           <RechargingAvailable>true</RechargingAvailable>
           <ParkingPaymentProcess/>
-          <ParkingType>parkAndRide</ParkingType>
           <parkingProperties>
             <ParkingProperties id="NSR:ParkingProperties:1001_1" version="1">
               <ParkingUserTypes/>
