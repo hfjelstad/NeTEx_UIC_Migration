@@ -7,7 +7,7 @@
       <journeyPatterns>
         <JourneyPattern id="NP:JourneyPattern:81648_1" version="1">
           <Name>Arendal bussterminal -&gt; Kristiansand rutebilstasjon</Name>
-          <RouteRef ref="NP:Route:49747_1" version="1"/>
+          <RouteRef ref="NP:Route:49747_1"/>
           <pointsInSequence>
             <StopPointInJourneyPattern order="1" version="1" id="NP:StopPointInJourneyPattern:81648_1_1">
               <ScheduledStopPointRef ref="NP:ScheduledStopPoint:9060006_1"/>

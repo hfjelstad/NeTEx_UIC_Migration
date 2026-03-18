@@ -31,7 +31,7 @@
               </AccessibilityLimitation>
             </limitations>
           </AccessibilityAssessment>
-          <TopographicPlaceRef ref="NSR:TopographicPlace:Oslo" version="1"/>
+          <TopographicPlaceRef ref="NSR:TopographicPlace:Oslo"/>
           <TransportMode>rail</TransportMode>
           <StopPlaceType>railStation</StopPlaceType>
           <Weighting>interchangeAllowed</Weighting>

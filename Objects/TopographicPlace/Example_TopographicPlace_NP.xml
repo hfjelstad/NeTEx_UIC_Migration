@@ -14,7 +14,7 @@
           </Descriptor>
           <TopographicPlaceType>municipality</TopographicPlaceType>
           <CountryRef ref="no"/>
-          <ParentTopographicPlaceRef ref="NSR:TopographicPlace:Oslo_county" version="1"/>
+          <ParentTopographicPlaceRef ref="NSR:TopographicPlace:Oslo_county"/>
           <IsoCode>0301</IsoCode>
         </TopographicPlace>
       </topographicPlaces>

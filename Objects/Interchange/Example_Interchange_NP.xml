@@ -10,7 +10,7 @@
           <FromPointRef ref="NP:ScheduledStopPoint:9060006_1"/>
           <ToPointRef ref="NP:ScheduledStopPoint:9060006_1"/>
           <FromJourneyRef ref="NP:ServiceJourney:15044_371"/>
-          <ToJourneyRef ref="NP:ServiceJourney:15045_372" version="1"/>
+          <ToJourneyRef ref="NP:ServiceJourney:15045_372"/>
         </ServiceJourneyInterchange>
       </journeyInterchanges>
     </TimetableFrame>
