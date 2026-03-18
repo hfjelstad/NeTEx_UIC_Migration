@@ -3,9 +3,9 @@
   <PublicationTimestamp>2026-03-12T10:30:00Z</PublicationTimestamp>
   <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
-    <ResourceFrame id="ENT:ResourceFrame:AltName:1" version="1">
+    <ResourceFrame id="ERP:ResourceFrame:AltName:1" version="1">
       <organisations>
-        <Authority id="ENT:Authority:1" version="1">
+        <Authority id="ERP:Authority:1" version="1">
           <Name>Entur</Name>
           <alternativeNames>
             <AlternativeName>

@@ -3,9 +3,9 @@
   <PublicationTimestamp>2026-03-17T12:00:00Z</PublicationTimestamp>
   <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
-    <ServiceFrame id="AKT:ServiceFrame:dd:1" version="1">
+    <ServiceFrame id="NP:ServiceFrame:dd:1" version="1">
       <destinationDisplays>
-        <DestinationDisplay id="AKT:DestinationDisplay:3950001_1" version="1">
+        <DestinationDisplay id="NP:DestinationDisplay:3950001_1" version="1">
           <Name>Kristiansand via Baneheitunnelen</Name>
           <SideText>Kristiansand via Baneheitunnelen</SideText>
           <FrontText>Kristiansand via Baneheitunnelen</FrontText>

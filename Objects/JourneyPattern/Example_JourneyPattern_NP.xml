@@ -3,31 +3,31 @@
   <PublicationTimestamp>2026-03-17T12:00:00Z</PublicationTimestamp>
   <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
-    <ServiceFrame id="AKT:ServiceFrame:jp:1" version="1">
+    <ServiceFrame id="NP:ServiceFrame:jp:1" version="1">
       <journeyPatterns>
-        <JourneyPattern id="AKT:JourneyPattern:81648_1" version="1">
+        <JourneyPattern id="NP:JourneyPattern:81648_1" version="1">
           <Name>Arendal bussterminal -&gt; Kristiansand rutebilstasjon</Name>
-          <RouteRef ref="AKT:Route:49747_1" version="1"/>
+          <RouteRef ref="NP:Route:49747_1" version="1"/>
           <pointsInSequence>
-            <StopPointInJourneyPattern order="1" version="1" id="AKT:StopPointInJourneyPattern:81648_1_1">
-              <ScheduledStopPointRef ref="AKT:ScheduledStopPoint:9060006_1"/>
+            <StopPointInJourneyPattern order="1" version="1" id="NP:StopPointInJourneyPattern:81648_1_1">
+              <ScheduledStopPointRef ref="NP:ScheduledStopPoint:9060006_1"/>
               <ForAlighting>false</ForAlighting>
-              <DestinationDisplayRef ref="AKT:DestinationDisplay:3950001_1"/>
+              <DestinationDisplayRef ref="NP:DestinationDisplay:3950001_1"/>
             </StopPointInJourneyPattern>
-            <StopPointInJourneyPattern order="2" version="1" id="AKT:StopPointInJourneyPattern:81648_2_1">
-              <ScheduledStopPointRef ref="AKT:ScheduledStopPoint:9060007_1"/>
+            <StopPointInJourneyPattern order="2" version="1" id="NP:StopPointInJourneyPattern:81648_2_1">
+              <ScheduledStopPointRef ref="NP:ScheduledStopPoint:9060007_1"/>
             </StopPointInJourneyPattern>
-            <StopPointInJourneyPattern order="3" version="1" id="AKT:StopPointInJourneyPattern:81648_3_1">
-              <ScheduledStopPointRef ref="AKT:ScheduledStopPoint:10013457_1"/>
+            <StopPointInJourneyPattern order="3" version="1" id="NP:StopPointInJourneyPattern:81648_3_1">
+              <ScheduledStopPointRef ref="NP:ScheduledStopPoint:10013457_1"/>
               <ForBoarding>false</ForBoarding>
             </StopPointInJourneyPattern>
           </pointsInSequence>
           <linksInSequence>
-            <ServiceLinkInJourneyPattern order="1" version="1" id="AKT:ServiceLinkInJourneyPattern:3556197">
-              <ServiceLinkRef ref="AKT:ServiceLink:2645_1"/>
+            <ServiceLinkInJourneyPattern order="1" version="1" id="NP:ServiceLinkInJourneyPattern:3556197">
+              <ServiceLinkRef ref="NP:ServiceLink:2645_1"/>
             </ServiceLinkInJourneyPattern>
-            <ServiceLinkInJourneyPattern order="2" version="1" id="AKT:ServiceLinkInJourneyPattern:3556198">
-              <ServiceLinkRef ref="AKT:ServiceLink:2646_1"/>
+            <ServiceLinkInJourneyPattern order="2" version="1" id="NP:ServiceLinkInJourneyPattern:3556198">
+              <ServiceLinkRef ref="NP:ServiceLink:2646_1"/>
             </ServiceLinkInJourneyPattern>
           </linksInSequence>
         </JourneyPattern>

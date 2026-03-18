@@ -3,9 +3,9 @@
   <PublicationTimestamp>2026-03-12T13:45:00Z</PublicationTimestamp>
   <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
-    <GeneralFrame id="ENT:GeneralFrame:ShelterEquipmentExample:1" version="1">
+    <GeneralFrame id="ERP:GeneralFrame:ShelterEquipmentExample:1" version="1">
       <members>
-        <ShelterEquipment id="ENT:ShelterEquipment:1" version="1">
+        <ShelterEquipment id="ERP:ShelterEquipment:1" version="1">
           <ValidBetween>
             <FromDate>2026-03-12T00:00:00Z</FromDate>
             <ToDate>2027-03-12T00:00:00Z</ToDate>

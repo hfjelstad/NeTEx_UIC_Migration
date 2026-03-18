@@ -3,18 +3,32 @@
   <PublicationTimestamp>2026-03-17T12:00:00Z</PublicationTimestamp>
   <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
-    <TimetableFrame id="SJN:TimetableFrame:dsj:1" version="1">
-      <vehicleJourneys>
-        <DatedServiceJourney id="SJN:DatedServiceJourney:21_2026-06-01" version="1">
-          <ServiceJourneyRef ref="SJN:ServiceJourney:21_F6" version="0"/>
-          <OperatingDayRef ref="SJN:OperatingDay:2026-06-01"/>
-        </DatedServiceJourney>
-        <DatedServiceJourney id="SJN:DatedServiceJourney:21_2026-06-01_replaced" version="1">
-          <ServiceAlteration>replaced</ServiceAlteration>
-          <ServiceJourneyRef ref="SJN:ServiceJourney:21_F6" version="0"/>
-          <OperatingDayRef ref="SJN:OperatingDay:2026-06-01"/>
-        </DatedServiceJourney>
-      </vehicleJourneys>
-    </TimetableFrame>
+    <CompositeFrame id="NP:CompositeFrame:dsj:1" version="1">
+      <frames>
+        <ServiceCalendarFrame id="NP:ServiceCalendarFrame:dsj:1" version="1">
+          <operatingDays>
+            <OperatingDay id="NP:OperatingDay:2026-06-01" version="1">
+              <CalendarDate>2026-06-01</CalendarDate>
+            </OperatingDay>
+          </operatingDays>
+        </ServiceCalendarFrame>
+        <TimetableFrame id="NP:TimetableFrame:dsj:1" version="1">
+          <vehicleJourneys>
+            <ServiceJourney id="NP:ServiceJourney:21_F6" version="0">
+              <Name>Line 21 weekday pattern</Name>
+            </ServiceJourney>
+            <DatedServiceJourney id="NP:DatedServiceJourney:21_2026-06-01" version="1">
+              <ServiceJourneyRef ref="NP:ServiceJourney:21_F6" version="0"/>
+              <OperatingDayRef ref="NP:OperatingDay:2026-06-01"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="NP:DatedServiceJourney:21_2026-06-01_replaced" version="1">
+              <ServiceAlteration>replaced</ServiceAlteration>
+              <ServiceJourneyRef ref="NP:ServiceJourney:21_F6" version="0"/>
+              <OperatingDayRef ref="NP:OperatingDay:2026-06-01"/>
+            </DatedServiceJourney>
+          </vehicleJourneys>
+        </TimetableFrame>
+      </frames>
+    </CompositeFrame>
   </dataObjects>
 </PublicationDelivery>

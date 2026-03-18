@@ -3,12 +3,12 @@
   <PublicationTimestamp>2026-03-12T11:05:00Z</PublicationTimestamp>
   <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
-    <SiteFrame id="ENT:SiteFrame:AlternativeTextExample:1" version="1">
+    <SiteFrame id="ERP:SiteFrame:AlternativeTextExample:1" version="1">
       <alternativeTexts>
-        <AlternativeText id="ENT:AlternativeText:1" version="1">
+        <AlternativeText id="ERP:AlternativeText:1" version="1">
           <Text>Official description of the site frame.</Text>
         </AlternativeText>
-        <AlternativeText id="ENT:AlternativeText:2" version="1">
+        <AlternativeText id="ERP:AlternativeText:2" version="1">
           <Text>Marketing description for public display.</Text>
         </AlternativeText>
       </alternativeTexts>

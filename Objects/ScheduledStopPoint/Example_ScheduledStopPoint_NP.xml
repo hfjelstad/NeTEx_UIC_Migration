@@ -11,7 +11,7 @@
           </ValidBetween>
           <Name>Oslo S</Name>
         </ScheduledStopPoint>
-        <ScheduledStopPoint id="AKT:ScheduledStopPoint:9060006_1" version="1"/>
+        <ScheduledStopPoint id="NP:ScheduledStopPoint:9060006_1" version="1"/>
       </scheduledStopPoints>
     </ServiceFrame>
   </dataObjects>

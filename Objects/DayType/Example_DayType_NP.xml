@@ -3,16 +3,16 @@
   <PublicationTimestamp>2026-03-17T12:00:00Z</PublicationTimestamp>
   <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
-    <ServiceCalendarFrame id="AKT:ServiceCalendarFrame:dt:1" version="1">
+    <ServiceCalendarFrame id="NP:ServiceCalendarFrame:dt:1" version="1">
       <dayTypes>
-        <DayType id="AKT:DayType:160_1" version="1">
+        <DayType id="NP:DayType:160_1" version="1">
           <properties>
             <PropertyOfDay>
               <DaysOfWeek>Monday Tuesday Wednesday Thursday Friday</DaysOfWeek>
             </PropertyOfDay>
           </properties>
         </DayType>
-        <DayType id="AKT:DayType:164_1" version="1"/>
+        <DayType id="NP:DayType:164_1" version="1"/>
       </dayTypes>
     </ServiceCalendarFrame>
   </dataObjects>
