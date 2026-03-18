@@ -8,7 +8,7 @@
         <Route id="NP:Route:49747_1" version="1">
           <Name>Arendal bussterminal -&gt; Kristiansand rutebilstasjon</Name>
           <ShortName>Arendal -&gt; Kristiansand</ShortName>
-          <LineRef ref="NP:Line:100" version="1"/>
+          <LineRef ref="NP:Line:100"/>
           <DirectionType>outbound</DirectionType>
           <pointsInSequence>
             <PointOnRoute order="1" version="1" id="NP:PointOnRoute:3555907">
