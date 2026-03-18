@@ -3,7 +3,7 @@
                      xmlns:gml="http://www.opengis.net/gml/3.2"
                      version="1.0">
   <PublicationTimestamp>2026-02-15T11:00:00Z</PublicationTimestamp>
-  <ParticipantRef>ERP</ParticipantRef>
+  <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
     <SiteFrame id="ERP:SiteFrame:StopPlaceExample" version="1">
       <stopPlaces>

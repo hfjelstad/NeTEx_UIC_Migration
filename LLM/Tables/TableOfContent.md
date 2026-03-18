@@ -16,6 +16,7 @@ How-to guides, conceptual overviews, and reference material:
 
 Documentation for NeTEx frames (containers):
 
+- [CompositeFrame](../../Frames/CompositeFrame/) – Container frame grouping multiple frames into a single delivery
 - [FareFrame](../../Frames/FareFrame/) – Fares, tariffs and fare products
 - [ResourceFrame](../../Frames/ResourceFrame/) – Organizations and resources
 - [SalesTransactionFrame](../../Frames/SalesTransactionFrame/) – Sales transaction data
