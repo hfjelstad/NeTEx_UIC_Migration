@@ -57,9 +57,9 @@ Each guide lives in its own folder under [`Guides/`](Guides/) and can include su
 | Guide | Description |
 |-------|-------------|
 | [GetStarted](Guides/GetStarted/) | Minimal steps to begin working with the profile |
-| [FramesOverview](Guides/FramesOverview/) | Purpose and relationships of the various Frames |
 | [NeTExConventions](Guides/NeTExConventions/) | Casing rules, naming patterns, and a minimal example |
-| [SeparationOfConcerns](Guides/SeparationOfConcerns/) | Responsibilities and boundaries between components |
+| [SeparationOfConcerns](Guides/SeparationOfConcerns/) | Domain separation, coupling strategies, and cross-frame patterns |
+| [Tools](Guides/Tools/) | Editors, plugins, validators, and development workflow |
 | [Validation](Guides/Validation/) | How to validate NeTEx XML against schemas and rules |
 | [InterchangeOnly](Guides/InterchangeOnly/) | Scope and constraints of the Interchange-only profile |
 | [Glossary](Guides/Glossary/) | Terminology and definitions |
