@@ -23,6 +23,7 @@ A **ServiceCalendarFrame** groups calendar definitions that describe when servic
 
 - **dayTypes** – Collection of [DayType](../../Objects/DayType/Table_DayType.md) definitions describing reusable day patterns (e.g., Weekdays, Weekend) with DaysOfWeek properties
 - **operatingPeriods** – Collection of OperatingPeriod definitions specifying date-time windows (FromDate/ToDate) during which services apply
+- **operatingDays** – Collection of OperatingDay definitions representing individual calendar dates referenced by assignments
 - **dayTypeAssignments** – Collection of DayTypeAssignment definitions binding DayTypes to OperatingPeriods or specific dates, with isAvailable to include/exclude days
 
 ## 4. Frame Relationships

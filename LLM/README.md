@@ -44,6 +44,7 @@ The agent must always consult this folder when reading, validating, or generatin
 
 **Reference Materials:**
 
+- [AgentGuides/](AgentGuides/) – Operational guides for LLM agents (validation, setup, workflows)
 - [Templates/](Templates/) – Templates for creating new documentation
 - [../../Objects/](../../Objects/) – All Object documentation
 - [../../Frames/](../../Frames/) – All Frame documentation

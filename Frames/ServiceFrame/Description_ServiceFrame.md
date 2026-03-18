@@ -33,6 +33,13 @@ A **ServiceFrame** contains the network and route definitions for a public trans
 ## 3. Contained Elements
 
 - **lines** – Collection of [Line](../../Objects/Line/Table_Line.md) definitions describing transport services
+- **groupOfLines** – Collection of [GroupOfLines](../../Objects/GroupOfLines/Table_GroupOfLines.md) definitions grouping related lines together
+- **routes** – Collection of [Route](../../Objects/Route/Table_Route.md) definitions describing the geographical course of a line
+- **journeyPatterns** – Collection of [JourneyPattern](../../Objects/JourneyPattern/Table_JourneyPattern.md) definitions describing ordered sequences of stop points for journeys
+- **scheduledStopPoints** – Collection of [ScheduledStopPoint](../../Objects/ScheduledStopPoint/Table_ScheduledStopPoint.md) definitions representing logical stop points in a schedule
+- **stopAssignments** – Collection of [PassengerStopAssignment](../../Objects/PassengerStopAssignment/Table_PassengerStopAssignment.md) definitions linking ScheduledStopPoints to physical StopPlace/Quay
+- **destinationDisplays** – Collection of [DestinationDisplay](../../Objects/DestinationDisplay/Table_DestinationDisplay.md) definitions describing destination text shown to passengers
+- **notices** – Collection of [Notice](../../Objects/Notice/Table_Notice.md) definitions providing informational messages associated with services
 
 ## 4. Frame Relationships
 
