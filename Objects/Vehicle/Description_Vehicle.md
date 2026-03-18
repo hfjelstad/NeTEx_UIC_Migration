@@ -10,9 +10,9 @@ A **Vehicle** represents a specific physical vehicle in the fleet used to operat
 📄 Vehicle
   ├─ 📄 @id (1..1)
   ├─ 📄 @version (1..1)
-  ├─ 🔗 VehicleTypeRef/@ref (1..1)
   ├─ 📄 RegistrationNumber (0..1)
-  └─ 🔗 OperatorRef/@ref (0..1)
+  ├─ 🔗 OperatorRef/@ref (0..1)
+  └─ 🔗 VehicleTypeRef/@ref (1..1)
 ```
 
 ## 3. Key Elements

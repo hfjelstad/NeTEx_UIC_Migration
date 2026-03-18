@@ -2,7 +2,7 @@
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ERP="http://www.entur.org/netex/ERP" version="1.0">
   <PublicationTimestamp>2026-02-15T00:00:00Z</PublicationTimestamp>
   <ParticipantRef>EuPro</ParticipantRef>
-  <DataObjects>
+  <dataObjects>
     <CompositeFrame id="ERP:CompositeFrame:ScheduledStopPoint:1" version="1">
       <codespaces>
         <Codespace id="ERP">
@@ -39,5 +39,5 @@
         </ServiceFrame>
       </frames>
     </CompositeFrame>
-  </DataObjects>
+  </dataObjects>
 </PublicationDelivery>

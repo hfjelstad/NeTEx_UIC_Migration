@@ -6,6 +6,9 @@
     <SiteFrame id="NSR:SiteFrame:stops:1" version="1">
       <stopPlaces>
         <StopPlace id="NSR:StopPlace:59977" version="1">
+          <ValidBetween>
+            <FromDate>2020-01-01T00:00:00.000</FromDate>
+          </ValidBetween>
           <keyList>
             <KeyValue>
               <Key>imported-id</Key>
@@ -19,9 +22,6 @@
               <Latitude>59.910890</Latitude>
             </Location>
           </Centroid>
-          <ValidBetween>
-            <FromDate>2020-01-01T00:00:00.000</FromDate>
-          </ValidBetween>
           <AccessibilityAssessment id="NSR:AccessibilityAssessment:59977" version="1">
             <MobilityImpairedAccess>true</MobilityImpairedAccess>
             <limitations>
@@ -38,6 +38,7 @@
           <quays>
             <Quay id="NSR:Quay:107401" version="1">
               <Name lang="nor">Spor 1</Name>
+              <PrivateCode type="StopPoint">1</PrivateCode>
               <Centroid>
                 <Location>
                   <Longitude>10.752300</Longitude>
@@ -45,7 +46,6 @@
                 </Location>
               </Centroid>
               <PublicCode>1</PublicCode>
-              <PrivateCode type="StopPoint">1</PrivateCode>
               <CompassBearing>85.0</CompassBearing>
             </Quay>
           </quays>

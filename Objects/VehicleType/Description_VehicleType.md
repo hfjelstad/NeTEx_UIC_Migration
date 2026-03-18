@@ -15,7 +15,7 @@ A **VehicleType** represents a typified vehicle configuration (model or series) 
   ├─ 📄 Length (0..1)
   ├─ 📄 Width (0..1)
   ├─ 📄 Height (0..1)
-  ├─ 📁 Capacity (0..1)
+  ├─ 📁 PassengerCapacity (0..1)
   │  ├─ 📄 SeatedCapacity (0..1)
   │  ├─ 📄 StandingCapacity (0..1)
   │  └─ 📄 WheelchairCapacity (0..1)
@@ -25,9 +25,9 @@ A **VehicleType** represents a typified vehicle configuration (model or series) 
 ## 3. Key Elements
 
 - **Name**: Human-readable name of the vehicle type (e.g., "Standard 12m Bus"); mandatory for identification.
-- **Capacity**: Container for passenger capacity breakdown — seated, standing, and wheelchair positions.
+- **PassengerCapacity**: Container for passenger capacity breakdown — seated, standing, and wheelchair positions.
 - **Length / Width / Height**: Physical dimensions of the vehicle in meters; critical for infrastructure compatibility.
-- **PropulsionType**: Fuel or propulsion classification (e.g., `diesel`, `electric`, `hydrogen`).
+- **PropulsionType**: Fuel or propulsion classification (e.g., `combustion`, `electric`, `hydrogen`).
 
 ## 4. References
 

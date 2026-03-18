@@ -6,7 +6,7 @@
   <Description>Eksempelrute for linje 10, retning utgående</Description>
   <LineRef ref="ERP:Line:LIN_10"/>
   <DirectionType>outbound</DirectionType>
-  <PointsInSequence>
+  <pointsInSequence>
     <PointOnRoute id="ERP:PointOnRoute:POR_10_1" version="1" order="1">
       <ScheduledStopPointRef ref="ERP:ScheduledStopPoint:SSP_1001"/>
     </PointOnRoute>
@@ -16,5 +16,5 @@
     <PointOnRoute id="ERP:PointOnRoute:POR_10_3" version="1" order="3">
       <ScheduledStopPointRef ref="ERP:ScheduledStopPoint:SSP_1003"/>
     </PointOnRoute>
-  </PointsInSequence>
+  </pointsInSequence>
 </Route>
