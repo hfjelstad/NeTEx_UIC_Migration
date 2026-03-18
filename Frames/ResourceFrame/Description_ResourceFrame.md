@@ -22,6 +22,10 @@ A **ResourceFrame** contains shared resources used across other frames in a NeTE
 
 ## 3. Contained Elements
 
+- **codespaces** – Collection of [Codespace](../../Objects/Codespace/Table_Codespace.md) definitions establishing namespace context for identifiers
+- **responsibilitySets** – Collection of [ResponsibilitySet](../../Objects/ResponsibilitySet/Table_ResponsibilitySet.md) definitions assigning organisational responsibilities
+- **typesOfValue** – Collection of type-of-value definitions:
+  - [PurposeOfGrouping](../../Objects/PurposeOfGrouping/Table_PurposeOfGrouping.md) – Classification values used to categorise groupings of elements
 - **organisations** – Collection of organisational entities:
   - [Authority](../../Objects/Authority/Table_Authority.md) – Public transport planning and regulatory bodies
   - [Operator](../../Objects/Operator/Table_Operator.md) – Service providers contracted to run transport services
