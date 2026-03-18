@@ -70,6 +70,8 @@ Each guide lives in its own folder under [`Guides/`](Guides/) and can include su
 | [Accessibility](Guides/Accessibility/Accessibility_Guide.md) | AccessibilityAssessment, equipment, and indoor navigation paths |
 | [FareModelling](Guides/FareModelling/FareModelling_Guide.md) | Products, zones, tariffs, and sales offer packages |
 | [DecisionMakers](Guides/DecisionMakers/DecisionMakers_Guide.md) | NeTEx overview for decision makers and stakeholders |
+| [RegulatoryCompliance](Guides/RegulatoryCompliance/RegulatoryCompliance_Guide.md) | Delegated Regulation 2017/1926 requirements and NAP submission |
+| [MaaSConsumers](Guides/MaaSConsumers/MaaSConsumers_Guide.md) | Consuming NeTEx datasets as a MaaS platform |
 | [Glossary](Guides/Glossary/) | Terminology and definitions |
 
 ---
