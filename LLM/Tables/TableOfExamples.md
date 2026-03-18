@@ -5,6 +5,7 @@ Complete index of all XML examples in the repository.
 ## Frames
 
 - [Example_PublicationDelivery.xml](../../Frames/Example_PublicationDelivery.xml) – Root container with composite frame structure
+- [Example_CompositeFrame.xml](../../Frames/CompositeFrame/Example_CompositeFrame.xml) – Composite frame grouping multiple frames
 - [Example_FareFrame.xml](../../Frames/FareFrame/Example_FareFrame.xml) – Fares and tariffs structure with products and validations
 - [Example_ResourceFrame.xml](../../Frames/ResourceFrame/Example_ResourceFrame.xml) – Organizations, operators, and resources
 - [Example_ServiceCalendarFrame.xml](../../Frames/ServiceCalendarFrame/Example_ServiceCalendarFrame.xml) – Service calendars and day types
