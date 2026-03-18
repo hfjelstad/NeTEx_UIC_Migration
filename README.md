@@ -62,6 +62,11 @@ Each guide lives in its own folder under [`Guides/`](Guides/) and can include su
 | [Tools](Guides/Tools/) | Editors, plugins, validators, and development workflow |
 | [Validation](Guides/Validation/) | How to validate NeTEx XML against schemas and rules |
 | [Interchange](Guides/InterchangeOnly/Interchange_Guide.md) | Planned transfers, guaranteed connections, and interchangeOnly stops |
+| [OrganisationalGovernance](Guides/OrganisationalGovernance/OrganisationalGovernance_Guide.md) | Authority, Operator, Contract, and ResponsibilitySet |
+| [StopInfrastructure](Guides/StopInfrastructure/StopInfrastructure_Guide.md) | Logical stops, physical platforms, and the PassengerStopAssignment bridge |
+| [JourneyLifecycle](Guides/JourneyLifecycle/JourneyLifecycle_Guide.md) | Line → Route → JourneyPattern → ServiceJourney → DatedServiceJourney |
+| [VehicleScheduling](Guides/VehicleScheduling/VehicleScheduling_Guide.md) | Blocks, VehicleType, Vehicle, and fleet assignment |
+| [PassengerInformation](Guides/PassengerInformation/PassengerInformation_Guide.md) | DestinationDisplay, Notice, and FlexibleServiceProperties |
 | [Glossary](Guides/Glossary/) | Terminology and definitions |
 
 ---
