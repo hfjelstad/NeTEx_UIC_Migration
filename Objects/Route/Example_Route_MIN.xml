@@ -3,7 +3,6 @@
 <Route xmlns="http://www.netex.org.uk/netex" id="ERP:Route:ROU_10_OUT" version="1">
   <Name>Linje 10 – Utgående</Name>
   <ShortName>10</ShortName>
-  <PublicCode>10</PublicCode>
   <Description>Eksempelrute for linje 10, retning utgående</Description>
   <LineRef ref="ERP:Line:LIN_10"/>
   <DirectionType>outbound</DirectionType>
