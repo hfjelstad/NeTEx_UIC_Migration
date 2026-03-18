@@ -19,19 +19,19 @@ In this guide you will learn:
 Public transport data naturally separates into three concerns, each with a distinct focus and audience:
 
 ```text
-┌─────────────────────┐    ┌─────────────────────┐    ┌─────────────────────┐
-│  🚉 Infrastructure  │    │  🚌 Vehicle          │    │  🧳 Traveler         │
-│                     │    │     Operations       │    │     Information     │
-│  Planning traffic   │    │  Describing the      │    │  Describing the     │
-│  flow to ensure     │    │  vehicles needed to  │    │  travel opportunity │
-│  optimal use of     │    │  perform journeys    │    │  for passengers     │
-│  railway infra.     │    │  and dead runs       │    │                     │
-├─────────────────────┤    ├─────────────────────┤    ├─────────────────────┤
-│  Train paths/slots  │    │  Block, TrainBlock   │    │  ServiceJourney     │
-│  Infrastructure     │    │  TrainPart, Vehicle  │    │  JourneyPattern     │
-│  manager allocation │    │  VehicleSchedule     │    │  Line, Route        │
-│                     │    │  DeadRun             │    │  ScheduledStopPoint │
-└─────────────────────┘    └─────────────────────┘    └─────────────────────┘
++---------------------+    +---------------------+    +---------------------+
+| INFRASTRUCTURE      |    | VEHICLE OPERATIONS  |    | TRAVELER            |
+|                     |    |                     |    | INFORMATION         |
+| Planning traffic    |    | Describing the      |    | Describing the      |
+| flow to ensure      |    | vehicles needed to  |    | travel opportunity  |
+| optimal use of      |    | perform journeys    |    | for passengers      |
+| railway infra.      |    | and dead runs       |    |                     |
+|---------------------|    |---------------------|    |---------------------|
+| Train paths/slots   |    | Block, TrainBlock   |    | ServiceJourney      |
+| Infrastructure      |    | TrainPart, Vehicle  |    | JourneyPattern      |
+| manager allocation  |    | VehicleSchedule     |    | Line, Route         |
+|                     |    | DeadRun             |    | ScheduledStopPoint  |
++---------------------+    +---------------------+    +---------------------+
 ```
 
 ### Domain → Frame Mapping
@@ -55,10 +55,10 @@ The PDF reference material defines three strategies for linking objects across d
 The simplest approach: one object directly references another.
 
 ```text
-┌───────────────┐         ┌───────────────┐
-│   Object A    │────────▶│   Object B    │
-│               │  @ref   │               │
-└───────────────┘         └───────────────┘
++---------------+         +---------------+
+|   Object A    |-------->|   Object B    |
+|               |  @ref   |               |
++---------------+         +---------------+
 ```
 
 | | |
@@ -87,10 +87,10 @@ The simplest approach: one object directly references another.
 An intermediate object (link) connects A and B, but the link is managed by one domain's system.
 
 ```text
-┌───────────────┐    ┌───────────────┐    ┌───────────────┐
-│   Object A    │◀───│  Objects Link │───▶│   Object B    │
-│               │    │  (owned by B) │    │               │
-└───────────────┘    └───────────────┘    └───────────────┘
++---------------+    +---------------+    +---------------+
+|   Object A    |<---|  Objects Link |--->|   Object B    |
+|               |    |  (owned by B) |    |               |
++---------------+    +---------------+    +---------------+
 ```
 
 | | |
@@ -119,10 +119,10 @@ An intermediate object (link) connects A and B, but the link is managed by one d
 The link object is fully independent — owned by neither A's nor B's system. Only the link needs to change when relationships shift.
 
 ```text
-┌───────────────┐    ┌───────────────┐    ┌───────────────┐
-│   Object A    │◀───│  Objects Link │───▶│   Object B    │
-│               │    │ (independent) │    │               │
-└───────────────┘    └───────────────┘    └───────────────┘
++---------------+    +---------------+    +---------------+
+|   Object A    |<---|  Objects Link |--->|   Object B    |
+|               |    | (independent) |    |               |
++---------------+    +---------------+    +---------------+
 ```
 
 | | |
@@ -164,22 +164,22 @@ The link object is fully independent — owned by neither A's nor B's system. On
 The full picture shows how **ObjectsLink** patterns connect all three domains while keeping them independent:
 
 ```text
-  🚉 Infrastructure           🚌 Vehicle Operations         🧳 Traveler Information
-┌─────────────────────┐    ┌─────────────────────┐    ┌─────────────────────┐
-│                     │    │                     │    │                     │
-│  Infrastructure     │    │  Vehicle journey    │    │  ServiceJourney     │
-│  availability       │    │  (Block/TrainBlock) │    │                     │
-│                     │    │                     │    │                     │
-└────────┬────────────┘    └──────┬──────┬───────┘    └──────────┬──────────┘
-         │                       │      │                        │
-         │    ┌──────────────────┘      └────────────────┐       │
-         │    │                                          │       │
-    ┌────▼────▼────┐                                ┌────▼───────▼───┐
-    │              │                                │                │
-    │ Objects Link │                                │  Objects Link  │
-    │              │                                │                │
-    └──────────────┘                                └────────────────┘
-  Infra ↔ Vehicle link                           Vehicle ↔ Traveler link
+   Infrastructure              Vehicle Operations           Traveler Information
++---------------------+    +---------------------+    +---------------------+
+|                     |    |                     |    |                     |
+|  Infrastructure     |    |  Vehicle journey    |    |  ServiceJourney     |
+|  availability       |    |  (Block/TrainBlock) |    |                     |
+|                     |    |                     |    |                     |
++--------+------------+    +------+------+-------+    +----------+----------+
+         |                       |      |                        |
+         |    +------------------+      +----------------+       |
+         |    |                                          |       |
+    +----v----v----+                                +----v-------v---+
+    |              |                                |                |
+    | Objects Link |                                |  Objects Link  |
+    |              |                                |                |
+    +--------------+                                +----------------+
+  Infra <-> Vehicle link                         Vehicle <-> Traveler link
 ```
 
 Each domain publishes its data in its own frame within a [CompositeFrame](../../Frames/CompositeFrame/Description_CompositeFrame.md). The link objects can live in the domain they serve or in a separate assignment frame, depending on the chosen separation level.
