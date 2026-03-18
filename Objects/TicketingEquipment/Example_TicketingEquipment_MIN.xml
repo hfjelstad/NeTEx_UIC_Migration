@@ -3,9 +3,9 @@
   <PublicationTimestamp>2026-03-12T14:00:00Z</PublicationTimestamp>
   <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
-    <GeneralFrame id="ENT:GeneralFrame:TicketingEquipmentExample:1" version="1">
+    <GeneralFrame id="ERP:GeneralFrame:TicketingEquipmentExample:1" version="1">
       <members>
-        <TicketingEquipment id="ENT:TicketingEquipment:1" version="1">
+        <TicketingEquipment id="ERP:TicketingEquipment:1" version="1">
           <ValidBetween>
             <FromDate>2026-03-12T00:00:00Z</FromDate>
             <ToDate>2027-03-12T00:00:00Z</ToDate>

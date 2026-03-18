@@ -3,9 +3,9 @@
   <PublicationTimestamp>2026-03-12T13:25:00Z</PublicationTimestamp>
   <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
-    <ResourceFrame id="ENT:ResourceFrame:PurposeOfGroupingExample:1" version="1">
+    <ResourceFrame id="ERP:ResourceFrame:PurposeOfGroupingExample:1" version="1">
       <typesOfValue>
-        <PurposeOfGrouping id="ENT:PurposeOfGrouping:1" version="1">
+        <PurposeOfGrouping id="ERP:PurposeOfGrouping:1" version="1">
           <Name>Marketing grouping</Name>
         </PurposeOfGrouping>
       </typesOfValue>

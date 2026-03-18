@@ -12,8 +12,8 @@
           <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:S59977" versionRef="1"/>
           <StopPlaceRef ref="NSR:StopPlace:59977" version="1"/>
         </PassengerStopAssignment>
-        <PassengerStopAssignment order="2" version="1" id="AKT:PassengerStopAssignment:10176612_1">
-          <ScheduledStopPointRef ref="AKT:ScheduledStopPoint:10176612_1" version="1"/>
+        <PassengerStopAssignment order="2" version="1" id="NP:PassengerStopAssignment:10176612_1">
+          <ScheduledStopPointRef ref="NP:ScheduledStopPoint:10176612_1" version="1"/>
           <QuayRef ref="NSR:Quay:43750"/>
         </PassengerStopAssignment>
       </stopAssignments>

@@ -3,9 +3,9 @@
   <PublicationTimestamp>2026-03-12T13:55:00Z</PublicationTimestamp>
   <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
-    <ResourceFrame id="ENT:ResourceFrame:TariffZoneExample:1" version="1">
+    <ResourceFrame id="ERP:ResourceFrame:TariffZoneExample:1" version="1">
       <zones>
-        <TariffZone id="ENT:TariffZone:1" version="1">
+        <TariffZone id="ERP:TariffZone:1" version="1">
           <Name>Zone A</Name>
         </TariffZone>
       </zones>

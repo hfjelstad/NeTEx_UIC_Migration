@@ -3,9 +3,9 @@
   <PublicationTimestamp>2026-03-12T13:18:00Z</PublicationTimestamp>
   <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
-    <SiteFrame id="ENT:SiteFrame:ParkingExample:1" version="1">
+    <SiteFrame id="ERP:SiteFrame:ParkingExample:1" version="1">
       <parkings>
-        <Parking id="ENT:Parking:1" version="1">
+        <Parking id="ERP:Parking:1" version="1">
           <Name>Park and Ride Example</Name>
           <ParkingType>parkAndRide</ParkingType>
         </Parking>

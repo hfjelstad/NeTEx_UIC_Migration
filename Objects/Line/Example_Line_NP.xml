@@ -3,9 +3,9 @@
   <PublicationTimestamp>2026-03-17T12:00:00Z</PublicationTimestamp>
   <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
-    <ServiceFrame id="AKT:ServiceFrame:lines:1" version="1">
+    <ServiceFrame id="NP:ServiceFrame:lines:1" version="1">
       <lines>
-        <Line id="AKT:Line:100" version="1">
+        <Line id="NP:Line:100" version="1">
           <Name>Arendal-Kristiansand</Name>
           <TransportMode>bus</TransportMode>
           <TransportSubmode>
@@ -13,8 +13,8 @@
           </TransportSubmode>
           <PublicCode>100</PublicCode>
           <PrivateCode>100</PrivateCode>
-          <OperatorRef ref="AKT:Operator:923"/>
-          <RepresentedByGroupRef ref="AKT:Network:AKTNett"/>
+          <OperatorRef ref="NP:Operator:923"/>
+          <RepresentedByGroupRef ref="NP:Network:AKTNett"/>
           <Presentation>
             <Colour>000000</Colour>
             <TextColour>FFFF00</TextColour>

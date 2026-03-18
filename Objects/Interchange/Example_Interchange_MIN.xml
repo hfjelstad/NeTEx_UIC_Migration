@@ -3,21 +3,21 @@
   <PublicationTimestamp>2026-02-28T01:47:03Z</PublicationTimestamp>
   <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
-    <CompositeFrame id="ENT:CompositeFrame:InterchangeDemo:1" version="1">
+    <CompositeFrame id="ERP:CompositeFrame:InterchangeDemo:1" version="1">
       <frames>
-        <TimetableFrame id="ENT:TimetableFrame:1" version="1">
+        <TimetableFrame id="ERP:TimetableFrame:1" version="1">
           <vehicleJourneys>
-            <ServiceJourney id="ENT:ServiceJourney:1001" version="1">
+            <ServiceJourney id="ERP:ServiceJourney:1001" version="1">
               <Name>Demo A</Name>
             </ServiceJourney>
-            <ServiceJourney id="ENT:ServiceJourney:1002" version="1">
+            <ServiceJourney id="ERP:ServiceJourney:1002" version="1">
               <Name>Demo B</Name>
             </ServiceJourney>
           </vehicleJourneys>
           <journeyInterchanges>
-            <ServiceJourneyInterchange id="ENT:ServiceJourneyInterchange:1001_to_1002" version="1">
-              <FromJourneyRef ref="ENT:ServiceJourney:1001"/>
-              <ToJourneyRef ref="ENT:ServiceJourney:1002"/>
+            <ServiceJourneyInterchange id="ERP:ServiceJourneyInterchange:1001_to_1002" version="1">
+              <FromJourneyRef ref="ERP:ServiceJourney:1001"/>
+              <ToJourneyRef ref="ERP:ServiceJourney:1002"/>
             </ServiceJourneyInterchange>
           </journeyInterchanges>
         </TimetableFrame>

@@ -3,9 +3,9 @@
   <PublicationTimestamp>2026-03-17T12:00:00Z</PublicationTimestamp>
   <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
-    <ResourceFrame id="AKT:ResourceFrame:operators:1" version="1">
+    <ResourceFrame id="NP:ResourceFrame:operators:1" version="1">
       <organisations>
-        <Operator id="AKT:Operator:331" version="1">
+        <Operator id="NP:Operator:331" version="1">
           <CompanyNumber>974208849</CompanyNumber>
           <Name>Boreal Sjø</Name>
           <LegalName>Boreal Sjø AS</LegalName>

@@ -3,14 +3,14 @@
   <PublicationTimestamp>2026-03-17T12:00:00Z</PublicationTimestamp>
   <ParticipantRef>EuPro</ParticipantRef>
   <dataObjects>
-    <TimetableFrame id="AKT:TimetableFrame:ic:1" version="1">
+    <TimetableFrame id="NP:TimetableFrame:ic:1" version="1">
       <journeyInterchanges>
-        <ServiceJourneyInterchange id="AKT:ServiceJourneyInterchange:1330756_1_1" version="1">
+        <ServiceJourneyInterchange id="NP:ServiceJourneyInterchange:1330756_1_1" version="1">
           <Guaranteed>true</Guaranteed>
-          <FromPointRef ref="AKT:ScheduledStopPoint:9060006_1"/>
-          <ToPointRef ref="AKT:ScheduledStopPoint:9060006_1"/>
-          <FromJourneyRef ref="AKT:ServiceJourney:15044_371"/>
-          <ToJourneyRef ref="AKT:ServiceJourney:15045_372" version="1"/>
+          <FromPointRef ref="NP:ScheduledStopPoint:9060006_1"/>
+          <ToPointRef ref="NP:ScheduledStopPoint:9060006_1"/>
+          <FromJourneyRef ref="NP:ServiceJourney:15044_371"/>
+          <ToJourneyRef ref="NP:ServiceJourney:15045_372" version="1"/>
         </ServiceJourneyInterchange>
       </journeyInterchanges>
     </TimetableFrame>
