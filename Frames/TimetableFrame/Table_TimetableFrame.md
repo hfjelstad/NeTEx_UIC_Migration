@@ -13,8 +13,12 @@ TimetableFrame
  │   └─ DeadRun (0..n)
  ├─ coupledJourneys (0..1)
  │   └─ CoupledJourney (0..n)
- └─ interchangeRules (0..1)
-     └─ InterchangeRule (0..n)
+ ├─ interchangeRules (0..1)
+ │   └─ InterchangeRule (0..n)
+ ├─ noticeAssignments (0..1)
+ │   └─ NoticeAssignment (0..n)
+ └─ journeyInterchanges (0..1)
+     └─ ServiceJourneyInterchange (0..n)
 ```
 
 ## Table
@@ -32,3 +36,7 @@ TimetableFrame
 | CoupledJourney | Element | Linking of journeys that run coupled together | TimetableFrame/coupledJourneys/CoupledJourney |
 | interchangeRules | Container | Collection of interchange rule definitions | TimetableFrame/interchangeRules |
 | InterchangeRule | Element | Guaranteed or timed connection between journeys | TimetableFrame/interchangeRules/InterchangeRule |
+| noticeAssignments | Container | Collection of NoticeAssignment definitions | TimetableFrame/noticeAssignments |
+| NoticeAssignment | Element | Links a Notice to a timetable object | TimetableFrame/noticeAssignments/NoticeAssignment |
+| journeyInterchanges | Container | Collection of interchange definitions | TimetableFrame/journeyInterchanges |
+| ServiceJourneyInterchange | Element | Timed connection between journeys | TimetableFrame/journeyInterchanges/ServiceJourneyInterchange |

@@ -6,12 +6,30 @@ The **Parking** represents a parking facility associated with public transport, 
 
 ## 2. Structure Overview
 
-```
-📄 Parking
+```text
+Parking
   ├─ 📄 @id (1..1)
   ├─ 📄 @version (1..1)
   ├─ 📄 Name (1..1)
-  └─ 📄 ParkingType (0..1)
+  ├─ 📁 Centroid (0..1)
+  │  └─ 📁 Location (1..1)
+  │     ├─ 📄 Longitude (1..1)
+  │     └─ 📄 Latitude (1..1)
+  ├─ 📄 Covered (0..1)
+  ├─ 🔗 ParentSiteRef/@ref (0..1)
+  ├─ 📄 ParkingType (0..1)
+  ├─ 📄 ParkingVehicleTypes (0..1)
+  ├─ 📄 ParkingLayout (0..1)
+  ├─ 📄 TotalCapacity (0..1)
+  ├─ 📄 RechargingAvailable (0..1)
+  ├─ 📄 ParkingPaymentProcess (0..1)
+  └─ 📁 parkingProperties (0..1)
+     └─ 📁 ParkingProperties (0..*)
+        └─ 📁 spaces (0..1)
+           └─ 📁 ParkingCapacity (0..*)
+              ├─ 📄 ParkingUserType (1..1)
+              ├─ 📄 NumberOfSpaces (0..1)
+              └─ 📄 NumberOfSpacesWithRechargePoint (0..1)
 ```
 
 ## 3. Key Elements

@@ -10,9 +10,10 @@ The **WaitingRoomEquipment** describes enclosed indoor waiting room facilities a
 📄 WaitingRoomEquipment
   ├─ 📄 @id (1..1)
   ├─ 📄 @version (1..1)
-  └─ 📁 ValidBetween (0..1)
-     ├─ 📄 FromDate (1..1)
-     └─ 📄 ToDate (1..1)
+  ├─ 📄 Seats (0..1)
+  ├─ 📄 StepFree (0..1)
+  ├─ 📄 Heated (0..1)
+  └─ 📄 Sanitary (0..1)
 ```
 
 ## 3. Key Elements

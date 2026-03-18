@@ -10,12 +10,10 @@ The **Route** represents the logical geographic path definition for a Line with 
   ├─ 📄 @version (1..1)
   ├─ 📄 Name (1..1)
   ├─ 📄 ShortName (0..1)
-  ├─ 📄 PublicCode (0..1)
   ├─ 📄 Description (0..1)
-  ├─ 📄 PrivateCode (0..1)
   ├─ 🔗 LineRef/@ref (1..1)
   ├─ 📄 DirectionType (0..1)
-  └─ 📁 PointsInSequence (1..1)
+  └─ 📁 pointsInSequence (1..1)
      └─ 📁 PointOnRoute (1..n)
         ├─ 📄 @order (1..1)
         └─ 🔗 ScheduledStopPointRef/@ref (1..1)
@@ -25,9 +23,9 @@ The **Route** represents the logical geographic path definition for a Line with 
 - **Name**: Human-readable Route name (e.g., "Line 10 Outbound"); appears in planning systems and customer-facing displays.
 - **LineRef**: Mandatory reference to the Line this Route belongs to; establishes the ownership and context for the route.
 - **DirectionType**: Optional directional classifier (inbound, outbound, clockwise, counterclockwise) for clarity in bidirectional or circular routes.
-- **PointsInSequence**: Mandatory ordered list of PointOnRoute elements defining the stop sequence; must contain at least one stop.
+- **pointsInSequence**: Mandatory ordered list of PointOnRoute elements defining the stop sequence; must contain at least one stop.
 - **PointOnRoute**: Individual stop within the sequence; each has an @order attribute and ScheduledStopPointRef; order must be sequential (1, 2, 3, ...).
-- **ShortName/PublicCode**: Optional display codes for compact representation; helps in timetable and signage display.
+- **ShortName**: Optional display code for compact representation; helps in timetable and signage display.
 
 ## 4. References
 - [Line](../Line/Table_Line.md) – Transport service line this Route belongs to

@@ -1,65 +1,306 @@
 # Table of Examples
 
-XML examples organized by main categories.
-
-## Objects
-
-- [AlternativeName.xml](Objects/AlternativeName/AlternativeName.xml) – Alternative names for an object
-- [AlternativeText.xml](Objects/AlternativeText/AlternativeText.xml) – Alternative text representations
-- [Example_Authority.xml](Objects/Authority/Example_Authority.xml) – Transit authority organization definition
-- [Example_Codespace.xml](Objects/Codespace/Example_Codespace.xml) – Codespace definition for XML namespace mapping
-- [Example_Contract_Minimal.xml](Objects/Contract/Example_Contract_Minimal.xml) – Minimal contract definition
-- [Example_DatedServiceJourney.xml](Objects/DatedServiceJourney/Example_DatedServiceJourney.xml) – Service journey for a specific date
-- [Example_DatedServiceJourney_ERP.xml](Objects/DatedServiceJourney/Example_DatedServiceJourney_ERP.xml) – Dated service journey with ERP codespace
-- [Example_DatedServiceJourney_Extended_01_Reinforcement.xml](Objects/DatedServiceJourney/Example_DatedServiceJourney_Extended_01_Reinforcement.xml) – Service reinforcement (additional departures)
-- [Example_DatedServiceJourney_Extended_02_Replacement.xml](Objects/DatedServiceJourney/Example_DatedServiceJourney_Extended_02_Replacement.xml) – Service replacement scenario
-- [Example_DatedServiceJourney_Extended_03_BlockLinked.xml](Objects/DatedServiceJourney/Example_DatedServiceJourney_Extended_03_BlockLinked.xml) – Block-linked vehicle journeys
-- [Example_DatedServiceJourney_Extended_04_MultiRef.xml](Objects/DatedServiceJourney/Example_DatedServiceJourney_Extended_04_MultiRef.xml) – Multiple reference handling
-- [Example_DatedServiceJourney_MIN.xml](Objects/DatedServiceJourney/Example_DatedServiceJourney_MIN.xml) – Minimal dated service journey
-- [Example_DatedServiceJourney_NP.xml](Objects/DatedServiceJourney/Example_DatedServiceJourney_NP.xml) – Non-passenger attributes
-- [Example_DayType.xml](Objects/DayType/Example_DayType.xml) – Day type definition (weekdays, holidays, etc.)
-- [DestinationDisplay.xml](Objects/DestinationDisplay/DestinationDisplay.xml) – Digital destination display content
-- [Example_FareContract_Minimal.xml](Objects/FareContract/Example_FareContract_Minimal.xml) – Minimal fare contract definition
-- [Example_FareZone.xml](Objects/FareZone/Example_FareZone.xml) – Tariff zone for fare structure
-- [FlexibleServiceProperties.xml](Objects/FlexibleServiceProperties/FlexibleServiceProperties.xml) – Flexible transport properties
-- [Example_GroupOfLines.xml](Objects/GroupOfLines/Example_GroupOfLines.xml) – Grouping of multiple lines
-- [Example_Interchange.xml](Objects/Interchange/Example_Interchange.xml) – Service journey interchanges and transfer rules
-- [Example_JourneyPattern.xml](Objects/JourneyPattern/Example_JourneyPattern.xml) – Route pattern with ordered stops
-- [Example_Line.xml](Objects/Line/Example_Line.xml) – Public transport line with operator and mode
-- [Example_OperatingPeriod.xml](Objects/OperatingPeriod/Example_OperatingPeriod.xml) – Operating period validity dates
-- [Example_Operator.xml](Objects/Operator/Example_Operator.xml) – Transport operator/company definition
-- [Parking.xml](Objects/Parking/Parking.xml) – Parking facility definition
-- [Example_PassengerStopAssignment.xml](Objects/PassengerStopAssignment/Example_PassengerStopAssignment.xml) – Assignment of passengers to specific quays
-- [PurposeOfGrouping.xml](Objects/PurposeOfGrouping/PurposeOfGrouping.xml) – Purpose for grouping lines or stops
-- [Example_Quay.xml](Objects/Quay/Example_Quay.xml) – Individual boarding/alighting point
-- [Example_ResponsibilitySet.xml](Objects/ResponsibilitySet/Example_ResponsibilitySet.xml) – Organization responsibility assignment
-- [Example_ResponsibilitySet_Contract.xml](Objects/ResponsibilitySet/Example_ResponsibilitySet_Contract.xml) – Responsibility with contract details
-- [Example_Route.xml](Objects/Route/Example_Route.xml) – Transport route definition
-- [SanitaryEquipment.xml](Objects/SanitaryEquipment/SanitaryEquipment.xml) – Sanitary facilities at stops
-- [Example_ScheduledStopPoint.xml](Objects/ScheduledStopPoint/Example_ScheduledStopPoint.xml) – Stop point in a service pattern
-- [Example_ServiceJourney_MIN.xml](Objects/ServiceJourney/Example_ServiceJourney_MIN.xml) – Minimal service journey definition
-- [Example_ServiceJourney_NP.xml](Objects/ServiceJourney/Example_ServiceJourney_NP.xml) – Service journey with non-passenger attributes
-- [ShelterEquipment.xml](Objects/ShelterEquipment/ShelterEquipment.xml) – Waiting shelters at stops
-- [Example_StopPlace.xml](Objects/StopPlace/Example_StopPlace.xml) – Stop place with location and quays
-- [TariffZone.xml](Objects/TariffZone/TariffZone.xml) – Zone for tariff/fare calculation
-- [TicketingEquipment.xml](Objects/TicketingEquipment/TicketingEquipment.xml) – Ticket vending and validation equipment
-- [TopographicPlace.xml](Objects/TopographicPlace/TopographicPlace.xml) – Geographic location/place name
-- [Example_TrainBlock.xml](Objects/TrainBlock/Example_TrainBlock.xml) – Train block assignment
-- [Example_Vehicle.xml](Objects/Vehicle/Example_Vehicle.xml) – Vehicle/rolling stock definition
-- [Example_VehicleType.xml](Objects/VehicleType/Example_VehicleType.xml) – Vehicle type classification
-- [WaitingRoomEquipment.xml](Objects/WaitingRoomEquipment/WaitingRoomEquipment.xml) – Waiting room at stops
+Complete index of all XML examples in the repository.
 
 ## Frames
 
-- [Example_PublicationDelivery.xml](Frames/Example_PublicationDelivery.xml) – Root container with composite frame structure
-- [Example_FareFrame.xml](Frames/FareFrame/Example_FareFrame.xml) – Fares and tariffs structure with products and validations
-- [Example_ResourceFrame.xml](Frames/ResourceFrame/Example_ResourceFrame.xml) – Organizations, operators, and resources
-- [Example_ServiceCalendarFrame.xml](Frames/ServiceCalendarFrame/Example_ServiceCalendarFrame.xml) – Service calendars and day types
-- [Example_ServiceFrame.xml](Frames/ServiceFrame/Example_ServiceFrame.xml) – Lines, routes, and patterns
-- [Example_SiteFrame.xml](Frames/SiteFrame/Example_SiteFrame.xml) – Stop places and physical infrastructure
-- [Example_TimetableFrame.xml](Frames/TimetableFrame/Example_TimetableFrame.xml) – Service journeys and vehicle schedules
-- [Example_VehicleScheduleFrame.xml](Frames/VehicleScheduleFrame/Example_VehicleScheduleFrame.xml) – Vehicle scheduling and assignments
+- [Example_PublicationDelivery.xml](../../Frames/Example_PublicationDelivery.xml) – Root container with composite frame structure
+- [Example_FareFrame.xml](../../Frames/FareFrame/Example_FareFrame.xml) – Fares and tariffs structure with products and validations
+- [Example_ResourceFrame.xml](../../Frames/ResourceFrame/Example_ResourceFrame.xml) – Organizations, operators, and resources
+- [Example_ServiceCalendarFrame.xml](../../Frames/ServiceCalendarFrame/Example_ServiceCalendarFrame.xml) – Service calendars and day types
+- [Example_ServiceFrame.xml](../../Frames/ServiceFrame/Example_ServiceFrame.xml) – Lines, routes, and patterns
+- [Example_SiteFrame.xml](../../Frames/SiteFrame/Example_SiteFrame.xml) – Stop places and physical infrastructure
+- [Example_TimetableFrame.xml](../../Frames/TimetableFrame/Example_TimetableFrame.xml) – Service journeys and vehicle schedules
+- [Example_VehicleScheduleFrame.xml](../../Frames/VehicleScheduleFrame/Example_VehicleScheduleFrame.xml) – Vehicle scheduling and assignments
 
-## Guides
+## Objects
 
-No XML examples found in Guides folder.
+<details open>
+<summary>AlternativeName</summary>
+
+- [Example_AlternativeName_MIN.xml](../../Objects/AlternativeName/Example_AlternativeName_MIN.xml) – Minimum profile example
+- [Example_AlternativeName_NP.xml](../../Objects/AlternativeName/Example_AlternativeName_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>AlternativeText</summary>
+
+- [Example_AlternativeText_MIN.xml](../../Objects/AlternativeText/Example_AlternativeText_MIN.xml) – Minimum profile example
+
+</details>
+
+<details open>
+<summary>Authority</summary>
+
+- [Example_Authority_MIN.xml](../../Objects/Authority/Example_Authority_MIN.xml) – Minimum profile example
+- [Example_Authority_NP.xml](../../Objects/Authority/Example_Authority_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>Codespace</summary>
+
+- [Example_Codespace.xml](../../Objects/Codespace/Example_Codespace.xml) – Codespace definition for XML namespace mapping
+
+</details>
+
+<details open>
+<summary>Contract</summary>
+
+- [Example_Contract_Minimal.xml](../../Objects/Contract/Example_Contract_Minimal.xml) – Minimal contract definition
+
+</details>
+
+<details open>
+<summary>DatedServiceJourney</summary>
+
+- [Example_DatedServiceJourney_MIN.xml](../../Objects/DatedServiceJourney/Example_DatedServiceJourney_MIN.xml) – Minimum profile example
+- [Example_DatedServiceJourney_ERP.xml](../../Objects/DatedServiceJourney/Example_DatedServiceJourney_ERP.xml) – European Recommended Profile example
+- [Example_DatedServiceJourney_NP.xml](../../Objects/DatedServiceJourney/Example_DatedServiceJourney_NP.xml) – Nordic Profile example
+- [Example_DatedServiceJourney_Extended_01_Reinforcement.xml](../../Objects/DatedServiceJourney/Example_DatedServiceJourney_Extended_01_Reinforcement.xml) – Reinforcement scenario (additional departures)
+- [Example_DatedServiceJourney_Extended_02_Replacement.xml](../../Objects/DatedServiceJourney/Example_DatedServiceJourney_Extended_02_Replacement.xml) – Replacement scenario (substitute service)
+- [Example_DatedServiceJourney_Extended_03_BlockLinked.xml](../../Objects/DatedServiceJourney/Example_DatedServiceJourney_Extended_03_BlockLinked.xml) – Block-linked vehicle journeys
+- [Example_DatedServiceJourney_Extended_04_MultiRef.xml](../../Objects/DatedServiceJourney/Example_DatedServiceJourney_Extended_04_MultiRef.xml) – Multiple reference handling
+
+</details>
+
+<details open>
+<summary>DayType</summary>
+
+- [Example_DayType_MIN.xml](../../Objects/DayType/Example_DayType_MIN.xml) – Minimum profile example
+- [Example_DayType_NP.xml](../../Objects/DayType/Example_DayType_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>DestinationDisplay</summary>
+
+- [Example_DestinationDisplay_MIN.xml](../../Objects/DestinationDisplay/Example_DestinationDisplay_MIN.xml) – Minimum profile example
+- [Example_DestinationDisplay_NP.xml](../../Objects/DestinationDisplay/Example_DestinationDisplay_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>FareContract</summary>
+
+- [Example_FareContract_Minimal.xml](../../Objects/FareContract/Example_FareContract_Minimal.xml) – Minimal fare contract definition
+
+</details>
+
+<details open>
+<summary>FareZone</summary>
+
+- [Example_FareZone.xml](../../Objects/FareZone/Example_FareZone.xml) – Fare zone definition for tariff structure
+
+</details>
+
+<details open>
+<summary>FlexibleServiceProperties</summary>
+
+- [Example_FlexibleServiceProperties_MIN.xml](../../Objects/FlexibleServiceProperties/Example_FlexibleServiceProperties_MIN.xml) – Minimum profile example
+
+</details>
+
+<details open>
+<summary>GroupOfLines</summary>
+
+- [Example_GroupOfLines.xml](../../Objects/GroupOfLines/Example_GroupOfLines.xml) – Grouping of multiple lines
+
+</details>
+
+<details open>
+<summary>Interchange</summary>
+
+- [Example_Interchange_MIN.xml](../../Objects/Interchange/Example_Interchange_MIN.xml) – Minimum profile example
+- [Example_Interchange_NP.xml](../../Objects/Interchange/Example_Interchange_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>JourneyPattern</summary>
+
+- [Example_JourneyPattern_MIN.xml](../../Objects/JourneyPattern/Example_JourneyPattern_MIN.xml) – Minimum profile example
+- [Example_JourneyPattern_NP.xml](../../Objects/JourneyPattern/Example_JourneyPattern_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>Line</summary>
+
+- [Example_Line_MIN.xml](../../Objects/Line/Example_Line_MIN.xml) – Minimum profile example
+- [Example_Line_NP.xml](../../Objects/Line/Example_Line_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>Notice</summary>
+
+- [Example_Notice_NP.xml](../../Objects/Notice/Example_Notice_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>OperatingPeriod</summary>
+
+- [Example_OperatingPeriod.xml](../../Objects/OperatingPeriod/Example_OperatingPeriod.xml) – Operating period validity dates
+
+</details>
+
+<details open>
+<summary>Operator</summary>
+
+- [Example_Operator_MIN.xml](../../Objects/Operator/Example_Operator_MIN.xml) – Minimum profile example
+- [Example_Operator_NP.xml](../../Objects/Operator/Example_Operator_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>Parking</summary>
+
+- [Example_Parking_MIN.xml](../../Objects/Parking/Example_Parking_MIN.xml) – Minimum profile example
+- [Example_Parking_NP.xml](../../Objects/Parking/Example_Parking_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>PassengerStopAssignment</summary>
+
+- [Example_PassengerStopAssignment_MIN.xml](../../Objects/PassengerStopAssignment/Example_PassengerStopAssignment_MIN.xml) – Minimum profile example
+- [Example_PassengerStopAssignment_NP.xml](../../Objects/PassengerStopAssignment/Example_PassengerStopAssignment_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>PurposeOfGrouping</summary>
+
+- [Example_PurposeOfGrouping_MIN.xml](../../Objects/PurposeOfGrouping/Example_PurposeOfGrouping_MIN.xml) – Minimum profile example
+
+</details>
+
+<details open>
+<summary>Quay</summary>
+
+- [Example_Quay_MIN.xml](../../Objects/Quay/Example_Quay_MIN.xml) – Minimum profile example
+- [Example_Quay_NP.xml](../../Objects/Quay/Example_Quay_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>ResponsibilitySet</summary>
+
+- [Example_ResponsibilitySet.xml](../../Objects/ResponsibilitySet/Example_ResponsibilitySet.xml) – Organization responsibility assignment
+- [Example_ResponsibilitySet_Contract.xml](../../Objects/ResponsibilitySet/Example_ResponsibilitySet_Contract.xml) – Responsibility set with contract details
+
+</details>
+
+<details open>
+<summary>Route</summary>
+
+- [Example_Route_MIN.xml](../../Objects/Route/Example_Route_MIN.xml) – Minimum profile example
+- [Example_Route_NP.xml](../../Objects/Route/Example_Route_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>SanitaryEquipment</summary>
+
+- [Example_SanitaryEquipment_MIN.xml](../../Objects/SanitaryEquipment/Example_SanitaryEquipment_MIN.xml) – Minimum profile example
+- [Example_SanitaryEquipment_NP.xml](../../Objects/SanitaryEquipment/Example_SanitaryEquipment_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>ScheduledStopPoint</summary>
+
+- [Example_ScheduledStopPoint_MIN.xml](../../Objects/ScheduledStopPoint/Example_ScheduledStopPoint_MIN.xml) – Minimum profile example
+- [Example_ScheduledStopPoint_NP.xml](../../Objects/ScheduledStopPoint/Example_ScheduledStopPoint_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>ServiceJourney</summary>
+
+- [Example_ServiceJourney_MIN.xml](../../Objects/ServiceJourney/Example_ServiceJourney_MIN.xml) – Minimum profile example
+- [Example_ServiceJourney_NP.xml](../../Objects/ServiceJourney/Example_ServiceJourney_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>ShelterEquipment</summary>
+
+- [Example_ShelterEquipment_MIN.xml](../../Objects/ShelterEquipment/Example_ShelterEquipment_MIN.xml) – Minimum profile example
+- [Example_ShelterEquipment_NP.xml](../../Objects/ShelterEquipment/Example_ShelterEquipment_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>StopPlace</summary>
+
+- [Example_StopPlace_MIN.xml](../../Objects/StopPlace/Example_StopPlace_MIN.xml) – Minimum profile example
+- [Example_StopPlace_NP.xml](../../Objects/StopPlace/Example_StopPlace_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>TariffZone</summary>
+
+- [Example_TariffZone_MIN.xml](../../Objects/TariffZone/Example_TariffZone_MIN.xml) – Minimum profile example
+- [Example_TariffZone_NP.xml](../../Objects/TariffZone/Example_TariffZone_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>TicketingEquipment</summary>
+
+- [Example_TicketingEquipment_MIN.xml](../../Objects/TicketingEquipment/Example_TicketingEquipment_MIN.xml) – Minimum profile example
+- [Example_TicketingEquipment_NP.xml](../../Objects/TicketingEquipment/Example_TicketingEquipment_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>TopographicPlace</summary>
+
+- [Example_TopographicPlace_MIN.xml](../../Objects/TopographicPlace/Example_TopographicPlace_MIN.xml) – Minimum profile example
+- [Example_TopographicPlace_NP.xml](../../Objects/TopographicPlace/Example_TopographicPlace_NP.xml) – Nordic Profile example
+
+</details>
+
+<details open>
+<summary>TrainBlock</summary>
+
+- [Example_TrainBlock.xml](../../Objects/TrainBlock/Example_TrainBlock.xml) – Train block assignment
+
+</details>
+
+<details open>
+<summary>Vehicle</summary>
+
+- [Example_Vehicle.xml](../../Objects/Vehicle/Example_Vehicle.xml) – Vehicle/rolling stock definition
+
+</details>
+
+<details open>
+<summary>VehicleType</summary>
+
+- [Example_VehicleType.xml](../../Objects/VehicleType/Example_VehicleType.xml) – Vehicle type classification
+
+</details>
+
+<details open>
+<summary>WaitingRoomEquipment</summary>
+
+- [Example_WaitingRoomEquipment_MIN.xml](../../Objects/WaitingRoomEquipment/Example_WaitingRoomEquipment_MIN.xml) – Minimum profile example
+- [Example_WaitingRoomEquipment_NP.xml](../../Objects/WaitingRoomEquipment/Example_WaitingRoomEquipment_NP.xml) – Nordic Profile example
+
+</details>
+
+## How to maintain this list
+
+When adding a new XML example to the repository:
+
+1. Place the XML file in the appropriate subfolder under `Objects/` or `Frames/`.
+2. Add an entry inside the object's `<details open>` section in the correct alphabetical position.
+3. If the object does not yet have a `<details open>` section, create one.
+4. Use the relative path format `../../Objects/<ObjectName>/<Filename>.xml` or `../../Frames/<FrameName>/<Filename>.xml`.
+5. Include a short description after the link (e.g., "Minimum profile example", "Nordic Profile example").

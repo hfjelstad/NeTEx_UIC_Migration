@@ -4,15 +4,28 @@
 The **Line** represents a public transport service line within a ServiceFrame. It is a core organizational entity that groups together related routes and journeys providing the same public transport service (e.g., "Bus Line 5" or "Train Line 101"). A Line identifies the operator, provides visual presentation properties (colors), and serves as the container for route patterns and scheduled journeys.
 
 ## 2. Structure Overview
-```
-📄 Line
-  ├─ 📄 @id (1..1)
-  ├─ 📄 @version (1..1)
-  ├─ 📄 Name (1..1)
-  ├─ 🔗 OperatorRef/@ref (1..1)
-  └─ 📁 Presentation (0..1)
-     ├─ 📄 Colour (0..1)
-     └─ 📄 TextColour (0..1)
+```text
+Line
+ ├─ 📄 @id (1..1)
+ ├─ 📄 @version (1..1)
+ ├─ 📄 Name (1..1)
+ ├─ 📄 TransportMode (1..1)
+ ├─ 📁 TransportSubmode (0..1)
+ │  ├─ 📄 BusSubmode (0..1)
+ │  ├─ 📄 RailSubmode (0..1)
+ │  ├─ 📄 WaterSubmode (0..1)
+ │  ├─ 📄 TramSubmode (0..1)
+ │  ├─ 📄 MetroSubmode (0..1)
+ │  ├─ 📄 AirSubmode (0..1)
+ │  ├─ 📄 CoachSubmode (0..1)
+ │  └─ 📄 TelecabinSubmode (0..1)
+ ├─ 🔗 OperatorRef/@ref (1..1)
+ ├─ 📄 PublicCode (0..1)
+ ├─ 📄 PrivateCode (0..1)
+ ├─ 🔗 RepresentedByGroupRef/@ref (0..1)
+ └─ 📁 Presentation (0..1)
+    ├─ 📄 Colour (0..1)
+    └─ 📄 TextColour (0..1)
 ```
 
 ## 3. Key Elements

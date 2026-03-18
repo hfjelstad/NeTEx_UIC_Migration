@@ -11,10 +11,16 @@ A **SiteFrame** contains the physical infrastructure model for public transport 
 📄 @version (1..1)
 📁 stopPlaces (0..1)
    └── 📄 StopPlace (0..n)
-       ├── 📄 Name (0..1)
-       └── 📁 quays (0..1)
-           └── 📄 Quay (0..n)
-               └── 📄 Name (0..1)
+📁 topographicPlaces (0..1)
+   └── 📄 TopographicPlace (0..n)
+📁 parkings (0..1)
+   └── 📄 Parking (0..n)
+📁 tariffZones (0..1)
+   └── 📄 TariffZone (0..n)
+📁 groupsOfStopPlaces (0..1)
+   └── 📄 GroupOfStopPlaces (0..n)
+📁 groupsOfTariffZones (0..1)
+   └── 📄 GroupOfTariffZones (0..n)
 ```
 
 ## 3. Contained Elements

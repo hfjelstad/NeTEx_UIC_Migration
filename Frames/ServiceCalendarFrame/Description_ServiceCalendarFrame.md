@@ -11,20 +11,12 @@ A **ServiceCalendarFrame** groups calendar definitions that describe when servic
 📄 @version (1..1)
 📁 dayTypes (0..1)
    └── 📄 DayType (0..n)
-       ├── 📄 Name (0..1)
-       └── 📁 properties (0..1)
-           └── 📄 PropertyOfDay (0..n)
-               └── 📄 DaysOfWeek (0..1)
 📁 operatingPeriods (0..1)
    └── 📄 OperatingPeriod (0..n)
-       ├── 📄 FromDate (1..1)
-       └── 📄 ToDate (1..1)
 📁 dayTypeAssignments (0..1)
    └── 📄 DayTypeAssignment (0..n)
-       ├── 🔗 OperatingPeriodRef/@ref (0..1)
-       ├── 📄 Date (0..1)
-       ├── 🔗 DayTypeRef/@ref (1..1)
-       └── 📄 isAvailable (0..1)
+📁 operatingDays (0..1)
+   └── 📄 OperatingDay (0..n)
 ```
 
 ## 3. Contained Elements

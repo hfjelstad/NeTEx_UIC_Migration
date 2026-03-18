@@ -11,15 +11,15 @@ A **TrainBlock** is a rail-specific specialisation of Block that represents an o
   ├─ 📄 @id (1..1)
   ├─ 📄 @version (1..1)
   ├─ 📄 Name (0..1)
-  ├─ 📄 PublicCode (0..1)
-  └─ 🔗 OperatorRef/@ref (0..1)
+  ├─ 📄 Description (0..1)
+  └─ 📁 journeys (0..1)
 ```
 
 ## 3. Key Elements
 
 - **Name**: Human-readable label for the train block (e.g., "TrainBlock TB:1"); used in operational displays.
-- **PublicCode**: Short code for operational communication between dispatch and crew.
-- **OperatorRef**: Optional reference to the operating organisation responsible for this block.
+- **Description**: Optional free-text description providing additional context about the block.
+- **journeys**: Container for references to DatedServiceJourneys that belong to this block.
 
 ## 4. References
 

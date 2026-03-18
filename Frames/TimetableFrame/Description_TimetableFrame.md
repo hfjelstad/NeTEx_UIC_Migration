@@ -18,6 +18,10 @@ A **TimetableFrame** contains the operational journey definitions — the actual
    └── 📄 CoupledJourney (0..n)
 📁 interchangeRules (0..1)
    └── 📄 InterchangeRule (0..n)
+📁 noticeAssignments (0..1)
+   └── 📄 NoticeAssignment (0..n)
+📁 journeyInterchanges (0..1)
+   └── 📄 ServiceJourneyInterchange (0..n)
 ```
 
 ## 3. Contained Elements

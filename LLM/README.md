@@ -39,8 +39,8 @@ The agent must always consult this folder when reading, validating, or generatin
 
 **Essential Index Files:**
 
-- [TableOfContent.md](../TableOfContent.md) – Complete index of all Objects, Frames, and Guides with descriptions
-- [TableOfExamples.md](../TableOfExamples.md) – Searchable list of all XML examples with brief descriptions
+- [TableOfContent.md](Tables/TableOfContent.md) – Complete index of all Objects, Frames, and Guides with descriptions
+- [TableOfExamples.md](Tables/TableOfExamples.md) – Searchable list of all XML examples with brief descriptions
 
 **Reference Materials:**
 

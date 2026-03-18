@@ -10,9 +10,10 @@ The **SanitaryEquipment** describes sanitary facilities (toilets, washrooms) ava
 📄 SanitaryEquipment
   ├─ 📄 @id (1..1)
   ├─ 📄 @version (1..1)
-  └─ 📁 ValidBetween (0..1)
-     ├─ 📄 FromDate (1..1)
-     └─ 📄 ToDate (1..1)
+  ├─ 📄 Gender (0..1)
+  ├─ 📄 SanitaryFacilityList (0..1)
+  ├─ 📄 NumberOfToilets (0..1)
+  └─ 📄 PaymentMethods (0..1)
 ```
 
 ## 3. Key Elements

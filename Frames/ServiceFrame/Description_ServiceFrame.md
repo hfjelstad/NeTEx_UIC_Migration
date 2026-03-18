@@ -11,6 +11,23 @@ A **ServiceFrame** contains the network and route definitions for a public trans
 📄 @version (1..1)
 📁 lines (0..1)
    └── 📄 Line (0..n)
+📁 routes (0..1)
+   └── 📄 Route (0..n)
+📁 journeyPatterns (0..1)
+   └── 📄 JourneyPattern (0..n)
+📁 routePoints (0..1)
+   └── 📄 RoutePoint (0..n)
+📁 scheduledStopPoints (0..1)
+   └── 📄 ScheduledStopPoint (0..n)
+📁 serviceLinks (0..1)
+   └── 📄 ServiceLink (0..n)
+📁 stopAssignments (0..1)
+   └── 📄 PassengerStopAssignment (0..n)
+📁 destinationDisplays (0..1)
+   └── 📄 DestinationDisplay (0..n)
+📁 notices (0..1)
+   └── 📄 Notice (0..n)
+📄 Network (0..1)
 ```
 
 ## 3. Contained Elements

@@ -1,21 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:siri="http://www.siri.org.uk/siri" version="1.0">
-    <PublicationTimestamp>2022-02-15T09:30:46.0Z</PublicationTimestamp>
-    <ParticipantRef>ERP</ParticipantRef>
-    <dataObjects>
-        <TimetableFrame version="1" id="ERP:TimetableFrame:1">
-            <vehicleJourneys>
-                <DatedServiceJourney version="1" id="ERP:DatedServiceJourney:Core">
-                    <ServiceAlteration>planned</ServiceAlteration> <!-- Enums: planned (Default), cancellation, replaced and extraJourney -->
-                    <TrainBlockRef ref="ERP:TrainBlock:Vehicle"/> <!-- Linking planned movement of vehicles with ServiceJourney -->
-                    <ServiceJourneyRef ref="ERP:ServiceJourney:Core"/>
-                    <replacedJourneys>
-                        <DatedVehicleJourneyRef ref="ERP:DatedServiceJourney:Example-1"/>
-                        <DatedVehicleJourneyRef ref="ERP:DatedServiceJourney:Example-2"/>
-                    </replacedJourneys>
-                    <OperatingDayRef ref="ERP:OperatingDay:2026-03-07"/>
-                </DatedServiceJourney>
-            </vehicleJourneys>
-        </TimetableFrame>                
-    </dataObjects>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" version="2.0">
+  <PublicationTimestamp>2026-03-17T12:00:00Z</PublicationTimestamp>
+  <ParticipantRef>EuPro</ParticipantRef>
+  <dataObjects>
+    <CompositeFrame id="NP:CompositeFrame:dsj:1" version="1">
+      <frames>
+        <ServiceCalendarFrame id="NP:ServiceCalendarFrame:dsj:1" version="1">
+          <operatingDays>
+            <OperatingDay id="NP:OperatingDay:2026-06-01" version="1">
+              <CalendarDate>2026-06-01</CalendarDate>
+            </OperatingDay>
+          </operatingDays>
+        </ServiceCalendarFrame>
+        <TimetableFrame id="NP:TimetableFrame:dsj:1" version="1">
+          <vehicleJourneys>
+            <ServiceJourney id="NP:ServiceJourney:21_F6" version="0">
+              <Name>Line 21 weekday pattern</Name>
+            </ServiceJourney>
+            <DatedServiceJourney id="NP:DatedServiceJourney:21_2026-06-01" version="1">
+              <ServiceJourneyRef ref="NP:ServiceJourney:21_F6" version="0"/>
+              <OperatingDayRef ref="NP:OperatingDay:2026-06-01"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="NP:DatedServiceJourney:21_2026-06-01_replaced" version="1">
+              <ServiceAlteration>replaced</ServiceAlteration>
+              <ServiceJourneyRef ref="NP:ServiceJourney:21_F6" version="0"/>
+              <OperatingDayRef ref="NP:OperatingDay:2026-06-01"/>
+            </DatedServiceJourney>
+          </vehicleJourneys>
+        </TimetableFrame>
+      </frames>
+    </CompositeFrame>
+  </dataObjects>
 </PublicationDelivery>
