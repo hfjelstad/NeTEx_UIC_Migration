@@ -44,12 +44,6 @@
             </TopographicPlace>
           </topographicPlaces>
 
-          <tariffZones>
-            <TariffZone id="ERP:TariffZone:Zone1" version="1">
-              <Name>Zone 1 - Oslo sentrum</Name>
-            </TariffZone>
-          </tariffZones>
-
           <stopPlaces>
             <!--
               MULTIMODAL PARENT: Oslo S
@@ -147,6 +141,12 @@
               </quays>
             </StopPlace>
           </stopPlaces>
+
+          <tariffZones>
+            <TariffZone id="ERP:TariffZone:Zone1" version="1">
+              <Name>Zone 1 - Oslo sentrum</Name>
+            </TariffZone>
+          </tariffZones>
         </SiteFrame>
 
         <!-- ============================================================

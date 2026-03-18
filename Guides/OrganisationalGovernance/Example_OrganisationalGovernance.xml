@@ -91,12 +91,11 @@
               <ContactDetails>
                 <Url>https://vy.no</Url>
               </ContactDetails>
+              <OrganisationType>operator</OrganisationType>
               <CustomerServiceContactDetails>
                 <Phone>+47 61 05 19 10</Phone>
                 <Url>https://vy.no/kundeservice</Url>
               </CustomerServiceContactDetails>
-              <OrganisationType>operator</OrganisationType>
-              <AuthorityRef ref="ERP:Authority:Ruter"/>
             </Operator>
 
             <!-- Operator 2: bus services -->
@@ -107,7 +106,6 @@
                 <Url>https://unibuss.no</Url>
               </ContactDetails>
               <OrganisationType>operator</OrganisationType>
-              <AuthorityRef ref="ERP:Authority:Ruter"/>
             </Operator>
           </organisations>
         </ResourceFrame>

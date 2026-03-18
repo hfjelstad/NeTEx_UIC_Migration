@@ -42,13 +42,13 @@
             <VehicleType id="ERP:VehicleType:Bus_12m_Electric" version="1">
               <Name>Standard 12m Electric Bus</Name>
               <Description>Low-floor electric city bus</Description>
-              <Length>12.0</Length>
-              <PassengerCapacity>
-                <SeatedCapacity>45</SeatedCapacity>
-                <StandingCapacity>35</StandingCapacity>
-                <WheelchairCapacity>2</WheelchairCapacity>
-              </PassengerCapacity>
               <PropulsionType>electric</PropulsionType>
+              <PassengerCapacity id="ERP:PassengerCapacity:Bus_12m_Electric" version="1">
+                <SeatingCapacity>45</SeatingCapacity>
+                <StandingCapacity>35</StandingCapacity>
+                <WheelchairPlaceCapacity>2</WheelchairPlaceCapacity>
+              </PassengerCapacity>
+              <Length>12.0</Length>
             </VehicleType>
           </vehicleTypes>
           <vehicles>
