@@ -18,9 +18,9 @@ This repository is a human-friendly entry point to NeTEx: a place to learn the s
 
 | Step | Where | What you'll find |
 |------|-------|-----------------|
-| 1 | [`Guides/`](Guides/) | Conceptual overviews, conventions, and getting started material |
-| 2 | [`Frames/`](Frames/) | How data is organized — each Frame groups related objects |
-| 3 | [`Objects/`](Objects/) | Detailed reference for every NeTEx object with examples |
+| 1 | [`Guides/`](Guides/GetStarted/GetStarted_Guide.md) | Conceptual overviews, conventions, and getting started material |
+| 2 | [`Frames/`](Frames/CompositeFrame/Description_CompositeFrame.md) | How data is organized — each Frame groups related objects |
+| 3 | [`Objects/`](Objects/Line/Description_Line.md) | Detailed reference for every NeTEx object with examples |
 
 ### Quick lookup
 
@@ -33,7 +33,7 @@ This repository is a human-friendly entry point to NeTEx: a place to learn the s
 
 ### 1. **Validated NeTEx examples**
 Every XML example is:
-- Validated against the [NeTEx 2.0 XSD schema](XSD%202.0/xsd/)
+- Validated against the NeTEx 2.0 XSD schema
 - Designed to illustrate a single concept or object clearly
 - Available in multiple profiles (see [Profiles](#-profiles) below)
 - Built using the standard NeTEx delivery pattern:
@@ -52,15 +52,15 @@ For every frame and object, you will find three files:
 | `Example_<Name>_<Profile>.xml` | One or more validated XML examples |
 
 ### 3. **Guides**
-Each guide lives in its own folder under [`Guides/`](Guides/) and can include supporting files (diagrams, XML snippets, etc.):
+Each guide lives in its own folder under `Guides/` and can include supporting files (diagrams, XML snippets, etc.):
 
 | Guide | Description |
 |-------|-------------|
-| [GetStarted](Guides/GetStarted/) | Minimal steps to begin working with the profile |
-| [NeTExConventions](Guides/NeTExConventions/) | Casing rules, naming patterns, and a minimal example |
-| [SeparationOfConcerns](Guides/SeparationOfConcerns/) | Domain separation, coupling strategies, and cross-frame patterns |
-| [Tools](Guides/Tools/) | Editors, plugins, validators, and development workflow |
-| [Validation](Guides/Validation/) | How to validate NeTEx XML against schemas and rules |
+| [GetStarted](Guides/GetStarted/GetStarted_Guide.md) | Minimal steps to begin working with the profile |
+| [NeTExConventions](Guides/NeTExConventions/NeTEx_Conventions.md) | Casing rules, naming patterns, and a minimal example |
+| [SeparationOfConcerns](Guides/SeparationOfConcerns/SeparationOfConcerns.md) | Domain separation, coupling strategies, and cross-frame patterns |
+| [Tools](Guides/Tools/Tools_Guide.md) | Editors, plugins, validators, and development workflow |
+| [Validation](Guides/Validation/Validation.md) | How to validate NeTEx XML against schemas and rules |
 | [Interchange](Guides/InterchangeOnly/Interchange_Guide.md) | Planned transfers, guaranteed connections, and interchangeOnly stops |
 | [OrganisationalGovernance](Guides/OrganisationalGovernance/OrganisationalGovernance_Guide.md) | Authority, Operator, Contract, and ResponsibilitySet |
 | [StopInfrastructure](Guides/StopInfrastructure/StopInfrastructure_Guide.md) | Logical stops, physical platforms, and the PassengerStopAssignment bridge |
@@ -72,7 +72,7 @@ Each guide lives in its own folder under [`Guides/`](Guides/) and can include su
 | [DecisionMakers](Guides/DecisionMakers/DecisionMakers_Guide.md) | NeTEx overview for decision makers and stakeholders |
 | [RegulatoryCompliance](Guides/RegulatoryCompliance/RegulatoryCompliance_Guide.md) | Delegated Regulation 2017/1926 requirements and NAP submission |
 | [MaaSConsumers](Guides/MaaSConsumers/MaaSConsumers_Guide.md) | Consuming NeTEx datasets as a MaaS platform |
-| [Glossary](Guides/Glossary/) | Terminology and definitions |
+| [Glossary](Guides/Glossary/Glossary.md) | Terminology and definitions |
 
 ---
 
@@ -171,7 +171,7 @@ All XML examples in this repository are validated against the official NeTEx XSD
 | **CI (pull request)** | Automatic via `PR_Validator.yml` |
 | **CI (push)** | Automatic via `Commit_Validator.yml` on `EnStandardBranch` |
 
-See the [Validation guide](Guides/Validation/) for detailed instructions.
+See the [Validation guide](Guides/Validation/Validation.md) for detailed instructions.
 
 ---
 
