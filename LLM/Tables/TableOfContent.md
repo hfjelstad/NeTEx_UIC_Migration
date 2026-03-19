@@ -20,7 +20,7 @@ How-to guides, conceptual overviews, and reference material:
 - [DecisionMakers](../../Guides/DecisionMakers/DecisionMakers_Guide.md) – NeTEx overview for decision makers and stakeholders
 - [RegulatoryCompliance](../../Guides/RegulatoryCompliance/RegulatoryCompliance_Guide.md) – Delegated Regulation 2017/1926 requirements and NAP submission
 - [MaaSConsumers](../../Guides/MaaSConsumers/MaaSConsumers_Guide.md) – Consuming NeTEx datasets as a MaaS platform
-- [Glossary](../../Guides/Glossary/Glossary.md) – Terminology and definitions
+- [NetworkTimetable](../../Guides/NetworkTimetable/NetworkTimetable_Guide.md) – Producing and consuming NeTEx timetable datasets (shared + line file split, reference linking, versioning)
 
 ## Frames
 
