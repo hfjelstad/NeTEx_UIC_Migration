@@ -13,6 +13,6 @@ jobs:
       mode: pr
       checkout_ref: ${{ github.event.pull_request.head.sha }}
       base_ref: ${{ github.base_ref }}
-      schema_path: "netex-xsd/xsd/NeTEx_publication.xsd"
-      exclude_prefix: "netex-xsd/"
+      schema_path: "XSD 2.0/xsd/NeTEx_publication.xsd"
+      exclude_prefix: "XSD 2.0/"
       fail_fast: false

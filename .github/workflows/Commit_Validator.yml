@@ -14,6 +14,6 @@ jobs:
       checkout_ref: ${{ github.sha }}          # commit som ble pushet
       before: ${{ github.event.before }}       # for diff
       after: ${{ github.sha }}
-      schema_path: "netex-xsd/xsd/NeTEx_publication.xsd"
-      exclude_prefix: "netex-xsd/"
+      schema_path: "XSD 2.0/xsd/NeTEx_publication.xsd"
+      exclude_prefix: "XSD 2.0/"
       fail_fast: true
