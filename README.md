@@ -156,7 +156,7 @@ Root
 - `*Ref` elements express relationships between objects
 - Element order must match the NeTEx XSD sequence (inherited elements first)
 - Time values use timezone-aware `xs:dateTime` → `2026-02-25T14:22:00Z`
-- All examples are validated against `XSD 2.0/xsd/NeTEx_publication.xsd`
+- All examples are validated against the official [NeTEx XSD](https://github.com/NeTEx-CEN/NeTEx) (`NeTEx_publication.xsd`)
 
 ---
 
