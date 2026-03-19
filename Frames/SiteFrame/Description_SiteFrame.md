@@ -25,7 +25,9 @@ A **SiteFrame** contains the physical infrastructure model for public transport 
 
 ## 3. Contained Elements
 
-- **stopPlaces** – Collection of [StopPlace](../../Objects/StopPlace/Table_StopPlace.md) definitions, each containing one or more [Quay](../../Objects/Quay/Table_Quay.md) elements
+- **stopPlaces** – Collection of [StopPlace](../../Objects/StopPlace/Table_StopPlace.md) definitions, each containing one or more [Quay](../../Objects/Quay/Table_Quay.md) elements. Equipment such as SanitaryEquipment, ShelterEquipment, TicketingEquipment, and WaitingRoomEquipment may be nested within individual StopPlace or Quay elements.
+- **topographicPlaces** – Collection of [TopographicPlace](../../Objects/TopographicPlace/Table_TopographicPlace.md) definitions providing geographical and administrative area context for stops
+- **parkings** – Collection of [Parking](../../Objects/Parking/Table_Parking.md) definitions describing parking facilities associated with public transport stops
 
 ## 4. Frame Relationships
 

@@ -32,6 +32,8 @@ A **TimetableFrame** contains the operational journey definitions — the actual
   - DatedVehicleJourney – Date-specific vehicle journey (may include non-passenger moves)
   - DeadRun – Non-passenger vehicle repositioning movement
 - **coupledJourneys** – Collection of CoupledJourney definitions linking journeys that run coupled together
+- **journeyInterchanges** – Collection of [Interchange](../../Objects/Interchange/Table_Interchange.md) definitions describing timed connections between arriving and departing journeys
+- **noticeAssignments** – Collection of NoticeAssignment definitions linking Notices to specific journeys or stop points within journeys
 - **interchangeRules** – Collection of InterchangeRule definitions for guaranteed or timed connections between journeys
 
 ## 4. Frame Relationships

@@ -36,6 +36,7 @@ A **FareFrame** contains fare data, products, and pricing rules for a public tra
 - **fareProducts** – Collection of fare product types:
   - PreassignedFareProduct – A pre-defined fare product (e.g., single ticket) with access rights and tariff references
 - **salesOfferPackages** – Collection of SalesOfferPackage definitions bundling fare products for sale
+- **fareZones** – Collection of FareZone definitions describing geographical zones used for zone-based fare calculations
 
 ## 4. Frame Relationships
 

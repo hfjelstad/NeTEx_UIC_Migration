@@ -2,9 +2,21 @@
 
 Complete index of all XML examples in the repository.
 
+## Guides
+
+- [Example_SeparationOfConcerns.xml](../../Guides/SeparationOfConcerns/Example_SeparationOfConcerns.xml) – Multi-frame delivery demonstrating domain separation
+- [Example_Interchange.xml](../../Guides/InterchangeOnly/Example_Interchange.xml) – Planned transfers and guaranteed connections
+- [Example_OrganisationalGovernance.xml](../../Guides/OrganisationalGovernance/Example_OrganisationalGovernance.xml) – Authority, Operator, Contract, and ResponsibilitySet
+- [Example_StopInfrastructure.xml](../../Guides/StopInfrastructure/Example_StopInfrastructure.xml) – Logical stops, physical platforms, and stop assignments
+- [Example_JourneyLifecycle.xml](../../Guides/JourneyLifecycle/Example_JourneyLifecycle.xml) – Line through Route, JourneyPattern, and ServiceJourney
+- [Example_VehicleScheduling.xml](../../Guides/VehicleScheduling/Example_VehicleScheduling.xml) – Blocks, VehicleType, Vehicle, and fleet assignment
+- [Example_Accessibility.xml](../../Guides/Accessibility/Example_Accessibility.xml) – AccessibilityAssessment, equipment, and indoor navigation
+- [Example_FareModelling.xml](../../Guides/FareModelling/Example_FareModelling.xml) – Products, zones, tariffs, and sales offer packages
+
 ## Frames
 
 - [Example_PublicationDelivery.xml](../../Frames/Example_PublicationDelivery.xml) – Root container with composite frame structure
+- [Example_CompositeFrame.xml](../../Frames/CompositeFrame/Example_CompositeFrame.xml) – Composite frame grouping multiple frames
 - [Example_FareFrame.xml](../../Frames/FareFrame/Example_FareFrame.xml) – Fares and tariffs structure with products and validations
 - [Example_ResourceFrame.xml](../../Frames/ResourceFrame/Example_ResourceFrame.xml) – Organizations, operators, and resources
 - [Example_ServiceCalendarFrame.xml](../../Frames/ServiceCalendarFrame/Example_ServiceCalendarFrame.xml) – Service calendars and day types
