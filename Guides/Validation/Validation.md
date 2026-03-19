@@ -39,6 +39,24 @@ The entry point is then `netex-xsd/xsd/NeTEx_publication.xsd`.
 
 > ⚠️ **Note:** The `netex-xsd/` folder is a working copy, not part of your project. Add it to `.gitignore` if needed.
 
+### Using a Specific Version
+
+To validate against a particular NeTEx release instead of the latest, check out the corresponding tag after cloning:
+
+```bash
+git clone https://github.com/NeTEx-CEN/NeTEx.git netex-xsd
+cd netex-xsd
+git tag -l            # list available versions
+git checkout v1.15    # switch to a specific release
+```
+
+To switch back to the latest:
+
+```bash
+git checkout main
+git pull
+```
+
 ---
 
 ## 3. 🖥️ Running Validation
