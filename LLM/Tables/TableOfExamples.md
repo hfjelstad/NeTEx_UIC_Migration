@@ -12,6 +12,7 @@ Complete index of all XML examples in the repository.
 - [Example_VehicleScheduling.xml](../../Guides/VehicleScheduling/Example_VehicleScheduling.xml) – Blocks, VehicleType, Vehicle, and fleet assignment
 - [Example_Accessibility.xml](../../Guides/Accessibility/Example_Accessibility.xml) – AccessibilityAssessment, equipment, and indoor navigation
 - [Example_FareModelling.xml](../../Guides/FareModelling/Example_FareModelling.xml) – Products, zones, tariffs, and sales offer packages
+- [Example_ExtendedSales_and_DeviationHandling.xml](../../Guides/ExtendedSales_and_DeviationHandling/Example_ExtendedSales_and_DeviationHandling.xml) – 3-day track closure with cancelled originals and replacement bus services
 
 ## Frames
 

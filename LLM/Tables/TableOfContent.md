@@ -21,6 +21,7 @@ How-to guides, conceptual overviews, and reference material:
 - [RegulatoryCompliance](../../Guides/RegulatoryCompliance/RegulatoryCompliance_Guide.md) – Delegated Regulation 2017/1926 requirements and NAP submission
 - [MaaSConsumers](../../Guides/MaaSConsumers/MaaSConsumers_Guide.md) – Consuming NeTEx datasets as a MaaS platform
 - [NetworkTimetable](../../Guides/NetworkTimetable/NetworkTimetable_Guide.md) – Producing and consuming NeTEx timetable datasets (shared + line file split, reference linking, versioning)
+- [ExtendedSales_and_DeviationHandling](../../Guides/ExtendedSales_and_DeviationHandling/ExtendedSales_and_DeviationHandling_Guide.md) – Extended sales window beyond IM approval, DatedServiceJourney.id as sales key, deviation handling (cancellations, replacements, reinforcements, supplementary journeys)
 
 ## Frames
 
