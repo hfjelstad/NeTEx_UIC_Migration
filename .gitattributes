@@ -1,9 +1,0 @@
-# Pages-specific files — always keep EnSide version during merges
-index.html merge=ours
-.nojekyll merge=ours
-_sidebar.md merge=ours
-
-# Files with Pages-adapted links — keep EnSide version
-README.md merge=ours
-LLM/Tables/TableOfContent.md merge=ours
-LLM/README.md merge=ours
