@@ -58,21 +58,24 @@ Each guide lives in its own folder under `Guides/` and can include supporting fi
 |-------|-------------|
 | [GetStarted](Guides/GetStarted/GetStarted_Guide.md) | Minimal steps to begin working with the profile |
 | [NeTExConventions](Guides/NeTExConventions/NeTEx_Conventions.md) | Casing rules, naming patterns, and a minimal example |
-| [SeparationOfConcerns](Guides/SeparationOfConcerns/SeparationOfConcerns.md) | Domain separation, coupling strategies, and cross-frame patterns |
+| [Glossary](Guides/Glossary/Glossary.md) | Terminology and definitions |
 | [Tools](Guides/Tools/Tools_Guide.md) | Editors, plugins, validators, and development workflow |
 | [Validation](Guides/Validation/Validation.md) | How to validate NeTEx XML against schemas and rules |
-| [Interchange](Guides/InterchangeOnly/Interchange_Guide.md) | Planned transfers, guaranteed connections, and interchangeOnly stops |
 | [OrganisationalGovernance](Guides/OrganisationalGovernance/OrganisationalGovernance_Guide.md) | Authority, Operator, Contract, and ResponsibilitySet |
 | [StopInfrastructure](Guides/StopInfrastructure/StopInfrastructure_Guide.md) | Logical stops, physical platforms, and the PassengerStopAssignment bridge |
 | [JourneyLifecycle](Guides/JourneyLifecycle/JourneyLifecycle_Guide.md) | Line → Route → JourneyPattern → ServiceJourney → DatedServiceJourney |
-| [VehicleScheduling](Guides/VehicleScheduling/VehicleScheduling_Guide.md) | Blocks, VehicleType, Vehicle, and fleet assignment |
+| [Calendar](Guides/Calendar/Calendar_Guide.md) | DayType, OperatingPeriod, DayTypeAssignment, OperatingDay — when services operate |
+| [Interchange](Guides/InterchangeOnly/Interchange_Guide.md) | Planned transfers, guaranteed connections, and interchangeOnly stops |
 | [PassengerInformation](Guides/PassengerInformation/PassengerInformation_Guide.md) | DestinationDisplay, Notice, and FlexibleServiceProperties |
+| [VehicleScheduling](Guides/VehicleScheduling/VehicleScheduling_Guide.md) | Blocks, VehicleType, Vehicle, and fleet assignment |
+| [NetworkTimetable](Guides/NetworkTimetable/NetworkTimetable_Guide.md) | Producing and consuming NeTEx timetable datasets |
+| [SeparationOfConcerns](Guides/SeparationOfConcerns/SeparationOfConcerns.md) | Domain separation, coupling strategies, and cross-frame patterns |
+| [ExtendedSales & DeviationHandling](Guides/ExtendedSales_and_DeviationHandling/ExtendedSales_and_DeviationHandling_Guide.md) | Extended sales window, DatedServiceJourney.id as sales key, deviation handling |
 | [Accessibility](Guides/Accessibility/Accessibility_Guide.md) | AccessibilityAssessment, equipment, and indoor navigation paths |
 | [FareModelling](Guides/FareModelling/FareModelling_Guide.md) | Products, zones, tariffs, and sales offer packages |
 | [DecisionMakers](Guides/DecisionMakers/DecisionMakers_Guide.md) | NeTEx overview for decision makers and stakeholders |
 | [RegulatoryCompliance](Guides/RegulatoryCompliance/RegulatoryCompliance_Guide.md) | Delegated Regulation 2017/1926 requirements and NAP submission |
 | [MaaSConsumers](Guides/MaaSConsumers/MaaSConsumers_Guide.md) | Consuming NeTEx datasets as a MaaS platform |
-| [Glossary](Guides/Glossary/Glossary.md) | Terminology and definitions |
 
 ---
 
