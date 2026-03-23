@@ -236,6 +236,7 @@ Now that you understand the basics, explore further based on your interest:
 | Setting up editors and validation tools | [Tools Guide](../Tools/Tools_Guide.md) |
 | How to validate XML against the schema | [Validation Guide](../Validation/Validation.md) |
 | How domains stay independent | [Separation of Concerns](../SeparationOfConcerns/SeparationOfConcerns.md) |
+| When services operate (DayType, OperatingDay, exceptions) | [Calendar Guide](../Calendar/Calendar_Guide.md) |
 | Browse all frames and objects | [Table of Content](../../LLM/Tables/TableOfContent.md) |
 
 ### External Resources
