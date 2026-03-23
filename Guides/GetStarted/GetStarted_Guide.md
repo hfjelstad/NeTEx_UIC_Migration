@@ -18,36 +18,27 @@ In this guide you will learn:
 
 NeTEx doesn't exist in isolation — it's part of a European standards family for public transport:
 
-```text
-+----------------------------------------------------------------------+
-|                           TRANSMODEL                                 |
-|               (EN 12896 -- Conceptual Reference Model)               |
-|                                                                      |
-|   Defines the concepts: what is a Line, a Journey,                   |
-|   a StopPlace, an Operator, a DayType?                               |
-+--------------------+-----------------------+-------------------------+
-                     |                       |                       |
-          "implemented as XML by"            |                       |
-                     |                       |                       |
-   +-----------------v--+  +-----------------v--+  +-----------------v--+
-   | NeTEx              |  | SIRI               |  | OpRa               |
-   | (CEN/TS 16614)     |  | (CEN/TS 15531)     |  | (CEN, in dev.)     |
-   |                    |  |                    |  |                    |
-   | Planned data:      |  | Real-time data:    |  | Historical data:   |
-   | timetables,        |  | vehicle positions, |  | operational raw    |
-   | fares, stops       |  | delays, alerts     |  | data, KPIs         |
-   +---------+----------+  +--------------------+  +--------------------+
-             |
-      "profiled by"
-             |
-   +---------v----------+
-   | This Profile       |
-   | (ERP / NP)         |
-   |                    |
-   | Selects which      |
-   | NeTEx elements     |
-   | to use and how     |
-   +--------------------+
+```mermaid
+flowchart TD
+    TM["<b>TRANSMODEL</b><br/>EN 12896 — Conceptual Reference Model<br/><i>Defines the concepts: Line, Journey,<br/>StopPlace, Operator, DayType…</i>"]
+
+    TM -->|"implemented as XML by"| NeTEx
+    TM -->|"implemented as XML by"| SIRI
+    TM -->|"implemented as XML by"| OpRa
+
+    NeTEx["<b>NeTEx</b><br/>CEN/TS 16614<br/><br/>Planned data:<br/>timetables, fares, stops"]
+    SIRI["<b>SIRI</b><br/>CEN/TS 15531<br/><br/>Real-time data:<br/>vehicle positions,<br/>delays, alerts"]
+    OpRa["<b>OpRa</b><br/>CEN, in dev.<br/><br/>Historical data:<br/>operational raw data,<br/>KPIs"]
+
+    NeTEx -->|"profiled by"| PROF
+
+    PROF["<b>This Profile</b><br/>ERP / NP<br/><br/>Selects which NeTEx<br/>elements to use and how"]
+
+    style TM fill:#0D47A1,stroke:#0D47A1,color:#fff
+    style NeTEx fill:#1565C0,stroke:#1565C0,color:#fff
+    style SIRI fill:#1976D2,stroke:#1976D2,color:#fff
+    style OpRa fill:#1E88E5,stroke:#1E88E5,color:#fff
+    style PROF fill:#42A5F5,stroke:#42A5F5,color:#fff
 ```
 
 ### What Each Layer Does
@@ -68,24 +59,45 @@ NeTEx doesn't exist in isolation — it's part of a European standards family fo
 
 Every NeTEx file follows the same top-level pattern:
 
-```text
-PublicationDelivery              <-- The envelope: who sent this, when?
-  |
-  +-- dataObjects
-       |
-       +-- CompositeFrame        <-- Groups all frames into one delivery
-            |
-            +-- codespaces       <-- Declares namespace prefixes (e.g., ERP)
-            |
-            +-- frames           <-- The actual data, organized by domain:
-                 |
-                 +-- ResourceFrame          Organizations, operators
-                 +-- SiteFrame              Stop places, facilities
-                 +-- ServiceCalendarFrame   Day types, calendars
-                 +-- ServiceFrame           Lines, routes, patterns
-                 +-- TimetableFrame         Journeys, timetables
-                 +-- VehicleScheduleFrame   Vehicle blocks
-                 +-- FareFrame              Fares and tariffs
+```mermaid
+flowchart TD
+    PD["<b>PublicationDelivery</b><br/><i>The envelope: who sent this, when?</i>"]
+    DO["dataObjects"]
+    CF["<b>CompositeFrame</b><br/><i>Groups all frames into one delivery</i>"]
+    CS["codespaces<br/><i>Declares namespace prefixes, e.g. ERP</i>"]
+    FR["frames"]
+
+    RF["🏢 <b>ResourceFrame</b><br/>Organizations, operators"]
+    SF["📍 <b>SiteFrame</b><br/>Stop places, facilities"]
+    SCF["📅 <b>ServiceCalendarFrame</b><br/>Day types, calendars"]
+    SVF["🚌 <b>ServiceFrame</b><br/>Lines, routes, patterns"]
+    TF["🕐 <b>TimetableFrame</b><br/>Journeys, timetables"]
+    VSF["🚃 <b>VehicleScheduleFrame</b><br/>Vehicle blocks"]
+    FF["💰 <b>FareFrame</b><br/>Fares and tariffs"]
+
+    PD --> DO --> CF
+    CF --> CS
+    CF --> FR
+    FR --> RF
+    FR --> SF
+    FR --> SCF
+    FR --> SVF
+    FR --> TF
+    FR --> VSF
+    FR --> FF
+
+    style PD fill:#0D47A1,stroke:#0D47A1,color:#fff
+    style DO fill:#1565C0,stroke:#1565C0,color:#fff
+    style CF fill:#1565C0,stroke:#1565C0,color:#fff
+    style CS fill:#1976D2,stroke:#1976D2,color:#fff
+    style FR fill:#1976D2,stroke:#1976D2,color:#fff
+    style RF fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style SF fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style SCF fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style SVF fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style TF fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style VSF fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style FF fill:#42A5F5,stroke:#42A5F5,color:#fff
 ```
 
 ### Key Concepts
