@@ -20,19 +20,20 @@ This guide explains:
 
 Public transport services follow a multi-year lifecycle. The diagram below shows how planning, approval, and operations relate in time:
 
-```text
-2+ years before                      ~1 year before            Current sales window (≈90 days)
-─────────────────────────────────────────────────────────────────────────────────────
-                                                                        
-  Service        Service        Service        Service        Service      Service      Service
-  created        application    refinement     approval       deviations   running      logged
-  ●──────────────●──────────────●──────────────●──────────────●────────────●────────────●
-                                                              │                        │
-                                               Infrastructure │  Recalculating         │
-                                               mgmt approves  │  ◄──────────►          │
-                                               yearly         │                        │
-                                               timetable      │     RealTime           │
-                                                              │     ◄────────►         │
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'cScale0': '#1565C0', 'cScaleLabel0': '#ffffff', 'cScale1': '#1E88E5', 'cScaleLabel1': '#ffffff', 'cScale2': '#42A5F5', 'cScaleLabel2': '#ffffff', 'cScalePeer0': '#BBDEFB', 'cScalePeer1': '#90CAF9', 'cScalePeer2': '#64B5F6'}}}%%
+timeline
+    title Public Transport Service Lifecycle
+    section 2+ years before
+        Service created : Planning phase begins
+        Service application : Route and capacity applied for
+    section ~1 year before
+        Service refinement : Times and stops adjusted
+        Service approval : IM approves yearly timetable
+    section Sales window ≈90 days
+        Service deviations : Cancellations, replacements, reinforcements
+        Service running : Recalculating and RealTime
+        Service logged : Archived for analysis
 ```
 
 ### Two Distinct Planning Horizons
@@ -339,6 +340,7 @@ A complete example showing how to handle a 3-day track closure:
 
 ### Guides
 - [Journey Lifecycle](../JourneyLifecycle/JourneyLifecycle_Guide.md) — The full chain from Line to DatedServiceJourney
+- [Calendar](../Calendar/Calendar_Guide.md) — DayType, OperatingPeriod, DayTypeAssignment, OperatingDay — when services operate
 - [Get Started](../GetStarted/GetStarted_Guide.md) — NeTEx fundamentals and document anatomy
 - [Vehicle Scheduling](../VehicleScheduling/VehicleScheduling_Guide.md) — Block assignment and vehicle continuity
 

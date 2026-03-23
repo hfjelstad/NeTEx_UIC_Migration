@@ -288,6 +288,7 @@ This convention ensures IDs remain unique when datasets from multiple providers 
 - [NeTEx Conventions](../NeTExConventions/NeTEx_Conventions.md) — Casing rules, naming patterns, ID format
 - [Organisational Governance](../OrganisationalGovernance/OrganisationalGovernance_Guide.md) — Authority, Operator, and responsibility modelling
 - [Stop Infrastructure](../StopInfrastructure/StopInfrastructure_Guide.md) — ScheduledStopPoint, Quay, and the PassengerStopAssignment bridge
+- [Calendar](../Calendar/Calendar_Guide.md) — DayType, OperatingPeriod, DayTypeAssignment, OperatingDay — when services operate
 - [Passenger Information](../PassengerInformation/PassengerInformation_Guide.md) — DestinationDisplay, Notice, and FlexibleServiceProperties
 - [Validation](../Validation/Validation.md) — Schema validation tools and workflows
 
