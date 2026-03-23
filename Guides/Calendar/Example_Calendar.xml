@@ -36,6 +36,19 @@
             </DayType>
           </dayTypes>
 
+          <!-- ================================================= -->
+          <!-- OperatingDays: specific dates for DatedServiceJourney -->
+          <!-- Used for deviations, block assignment, sales         -->
+          <!-- ================================================= -->
+          <operatingDays>
+            <OperatingDay id="ERP:OperatingDay:2026-03-18" version="1">
+              <CalendarDate>2026-03-18</CalendarDate>
+            </OperatingDay>
+            <OperatingDay id="ERP:OperatingDay:2026-03-19" version="1">
+              <CalendarDate>2026-03-19</CalendarDate>
+            </OperatingDay>
+          </operatingDays>
+
           <!-- ========================================= -->
           <!-- OperatingPeriods: date ranges of validity -->
           <!-- ========================================= -->
@@ -86,19 +99,6 @@
               <isAvailable>true</isAvailable>
             </DayTypeAssignment>
           </dayTypeAssignments>
-
-          <!-- ================================================= -->
-          <!-- OperatingDays: specific dates for DatedServiceJourney -->
-          <!-- Used for deviations, block assignment, sales         -->
-          <!-- ================================================= -->
-          <operatingDays>
-            <OperatingDay id="ERP:OperatingDay:2026-03-18" version="1">
-              <CalendarDate>2026-03-18</CalendarDate>
-            </OperatingDay>
-            <OperatingDay id="ERP:OperatingDay:2026-03-19" version="1">
-              <CalendarDate>2026-03-19</CalendarDate>
-            </OperatingDay>
-          </operatingDays>
 
         </ServiceCalendarFrame>
 
