@@ -3,26 +3,29 @@
 - **Guides**
   - [Get Started](/Guides/GetStarted/GetStarted_Guide.md)
   - [NeTEx Conventions](/Guides/NeTExConventions/NeTEx_Conventions.md)
-  - [Separation of Concerns](/Guides/SeparationOfConcerns/SeparationOfConcerns.md)
+  - [Glossary](/Guides/Glossary/Glossary.md)
   - [Tools](/Guides/Tools/Tools_Guide.md)
   - [Validation](/Guides/Validation/Validation.md)
   - [Organisational Governance](/Guides/OrganisationalGovernance/OrganisationalGovernance_Guide.md)
   - [Stop Infrastructure](/Guides/StopInfrastructure/StopInfrastructure_Guide.md)
   - [Journey Lifecycle](/Guides/JourneyLifecycle/JourneyLifecycle_Guide.md)
-  - [Vehicle Scheduling](/Guides/VehicleScheduling/VehicleScheduling_Guide.md)
+  - [Calendar](/Guides/Calendar/Calendar_Guide.md)
+  - [Interchange](/Guides/InterchangeOnly/Interchange_Guide.md)
   - [Passenger Information](/Guides/PassengerInformation/PassengerInformation_Guide.md)
+  - [Vehicle Scheduling](/Guides/VehicleScheduling/VehicleScheduling_Guide.md)
   - [Network Timetable](/Guides/NetworkTimetable/NetworkTimetable_Guide.md)
   - [Network Timetable (split)](/Guides/NetworkTimetable/netex-guide-split.md)
-  - [Interchange](/Guides/InterchangeOnly/Interchange_Guide.md)
+  - [Separation of Concerns](/Guides/SeparationOfConcerns/SeparationOfConcerns.md)
+  - [Extended Sales & Deviation Handling](/Guides/ExtendedSales_and_DeviationHandling/ExtendedSales_and_DeviationHandling_Guide.md)
   - [Accessibility](/Guides/Accessibility/Accessibility_Guide.md)
   - [Fare Modelling](/Guides/FareModelling/FareModelling_Guide.md)
-  - [Extended Sales and Deviation Handling](/Guides/ExtendedSales_and_DeviationHandling/ExtendedSales_and_DeviationHandling_Guide.md)
   - [Decision Makers](/Guides/DecisionMakers/DecisionMakers_Guide.md)
   - [Regulatory Compliance](/Guides/RegulatoryCompliance/RegulatoryCompliance_Guide.md)
   - [MaaS Consumers](/Guides/MaaSConsumers/MaaSConsumers_Guide.md)
-  - [Glossary](/Guides/Glossary/Glossary.md)
 
-- **Frames**
+<details>
+<summary><strong>Frames</strong></summary>
+
   - [CompositeFrame](/Frames/CompositeFrame/Description_CompositeFrame.md)
   - [ResourceFrame](/Frames/ResourceFrame/Description_ResourceFrame.md)
   - [SiteFrame](/Frames/SiteFrame/Description_SiteFrame.md)
@@ -33,7 +36,11 @@
   - [FareFrame](/Frames/FareFrame/Description_FareFrame.md)
   - [SalesTransactionFrame](/Frames/SalesTransactionFrame/Description_SalesTransactionFrame.md)
 
-- **Objects**
+</details>
+
+<details>
+<summary><strong>Objects</strong></summary>
+
   - [AlternativeName](/Objects/AlternativeName/Description_AlternativeName.md)
   - [AlternativeText](/Objects/AlternativeText/Description_AlternativeText.md)
   - [Authority](/Objects/Authority/Description_Authority.md)
@@ -72,6 +79,8 @@
   - [Vehicle](/Objects/Vehicle/Description_Vehicle.md)
   - [VehicleType](/Objects/VehicleType/Description_VehicleType.md)
   - [WaitingRoomEquipment](/Objects/WaitingRoomEquipment/Description_WaitingRoomEquipment.md)
+
+</details>
 
 - **Reference**
   - [Table of Contents](/LLM/Tables/TableOfContent.md)
