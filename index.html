@@ -11,7 +11,7 @@
   <script>
     window.$docsify = {
       name: 'EnStandard NeTEx Profile',
-      repo: '',
+      repo: 'https://github.com/hfjelstad/Profile_Documentation_v2',
       loadSidebar: true,
       subMaxLevel: 2,
       search: {
@@ -20,7 +20,59 @@
         depth: 6
       },
       relativePath: true,
-      auto2top: true
+      auto2top: true,
+      plugins: [
+        function giscusPlugin(hook) {
+          var giscusContainer = '<div id="giscus-container"><script ' +
+            'src="https://giscus.app/client.js" ' +
+            'data-repo="hfjelstad/Profile_Documentation_v2" ' +
+            'data-repo-id="R_kgDORM6n6Q" ' +
+            'data-category="Documentation Feedback" ' +
+            'data-category-id="DIC_kwDORM6n6c4C5Fxl" ' +
+            'data-mapping="pathname" ' +
+            'data-strict="0" ' +
+            'data-reactions-enabled="1" ' +
+            'data-emit-metadata="0" ' +
+            'data-input-position="top" ' +
+            'data-theme="preferred_color_scheme" ' +
+            'data-lang="en" ' +
+            'data-loading="lazy" ' +
+            'crossorigin="anonymous" ' +
+            'async><\/script></div>';
+
+          hook.afterEach(function(html) {
+            return html + '<hr style="margin-top:3em">' +
+              '<h2>💬 Feedback</h2>' +
+              '<p>Have questions or suggestions about this page? Leave a comment below.</p>' +
+              giscusContainer;
+          });
+
+          hook.doneEach(function() {
+            var existing = document.querySelector('#giscus-container iframe');
+            if (existing) existing.remove();
+            var container = document.querySelector('#giscus-container');
+            if (container) {
+              var script = document.createElement('script');
+              script.src = 'https://giscus.app/client.js';
+              script.setAttribute('data-repo', 'hfjelstad/Profile_Documentation_v2');
+              script.setAttribute('data-repo-id', 'R_kgDORM6n6Q');
+              script.setAttribute('data-category', 'Documentation Feedback');
+              script.setAttribute('data-category-id', 'DIC_kwDORM6n6c4C5Fxl');
+              script.setAttribute('data-mapping', 'pathname');
+              script.setAttribute('data-strict', '0');
+              script.setAttribute('data-reactions-enabled', '1');
+              script.setAttribute('data-emit-metadata', '0');
+              script.setAttribute('data-input-position', 'top');
+              script.setAttribute('data-theme', 'preferred_color_scheme');
+              script.setAttribute('data-lang', 'en');
+              script.setAttribute('data-loading', 'lazy');
+              script.crossOrigin = 'anonymous';
+              container.innerHTML = '';
+              container.appendChild(script);
+            }
+          });
+        }
+      ]
     };
   </script>
   <!-- Mermaid -->
