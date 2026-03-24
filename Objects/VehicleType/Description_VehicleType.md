@@ -1,4 +1,4 @@
-﻿# VehicleType
+# VehicleType
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#vehicletype)*
 
@@ -49,8 +49,9 @@ A **VehicleType** represents a typified vehicle configuration (model or series) 
 
 ### 5c. Common Pitfalls
 
-- **VehicleType vs. Vehicle confusion**: VehicleType is a reusable template (shared characteristics); Vehicle is a specific physical unit. Define the type once and reference it from multiple vehicles.
-- **Including infrastructure data**: Platform gaps and stop-specific measurements belong to StopPlace/Quay objects, not VehicleType.
+> [!WARNING]
+> - **VehicleType vs. Vehicle confusion**: VehicleType is a reusable template (shared characteristics); Vehicle is a specific physical unit. Define the type once and reference it from multiple vehicles.
+> - **Including infrastructure data**: Platform gaps and stop-specific measurements belong to StopPlace/Quay objects, not VehicleType.
 
 ## 6. Additional Information
 

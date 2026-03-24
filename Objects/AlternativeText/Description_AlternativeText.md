@@ -1,4 +1,4 @@
-﻿# AlternativeText
+# AlternativeText
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#alternativetext)*
 
@@ -40,8 +40,9 @@ The **AlternativeText** provides supplementary textual descriptions for a NeTEx 
 
 ### 5c. Common Pitfalls
 
-- **Confusing with AlternativeName**: AlternativeText is for descriptive texts, not name variants. Use AlternativeName for name translations or abbreviations.
-- **Missing @id**: Unlike AlternativeName, AlternativeText requires its own `@id` and `@version` attributes.
+> [!WARNING]
+> - **Confusing with AlternativeName**: AlternativeText is for descriptive texts, not name variants. Use AlternativeName for name translations or abbreviations.
+> - **Missing @id**: Unlike AlternativeName, AlternativeText requires its own `@id` and `@version` attributes.
 
 ## 6. Additional Information
 

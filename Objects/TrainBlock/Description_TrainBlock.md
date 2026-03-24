@@ -1,4 +1,4 @@
-﻿# TrainBlock
+# TrainBlock
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#trainblock)*
 
@@ -43,9 +43,10 @@ A **TrainBlock** is a rail-specific specialisation of Block that represents an o
 
 ### 5c. Common Pitfalls
 
-- **TrainBlock vs. Duty confusion**: TrainBlock groups journeys by vehicle (operational); Duty groups by crew assignment (roster). They are separate concepts.
-- **Multi-day blocks**: Use distinct TrainBlock instances per operating day; avoid mixing dates within a single block.
-- **Creating too many blocks**: Reuse the same TrainBlock for contiguous runs of the same train on the same day.
+> [!WARNING]
+> - **TrainBlock vs. Duty confusion**: TrainBlock groups journeys by vehicle (operational); Duty groups by crew assignment (roster). They are separate concepts.
+> - **Multi-day blocks**: Use distinct TrainBlock instances per operating day; avoid mixing dates within a single block.
+> - **Creating too many blocks**: Reuse the same TrainBlock for contiguous runs of the same train on the same day.
 
 ## 6. Additional Information
 

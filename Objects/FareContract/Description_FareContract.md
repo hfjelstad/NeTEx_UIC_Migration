@@ -1,4 +1,4 @@
-﻿# FareContract
+# FareContract
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#farecontract)*
 
@@ -48,8 +48,9 @@ A **FareContract** models a customer-facing agreement for the right to travel an
 
 ### 5c. Common Pitfalls
 
-- **FareContract vs. Contract confusion**: FareContract is a customer-facing travel agreement; Contract is an administrative agreement between organisations (e.g., Authority and Operator). They are separate concepts.
-- **Missing SalesTransaction link**: The XML structure often includes a related SalesTransaction referencing the FareContract; ensure both are present and cross-referenced.
+> [!WARNING]
+> - **FareContract vs. Contract confusion**: FareContract is a customer-facing travel agreement; Contract is an administrative agreement between organisations (e.g., Authority and Operator). They are separate concepts.
+> - **Missing SalesTransaction link**: The XML structure often includes a related SalesTransaction referencing the FareContract; ensure both are present and cross-referenced.
 
 ## 6. Additional Information
 

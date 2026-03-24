@@ -1,4 +1,4 @@
-﻿# DestinationDisplay
+# DestinationDisplay
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#destinationdisplay)*
 
@@ -44,9 +44,10 @@ DestinationDisplay
 
 ### 5c. Common Pitfalls
 
-- **Overly long FrontText**: Vehicle displays have limited space; keep text concise and recognizable.
-- **Duplicating DestinationDisplay objects**: Reuse the same object (via reference) when multiple journeys share the same destination text.
-- **Missing DestinationDisplay references**: Ensure all ServiceJourneys that display a destination actually reference a defined DestinationDisplay.
+> [!WARNING]
+> - **Overly long FrontText**: Vehicle displays have limited space; keep text concise and recognizable.
+> - **Duplicating DestinationDisplay objects**: Reuse the same object (via reference) when multiple journeys share the same destination text.
+> - **Missing DestinationDisplay references**: Ensure all ServiceJourneys that display a destination actually reference a defined DestinationDisplay.
 
 ## 6. Additional Information
 

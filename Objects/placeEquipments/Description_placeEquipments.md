@@ -1,4 +1,4 @@
-﻿# placeEquipments
+# placeEquipments
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#placeequipments)*
 
@@ -55,8 +55,9 @@ placeEquipments
 
 ### 5c. Common Pitfalls
 
-- **Equipment at wrong level** — Placing platform-specific equipment (e.g., a shelter for Quay 1) on the StopPlace level makes it ambiguous which platform it belongs to.
-- **Missing placeEquipments wrapper** — Equipment items must be nested inside the placeEquipments container, not placed directly as children of StopPlace or Quay.
+> [!WARNING]
+> - **Equipment at wrong level** — Placing platform-specific equipment (e.g., a shelter for Quay 1) on the StopPlace level makes it ambiguous which platform it belongs to.
+> - **Missing placeEquipments wrapper** — Equipment items must be nested inside the placeEquipments container, not placed directly as children of StopPlace or Quay.
 
 ## 6. Additional Information
 

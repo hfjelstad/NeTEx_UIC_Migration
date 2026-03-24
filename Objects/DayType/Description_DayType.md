@@ -1,4 +1,4 @@
-﻿# DayType
+# DayType
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#daytype)*
 
@@ -44,8 +44,9 @@ A **DayType** represents a classification of days on which a specific set of tra
 
 ### 5c. Common Pitfalls
 
-- **DayType without DayTypeAssignment**: Defining a DayType but never assigning it to calendar dates renders it inert — ServiceJourneys referencing it will have no operating days.
-- **Confusing DayType with OperatingDay**: DayType is a category (e.g., "Weekdays"); OperatingDay is a specific calendar date (e.g., "2026-03-17"). DatedServiceJourney uses OperatingDay, not DayType.
+> [!WARNING]
+> - **DayType without DayTypeAssignment**: Defining a DayType but never assigning it to calendar dates renders it inert — ServiceJourneys referencing it will have no operating days.
+> - **Confusing DayType with OperatingDay**: DayType is a category (e.g., "Weekdays"); OperatingDay is a specific calendar date (e.g., "2026-03-17"). DatedServiceJourney uses OperatingDay, not DayType.
 
 ## 6. Additional Information
 

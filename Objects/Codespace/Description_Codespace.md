@@ -1,4 +1,4 @@
-﻿# Codespace
+# Codespace
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#codespace)*
 
@@ -41,10 +41,11 @@ The **Codespace** defines the namespace used for all NeTEx `@id` and `@ref` valu
 
 ### 5c. Common Pitfalls
 
-- **Treating "ERP" as mandatory**: "ERP" is an example codespace; the actual value is designated by the data receiver.
-- **ParticipantRef mismatch**: The `ParticipantRef` must equal the primary codespace prefix — do not include a trailing colon.
-- **Changing LocalId across deliveries**: Use the `version` attribute for change tracking; keep `LocalId` stable.
-- **Mixing codespaces without agreement**: Do not use multiple codespaces unless the receiver explicitly requires it.
+> [!WARNING]
+> - **Treating "ERP" as mandatory**: "ERP" is an example codespace; the actual value is designated by the data receiver.
+> - **ParticipantRef mismatch**: The `ParticipantRef` must equal the primary codespace prefix — do not include a trailing colon.
+> - **Changing LocalId across deliveries**: Use the `version` attribute for change tracking; keep `LocalId` stable.
+> - **Mixing codespaces without agreement**: Do not use multiple codespaces unless the receiver explicitly requires it.
 
 ## 6. Additional Information
 

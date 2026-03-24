@@ -1,4 +1,4 @@
-﻿# ScheduledStopPoint
+# ScheduledStopPoint
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#scheduledstoppoint)*
 
@@ -44,8 +44,9 @@ A **ScheduledStopPoint** represents a logical stopping point in the timetable, u
 
 ### 5c. Common Pitfalls
 
-- **Confusing ScheduledStopPoint with Quay/StopPlace**: ScheduledStopPoint is a logical planning concept; Quay and StopPlace are physical infrastructure. The two are linked via PassengerStopAssignment.
-- **Missing PassengerStopAssignment**: A ScheduledStopPoint without a corresponding assignment cannot be resolved to a physical platform, breaking journey planning.
+> [!WARNING]
+> - **Confusing ScheduledStopPoint with Quay/StopPlace**: ScheduledStopPoint is a logical planning concept; Quay and StopPlace are physical infrastructure. The two are linked via PassengerStopAssignment.
+> - **Missing PassengerStopAssignment**: A ScheduledStopPoint without a corresponding assignment cannot be resolved to a physical platform, breaking journey planning.
 
 ## 6. Additional Information
 

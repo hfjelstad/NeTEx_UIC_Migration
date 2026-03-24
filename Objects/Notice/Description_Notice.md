@@ -1,4 +1,4 @@
-﻿# Notice
+# Notice
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#notice)*
 
@@ -28,7 +28,9 @@ A **Notice** provides informational or regulatory text associated with public tr
 - Notice is defined once in ServiceFrame/notices and then referenced via NoticeAssignment in TimetableFrame
 
 ### 5c. Common Pitfalls
-- Defining notices inline on journeys instead of using the central notices collection with NoticeAssignment references
+
+> [!WARNING]
+> - Defining notices inline on journeys instead of using the central notices collection with NoticeAssignment references
 
 ## 6. Additional Information
 

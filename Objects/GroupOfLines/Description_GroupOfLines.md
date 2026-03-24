@@ -1,4 +1,4 @@
-﻿# GroupOfLines
+# GroupOfLines
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#groupoflines)*
 
@@ -46,8 +46,9 @@ A **GroupOfLines** organizes multiple Line objects into a logical set within a S
 
 ### 5c. Common Pitfalls
 
-- **Creating Lines through GroupOfLines**: GroupOfLines only references existing Lines; it does not define them. Lines must be created separately in the ServiceFrame.
-- **Empty members container**: A GroupOfLines without any LineRef entries serves no purpose and should be removed.
+> [!WARNING]
+> - **Creating Lines through GroupOfLines**: GroupOfLines only references existing Lines; it does not define them. Lines must be created separately in the ServiceFrame.
+> - **Empty members container**: A GroupOfLines without any LineRef entries serves no purpose and should be removed.
 
 ## 6. Additional Information
 

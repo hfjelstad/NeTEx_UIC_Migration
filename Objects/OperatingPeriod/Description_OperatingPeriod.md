@@ -1,4 +1,4 @@
-﻿# OperatingPeriod
+# OperatingPeriod
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#operatingperiod)*
 
@@ -42,8 +42,9 @@ OperatingPeriod
 
 ### 5c. Common Pitfalls
 
-- **OperatingPeriod without DayTypeAssignment** — Defining an OperatingPeriod that is never referenced by a DayTypeAssignment has no effect on any service.
-- **Confusing OperatingPeriod with OperatingDay** — OperatingPeriod is a date range used with DayTypeAssignment; OperatingDay is a single date used with DatedServiceJourney.
+> [!WARNING]
+> - **OperatingPeriod without DayTypeAssignment** — Defining an OperatingPeriod that is never referenced by a DayTypeAssignment has no effect on any service.
+> - **Confusing OperatingPeriod with OperatingDay** — OperatingPeriod is a date range used with DayTypeAssignment; OperatingDay is a single date used with DatedServiceJourney.
 
 ## 6. Additional Information
 
