@@ -32,6 +32,8 @@ Line
 
 ## 3. Key Elements
 - **Name**: Human-readable line identifier displayed in timetables and passenger information; must be unique within the service delivery scope.
+- **TransportMode**: Primary public transport mode for the line (e.g., `bus`, `rail`, `water`, `tram`, `metro`). Mandatory in this profile.
+- **TransportSubmode**: Optional refinement of the transport mode (e.g., `regionalBus`, `localRail`). Only one submode element should be present, matching the TransportMode.
 - **OperatorRef**: Mandatory reference to the Operator responsible for running this Line; must resolve to an Operator defined in ResourceFrame.
 - **Presentation**: Optional container for visual presentation properties; defines line color and text color for passenger-facing displays.
 - **Colour**: Hexadecimal color code (6 uppercase digits without `#`) for the line's visual representation; e.g., `005EB8` for blue.
@@ -57,10 +59,9 @@ Line
 - **TextColour format is strict** – Same format requirements as Colour; recommended to ensure text-to-background contrast for accessibility.
 
 ### 5c. Common Pitfalls
-- **TransportMode confusion**: XML examples may show `<TransportMode>` directly under Line, but this is not permitted in the current XSD schema variant. Do NOT include TransportMode as a direct child; use alternative patterns if line classification is required.
-- **TypeOfLineRef not supported**: The schema does not accept `TypeOfLineRef` directly under Line. If line type classification is needed, document it as a profile rule or use alternative constructs.
+- **Missing TransportMode**: TransportMode is mandatory in this profile (1..1). It must be one of the standard NeTEx modes: `bus`, `rail`, `water`, `tram`, `metro`, `air`, `coach`, `telecabin`.
 - **Presentation element mistakes**: Do NOT add `@id` or `@version` attributes to the Presentation element; it is a simple container with only child text elements.
 - **Colour format errors**: Common mistakes include using lowercase hexadecimal (e.g., `005eb8` instead of `005EB8`), including a leading `#` (invalid), or using color names instead of hex codes (invalid).
 
 ## 6. Additional Information
-See [Table_Line.md](Table_Line.md) for detailed attribute specifications, cardinality rules, and XSD constraints. See [Example_Line.xml](Example_Line.xml) for a complete, validated XML instance based on the ERP profile.
+See [Table_Line.md](Table_Line.md) for detailed attribute specifications, cardinality rules, and XSD constraints. See [Example_Line_MIN.xml](Example_Line_MIN.xml) and [Example_Line_NP.xml](Example_Line_NP.xml) for validated XML instances.

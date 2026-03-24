@@ -199,7 +199,7 @@ The ordered sequence of ScheduledStopPoints that a transport service follows for
 
 ## Line
 
-A public transport service line, representing a marketed route with a name and operator.
+A public transport service line, representing a marketed route with a name, transport mode, and operator.
 
 > **NeTEx XSD / Transmodel:** A group of ROUTEs which is generally known to the public by a similar name or number.
 
