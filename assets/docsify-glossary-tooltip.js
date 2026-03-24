@@ -70,12 +70,14 @@
   }
 
   // Wrap matched terms in the rendered HTML, skipping code/links/headings/tables
+  // Only the FIRST occurrence of each term is annotated per page.
   function annotateHtml(html, regex) {
     // Split HTML into "inside-tag" and "text" tokens so we never modify tags
     var tokens = html.split(/(<[^>]+>)/);
     var skip = 0;          // depth counter for elements we must not touch
     var skipTags = /^<(code|pre|a|h[1-6]|script|style|span[^>]*glossary|th)\b/i;
     var skipClose = /^<\/(code|pre|a|h[1-6]|script|style|span|th)/i;
+    var seen = {};         // track which terms have already been annotated
 
     for (var i = 0; i < tokens.length; i++) {
       var t = tokens[i];
@@ -88,8 +90,10 @@
       if (t.trim() === '') continue;        // whitespace-only text node
 
       tokens[i] = t.replace(regex, function (match) {
+        if (seen[match]) return match;      // already annotated this term
         var tip = glossary[match];
         if (!tip) return match;
+        seen[match] = true;
         return '<span class="glossary-tip" data-tip="' + escapeHtml(tip) + '">' + match + '</span>';
       });
     }
