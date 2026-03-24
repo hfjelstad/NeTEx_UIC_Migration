@@ -1,4 +1,6 @@
-# SanitaryEquipment
+﻿# SanitaryEquipment
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#sanitaryequipment)*
 
 ## 1. Purpose
 

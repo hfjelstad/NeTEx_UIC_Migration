@@ -1,4 +1,6 @@
-# ScheduledStopPoint
+﻿# ScheduledStopPoint
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#scheduledstoppoint)*
 
 ## 1. Purpose
 

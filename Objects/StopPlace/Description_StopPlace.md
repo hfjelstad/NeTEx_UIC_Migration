@@ -1,4 +1,6 @@
-# StopPlace
+﻿# StopPlace
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#stopplace)*
 
 ## 1. Purpose
 The **StopPlace** represents a named physical or virtual location where passengers can board or alight from public transport. It is a core organizational entity that models the full spatial and administrative context of a passenger exchange point, from simple street-side bus stops to complex multimodal transport hubs. StopPlaces support both monomodal configurations (single transport mode) and multimodal hierarchies (multiple transport modes), enabling flexible modeling of diverse transport infrastructure.

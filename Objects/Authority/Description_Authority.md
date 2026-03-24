@@ -1,4 +1,6 @@
-# Authority
+﻿# Authority
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#authority)*
 
 ## 1. Purpose
 

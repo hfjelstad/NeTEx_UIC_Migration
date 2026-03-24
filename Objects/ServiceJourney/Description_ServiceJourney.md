@@ -1,4 +1,6 @@
-# ServiceJourney
+﻿# ServiceJourney
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#servicejourney)*
 
 ## 1. Purpose
 

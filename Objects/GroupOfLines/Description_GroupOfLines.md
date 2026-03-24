@@ -1,4 +1,6 @@
-# GroupOfLines
+﻿# GroupOfLines
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#groupoflines)*
 
 ## 1. Purpose
 

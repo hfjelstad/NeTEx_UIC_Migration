@@ -1,4 +1,6 @@
-# LinkSequenceProjection
+﻿# LinkSequenceProjection
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#linksequenceprojection)*
 
 ## 1. Purpose
 

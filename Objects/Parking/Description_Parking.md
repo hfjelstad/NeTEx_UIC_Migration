@@ -1,4 +1,6 @@
-# Parking
+﻿# Parking
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#parking)*
 
 ## 1. Purpose
 

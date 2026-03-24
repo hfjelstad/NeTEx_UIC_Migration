@@ -1,4 +1,6 @@
-# placeEquipments
+﻿# placeEquipments
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#placeequipments)*
 
 ## 1. Purpose
 

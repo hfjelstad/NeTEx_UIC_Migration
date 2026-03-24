@@ -1,4 +1,6 @@
-# DatedServiceJourney
+﻿# DatedServiceJourney
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#datedservicejourney)*
 
 ## 1. Purpose
 
