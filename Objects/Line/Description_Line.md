@@ -61,9 +61,8 @@ Line
 ### 5c. Common Pitfalls
 
 > [!WARNING]
-> **Missing TransportMode**: TransportMode is mandatory in this profile (1..1). It must be one of the standard NeTEx modes: `bus`, `rail`, `water`, `tram`, `metro`, `air`, `coach`, `telecabin`.
->
-> **Presentation element mistakes**: Do NOT add `@id` or `@version` attributes to the Presentation element; it is a simple container with only child text elements.
+> - **Missing TransportMode**: TransportMode is mandatory in this profile (1..1). It must be one of the standard NeTEx modes: `bus`, `rail`, `water`, `tram`, `metro`, `air`, `coach`, `telecabin`.
+> - **Presentation element mistakes**: Do NOT add `@id` or `@version` attributes to the Presentation element; it is a simple container with only child text elements.
 
 > [!TIP]
 > **Colour format**: Must be exactly 6 uppercase hexadecimal digits (0–9, A–F) without a leading `#`. Example: `005EB8` not `#005eb8`.
