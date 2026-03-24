@@ -1,4 +1,6 @@
-# PassengerStopAssignment
+﻿# PassengerStopAssignment
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#passengerstopassignment)*
 
 ## 1. Purpose
 

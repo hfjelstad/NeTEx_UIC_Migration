@@ -1,4 +1,6 @@
-# JourneyPattern
+﻿# JourneyPattern
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#journeypattern)*
 
 ## 1. Purpose
 

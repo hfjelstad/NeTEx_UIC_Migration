@@ -1,4 +1,6 @@
-# ShelterEquipment
+﻿# ShelterEquipment
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#shelterequipment)*
 
 ## 1. Purpose
 

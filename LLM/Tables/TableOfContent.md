@@ -49,6 +49,7 @@ Detailed documentation for NeTEx objects:
 - [Contract](../../Objects/Contract/Description_Contract.md) – Agreements and contracts
 - [DatedServiceJourney](../../Objects/DatedServiceJourney/Description_DatedServiceJourney.md) – Service journeys for specific dates
 - [DayType](../../Objects/DayType/Description_DayType.md) – Day type definitions (weekdays, holidays, etc.)
+- [DayTypeAssignment](../../Objects/DayTypeAssignment/Description_DayTypeAssignment.md) – Binds DayTypes to dates or OperatingPeriods
 - [DestinationDisplay](../../Objects/DestinationDisplay/Description_DestinationDisplay.md) – Destination display content
 - [FareContract](../../Objects/FareContract/Description_FareContract.md) – Fare contract definitions
 - [FareZone](../../Objects/FareZone/Description_FareZone.md) – Tariff zones for fares
@@ -59,6 +60,7 @@ Detailed documentation for NeTEx objects:
 - [Line](../../Objects/Line/Description_Line.md) – Public transport lines
 - [LinkSequenceProjection](../../Objects/LinkSequenceProjection/Description_LinkSequenceProjection.md) – Link sequence projections
 - [Notice](../../Objects/Notice/Description_Notice.md) – Notices and information
+- [OperatingDay](../../Objects/OperatingDay/Description_OperatingDay.md) – Specific calendar dates for DatedServiceJourney
 - [OperatingPeriod](../../Objects/OperatingPeriod/Description_OperatingPeriod.md) – Operating period definitions
 - [Operator](../../Objects/Operator/Description_Operator.md) – Transport operators/companies
 - [Parking](../../Objects/Parking/Description_Parking.md) – Parking facilities

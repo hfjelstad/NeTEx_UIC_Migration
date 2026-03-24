@@ -1,4 +1,6 @@
-# Interchange
+﻿# Interchange
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#interchange)*
 
 ## 1. Purpose
 
