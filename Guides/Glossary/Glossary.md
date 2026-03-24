@@ -69,7 +69,7 @@ A container frame that groups multiple typed frames (ServiceFrame, TimetableFram
 
 A legal or commercial agreement governing responsibilities between an Authority (contractee) and an Operator (contractor) for providing public transport services.
 
-> **NeTEx XSD:** A CONTRACT between ORGANISATIONs to supply services or goods.
+> **NeTEx XSD / Transmodel:** A CONTRACT between ORGANISATIONs to supply services or goods.
 
 → [Full documentation](../../Objects/Contract/Description_Contract.md)
 
@@ -77,9 +77,11 @@ A legal or commercial agreement governing responsibilities between an Authority 
 
 ## DatedServiceJourney
 
-A specific operational instance of a ServiceJourney on a particular calendar day, including day-specific modifications such as cancellations, replacements, or reinforcements.
+A specific operational instance of a ServiceJourney on a particular calendar day, including day-specific modifications such as cancellations, replacements, or reinforcements. DatedServiceJourney is a NeTEx specialisation of the Transmodel concept DATED VEHICLE JOURNEY.
 
 > **NeTEx XSD:** A particular SERVICE JOURNEY of a vehicle on a particular OPERATING DAY including all modifications possibly decided by the control staff.
+>
+> **Transmodel:** A particular journey of a vehicle on a particular OPERATING DAY including all modifications possibly decided by the control staff. *(Transmodel: DATED VEHICLE JOURNEY)*
 
 → [Full documentation](../../Objects/DatedServiceJourney/Description_DatedServiceJourney.md)
 
@@ -113,9 +115,7 @@ The binding between a DayType and a specific date or date range (OperatingPeriod
 
 The text shown on the front or side of a public transport vehicle to indicate its destination, including via-points and variant labels.
 
-> **NeTEx XSD:** An advertised destination of a specific JOURNEY PATTERN, usually displayed on a head sign or at other on-board locations.
->
-> **Transmodel:** An advertised destination of a specific JOURNEY PATTERN, usually displayed on a headsign or at other on-board locations.
+> **NeTEx XSD / Transmodel:** An advertised destination of a specific JOURNEY PATTERN, usually displayed on a headsign or at other on-board locations.
 
 → [Full documentation](../../Objects/DestinationDisplay/Description_DestinationDisplay.md)
 
@@ -125,9 +125,7 @@ The text shown on the front or side of a public transport vehicle to indicate it
 
 A customer-facing agreement for the right to travel and consume fare products, defined within a SalesTransactionFrame (NeTEx Part 3 - Sales).
 
-> **NeTEx XSD:** A contract with a particular (but possibly anonymous) customer, ruling the consumption of transport services (and joint services). A FARE CONTRACT may be designed for a fixed SALES OFFER PACKAGE (e.g. ticket) or to allow successive purchases of SALES OFFER PACKAGEs.
->
-> **Transmodel:** A contract with a particular (but possibly anonymous) customer, ruling the consumption of transport services (and joint services). A FARE CONTRACT may be designed for a fixed SALES OFFER PACKAGE (e.g., ticket) or to allow successive purchases of SALES OFFER PACKAGEs.
+> **NeTEx XSD / Transmodel:** A contract with a particular (but possibly anonymous) customer, ruling the consumption of transport services (and joint services). A FARE CONTRACT may be designed for a fixed SALES OFFER PACKAGE (e.g. ticket) or to allow successive purchases of SALES OFFER PACKAGEs.
 
 → [Full documentation](../../Objects/FareContract/Description_FareContract.md)
 
@@ -137,7 +135,7 @@ A customer-facing agreement for the right to travel and consume fare products, d
 
 A geographic zone used to determine ticket prices in public transport, grouping stop points for fare calculation.
 
-> **NeTEx XSD:** A specialization of TARIFF ZONE to include FARE SECTIONs.
+> **NeTEx XSD / Transmodel:** A specialization of TARIFF ZONE to include FARE SECTIONs.
 
 → [Full documentation](../../Objects/FareZone/Description_FareZone.md)
 
@@ -159,7 +157,7 @@ The scheduling and operational characteristics of a flexible (demand-responsive)
 
 A logical grouping of multiple Line objects for common management, branding, distribution, or filtering.
 
-> **NeTEx XSD:** A grouping of LINEs which will be commonly referenced for a specific purpose.
+> **NeTEx XSD / Transmodel:** A grouping of LINEs which will be commonly referenced for a specific purpose.
 
 → [Full documentation](../../Objects/GroupOfLines/Description_GroupOfLines.md)
 
@@ -193,7 +191,7 @@ The ordered sequence of ScheduledStopPoints that a transport service follows for
 
 A public transport service line, representing a marketed route with a name, transport mode, and operator.
 
-> **NeTEx XSD:** A group of ROUTEs which is generally known to the public by a similar name or number.
+> **NeTEx XSD / Transmodel:** A group of ROUTEs which is generally known to the public by a similar name or number.
 
 → [Full documentation](../../Objects/Line/Description_Line.md)
 
@@ -237,7 +235,7 @@ A specific calendar date on which transport services operate, referenced by Date
 
 A continuous date range (FromDate-ToDate) during which a set of transport services may operate, used by DayTypeAssignment.
 
-> **NeTEx XSD:** A continuous interval of time between two OPERATING DAYs which will be used to define validities.
+> **NeTEx XSD / Transmodel:** A continuous interval of time between two OPERATING DAYs which will be used to define validities.
 
 → [Full documentation](../../Objects/OperatingPeriod/Description_OperatingPeriod.md)
 
@@ -247,7 +245,7 @@ A continuous date range (FromDate-ToDate) during which a set of transport servic
 
 An organisation that provides public transport services under contract with an Authority.
 
-> **NeTEx XSD:** A company providing public transport services.
+> **NeTEx XSD / Transmodel:** A company providing public transport services.
 
 → [Full documentation](../../Objects/Operator/Description_Operator.md)
 
@@ -299,7 +297,7 @@ The root element of every NeTEx XML document, wrapping one or more frames with m
 
 A classifier for the reason why NeTEx objects are grouped together (e.g., for presentation, regulation, or contract scope).
 
-> **NeTEx XSD:** Functional purpose for which GROUPs of elements are defined. The PURPOSE OF GROUPING may be restricted to one or more types of the given object.
+> **NeTEx XSD / Transmodel:** Functional purpose for which GROUPs of elements are defined. The PURPOSE OF GROUPING may be restricted to one or more types of the given object.
 
 → [Full documentation](../../Objects/PurposeOfGrouping/Description_PurposeOfGrouping.md)
 
@@ -333,7 +331,7 @@ The set of roles and organisations responsible for managing data, operations, or
 
 The logical geographic path definition for a Line with a specific direction.
 
-> **NeTEx XSD:** An ordered list of located POINTs defining one single path through the Road (or rail) network. A ROUTE may pass through the same POINT more than once.
+> **NeTEx XSD / Transmodel:** An ordered list of located POINTs defining one single path through the road (or rail) network. A ROUTE may pass through the same POINT more than once.
 
 → [Full documentation](../../Objects/Route/Description_Route.md)
 
@@ -355,7 +353,7 @@ Sanitary facilities (toilets, washrooms) available at a stop place, station, or 
 
 A logical stopping point in the timetable, used by JourneyPatterns and ServiceJourneys to define where vehicles stop.
 
-> **NeTEx XSD:** A POINT where passengers can board or alight from vehicles.
+> **NeTEx XSD / Transmodel:** A POINT where passengers can board or alight from vehicles.
 
 → [Full documentation](../../Objects/ScheduledStopPoint/Description_ScheduledStopPoint.md)
 
@@ -373,7 +371,7 @@ An enumeration on DatedServiceJourney indicating the deviation type. Allowed val
 
 A planned trip in the timetable operating on a recurring schedule, defining the stop sequence via a JourneyPattern, passing times, operator, and days of operation.
 
-> **NeTEx XSD:** A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN.
+> **NeTEx XSD / Transmodel:** A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN.
 
 → [Full documentation](../../Objects/ServiceJourney/Description_ServiceJourney.md)
 
@@ -407,7 +405,7 @@ A named physical or virtual location where passengers can board or alight from p
 
 A geographic fare zone used for ticketing and pricing, grouping stops and areas into zones that determine ticket prices.
 
-> **NeTEx XSD:** A ZONE used to define a zonal fare structure in a zone-counting or zone-matrix system.
+> **NeTEx XSD / Transmodel:** A ZONE used to define a zonal fare structure in a zone-counting or zone-matrix system.
 
 → [Full documentation](../../Objects/TariffZone/Description_TariffZone.md)
 
@@ -417,9 +415,7 @@ A geographic fare zone used for ticketing and pricing, grouping stops and areas 
 
 Ticket machines, validators, or other ticketing infrastructure available at a stop place or station.
 
-> **NeTEx XSD:** Specialisation of PASSENGER EQUIPMENT for ticketing.
->
-> **Transmodel:** Specialization of PASSENGER EQUIPMENT for ticketing.
+> **NeTEx XSD / Transmodel:** Specialisation of PASSENGER EQUIPMENT for ticketing.
 
 → [Full documentation](../../Objects/TicketingEquipment/Description_TicketingEquipment.md)
 
@@ -442,6 +438,8 @@ A named geographic area such as a city, municipality, county, or region - used t
 A rail-specific specialisation of Block that represents an operational grouping for a single train on a given operating day.
 
 > **NeTEx XSD:** The vehicle work required by a train-based JOURNEY or sequence of JOURNEYs, from the time it leaves a PARKING POINT after parking until its next return to park at a PARKING POINT.
+>
+> **Transmodel:** The work required to be done by a vehicle from the time it leaves a PARKING POINT after parking until its next return to park at a PARKING POINT. *(Transmodel: BLOCK)*
 
 → [Full documentation](../../Objects/TrainBlock/Description_TrainBlock.md)
 
@@ -451,7 +449,7 @@ A rail-specific specialisation of Block that represents an operational grouping 
 
 A specific physical vehicle in the fleet used to operate public transport services.
 
-> **NeTEx XSD:** A public transport vehicle used for carrying passengers.
+> **NeTEx XSD / Transmodel:** A public transport vehicle used for carrying passengers.
 
 → [Full documentation](../../Objects/Vehicle/Description_Vehicle.md)
 
