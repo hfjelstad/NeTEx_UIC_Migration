@@ -207,69 +207,71 @@ Understanding how objects reference each other is critical for consuming NeTEx d
 ### The Reference Chain
 
 ```mermaid
-graph LR
-    subgraph Organisation
+graph TD
+    subgraph org [" 🏢 Organisation"]
         AUTH["Authority"]
-        OPR["Operator"]
         NET["Network"]
+        OPR["Operator"]
     end
 
-    subgraph Network Topology
+    subgraph net [" 🗺️ Network Topology"]
         LN["Line"]
         RT["Route"]
-        POR["PointOnRoute"]
-        RPT["RoutePoint"]
-        SSP["ScheduledStopPoint"]
+        POR["PointOnRoute"] --> RPT["RoutePoint"]
         SLK["ServiceLink"]
+        SSP["ScheduledStopPoint"]
     end
 
-    subgraph Journey Planning
-        JP["JourneyPattern"]
+    subgraph jp [" 📋 Journey Planning"]
+        JPA["JourneyPattern"]
         SPJP["StopPointInJP"]
         SLJP["ServiceLinkInJP"]
     end
 
-    subgraph Timetable
+    subgraph tt [" 🕐 Timetable"]
         SJ["ServiceJourney"]
         TPT["TimetabledPassingTime"]
         DSJ["DatedServiceJourney"]
         OD["OperatingDay"]
     end
 
-    subgraph Mapping
+    subgraph map [" 📍 Mapping"]
         PSA["PassengerStopAssignment"]
         QY["Quay &#40;external&#41;"]
     end
 
-    LN -->|OperatorRef| OPR
-    LN -->|RepresentedByGroupRef| NET
+    AUTH --- NET
     NET -->|AuthorityRef| AUTH
+    LN -->|RepresentedByGroupRef| NET
+    LN -->|OperatorRef| OPR
     RT -->|LineRef| LN
-    POR -->|RoutePointRef| RPT
     RPT -.->|PointProjection| SSP
-    JP -->|RouteRef| RT
+    SLK -->|from / to| SSP
+
+    JPA -->|RouteRef| RT
     SPJP -->|ScheduledStopPointRef| SSP
     SLJP -->|ServiceLinkRef| SLK
-    SLK -->|from/to| SSP
-    SJ -->|JourneyPatternRef| JP
-    SJ -->|OperatorRef| OPR
+
+    SJ -->|JourneyPatternRef| JPA
     SJ -->|LineRef| LN
+    SJ -->|OperatorRef| OPR
     TPT -->|StopPointInJPRef| SPJP
     DSJ -->|ServiceJourneyRef| SJ
     DSJ -->|OperatingDayRef| OD
+
     PSA --> SSP
     PSA --> QY
 
     style AUTH fill:#0D47A1,stroke:#0D47A1,color:#fff
-    style OPR fill:#0D47A1,stroke:#0D47A1,color:#fff
     style NET fill:#0D47A1,stroke:#0D47A1,color:#fff
+    style OPR fill:#0D47A1,stroke:#0D47A1,color:#fff
     style LN fill:#1565C0,stroke:#1565C0,color:#fff
     style RT fill:#1565C0,stroke:#1565C0,color:#fff
     style POR fill:#1976D2,stroke:#1976D2,color:#fff
     style RPT fill:#1976D2,stroke:#1976D2,color:#fff
     style SSP fill:#1976D2,stroke:#1976D2,color:#fff
     style SLK fill:#1976D2,stroke:#1976D2,color:#fff
-    style JP fill:#1E88E5,stroke:#1E88E5,color:#fff
+    style JPA fill:#1E88E5,stroke:#1E88E5,color:#fff
     style SPJP fill:#42A5F5,stroke:#42A5F5,color:#fff
     style SLJP fill:#42A5F5,stroke:#42A5F5,color:#fff
     style SJ fill:#42A5F5,stroke:#42A5F5,color:#fff
