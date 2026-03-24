@@ -1,4 +1,4 @@
-﻿# OperatingDay
+# OperatingDay
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#operatingday)*
 
@@ -44,8 +44,9 @@ OperatingDay
 
 ### 5c. Common Pitfalls
 
-- **Confusing OperatingDay with DayType** — OperatingDay is a single calendar date (`2026-03-18`); DayType is a category of days (`Weekdays`). DatedServiceJourney uses OperatingDay, not DayType.
-- **Missing OperatingDay definition** — Defining a DatedServiceJourney with an OperatingDayRef that does not resolve to an OperatingDay in the same delivery causes a broken reference.
+> [!WARNING]
+> - **Confusing OperatingDay with DayType** — OperatingDay is a single calendar date (`2026-03-18`); DayType is a category of days (`Weekdays`). DatedServiceJourney uses OperatingDay, not DayType.
+> - **Missing OperatingDay definition** — Defining a DatedServiceJourney with an OperatingDayRef that does not resolve to an OperatingDay in the same delivery causes a broken reference.
 
 ## 6. Additional Information
 

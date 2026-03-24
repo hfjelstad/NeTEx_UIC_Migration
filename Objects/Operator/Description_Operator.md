@@ -1,4 +1,4 @@
-﻿# Operator
+# Operator
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#operator)*
 
@@ -51,10 +51,12 @@ Operator
 - **No duplicate Operator IDs** – Each Operator must have a unique ID within the dataset; duplicates cause deserialization errors.
 
 ### 5c. Common Pitfalls
-- **Operator vs. Authority confusion**: Mistaking Operator for Authority or vice versa. Authority plans the network; Operator executes services. Example: Authority defines a Line; Operator runs it with specific schedules.
-- **TradingName vs. Name**: In XML, `TradingName` is an attribute-like element; use `Name` in the formal table for legal entity identification. Mixing causes reference mismatches.
-- **Missing AuthorityRef**: Operators should reference their Authority for governance clarity. Omitting this creates orphaned operators in multi-organization datasets.
-- **Duplicate Operators for same service**: Creating separate Operators for the same entity (e.g., one for commute services, one for leisure) breaks referential integrity. Use a single Operator with multiple Lines instead.
+
+> [!WARNING]
+> - **Operator vs. Authority confusion**: Mistaking Operator for Authority or vice versa. Authority plans the network; Operator executes services. Example: Authority defines a Line; Operator runs it with specific schedules.
+> - **TradingName vs. Name**: In XML, `TradingName` is an attribute-like element; use `Name` in the formal table for legal entity identification. Mixing causes reference mismatches.
+> - **Missing AuthorityRef**: Operators should reference their Authority for governance clarity. Omitting this creates orphaned operators in multi-organization datasets.
+> - **Duplicate Operators for same service**: Creating separate Operators for the same entity (e.g., one for commute services, one for leisure) breaks referential integrity. Use a single Operator with multiple Lines instead.
 
 ## 6. Additional Information
 See [Table_Operator.md](Table_Operator.md) for detailed attribute specifications and [Example_Operator.xml](Example_Operator.xml) for a complete XML instance based on the ERP profile.

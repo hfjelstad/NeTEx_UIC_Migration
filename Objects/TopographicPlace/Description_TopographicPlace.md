@@ -1,4 +1,4 @@
-﻿# TopographicPlace
+# TopographicPlace
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#topographicplace)*
 
@@ -51,9 +51,10 @@ TopographicPlace
 
 ### 5c. Common Pitfalls
 
-- **Wrong TopographicPlaceType**: Ensure the type matches the administrative level — a city is not a county.
-- **Missing CountryRef**: Always include the country reference for unambiguous geographic identification.
-- **Inconsistent naming**: The Name in Descriptor should match official geographic names used by national authorities.
+> [!WARNING]
+> - **Wrong TopographicPlaceType**: Ensure the type matches the administrative level — a city is not a county.
+> - **Missing CountryRef**: Always include the country reference for unambiguous geographic identification.
+> - **Inconsistent naming**: The Name in Descriptor should match official geographic names used by national authorities.
 
 ## 6. Additional Information
 

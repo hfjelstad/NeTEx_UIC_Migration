@@ -1,4 +1,4 @@
-﻿# FareZone
+# FareZone
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#farezone)*
 
@@ -44,8 +44,9 @@ FareZone
 
 ### 5c. Common Pitfalls
 
-- **Confusing FareZone with TariffZone** — FareZone is a specialisation of TariffZone for fare products. Use FareZone in FareFrame, TariffZone in SiteFrame.
-- **Missing stop assignment** — A FareZone without members or without being referenced from stop points does not participate in fare calculation.
+> [!WARNING]
+> - **Confusing FareZone with TariffZone** — FareZone is a specialisation of TariffZone for fare products. Use FareZone in FareFrame, TariffZone in SiteFrame.
+> - **Missing stop assignment** — A FareZone without members or without being referenced from stop points does not participate in fare calculation.
 
 ## 6. Additional Information
 

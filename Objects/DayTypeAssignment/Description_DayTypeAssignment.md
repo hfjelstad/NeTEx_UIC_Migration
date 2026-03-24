@@ -1,4 +1,4 @@
-﻿# DayTypeAssignment
+# DayTypeAssignment
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#daytypeassignment)*
 
@@ -49,9 +49,10 @@ DayTypeAssignment
 
 ### 5c. Common Pitfalls
 
-- **Missing exception order** — An `isAvailable=false` assignment with a lower order than the baseline `isAvailable=true` assignment will be overridden, not the other way around. The higher-order assignment wins.
-- **Omitting isAvailable** — While the XSD allows omission (defaulting to `true`), explicit declaration avoids ambiguity.
-- **DayType without any assignment** — A DayType that has no DayTypeAssignment is inert and produces no operating dates for ServiceJourneys that reference it.
+> [!WARNING]
+> - **Missing exception order** — An `isAvailable=false` assignment with a lower order than the baseline `isAvailable=true` assignment will be overridden, not the other way around. The higher-order assignment wins.
+> - **Omitting isAvailable** — While the XSD allows omission (defaulting to `true`), explicit declaration avoids ambiguity.
+> - **DayType without any assignment** — A DayType that has no DayTypeAssignment is inert and produces no operating dates for ServiceJourneys that reference it.
 
 ## 6. Additional Information
 

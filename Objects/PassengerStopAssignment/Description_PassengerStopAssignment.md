@@ -1,4 +1,4 @@
-﻿# PassengerStopAssignment
+# PassengerStopAssignment
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#passengerstopassignment)*
 
@@ -45,8 +45,9 @@ A **PassengerStopAssignment** links a logical ScheduledStopPoint to a physical Q
 
 ### 5c. Common Pitfalls
 
-- **Missing assignments**: A ScheduledStopPoint without a PassengerStopAssignment cannot be resolved to a physical platform, breaking journey planning and passenger information.
-- **QuayRef not belonging to StopPlaceRef**: If both are specified, the Quay must be contained within the referenced StopPlace; mismatches create data integrity errors.
+> [!WARNING]
+> - **Missing assignments**: A ScheduledStopPoint without a PassengerStopAssignment cannot be resolved to a physical platform, breaking journey planning and passenger information.
+> - **QuayRef not belonging to StopPlaceRef**: If both are specified, the Quay must be contained within the referenced StopPlace; mismatches create data integrity errors.
 
 ## 6. Additional Information
 

@@ -1,4 +1,4 @@
-﻿# Parking
+# Parking
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#parking)*
 
@@ -61,8 +61,9 @@ Parking
 
 ### 5c. Common Pitfalls
 
-- **Wrong ParkingType**: Ensure the type matches the actual facility — `parkAndRide` is for transit-adjacent parking, not general urban parking.
-- **Missing link to StopPlace**: While not structurally required, parking facilities should be logically associated with the stop or station they serve.
+> [!WARNING]
+> - **Wrong ParkingType**: Ensure the type matches the actual facility — `parkAndRide` is for transit-adjacent parking, not general urban parking.
+> - **Missing link to StopPlace**: While not structurally required, parking facilities should be logically associated with the stop or station they serve.
 
 ## 6. Additional Information
 

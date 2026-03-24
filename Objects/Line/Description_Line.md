@@ -59,9 +59,55 @@ Line
 - **TextColour format is strict** – Same format requirements as Colour; recommended to ensure text-to-background contrast for accessibility.
 
 ### 5c. Common Pitfalls
-- **Missing TransportMode**: TransportMode is mandatory in this profile (1..1). It must be one of the standard NeTEx modes: `bus`, `rail`, `water`, `tram`, `metro`, `air`, `coach`, `telecabin`.
-- **Presentation element mistakes**: Do NOT add `@id` or `@version` attributes to the Presentation element; it is a simple container with only child text elements.
-- **Colour format errors**: Common mistakes include using lowercase hexadecimal (e.g., `005eb8` instead of `005EB8`), including a leading `#` (invalid), or using color names instead of hex codes (invalid).
+
+> [!WARNING]
+> - **Missing TransportMode**: TransportMode is mandatory in this profile (1..1). It must be one of the standard NeTEx modes: `bus`, `rail`, `water`, `tram`, `metro`, `air`, `coach`, `telecabin`.
+> - **Presentation element mistakes**: Do NOT add `@id` or `@version` attributes to the Presentation element; it is a simple container with only child text elements.
+
+> [!TIP]
+> **Colour format**: Must be exactly 6 uppercase hexadecimal digits (0–9, A–F) without a leading `#`. Example: `005EB8` not `#005eb8`.
 
 ## 6. Additional Information
-See [Table_Line.md](Table_Line.md) for detailed attribute specifications, cardinality rules, and XSD constraints. See [Example_Line_MIN.xml](Example_Line_MIN.xml) and [Example_Line_NP.xml](Example_Line_NP.xml) for validated XML instances.
+See [Table_Line.md](Table_Line.md) for detailed attribute specifications, cardinality rules, and XSD constraints.
+
+<!-- tabs:start -->
+
+#### **MIN (ERP)**
+
+```xml
+<Line id="ERP:Line:1" version="1">
+  <Name>Line 1</Name>
+  <TransportMode>bus</TransportMode>
+  <OperatorRef ref="ERP:Operator:OP1"/>
+  <Presentation>
+    <Colour>005EB8</Colour>
+    <TextColour>FFFFFF</TextColour>
+  </Presentation>
+</Line>
+```
+
+→ [Full file](Example_Line_MIN.xml)
+
+#### **NP (Nordic)**
+
+```xml
+<Line id="NP:Line:100" version="1">
+  <Name>Arendal-Kristiansand</Name>
+  <TransportMode>bus</TransportMode>
+  <TransportSubmode>
+    <BusSubmode>regionalBus</BusSubmode>
+  </TransportSubmode>
+  <PublicCode>100</PublicCode>
+  <PrivateCode>100</PrivateCode>
+  <OperatorRef ref="NP:Operator:923"/>
+  <RepresentedByGroupRef ref="NP:Network:AKTNett"/>
+  <Presentation>
+    <Colour>000000</Colour>
+    <TextColour>FFFF00</TextColour>
+  </Presentation>
+</Line>
+```
+
+→ [Full file](Example_Line_NP.xml)
+
+<!-- tabs:end -->

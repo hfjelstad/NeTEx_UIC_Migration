@@ -1,4 +1,4 @@
-﻿# Contract
+# Contract
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#contract)*
 
@@ -50,8 +50,9 @@ A **Contract** defines the legal or commercial agreement that governs responsibi
 
 ### 5c. Common Pitfalls
 
-- **Contract vs. FareContract confusion**: Contract is an administrative/legal agreement between organisations; FareContract is a customer-facing agreement for the right to travel. They serve different purposes.
-- **Missing organisation references**: A Contract without any contractees or contractors provides no governance value.
+> [!WARNING]
+> - **Contract vs. FareContract confusion**: Contract is an administrative/legal agreement between organisations; FareContract is a customer-facing agreement for the right to travel. They serve different purposes.
+> - **Missing organisation references**: A Contract without any contractees or contractors provides no governance value.
 
 ## 6. Additional Information
 

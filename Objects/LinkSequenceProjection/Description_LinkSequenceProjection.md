@@ -1,4 +1,4 @@
-﻿# LinkSequenceProjection
+# LinkSequenceProjection
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#linksequenceprojection)*
 
@@ -45,9 +45,10 @@ LinkSequenceProjection
 
 ### 5c. Common Pitfalls
 
-- **Wrong coordinate order** — WGS84 (EPSG:4326) in GML uses latitude-first ordering. Verify the srsName matches the actual coordinate order.
-- **Missing srsName** — Omitting the spatial reference makes coordinates uninterpretable.
-- **Overly detailed geometry** — Include enough points to represent the path shape but avoid unnecessary precision that bloats file size.
+> [!WARNING]
+> - **Wrong coordinate order** — WGS84 (EPSG:4326) in GML uses latitude-first ordering. Verify the srsName matches the actual coordinate order.
+> - **Missing srsName** — Omitting the spatial reference makes coordinates uninterpretable.
+> - **Overly detailed geometry** — Include enough points to represent the path shape but avoid unnecessary precision that bloats file size.
 
 ## 6. Additional Information
 

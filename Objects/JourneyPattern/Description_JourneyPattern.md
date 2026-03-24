@@ -1,4 +1,4 @@
-﻿# JourneyPattern
+# JourneyPattern
 
 > *→ [Glossary definition](../../Guides/Glossary/Glossary.md#journeypattern)*
 
@@ -64,9 +64,10 @@ JourneyPattern
 
 ### 5c. Common Pitfalls
 
-- **JourneyPattern vs. Route confusion**: Route defines the logical geographic path; JourneyPattern defines which stops on that path are actually served in a specific variant. Do not duplicate stop sequences in both.
-- **Non-sequential order attributes**: Using gaps (1, 3, 5) or unordered values breaks stop sequence logic.
-- **Including passing times in JourneyPattern**: JourneyPattern defines only the stop order. Passing times (ArrivalTime, DepartureTime) belong to ServiceJourney via TimetabledPassingTime.
+> [!WARNING]
+> - **JourneyPattern vs. Route confusion**: Route defines the logical geographic path; JourneyPattern defines which stops on that path are actually served in a specific variant. Do not duplicate stop sequences in both.
+> - **Non-sequential order attributes**: Using gaps (1, 3, 5) or unordered values breaks stop sequence logic.
+> - **Including passing times in JourneyPattern**: JourneyPattern defines only the stop order. Passing times (ArrivalTime, DepartureTime) belong to ServiceJourney via TimetabledPassingTime.
 
 ## 6. Additional Information
 
