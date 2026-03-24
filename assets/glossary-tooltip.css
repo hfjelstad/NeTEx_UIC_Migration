@@ -1,0 +1,55 @@
+/* Glossary tooltip — subtle underline + hover card */
+
+.glossary-tip {
+  border-bottom: 1.5px dotted #1976D2;
+  cursor: help;
+  position: relative;
+}
+
+.glossary-tip:hover {
+  border-bottom-style: solid;
+}
+
+.glossary-tip:hover::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  background: #0D47A1;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  line-height: 1.45;
+  width: max-content;
+  max-width: 380px;
+  z-index: 1000;
+  white-space: normal;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+/* Small arrow pointing down from tooltip */
+.glossary-tip:hover::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 0px);
+  left: 16px;
+  border: 6px solid transparent;
+  border-top-color: #0D47A1;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+/* Avoid tooltips overflowing on the right side */
+@media (max-width: 768px) {
+  .glossary-tip:hover::after {
+    left: auto;
+    right: 0;
+    max-width: 260px;
+  }
+  .glossary-tip:hover::before {
+    left: auto;
+    right: 16px;
+  }
+}
