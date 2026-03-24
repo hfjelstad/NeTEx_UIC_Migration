@@ -13,7 +13,8 @@ In this guide you will learn:
 - 🔢 Versioning rules for within-file and cross-file references
 - 🏷️ The ID naming convention that ensures global uniqueness
 
-> 💡 **Tip:** If you're new to NeTEx, start with the [Get Started guide](../GetStarted/GetStarted_Guide.md) first. This guide assumes you understand frames, objects, and the basic document anatomy.
+> [!TIP]
+> If you're new to NeTEx, start with the [Get Started guide](../GetStarted/GetStarted_Guide.md) first. This guide assumes you understand frames, objects, and the basic document anatomy.
 
 ---
 
@@ -30,15 +31,23 @@ This split avoids duplicating shared objects (like stop points and operators) ac
 
 ### Consumer Workflow
 
-```text
-1. Load shared data file     ← organisations, stops, calendar
-2. For each line file:
-   a. Load the line file     ← routes, journeys, timetables
-   b. Resolve references     ← link to shared objects by id
-   c. Process journeys       ← build timetables
+```mermaid
+flowchart LR
+    A["1. Load shared data file"] --> B["2. For each line file"]
+    B --> C["a. Load line file"]
+    C --> D["b. Resolve references"]
+    D --> E["c. Process journeys"]
+    E --> B
+
+    style A fill:#0D47A1,stroke:#0D47A1,color:#fff
+    style B fill:#1565C0,stroke:#1565C0,color:#fff
+    style C fill:#1976D2,stroke:#1976D2,color:#fff
+    style D fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style E fill:#64B5F6,stroke:#64B5F6,color:#fff
 ```
 
-> ⚠️ **Note:** Consumers must **load the shared data file first**, then process each line file. Line files reference objects defined in the shared file by their `id`.
+> [!NOTE]
+> Consumers must **load the shared data file first**, then process each line file. Line files reference objects defined in the shared file by their `id`.
 
 ---
 
@@ -46,14 +55,22 @@ This split avoids duplicating shared objects (like stop points and operators) ac
 
 Every file — shared or line — follows the same top-level pattern:
 
-```text
-PublicationDelivery                    ← Envelope: who sent this, when
-└── dataObjects
-    └── CompositeFrame                ← Single composite frame per file
-        ├── validityConditions        ← AvailabilityCondition (date range)
-        ├── codespaces               ← Namespace prefixes (e.g. VYG, NSR)
-        ├── FrameDefaults            ← Timezone, language
-        └── frames                   ← The actual data frames
+```mermaid
+graph TD
+    PD["PublicationDelivery"] --> DO["dataObjects"]
+    DO --> CF["CompositeFrame"]
+    CF --> VC["validityConditions"]
+    CF --> CS["codespaces"]
+    CF --> FD["FrameDefaults"]
+    CF --> FR["frames"]
+
+    style PD fill:#0D47A1,stroke:#0D47A1,color:#fff
+    style DO fill:#1565C0,stroke:#1565C0,color:#fff
+    style CF fill:#1976D2,stroke:#1976D2,color:#fff
+    style VC fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style CS fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style FD fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style FR fill:#42A5F5,stroke:#42A5F5,color:#fff
 ```
 
 For details on the envelope and composite frame, see:
@@ -62,28 +79,47 @@ For details on the envelope and composite frame, see:
 
 ---
 
-## 4. 📄 Shared Data File
+<!-- tabs:start -->
+
+#### **📄 Shared Data File**
 
 The shared file contains one `CompositeFrame` with three frames:
 
-```text
-CompositeFrame
-├── ResourceFrame              ← Organisations
-│   └── organisations
-│       ├── Authority          ← Transport authorities
-│       └── Operator           ← Service operators
-│
-├── ServiceFrame               ← Network topology
-│   ├── Network                ← Line groupings by authority
-│   ├── routePoints            ← Abstract points along routes
-│   ├── destinationDisplays    ← Vehicle display texts
-│   ├── scheduledStopPoints    ← Logical timetable stops
-│   ├── serviceLinks           ← Paths between consecutive stops
-│   ├── stopAssignments        ← Logical-to-physical stop mapping
-│   └── notices                ← Passenger information texts
-│
-└── ServiceCalendarFrame       ← Calendar
-    └── operatingDays          ← Specific dates services run
+```mermaid
+graph TD
+    CF["CompositeFrame"] --> RF["ResourceFrame"]
+    CF --> SF["ServiceFrame"]
+    CF --> SCF["ServiceCalendarFrame"]
+
+    RF --> ORG["organisations"]
+    ORG --> AUTH["Authority"]
+    ORG --> OPR["Operator"]
+
+    SF --> NET["Network"]
+    SF --> RP["routePoints"]
+    SF --> DD["destinationDisplays"]
+    SF --> SSP["scheduledStopPoints"]
+    SF --> SL["serviceLinks"]
+    SF --> SA["stopAssignments"]
+    SF --> NOT["notices"]
+
+    SCF --> OD["operatingDays"]
+
+    style CF fill:#0D47A1,stroke:#0D47A1,color:#fff
+    style RF fill:#1565C0,stroke:#1565C0,color:#fff
+    style SF fill:#1565C0,stroke:#1565C0,color:#fff
+    style SCF fill:#1565C0,stroke:#1565C0,color:#fff
+    style ORG fill:#1976D2,stroke:#1976D2,color:#fff
+    style AUTH fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style OPR fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style NET fill:#1976D2,stroke:#1976D2,color:#fff
+    style RP fill:#1976D2,stroke:#1976D2,color:#fff
+    style DD fill:#1976D2,stroke:#1976D2,color:#fff
+    style SSP fill:#1976D2,stroke:#1976D2,color:#fff
+    style SL fill:#1976D2,stroke:#1976D2,color:#fff
+    style SA fill:#1976D2,stroke:#1976D2,color:#fff
+    style NOT fill:#1976D2,stroke:#1976D2,color:#fff
+    style OD fill:#1976D2,stroke:#1976D2,color:#fff
 ```
 
 ### Key Objects in the Shared File
@@ -97,35 +133,53 @@ CompositeFrame
 | [PassengerStopAssignment](../../Objects/PassengerStopAssignment/Table_PassengerStopAssignment.md) | 100s | Links logical stop → physical Quay | [Description](../../Objects/PassengerStopAssignment/Description_PassengerStopAssignment.md) |
 | [Notice](../../Objects/Notice/Table_Notice.md) | 1–10 | Passenger notices | [Description](../../Objects/Notice/Description_Notice.md) |
 
-> 💡 **Tip:** The shared file also contains [LinkSequenceProjection](../../Objects/LinkSequenceProjection/Table_LinkSequenceProjection.md) objects inside ServiceLinks — these carry GML coordinates describing the geographic path between stops.
+> [!TIP]
+> The shared file also contains [LinkSequenceProjection](../../Objects/LinkSequenceProjection/Table_LinkSequenceProjection.md) objects inside ServiceLinks — these carry GML coordinates describing the geographic path between stops.
 
----
-
-## 5. 📋 Line File
+#### **📋 Line File**
 
 Each line file contains one `CompositeFrame` with two frames:
 
-```text
-CompositeFrame
-├── ServiceFrame                     ← Line-specific network data
-│   ├── routes                       ← Route(s) for this line
-│   │   └── Route                    ← Ordered stop sequence, direction
-│   │       └── PointOnRoute         ← References RoutePoints (shared file)
-│   ├── lines
-│   │   └── Line                     ← Passenger-facing line identity
-│   └── journeyPatterns
-│       └── JourneyPattern           ← Stop variants, boarding rules
-│           ├── StopPointInJourneyPattern  ← Stop + boarding/alighting
-│           └── ServiceLinkInJourneyPattern ← Link between stops
-│
-└── TimetableFrame                   ← Journeys and timetables
-    ├── vehicleJourneys
-    │   ├── ServiceJourney           ← Trip template with passing times
-    │   │   ├── KeyValue             ← Additional metadata
-    │   │   └── TimetabledPassingTime ← Arrival/departure at each stop
-    │   └── DatedServiceJourney      ← Concrete instance on a date
-    ├── noticeAssignments            ← (optional) Notice → Journey links
-    └── journeyInterchanges          ← (optional) Planned connections
+```mermaid
+graph TD
+    CF["CompositeFrame"] --> SF["ServiceFrame"]
+    CF --> TF["TimetableFrame"]
+
+    SF --> RTS["routes"]
+    RTS --> RT["Route"]
+    RT --> POR["PointOnRoute"]
+    SF --> LNS["lines"]
+    LNS --> LN["Line"]
+    SF --> JPS["journeyPatterns"]
+    JPS --> JP["JourneyPattern"]
+    JP --> SPJP["StopPointInJourneyPattern"]
+    JP --> SLJP["ServiceLinkInJourneyPattern"]
+
+    TF --> VJ["vehicleJourneys"]
+    VJ --> SJ["ServiceJourney"]
+    SJ --> TPT["TimetabledPassingTime"]
+    VJ --> DSJ["DatedServiceJourney"]
+    TF --> NA["noticeAssignments"]
+    TF --> JI["journeyInterchanges"]
+
+    style CF fill:#0D47A1,stroke:#0D47A1,color:#fff
+    style SF fill:#1565C0,stroke:#1565C0,color:#fff
+    style TF fill:#1565C0,stroke:#1565C0,color:#fff
+    style RTS fill:#1976D2,stroke:#1976D2,color:#fff
+    style RT fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style POR fill:#64B5F6,stroke:#64B5F6,color:#fff
+    style LNS fill:#1976D2,stroke:#1976D2,color:#fff
+    style LN fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style JPS fill:#1976D2,stroke:#1976D2,color:#fff
+    style JP fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style SPJP fill:#64B5F6,stroke:#64B5F6,color:#fff
+    style SLJP fill:#64B5F6,stroke:#64B5F6,color:#fff
+    style VJ fill:#1976D2,stroke:#1976D2,color:#fff
+    style SJ fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style TPT fill:#64B5F6,stroke:#64B5F6,color:#fff
+    style DSJ fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style NA fill:#1976D2,stroke:#1976D2,color:#fff
+    style JI fill:#1976D2,stroke:#1976D2,color:#fff
 ```
 
 ### Key Objects in Line Files
@@ -139,7 +193,10 @@ CompositeFrame
 | [DatedServiceJourney](../../Objects/DatedServiceJourney/Table_DatedServiceJourney.md) | 1000s–10000s | Concrete daily instances | [Description](../../Objects/DatedServiceJourney/Description_DatedServiceJourney.md) |
 | [Interchange](../../Objects/Interchange/Table_Interchange.md) | 0–100s | Planned connections | [Description](../../Objects/Interchange/Description_Interchange.md) |
 
-> ⚠️ **Note:** `DatedServiceJourney` is the highest-volume object. Each `ServiceJourney` typically generates many dated instances — one per operating day.
+> [!NOTE]
+> `DatedServiceJourney` is the highest-volume object. Each `ServiceJourney` typically generates many dated instances — one per operating day.
+
+<!-- tabs:end -->
 
 ---
 
@@ -149,31 +206,78 @@ Understanding how objects reference each other is critical for consuming NeTEx d
 
 ### The Reference Chain
 
-```text
-Line ──references──▶ Operator (via OperatorRef)
-Line ──belongs to──▶ Network (via RepresentedByGroupRef)
-Network ──managed by──▶ Authority (via AuthorityRef)
+```mermaid
+graph LR
+    subgraph Organisation
+        AUTH["Authority"]
+        OPR["Operator"]
+        NET["Network"]
+    end
 
-Route ──belongs to──▶ Line (via LineRef)
-Route ──contains──▶ PointOnRoute ──references──▶ RoutePoint
-RoutePoint ──projects to──▶ ScheduledStopPoint (via PointProjection)
+    subgraph Network Topology
+        LN["Line"]
+        RT["Route"]
+        POR["PointOnRoute"]
+        RPT["RoutePoint"]
+        SSP["ScheduledStopPoint"]
+        SLK["ServiceLink"]
+    end
 
-JourneyPattern ──follows──▶ Route (via RouteRef)
-JourneyPattern ──contains──▶ StopPointInJourneyPattern ──ref──▶ ScheduledStopPoint
-JourneyPattern ──contains──▶ ServiceLinkInJourneyPattern ──ref──▶ ServiceLink
-ServiceLink ──from/to──▶ ScheduledStopPoint
+    subgraph Journey Planning
+        JP["JourneyPattern"]
+        SPJP["StopPointInJP"]
+        SLJP["ServiceLinkInJP"]
+    end
 
-ServiceJourney ──uses──▶ JourneyPattern (via JourneyPatternRef)
-ServiceJourney ──run by──▶ Operator (via OperatorRef)
-ServiceJourney ──on line──▶ Line (via LineRef)
-ServiceJourney ──contains──▶ TimetabledPassingTime ──ref──▶ StopPointInJourneyPattern
+    subgraph Timetable
+        SJ["ServiceJourney"]
+        TPT["TimetabledPassingTime"]
+        DSJ["DatedServiceJourney"]
+        OD["OperatingDay"]
+    end
 
-DatedServiceJourney ──instantiates──▶ ServiceJourney (via ServiceJourneyRef)
-DatedServiceJourney ──runs on──▶ OperatingDay (via OperatingDayRef)
+    subgraph Mapping
+        PSA["PassengerStopAssignment"]
+        QY["Quay &#40;external&#41;"]
+    end
 
-PassengerStopAssignment ──links──▶ ScheduledStopPoint ←→ Quay (external)
-NoticeAssignment ──links──▶ Notice ←→ ServiceJourney
-ServiceJourneyInterchange ──connects──▶ ServiceJourney (from) ←→ ServiceJourney (to)
+    LN -->|OperatorRef| OPR
+    LN -->|RepresentedByGroupRef| NET
+    NET -->|AuthorityRef| AUTH
+    RT -->|LineRef| LN
+    POR -->|RoutePointRef| RPT
+    RPT -.->|PointProjection| SSP
+    JP -->|RouteRef| RT
+    SPJP -->|ScheduledStopPointRef| SSP
+    SLJP -->|ServiceLinkRef| SLK
+    SLK -->|from/to| SSP
+    SJ -->|JourneyPatternRef| JP
+    SJ -->|OperatorRef| OPR
+    SJ -->|LineRef| LN
+    TPT -->|StopPointInJPRef| SPJP
+    DSJ -->|ServiceJourneyRef| SJ
+    DSJ -->|OperatingDayRef| OD
+    PSA --> SSP
+    PSA --> QY
+
+    style AUTH fill:#0D47A1,stroke:#0D47A1,color:#fff
+    style OPR fill:#0D47A1,stroke:#0D47A1,color:#fff
+    style NET fill:#0D47A1,stroke:#0D47A1,color:#fff
+    style LN fill:#1565C0,stroke:#1565C0,color:#fff
+    style RT fill:#1565C0,stroke:#1565C0,color:#fff
+    style POR fill:#1976D2,stroke:#1976D2,color:#fff
+    style RPT fill:#1976D2,stroke:#1976D2,color:#fff
+    style SSP fill:#1976D2,stroke:#1976D2,color:#fff
+    style SLK fill:#1976D2,stroke:#1976D2,color:#fff
+    style JP fill:#1E88E5,stroke:#1E88E5,color:#fff
+    style SPJP fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style SLJP fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style SJ fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style TPT fill:#64B5F6,stroke:#64B5F6,color:#fff
+    style DSJ fill:#64B5F6,stroke:#64B5F6,color:#fff
+    style OD fill:#64B5F6,stroke:#64B5F6,color:#fff
+    style PSA fill:#90CAF9,stroke:#64B5F6,color:#000
+    style QY fill:#90CAF9,stroke:#64B5F6,color:#000
 ```
 
 ### Cross-File References
@@ -190,7 +294,8 @@ In a shared + line file setup, references cross file boundaries:
 | DatedServiceJourney | OperatingDay | `OperatingDayRef` |
 | NoticeAssignment | Notice | `NoticeRef` |
 
-> 💡 **Tip:** Build an in-memory index of all shared objects keyed by `id` when loading the shared file. Then resolve references from line files using simple lookups.
+> [!TIP]
+> Build an in-memory index of all shared objects keyed by `id` when loading the shared file. Then resolve references from line files using simple lookups.
 
 For a deeper look at the journey chain, see the [Journey Lifecycle guide](../JourneyLifecycle/JourneyLifecycle_Guide.md).
 
@@ -207,7 +312,8 @@ Every NeTEx object carries a `version` attribute. The rules differ depending on 
 | Reference to object **in another file** (same dataset) | May omit | `<RoutePointRef ref="VYG:RoutePoint:ASR"/>` |
 | Reference to **external system** (e.g. national stop registry) | ❌ Omit | `<QuayRef ref="NSR:Quay:111"/>` |
 
-> ⚠️ **Note:** The `version` attribute on `PublicationDelivery` specifies the NeTEx **profile version** (e.g. `1.15:NO-NeTEx-networktimetable:1.5`), not the data version. Don't confuse the two.
+> [!WARNING]
+> The `version` attribute on `PublicationDelivery` specifies the NeTEx **profile version** (e.g. `1.15:NO-NeTEx-networktimetable:1.5`), not the data version. Don't confuse the two.
 
 ---
 
@@ -249,34 +355,27 @@ This convention ensures IDs remain unique when datasets from multiple providers 
 
 ## 9. ✅ Best Practices
 
-1. **Load shared data first.** Always parse the shared file before line files. Build an object index keyed by `id` for fast cross-file reference resolution.
-
-2. **Don't assume all optional elements exist.** `noticeAssignments` and `journeyInterchanges` are only present in some line files. Check for their existence before processing.
-
-3. **Handle overnight services.** `TimetabledPassingTime` may include `DepartureDayOffset` or `ArrivalDayOffset` for journeys crossing midnight. A value of `1` means "next day relative to journey start".
-
-4. **First stop = DepartureTime only, last stop = ArrivalTime only.** Intermediate stops have both. See the [Journey Lifecycle guide](../JourneyLifecycle/JourneyLifecycle_Guide.md) for the full pattern.
-
-5. **External references have no version.** When a reference points to an external system (e.g. `NSR:Quay:111` from the national stop place registry), omit the `version` attribute.
-
-6. **Use DestinationDisplay inheritance.** The `DestinationDisplayRef` on a `StopPointInJourneyPattern` applies from that stop onward until overridden by another `DestinationDisplayRef` at a later stop.
-
-7. **DatedServiceJourney is the concrete instance.** Without a `DatedServiceJourney`, a `ServiceJourney` is just a reusable template. The dated version pins it to a specific `OperatingDay`.
-
-8. **Validate against the XSD.** Always validate XML against the NeTEx schema before publishing. See the [Validation guide](../Validation/Validation.md) for tooling.
+> [!TIP]
+> - **Load shared data first.** Always parse the shared file before line files. Build an object index keyed by `id` for fast cross-file reference resolution.
+> - **Don't assume all optional elements exist.** `noticeAssignments` and `journeyInterchanges` are only present in some line files. Check for their existence before processing.
+> - **Handle overnight services.** `TimetabledPassingTime` may include `DepartureDayOffset` or `ArrivalDayOffset` for journeys crossing midnight. A value of `1` means "next day relative to journey start".
+> - **First stop = DepartureTime only, last stop = ArrivalTime only.** Intermediate stops have both. See the [Journey Lifecycle guide](../JourneyLifecycle/JourneyLifecycle_Guide.md) for the full pattern.
+> - **External references have no version.** When a reference points to an external system (e.g. `NSR:Quay:111` from the national stop place registry), omit the `version` attribute.
+> - **Use DestinationDisplay inheritance.** The `DestinationDisplayRef` on a `StopPointInJourneyPattern` applies from that stop onward until overridden by another `DestinationDisplayRef` at a later stop.
+> - **DatedServiceJourney is the concrete instance.** Without a `DatedServiceJourney`, a `ServiceJourney` is just a reusable template. The dated version pins it to a specific `OperatingDay`.
+> - **Validate against the XSD.** Always validate XML against the NeTEx schema before publishing. See the [Validation guide](../Validation/Validation.md) for tooling.
 
 ---
 
 ## 10. ❌ Common Mistakes
 
-| Mistake | Why It Fails | Fix |
-|---------|-------------|-----|
-| Processing line files without loading shared data | Unresolved references to stops, operators, calendar | Always load `_shared_data.xml` first |
-| Including `version` on external references | External systems manage their own versions | Omit `version` on `QuayRef`, `StopPlaceRef` etc. from external registries |
-| Ignoring `DayOffset` on passing times | Overnight journeys show wrong dates | Add `DepartureDayOffset` / `ArrivalDayOffset` to the journey start date |
-| Treating `ServiceJourney` as a concrete trip | It's a template, not an occurrence | Use `DatedServiceJourney` for specific-date instances |
-| Assuming one Route per Line | Lines often have forward and return routes | Handle multiple Routes; check `InverseRouteRef` |
-| Ignoring `ForAlighting` / `ForBoarding` | Passengers shown incorrect stops | Respect `false` values — first stop typically has `ForAlighting=false`, last has `ForBoarding=false` |
+> [!WARNING]
+> - **Processing line files without loading shared data** — Causes unresolved references to stops, operators, and calendar. Always load `_shared_data.xml` first.
+> - **Including `version` on external references** — External systems manage their own versions. Omit `version` on `QuayRef`, `StopPlaceRef` etc. from external registries.
+> - **Ignoring `DayOffset` on passing times** — Overnight journeys show wrong dates. Add `DepartureDayOffset` / `ArrivalDayOffset` to the journey start date.
+> - **Treating `ServiceJourney` as a concrete trip** — It's a template, not an occurrence. Use `DatedServiceJourney` for specific-date instances.
+> - **Assuming one Route per Line** — Lines often have forward and return routes. Handle multiple Routes; check `InverseRouteRef`.
+> - **Ignoring `ForAlighting` / `ForBoarding`** — Passengers shown incorrect stops. Respect `false` values — first stop typically has `ForAlighting=false`, last has `ForBoarding=false`.
 
 ---
 
