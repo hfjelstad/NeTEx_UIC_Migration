@@ -69,13 +69,13 @@
     return new RegExp('(?<![\\w/])(' + escaped.join('|') + ')(?![\\w/])', 'g');
   }
 
-  // Wrap matched terms in the rendered HTML, skipping code/links/headings
+  // Wrap matched terms in the rendered HTML, skipping code/links/headings/tables
   function annotateHtml(html, regex) {
     // Split HTML into "inside-tag" and "text" tokens so we never modify tags
     var tokens = html.split(/(<[^>]+>)/);
     var skip = 0;          // depth counter for elements we must not touch
-    var skipTags = /^<(code|pre|a|h[1-6]|script|style|span[^>]*glossary)/i;
-    var skipClose = /^<\/(code|pre|a|h[1-6]|script|style|span)/i;
+    var skipTags = /^<(code|pre|a|h[1-6]|script|style|span[^>]*glossary|th)\b/i;
+    var skipClose = /^<\/(code|pre|a|h[1-6]|script|style|span|th)/i;
 
     for (var i = 0; i < tokens.length; i++) {
       var t = tokens[i];
@@ -142,6 +142,58 @@
       var regex = buildTermRegex(terms);
       return annotateHtml(html, regex);
     }
+
+    // Create a single floating tooltip element and bind hover events
+    hook.doneEach(function () {
+      var tip = document.getElementById('glossary-tooltip');
+      if (!tip) {
+        tip = document.createElement('div');
+        tip.id = 'glossary-tooltip';
+        document.body.appendChild(tip);
+      }
+
+      var spans = document.querySelectorAll('.glossary-tip');
+      for (var i = 0; i < spans.length; i++) {
+        spans[i].addEventListener('mouseenter', showTip);
+        spans[i].addEventListener('mouseleave', hideTip);
+      }
+
+      function showTip(e) {
+        var el = e.currentTarget;
+        var text = el.getAttribute('data-tip');
+        if (!text) return;
+        tip.textContent = text;
+        tip.classList.add('visible');
+
+        // Position above the term, using fixed coordinates
+        var rect = el.getBoundingClientRect();
+        var tipRect = tip.getBoundingClientRect();
+
+        var left = rect.left;
+        var top  = rect.top - tipRect.height - 8;
+
+        // Keep within viewport horizontally
+        if (left + tipRect.width > window.innerWidth - 12) {
+          left = window.innerWidth - tipRect.width - 12;
+        }
+        if (left < 4) left = 4;
+
+        // If no room above, show below
+        if (top < 4) {
+          top = rect.bottom + 8;
+          tip.style.setProperty('--arrow', 'bottom');
+        } else {
+          tip.style.setProperty('--arrow', 'top');
+        }
+
+        tip.style.left = left + 'px';
+        tip.style.top  = top + 'px';
+      }
+
+      function hideTip() {
+        tip.classList.remove('visible');
+      }
+    });
   }
 
   // Register
