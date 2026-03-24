@@ -204,93 +204,64 @@ graph TD
 
 Understanding how objects reference each other is critical for consuming NeTEx data. References always use the `ref` attribute pointing to an object's `id`.
 
-### The Reference Chain
+### Organisation & Line Ownership
 
-```plantuml
-@startuml
-skinparam backgroundColor transparent
-skinparam defaultFontName "Segoe UI"
-skinparam defaultFontSize 13
-skinparam roundcorner 8
-skinparam packageStyle rectangle
-skinparam arrowColor #37474F
-skinparam arrowThickness 1.5
+```mermaid
+graph LR
+    AUTH["Authority"] -->|manages| NET["Network"]
+    NET -->|contains| LN["Line"]
+    LN -->|OperatorRef| OPR["Operator"]
 
-skinparam rectangle {
-  FontColor white
-  StereotypeFontColor white
-}
+    style AUTH fill:#0D47A1,stroke:#0D47A1,color:#fff
+    style NET fill:#0D47A1,stroke:#0D47A1,color:#fff
+    style LN fill:#1565C0,stroke:#1565C0,color:#fff
+    style OPR fill:#0D47A1,stroke:#0D47A1,color:#fff
+```
 
-skinparam package {
-  BackgroundColor #FAFAFA
-  BorderColor #B0BEC5
-  FontColor #37474F
-  FontSize 14
-  FontStyle bold
-}
+### Route → Stops → Physical Mapping
 
-package "Organisation" as org #FAFAFA {
-  rectangle "Authority" as AUTH #0D47A1
-  rectangle "Network" as NET #0D47A1
-  rectangle "Operator" as OPR #0D47A1
-}
+```mermaid
+graph LR
+    RT["Route"] -->|LineRef| LN["Line"]
+    RT -->|contains| POR["PointOnRoute"]
+    POR -->|RoutePointRef| RPT["RoutePoint"]
+    RPT -.->|PointProjection| SSP["ScheduledStopPoint"]
+    SLK["ServiceLink"] -->|from / to| SSP
+    PSA["PassengerStopAssignment"] --> SSP
+    PSA --> QY["Quay &#40;external&#41;"]
 
-package "Network Topology" as topology #FAFAFA {
-  rectangle "Line" as LN #1565C0
-  rectangle "Route" as RT #1565C0
-  rectangle "PointOnRoute" as POR #1976D2
-  rectangle "RoutePoint" as RPT #1976D2
-  rectangle "ScheduledStopPoint" as SSP #1976D2
-  rectangle "ServiceLink" as SLK #1976D2
-}
+    style RT fill:#1565C0,stroke:#1565C0,color:#fff
+    style LN fill:#1565C0,stroke:#1565C0,color:#fff
+    style POR fill:#1976D2,stroke:#1976D2,color:#fff
+    style RPT fill:#1976D2,stroke:#1976D2,color:#fff
+    style SSP fill:#1976D2,stroke:#1976D2,color:#fff
+    style SLK fill:#1976D2,stroke:#1976D2,color:#fff
+    style PSA fill:#90CAF9,stroke:#64B5F6,color:#000
+    style QY fill:#90CAF9,stroke:#64B5F6,color:#000
+```
 
-package "Journey Planning" as planning #FAFAFA {
-  rectangle "JourneyPattern" as JP #1E88E5
-  rectangle "StopPointInJP" as SPJP #42A5F5
-  rectangle "ServiceLinkInJP" as SLJP #42A5F5
-}
+### Journey Pattern → ServiceJourney → DatedServiceJourney
 
-package "Timetable" as timetable #FAFAFA {
-  rectangle "ServiceJourney" as SJ #42A5F5
-  rectangle "TimetabledPassingTime" as TPT #64B5F6
-  rectangle "DatedServiceJourney" as DSJ #64B5F6
-  rectangle "OperatingDay" as OD #64B5F6
-}
+```mermaid
+graph LR
+    JP["JourneyPattern"] -->|RouteRef| RT["Route"]
+    SPJP["StopPointInJP"] -->|ScheduledStopPointRef| SSP["ScheduledStopPoint"]
+    SLJP["ServiceLinkInJP"] -->|ServiceLinkRef| SLK["ServiceLink"]
+    SJ["ServiceJourney"] -->|JourneyPatternRef| JP
+    TPT["TimetabledPassingTime"] -->|StopPointInJPRef| SPJP
+    DSJ["DatedServiceJourney"] -->|ServiceJourneyRef| SJ
+    DSJ -->|OperatingDayRef| OD["OperatingDay"]
 
-package "Mapping" as mapping #FAFAFA {
-  rectangle "PassengerStopAssignment" as PSA #90CAF9;text:black
-  rectangle "Quay (external)" as QY #90CAF9;text:black
-}
-
-' Organisation references
-NET -right-> AUTH : AuthorityRef
-LN -up-> NET : RepresentedByGroupRef
-LN -up-> OPR : OperatorRef
-
-' Network topology
-RT --> LN : LineRef
-POR --> RPT : RoutePointRef
-RPT ..> SSP : PointProjection
-SLK --> SSP : from/to
-
-' Journey planning
-JP --> RT : RouteRef
-SPJP --> SSP : ScheduledStopPointRef
-SLJP --> SLK : ServiceLinkRef
-
-' Timetable
-SJ --> JP : JourneyPatternRef
-SJ -up-> LN : LineRef
-SJ -up-> OPR : OperatorRef
-TPT --> SPJP : StopPointInJPRef
-DSJ --> SJ : ServiceJourneyRef
-DSJ --> OD : OperatingDayRef
-
-' Mapping
-PSA --> SSP
-PSA --> QY
-
-@enduml
+    style JP fill:#1E88E5,stroke:#1E88E5,color:#fff
+    style RT fill:#1565C0,stroke:#1565C0,color:#fff
+    style SPJP fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style SLJP fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style SSP fill:#1976D2,stroke:#1976D2,color:#fff
+    style SLK fill:#1976D2,stroke:#1976D2,color:#fff
+    style SJ fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style TPT fill:#64B5F6,stroke:#64B5F6,color:#fff
+    style DSJ fill:#64B5F6,stroke:#64B5F6,color:#fff
+    style OD fill:#64B5F6,stroke:#64B5F6,color:#fff
 ```
 
 ### Cross-File References
