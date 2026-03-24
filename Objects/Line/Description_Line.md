@@ -1,4 +1,6 @@
-# Line
+﻿# Line
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#line)*
 
 ## 1. Purpose
 The **Line** represents a public transport service line within a ServiceFrame. It is a core organizational entity that groups together related routes and journeys providing the same public transport service (e.g., "Bus Line 5" or "Train Line 101"). A Line identifies the operator, provides visual presentation properties (colors), and serves as the container for route patterns and scheduled journeys.

@@ -1,4 +1,6 @@
-# VehicleType
+﻿# VehicleType
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#vehicletype)*
 
 ## 1. Purpose
 

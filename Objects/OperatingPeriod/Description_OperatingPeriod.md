@@ -1,4 +1,6 @@
-# OperatingPeriod
+﻿# OperatingPeriod
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#operatingperiod)*
 
 ## 1. Purpose
 

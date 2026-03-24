@@ -1,4 +1,6 @@
-# AlternativeName
+﻿# AlternativeName
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#alternativename)*
 
 ## 1. Purpose
 

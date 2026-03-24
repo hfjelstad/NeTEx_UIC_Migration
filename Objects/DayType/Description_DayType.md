@@ -1,4 +1,6 @@
-# DayType
+﻿# DayType
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#daytype)*
 
 ## 1. Purpose
 
