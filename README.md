@@ -142,6 +142,22 @@ Root
 
 ---
 
+## ✨ Interactive Features
+
+The documentation site uses [Docsify](https://docsify.js.org/) with several plugins for an enhanced reading experience:
+
+| Feature | Description |
+|---------|-------------|
+| **Flexible Alerts** | Styled `> [!WARNING]`, `> [!TIP]`, `> [!NOTE]` callout boxes |
+| **Tabs** | `<!-- tabs:start -->` blocks for side-by-side MIN/NP profile examples |
+| **Mermaid Diagrams** | Relationship graphs, tree structures, and flowcharts in guides |
+| **Glossary Tooltips** | Hover any NeTEx term to see its definition (52-term glossary) |
+| **Copy Code** | One-click copy button on every code/XML block |
+| **Search** | Full-text search across all documentation |
+| **Feedback** | Giscus comment widget at the bottom of every page |
+
+---
+
 ## 🧱 Conventions
 
 ### File naming
