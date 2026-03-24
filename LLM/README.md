@@ -155,10 +155,85 @@ Frames/
 - Use relative markdown links to reference object tables: `[ObjectName](../ObjectName/Table_ObjectName.md)`
 - Use consistent capitalization matching the NeTEx element names
 - Always link from descriptions to examples and table files
+- Every Description file must include a glossary crosslink at the top: `> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#objectname)*`
 
 ---
 
-## 7. Validation & Quality Assurance
+## 7. Docsify Interactive Features
+
+The documentation site uses Docsify with several plugins that should be used consistently:
+
+### 7a. Flexible Alerts
+
+Use blockquote callouts for tips, warnings, and notes. **Do not use emoji-based callouts** (`> 💡 **Tip:**`); use the flexible-alerts syntax:
+
+```markdown
+> [!TIP]
+> Advice or best practice.
+
+> [!WARNING]
+> - **Pitfall one**: description.
+> - **Pitfall two**: description.
+
+> [!NOTE]
+> Important but non-critical information.
+```
+
+- Use `> [!WARNING]` with bullet points for grouped Common Pitfalls (section 5c)
+- Use `> [!TIP]` for best practices and recommendations
+- Use `> [!NOTE]` for informational callouts
+
+### 7b. Docsify Tabs
+
+Use tabs to show profile-specific XML examples side by side:
+
+```markdown
+<!-- tabs:start -->
+
+#### **MIN (ERP)**
+
+\`\`\`xml
+<Line id="ERP:Line:1" version="1">...</Line>
+\`\`\`
+
+#### **NP (Nordic)**
+
+\`\`\`xml
+<Line id="NP:Line:100" version="1">...</Line>
+\`\`\`
+
+<!-- tabs:end -->
+```
+
+Tabs are configured with `persist: true` and `sync: true` (selection persists across pages).
+
+### 7c. Mermaid Diagrams
+
+Use Mermaid for relationship graphs, tree structures, and flowcharts. Always apply the **blue palette**:
+
+| Level | Color | Usage |
+|-------|-------|-------|
+| Darkest | `#0D47A1` | Top-level / root nodes |
+| | `#1565C0` | Primary containers / frames |
+| | `#1976D2` | Collections / groups |
+| | `#1E88E5` | Intermediate elements |
+| | `#42A5F5` | Leaf objects |
+| | `#64B5F6` | Sub-elements |
+| Lightest | `#90CAF9` | External / secondary refs |
+
+Apply colors using `style NodeId fill:#color,stroke:#color,color:#fff`.
+
+### 7d. Glossary Tooltips
+
+A custom plugin (`assets/docsify-glossary-tooltip.js`) parses the 52-term Glossary and adds hover tooltips on first occurrence of each term. The Glossary contains three-layer definitions: Profile, NeTEx XSD, and Transmodel.
+
+### 7e. Copy-Code
+
+All code blocks and XML snippets automatically get a "Copy" button via `docsify-copy-code`.
+
+---
+
+## 8. Validation & Quality Assurance
 
 - All XML examples must validate against the current NeTEx XSD
 - Tables must stay synchronized with their corresponding XML examples
