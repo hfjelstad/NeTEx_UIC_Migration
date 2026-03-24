@@ -204,80 +204,64 @@ graph TD
 
 Understanding how objects reference each other is critical for consuming NeTEx data. References always use the `ref` attribute pointing to an object's `id`.
 
-### The Reference Chain
+### Organisation & Line Ownership
 
 ```mermaid
 graph LR
-    subgraph Organisation
-        AUTH["Authority"]
-        OPR["Operator"]
-        NET["Network"]
-    end
-
-    subgraph Network Topology
-        LN["Line"]
-        RT["Route"]
-        POR["PointOnRoute"]
-        RPT["RoutePoint"]
-        SSP["ScheduledStopPoint"]
-        SLK["ServiceLink"]
-    end
-
-    subgraph Journey Planning
-        JP["JourneyPattern"]
-        SPJP["StopPointInJP"]
-        SLJP["ServiceLinkInJP"]
-    end
-
-    subgraph Timetable
-        SJ["ServiceJourney"]
-        TPT["TimetabledPassingTime"]
-        DSJ["DatedServiceJourney"]
-        OD["OperatingDay"]
-    end
-
-    subgraph Mapping
-        PSA["PassengerStopAssignment"]
-        QY["Quay &#40;external&#41;"]
-    end
-
-    LN -->|OperatorRef| OPR
-    LN -->|RepresentedByGroupRef| NET
-    NET -->|AuthorityRef| AUTH
-    RT -->|LineRef| LN
-    POR -->|RoutePointRef| RPT
-    RPT -.->|PointProjection| SSP
-    JP -->|RouteRef| RT
-    SPJP -->|ScheduledStopPointRef| SSP
-    SLJP -->|ServiceLinkRef| SLK
-    SLK -->|from/to| SSP
-    SJ -->|JourneyPatternRef| JP
-    SJ -->|OperatorRef| OPR
-    SJ -->|LineRef| LN
-    TPT -->|StopPointInJPRef| SPJP
-    DSJ -->|ServiceJourneyRef| SJ
-    DSJ -->|OperatingDayRef| OD
-    PSA --> SSP
-    PSA --> QY
+    AUTH["Authority"] -->|manages| NET["Network"]
+    NET -->|contains| LN["Line"]
+    LN -->|OperatorRef| OPR["Operator"]
 
     style AUTH fill:#0D47A1,stroke:#0D47A1,color:#fff
-    style OPR fill:#0D47A1,stroke:#0D47A1,color:#fff
     style NET fill:#0D47A1,stroke:#0D47A1,color:#fff
     style LN fill:#1565C0,stroke:#1565C0,color:#fff
+    style OPR fill:#0D47A1,stroke:#0D47A1,color:#fff
+```
+
+### Route → Stops → Physical Mapping
+
+```mermaid
+graph LR
+    RT["Route"] -->|LineRef| LN["Line"]
+    RT -->|contains| POR["PointOnRoute"]
+    POR -->|RoutePointRef| RPT["RoutePoint"]
+    RPT -.->|PointProjection| SSP["ScheduledStopPoint"]
+    SLK["ServiceLink"] -->|from / to| SSP
+    PSA["PassengerStopAssignment"] --> SSP
+    PSA --> QY["Quay &#40;external&#41;"]
+
     style RT fill:#1565C0,stroke:#1565C0,color:#fff
+    style LN fill:#1565C0,stroke:#1565C0,color:#fff
     style POR fill:#1976D2,stroke:#1976D2,color:#fff
     style RPT fill:#1976D2,stroke:#1976D2,color:#fff
     style SSP fill:#1976D2,stroke:#1976D2,color:#fff
     style SLK fill:#1976D2,stroke:#1976D2,color:#fff
+    style PSA fill:#90CAF9,stroke:#64B5F6,color:#000
+    style QY fill:#90CAF9,stroke:#64B5F6,color:#000
+```
+
+### Journey Pattern → ServiceJourney → DatedServiceJourney
+
+```mermaid
+graph LR
+    JP["JourneyPattern"] -->|RouteRef| RT["Route"]
+    SPJP["StopPointInJP"] -->|ScheduledStopPointRef| SSP["ScheduledStopPoint"]
+    SLJP["ServiceLinkInJP"] -->|ServiceLinkRef| SLK["ServiceLink"]
+    SJ["ServiceJourney"] -->|JourneyPatternRef| JP
+    TPT["TimetabledPassingTime"] -->|StopPointInJPRef| SPJP
+    DSJ["DatedServiceJourney"] -->|ServiceJourneyRef| SJ
+    DSJ -->|OperatingDayRef| OD["OperatingDay"]
+
     style JP fill:#1E88E5,stroke:#1E88E5,color:#fff
+    style RT fill:#1565C0,stroke:#1565C0,color:#fff
     style SPJP fill:#42A5F5,stroke:#42A5F5,color:#fff
     style SLJP fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style SSP fill:#1976D2,stroke:#1976D2,color:#fff
+    style SLK fill:#1976D2,stroke:#1976D2,color:#fff
     style SJ fill:#42A5F5,stroke:#42A5F5,color:#fff
     style TPT fill:#64B5F6,stroke:#64B5F6,color:#fff
     style DSJ fill:#64B5F6,stroke:#64B5F6,color:#fff
     style OD fill:#64B5F6,stroke:#64B5F6,color:#fff
-    style PSA fill:#90CAF9,stroke:#64B5F6,color:#000
-    style QY fill:#90CAF9,stroke:#64B5F6,color:#000
 ```
 
 ### Cross-File References
