@@ -1,4 +1,6 @@
-# TicketingEquipment
+﻿# TicketingEquipment
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#ticketingequipment)*
 
 ## 1. Purpose
 

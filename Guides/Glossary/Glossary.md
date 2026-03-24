@@ -131,6 +131,16 @@ A customer-facing agreement for the right to travel and consume fare products, d
 
 ---
 
+## FareFrame
+
+Contains fare data, products, and pricing rules - tariffs, validable elements, preassigned fare products, and sales offer packages.
+
+> **NeTEx XSD:** A coherent set of Fare data to which the same VALIDITY CONDITIONs have been assigned.
+
+→ [Full documentation](../../Frames/FareFrame/Description_FareFrame.md)
+
+---
+
 ## FareZone
 
 A geographic zone used to determine ticket prices in public transport, grouping stop points for fare calculation.
@@ -327,6 +337,16 @@ The set of roles and organisations responsible for managing data, operations, or
 
 ---
 
+## ResourceFrame
+
+Contains shared resources used across other frames - organisations (Authorities and Operators), vehicle types, vehicles, codespaces, and other common reference data.
+
+> **NeTEx XSD:** A coherent set of reference values for TYPE OF VALUEs, ORGANISATIONs, VEHICLE TYPEs etc that have a common validity. Used to define common resources that will be referenced by other types of FRAME.
+
+→ [Full documentation](../../Frames/ResourceFrame/Description_ResourceFrame.md)
+
+---
+
 ## Route
 
 The logical geographic path definition for a Line with a specific direction.
@@ -334,6 +354,16 @@ The logical geographic path definition for a Line with a specific direction.
 > **NeTEx XSD / Transmodel:** An ordered list of located POINTs defining one single path through the road (or rail) network. A ROUTE may pass through the same POINT more than once.
 
 → [Full documentation](../../Objects/Route/Description_Route.md)
+
+---
+
+## SalesTransactionFrame
+
+Contains sales-related data including fare contracts and their entries, representing the commercial agreements between passengers and transport providers.
+
+> **NeTEx XSD:** A coherent set of Sales Transaction data to which the same VALIDITY CONDITIONs have been assigned.
+
+→ [Full documentation](../../Frames/SalesTransactionFrame/Description_SalesTransactionFrame.md)
 
 ---
 
@@ -367,6 +397,26 @@ An enumeration on DatedServiceJourney indicating the deviation type. Allowed val
 
 ---
 
+## ServiceCalendarFrame
+
+Groups calendar definitions that describe when services operate - day types, operating periods, and day-type assignments.
+
+> **NeTEx XSD:** A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar, used to state the temporal VALIDITY of other NeTEx entities such as Timetables and STOP PLACEs.
+
+→ [Full documentation](../../Frames/ServiceCalendarFrame/Description_ServiceCalendarFrame.md)
+
+---
+
+## ServiceFrame
+
+Contains the network and route definitions - Lines, Routes, JourneyPatterns, ScheduledStopPoints, DestinationDisplays, and PassengerStopAssignments.
+
+> **NeTEx XSD:** A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.
+
+→ [Full documentation](../../Frames/ServiceFrame/Description_ServiceFrame.md)
+
+---
+
 ## ServiceJourney
 
 A planned trip in the timetable operating on a recurring schedule, defining the stop sequence via a JourneyPattern, passing times, operator, and days of operation.
@@ -386,6 +436,16 @@ Weather shelter facilities available at a stop place or quay, with properties su
 > **Transmodel:** Specialisation of WAITING EQUIPMENT describing a shelter.
 
 → [Full documentation](../../Objects/ShelterEquipment/Description_ShelterEquipment.md)
+
+---
+
+## SiteFrame
+
+Contains the physical infrastructure model for public transport - stop places, quays, entrances, parking facilities, and topographic context.
+
+> **NeTEx XSD:** A coherent set of SITE data to which the same frame VALIDITY CONDITIONs have been assigned.
+
+→ [Full documentation](../../Frames/SiteFrame/Description_SiteFrame.md)
 
 ---
 
@@ -421,6 +481,16 @@ Ticket machines, validators, or other ticketing infrastructure available at a st
 
 ---
 
+## TimetableFrame
+
+Contains operational journey definitions - ServiceJourneys, DatedServiceJourneys, dead runs, coupled journeys, and interchange rules.
+
+> **NeTEx XSD:** A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.
+
+→ [Full documentation](../../Frames/TimetableFrame/Description_TimetableFrame.md)
+
+---
+
 ## TopographicPlace
 
 A named geographic area such as a city, municipality, county, or region - used to provide spatial context for StopPlaces.
@@ -452,6 +522,16 @@ A specific physical vehicle in the fleet used to operate public transport servic
 > **NeTEx XSD / Transmodel:** A public transport vehicle used for carrying passengers.
 
 → [Full documentation](../../Objects/Vehicle/Description_Vehicle.md)
+
+---
+
+## VehicleScheduleFrame
+
+Contains operational vehicle schedules - blocks, vehicle services, and duty assignments defining how vehicles are allocated to journeys.
+
+> **NeTEx XSD:** A coherent set of Vehicle Scheduling data to which the same VALIDITY CONDITIONs have been assigned.
+
+→ [Full documentation](../../Frames/VehicleScheduleFrame/Description_VehicleScheduleFrame.md)
 
 ---
 

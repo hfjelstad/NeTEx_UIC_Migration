@@ -1,4 +1,6 @@
-# TariffZone
+﻿# TariffZone
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#tariffzone)*
 
 ## 1. Purpose
 

@@ -1,4 +1,6 @@
-# DayTypeAssignment
+﻿# DayTypeAssignment
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#daytypeassignment)*
 
 ## 1. Purpose
 

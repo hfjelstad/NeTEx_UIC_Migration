@@ -1,4 +1,6 @@
-# ServiceFrame
+﻿# ServiceFrame
+
+> *→ [Glossary definition](../../Guides/Glossary/Glossary.md#serviceframe)*
 
 ## 1. Purpose
 
