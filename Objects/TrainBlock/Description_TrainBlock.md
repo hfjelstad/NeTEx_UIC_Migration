@@ -14,6 +14,7 @@ A **TrainBlock** is a rail-specific specialisation of Block that represents an o
   ├─ 📄 @version (1..1)
   ├─ 📄 Name (0..1)
   ├─ 📄 Description (0..1)
+  ├─ 🔗 OperatorRef/@ref (0..1)
   └─ 📁 journeys (0..1)
 ```
 

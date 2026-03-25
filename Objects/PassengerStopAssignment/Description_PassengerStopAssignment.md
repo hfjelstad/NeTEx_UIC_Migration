@@ -15,7 +15,8 @@ A **PassengerStopAssignment** links a logical ScheduledStopPoint to a physical Q
   ├─ 📄 @order (1..1)
   ├─ 🔗 ScheduledStopPointRef/@ref (1..1)
   ├─ 🔗 StopPlaceRef/@ref (0..1)
-  └─ 🔗 QuayRef/@ref (1..1)
+  ├─ 🔗 QuayRef/@ref (1..1)
+  └─ 📄 ValidBetween (0..1)
 ```
 
 ## 3. Key Elements

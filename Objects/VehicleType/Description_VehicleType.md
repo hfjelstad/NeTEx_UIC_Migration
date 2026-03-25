@@ -14,14 +14,14 @@ A **VehicleType** represents a typified vehicle configuration (model or series) 
   ├─ 📄 @version (1..1)
   ├─ 📄 Name (1..1)
   ├─ 📄 Description (0..1)
-  ├─ 📄 Length (0..1)
-  ├─ 📄 Width (0..1)
-  ├─ 📄 Height (0..1)
+  ├─ 📄 PropulsionType (0..1)
   ├─ 📁 PassengerCapacity (0..1)
   │  ├─ 📄 SeatedCapacity (0..1)
   │  ├─ 📄 StandingCapacity (0..1)
   │  └─ 📄 WheelchairCapacity (0..1)
-  └─ 📄 PropulsionType (0..1)
+  ├─ 📄 Length (0..1)
+  ├─ 📄 Width (0..1)
+  └─ 📄 Height (0..1)
 ```
 
 ## 3. Key Elements
