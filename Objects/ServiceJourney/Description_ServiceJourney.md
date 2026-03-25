@@ -13,10 +13,12 @@ A **ServiceJourney** represents a planned trip in the timetable operating on a r
 📄 @version (1..1)
 📄 Name (0..1)
 📄 PrivateCode (0..1)
+📄 Description (0..1)
 📁 TransportMode (0..1)
 📁 TransportSubmode (0..1)
 🔗 JourneyPatternRef/@ref (1..1)
 🔗 LineRef/@ref (0..1)
+🔗 FlexibleLineRef/@ref (0..1)
 🔗 OperatorRef/@ref (0..1)
 📁 dayTypes (0..1)
    └── 🔗 DayTypeRef/@ref (0..n)
@@ -26,7 +28,9 @@ A **ServiceJourney** represents a planned trip in the timetable operating on a r
        ├── 📄 ArrivalTime (0..1)
        ├── 📄 DepartureTime (0..1)
        └── 📄 ArrivalDayOffset / DepartureDayOffset (0..1)
-📄 KeyValue (0..n)
+📁 keyList (0..1)
+   └── 📄 KeyValue (0..n)
+📁 parts (0..1)
 🔗 BlockRef/@ref (0..1)
 ```
 
