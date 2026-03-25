@@ -27,14 +27,6 @@ StopPlace (Monomodal)
  ├─ adjacentSites (0..1)
  │  └─ SiteRef/@ref (1..n)
  └─ quays (1..n)
-
-StopPlace (Multimodal Parent)
- ├─ @id (1..1)
- ├─ @version (1..1)
- ├─ Name (1..1)
- ├─ Description (0..1)
- ├─ TopographicPlaceRef/@ref (0..1)
- └─ (NO quays; NO TransportMode)
 ```
 
 ## Table

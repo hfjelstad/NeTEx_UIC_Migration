@@ -4,10 +4,10 @@
 Authority
  ├─ @id (1..1)
  ├─ @version (1..1)
+ ├─ CompanyNumber (0..1)
  ├─ Name (1..1)
  ├─ LegalName (0..1)
  ├─ ShortName (0..1)
- ├─ CompanyNumber (0..1)
  ├─ Description (0..1)
  ├─ ContactDetails (0..1)
  │  ├─ Phone (0..1)

@@ -2,10 +2,10 @@
 
 ```text
 placeEquipments
- ├─ WaitingRoomEquipment (0..n)
+ ├─ ShelterEquipment (0..n)
  │  ├─ @id (1..1)
  │  └─ @version (1..1)
- ├─ ShelterEquipment (0..n)
+ ├─ WaitingRoomEquipment (0..n)
  │  ├─ @id (1..1)
  │  └─ @version (1..1)
  ├─ SanitaryEquipment (0..n)

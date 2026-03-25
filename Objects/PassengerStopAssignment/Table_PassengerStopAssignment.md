@@ -5,11 +5,11 @@ PassengerStopAssignment
  ├─ @id (1..1)
  ├─ @version (1..1)
  ├─ @order (1..1)
+ ├─ ValidBetween (0..1)
+ │  └─ FromDate (0..1)
  ├─ ScheduledStopPointRef/@ref (1..1)
  ├─ StopPlaceRef/@ref (0..1)
- ├─ QuayRef/@ref (1..1)
- └─ ValidBetween (0..1)
-    └─ FromDate (0..1)
+ └─ QuayRef/@ref (1..1)
 ```
 
 ## Table
