@@ -1,8 +1,14 @@
 # 🚀 Get Started with NeTEx
 
+![Parent and child waiting for a train](../../assets/images/Holding_Your_Hand.png)
+
 ## 1. 🎯 Introduction
 
-New to NeTEx? This guide gives you the conceptual foundation you need before diving into the XML. By the end, you'll understand where NeTEx comes from, how it's structured, and how to read a real NeTEx document.
+This guide is for anyone working with public transport data — whether you're a developer integrating timetable feeds, a data manager at a transport authority, or an analyst exploring how NeTEx structures information.
+
+Public transport systems across Europe need to exchange planned data — timetables, stop infrastructure, fares, vehicle schedules — between authorities, operators, and journey planners. [NeTEx](https://github.com/NeTEx-CEN/NeTEx) provides a single, standardised XML format for all of this, eliminating custom integrations and making data interoperable across borders.
+
+By the end of this guide, you'll understand where NeTEx comes from, how it's structured, and how to read a real NeTEx document.
 
 In this guide you will learn:
 - 🌍 What Transmodel is and how NeTEx implements it
@@ -12,7 +18,9 @@ In this guide you will learn:
 
 ---
 
-## 2. 🌍 From Transmodel to NeTEx
+## 2. 🌍 The Standards Family
+
+NeTEx is one piece of a European standards ecosystem. Understanding where it fits helps you know what NeTEx covers — and what it doesn't.
 
 ### The Big Picture
 
@@ -32,7 +40,11 @@ flowchart TD
 
     NeTEx -->|"profiled by"| PROF
 
-    PROF["<b>This Profile</b><br/>ERP / NP<br/><br/>Selects which NeTEx<br/>elements to use and how"]
+    PROF["<b>Profile</b><br/><br/>Selects which NeTEx<br/>elements to use and how"]
+
+    click TM "https://www.transmodel-cen.eu/" _blank
+    click NeTEx "https://www.netex-cen.eu/" _blank
+    click SIRI "https://www.siri-cen.eu/" _blank
 
     style TM fill:#0D47A1,stroke:#0D47A1,color:#fff
     style NeTEx fill:#1565C0,stroke:#1565C0,color:#fff
@@ -41,23 +53,14 @@ flowchart TD
     style PROF fill:#42A5F5,stroke:#42A5F5,color:#fff
 ```
 
-### What Each Layer Does
-
-| Layer | Standard | Role |
-|-------|----------|------|
-| **Transmodel** | EN 12896 | Conceptual model -- defines *what things mean* (Line, Journey, Stop, Operator) |
-| **NeTEx** | CEN/TS 16614 | XML schema -- defines *how to exchange planned data* (timetables, fares, stops) |
-| **SIRI** | CEN/TS 15531 | XML schema -- defines *how to exchange real-time data* (vehicle monitoring, situation exchange) |
-| **OpRa** | CEN (in development) | XML schema -- defines *how to exchange historical operational data* (raw data, KPIs) |
-| **This Profile** | ERP / NP | Profile -- defines *which NeTEx elements to use* for a specific context |
-
-> 💡 **Tip:** When you see a NeTEx element like `ServiceJourney`, it maps directly to the Transmodel concept of a "SERVICE JOURNEY" — a planned trip on a specific route. Transmodel defines the semantics, NeTEx defines the XML.
+> [!TIP]
+> Click any box to visit its standard. When you see a NeTEx element like `ServiceJourney`, it maps directly to the Transmodel concept of a "SERVICE JOURNEY". Transmodel defines the semantics, NeTEx defines the XML.
 
 ---
 
 ## 3. 📄 Anatomy of a NeTEx Document
 
-Every NeTEx file follows the same top-level pattern:
+Once you know the outer structure, every NeTEx file becomes predictable. Here's the pattern they all follow:
 
 ```mermaid
 flowchart TD
@@ -114,6 +117,8 @@ For details, see the [CompositeFrame documentation](../../Frames/CompositeFrame/
 
 ## 4. 🏗️ Frames and What They Contain
 
+Each frame type owns a specific domain of transport data. You only include the frames your delivery needs.
+
 | Frame | Transmodel Domain | What It Holds | Example Objects |
 |-------|-------------------|---------------|-----------------|
 | [ResourceFrame](../../Frames/ResourceFrame/Description_ResourceFrame.md) | Organizations | Shared resources used by all other frames | Operator, Authority, VehicleType |
@@ -124,13 +129,16 @@ For details, see the [CompositeFrame documentation](../../Frames/CompositeFrame/
 | [VehicleScheduleFrame](../../Frames/VehicleScheduleFrame/Description_VehicleScheduleFrame.md) | Vehicle Planning | Vehicle assignments | Block, TrainBlock |
 | [FareFrame](../../Frames/FareFrame/Description_FareFrame.md) | Fares | Pricing and products | FareZone, TariffZone |
 
-> 💡 **Tip:** You don't need all frames in every delivery. A stop registry might only use SiteFrame. A timetable exchange might use ServiceCalendarFrame + ServiceFrame + TimetableFrame. Include only what's relevant.
+> [!TIP]
+> You don't need all frames in every delivery. A stop registry might only use SiteFrame. A timetable exchange might use ServiceCalendarFrame + ServiceFrame + TimetableFrame. Include only what's relevant.
 
 ---
 
+![Getting on the bike](../../assets/images/getting_on_the_bike.png)
+
 ## 5. 🔍 Reading Your First Example
 
-Let's walk through a real example from this repository — a minimal delivery with four frames:
+The best way to learn NeTEx is to read real XML. Let's walk through a minimal delivery with four frames and see how they connect:
 
 📄 **Full file:** [Example_CompositeFrame.xml](../../Frames/CompositeFrame/Example_CompositeFrame.xml)
 
@@ -147,6 +155,9 @@ Let's walk through a real example from this repository — a minimal delivery wi
 - `PublicationDelivery` — always the root element, with the NeTEx namespace
 - `ParticipantRef` — identifies who created this delivery
 - `CompositeFrame` — wraps all frames; the `id` uses the format `Codespace:Type:Identifier`
+
+> [!NOTE]
+> All NeTEx identifiers follow the pattern `Codespace:ObjectType:Identifier` — for example `ERP:DayType:WKD` or `NP:ServiceJourney:15044`. The codespace declares who owns the data. See the [NeTEx Conventions guide](../NeTExConventions/NeTEx_Conventions.md) for the full rules.
 
 ### Shared Resources (ResourceFrame)
 
@@ -224,26 +235,49 @@ Let's walk through a real example from this repository — a minimal delivery wi
 - `DayTypeRef` links to the calendar, `LineRef` links to the network
 - Everything connects through references, never by duplicating data
 
+### How the References Connect
+
+```mermaid
+flowchart LR
+    SJ["ServiceJourney"] -->|LineRef| L["Line"]
+    SJ -->|DayTypeRef| DT["DayType"]
+    L -->|OperatorRef| OP["Operator"]
+
+    subgraph TimetableFrame
+        SJ
+    end
+    subgraph ServiceFrame
+        L
+    end
+    subgraph ServiceCalendarFrame
+        DT
+    end
+    subgraph ResourceFrame
+        OP
+    end
+
+    style SJ fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style L fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style DT fill:#42A5F5,stroke:#42A5F5,color:#fff
+    style OP fill:#42A5F5,stroke:#42A5F5,color:#fff
+```
+
+This is the core pattern in NeTEx: objects live in their own frame and connect through `*Ref` elements. Data is defined once and referenced everywhere.
+
 ---
 
 ## 6. 🧭 Where to Go Next
 
-Now that you understand the basics, explore further based on your interest:
+You now have the foundation — here's where to go depending on what you need.
 
-| Interest | Guide |
-|----------|-------|
-| How NeTEx XML conventions work (casing, IDs, versioning) | [NeTEx Conventions](../NeTExConventions/NeTEx_Conventions.md) |
-| Setting up editors and validation tools | [Tools Guide](../Tools/Tools_Guide.md) |
-| How to validate XML against the schema | [Validation Guide](../Validation/Validation.md) |
-| How domains stay independent | [Separation of Concerns](../SeparationOfConcerns/SeparationOfConcerns.md) |
-| When services operate (DayType, OperatingDay, exceptions) | [Calendar Guide](../Calendar/Calendar_Guide.md) |
-| Browse all frames and objects | [Table of Content](../../LLM/Tables/TableOfContent.md) |
+**Deepen your understanding:**
 
-### External Resources
+- [NeTEx Conventions](../NeTExConventions/NeTEx_Conventions.md) — casing, IDs, versioning
+- [Separation of Concerns](../SeparationOfConcerns/SeparationOfConcerns.md) — how domains stay independent
+- [Calendar Guide](../Calendar/Calendar_Guide.md) — DayType, OperatingDay, exceptions
+- [Table of Contents](../../LLM/Tables/TableOfContent.md) — browse all frames and objects
 
-| Resource | Link |
-|----------|------|
-| Transmodel (EN 12896) | [transmodel-cen.eu](https://www.transmodel-cen.eu/) |
-| NeTEx CEN Standard | [netex-cen.eu](https://www.netex-cen.eu/) |
-| SIRI CEN Standard | [siri-cen.eu](https://www.siri-cen.eu/) |
-| Official NeTEx XSD (GitHub) | [NeTEx-CEN/NeTEx](https://github.com/NeTEx-CEN/NeTEx) |
+**Start working:**
+
+- [Tools Guide](../Tools/Tools_Guide.md) — editors, plugins, and validation setup
+- [Validation Guide](../Validation/Validation.md) — validate XML against the schema
