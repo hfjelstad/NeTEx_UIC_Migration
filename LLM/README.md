@@ -62,13 +62,13 @@ Every object under `Objects/<ObjectName>/` must contain the following files:
 - All XML examples that use a ProfileCode and validate against the current XSD act as authoritative sources for determining the element order used in both the Structure Overview and the Table. Other XML files may appear for guidance or illustration but must not influence structural ordering.
 
 #### MANDATORY/OPTIONAL Frame Convention
-Profile XML examples may use a two-frame structure to distinguish mandatory from optional elements:
+Profile XML examples may use a two-frame structure to distinguish mandatory from optional elements. The frame identifier may use any relevant frame type (for example, `ServiceFrame`, `SiteFrame`, `ResourceFrame`, or `TimetableFrame`):
 
-- **`<ProfileCode>:ServiceFrame:MANDATORY`** — Contains only the elements that the profile requires. Every element present in this frame maps to **1..1** in the profile column.
-- **`<ProfileCode>:ServiceFrame:OPTIONAL`** — Contains all recognized elements (mandatory + optional). Elements present here but absent from the MANDATORY frame map to **0..1** in the profile column.
+- **`<ProfileCode>:<FrameType>:MANDATORY`** — Contains only the elements that the profile requires. Every element present in this frame maps to **1..1** in the profile column.
+- **`<ProfileCode>:<FrameType>:OPTIONAL`** — Contains all recognized elements (mandatory + optional). Elements present here but absent from the MANDATORY frame map to **0..1** in the profile column.
 - Elements absent from both frames are left empty in the profile column.
 
-This convention is the authoritative source for deriving profile cardinality values in the table.
+This convention is the authoritative source for deriving profile cardinality values in the table, regardless of which frame type is used.
 
 ### 4.2. `Table_<ObjectName>.md` (mandatory)
 
