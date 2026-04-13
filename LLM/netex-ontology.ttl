@@ -1097,5 +1097,67 @@ doc:Calendar a doc:Guide ;
     skos:definition "DayType, OperatingPeriod, DayTypeAssignment — when services operate" .
 
 ## =================================================================
+## SIRI REAL-TIME BRIDGES
+## =================================================================
+## NeTEx objects are referenced by SIRI real-time services.
+## The full SIRI ontology lives in the Profile_Documentation_SIRI repo
+## at LLM/siri-ontology.ttl — this section only records which NeTEx
+## objects are referenced by which SIRI services.
+##
+## SIRI services in scope:
+##   SIRI-ET  — Estimated Timetable (same-day timetable updates)
+##   SIRI-SX  — Situation Exchange (disruption/deviation messages)
+##   SIRI-VM  — Vehicle Monitoring (vehicle position and progress)
+##   SIRI-FM  — Facility Monitoring (facility status, extended scope)
+## -----------------------------------------------------------------
+
+@prefix siri: <https://siri-cen.eu/ontology#> .
+
+siri:SIRI_ET a siri:Service ;
+    rdfs:label "SIRI-ET — Estimated Timetable" ;
+    siri:externalRepo "Profile_Documentation_SIRI" .
+
+siri:SIRI_SX a siri:Service ;
+    rdfs:label "SIRI-SX — Situation Exchange" ;
+    siri:externalRepo "Profile_Documentation_SIRI" .
+
+siri:SIRI_VM a siri:Service ;
+    rdfs:label "SIRI-VM — Vehicle Monitoring" ;
+    siri:externalRepo "Profile_Documentation_SIRI" .
+
+siri:SIRI_FM a siri:Service ;
+    rdfs:label "SIRI-FM — Facility Monitoring" ;
+    siri:externalRepo "Profile_Documentation_SIRI" .
+
+## --- Which NeTEx objects are referenced by SIRI ---
+
+netex:Line netex:referencedBySIRI siri:SIRI_ET , siri:SIRI_SX , siri:SIRI_VM , siri:SIRI_FM ;
+    rdfs:comment "Via LineRef in EstimatedVehicleJourney, MonitoredVehicleJourney, AffectedLine, FacilityLocation" .
+
+netex:Route netex:referencedBySIRI siri:SIRI_ET , siri:SIRI_SX ;
+    rdfs:comment "Via RouteRef in EstimatedVehicleJourney (mandatory for replacements), AffectedRoute" .
+
+netex:ServiceJourney netex:referencedBySIRI siri:SIRI_ET , siri:SIRI_VM , siri:SIRI_SX ;
+    rdfs:comment "Via FramedVehicleJourneyRef / DatedVehicleJourneyRef" .
+
+netex:DatedServiceJourney netex:referencedBySIRI siri:SIRI_ET , siri:SIRI_VM , siri:SIRI_SX , siri:SIRI_FM ;
+    rdfs:comment "Via DatedVehicleJourneyRef in all services" .
+
+netex:JourneyPattern netex:referencedBySIRI siri:SIRI_ET ;
+    rdfs:comment "Via JourneyPatternRef in EstimatedVehicleJourney" .
+
+netex:Operator netex:referencedBySIRI siri:SIRI_ET , siri:SIRI_VM , siri:SIRI_SX , siri:SIRI_FM ;
+    rdfs:comment "Via OperatorRef in all services" .
+
+netex:Quay netex:referencedBySIRI siri:SIRI_ET , siri:SIRI_VM , siri:SIRI_SX ;
+    rdfs:comment "Via StopPointRef in EstimatedCall, RecordedCall, MonitoredCall, AffectedStopPoint" .
+
+netex:StopPlace netex:referencedBySIRI siri:SIRI_SX , siri:SIRI_FM , siri:SIRI_VM ;
+    rdfs:comment "Via StopPlaceRef in AffectedStopPlace, FacilityLocation; OriginRef/DestinationRef in VM" .
+
+netex:GroupOfLines netex:referencedBySIRI siri:SIRI_ET , siri:SIRI_SX ;
+    rdfs:comment "Via GroupOfLinesRef (ET, mandatory for replacements), NetworkRef (SX AffectedNetwork)" .
+
+## =================================================================
 ## END OF ONTOLOGY
 ## =================================================================
