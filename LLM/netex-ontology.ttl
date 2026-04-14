@@ -18,6 +18,11 @@
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix tm-commons:  <https://w3id.org/transmodel/commons#> .
+@prefix tm-journeys: <https://w3id.org/transmodel/journeys#> .
+@prefix tm-fac:      <https://w3id.org/transmodel/facilities#> .
+@prefix tm-org:      <https://w3id.org/transmodel/organisations#> .
+@prefix tm-fares:    <https://w3id.org/transmodel/fares#> .
 
 ## =================================================================
 ## PROFILES
@@ -1157,6 +1162,73 @@ netex:StopPlace netex:referencedBySIRI siri:SIRI_SX , siri:SIRI_FM , siri:SIRI_V
 
 netex:GroupOfLines netex:referencedBySIRI siri:SIRI_ET , siri:SIRI_SX ;
     rdfs:comment "Via GroupOfLinesRef (ET, mandatory for replacements), NetworkRef (SX AffectedNetwork)" .
+
+## =================================================================
+## TRANSMODEL ALIGNMENT
+## =================================================================
+## NeTEx is derived from the CEN Transmodel Reference Data Model.
+## These skos:exactMatch / skos:closeMatch triples establish the
+## conceptual lineage without creating hard owl:imports dependencies.
+## Transmodel ontology: https://w3id.org/transmodel/
+## -----------------------------------------------------------------
+
+## --- Organisations ---
+
+netex:Authority skos:exactMatch tm-org:Authority ;
+    rdfs:seeAlso tm-org:Organisation .
+
+netex:Operator skos:exactMatch tm-org:Operator ;
+    rdfs:seeAlso tm-org:Organisation .
+
+## --- Sites & Stops ---
+
+netex:StopPlace skos:exactMatch tm-fac:StopPlace .
+netex:Quay skos:exactMatch tm-fac:Quay .
+netex:TopographicPlace skos:closeMatch tm-journeys:TopographicPlace .
+netex:Parking skos:closeMatch tm-fac:Garage .
+
+## --- Service Network ---
+
+netex:Line skos:exactMatch tm-journeys:Line .
+netex:Route skos:exactMatch tm-journeys:Route .
+netex:JourneyPattern skos:exactMatch tm-journeys:JourneyPattern .
+netex:ScheduledStopPoint skos:exactMatch tm-journeys:ScheduledStopPoint .
+netex:DestinationDisplay skos:exactMatch tm-journeys:DestinationDisplay .
+netex:Network skos:closeMatch tm-commons:GroupOfEntities .
+
+## --- Journey lifecycle ---
+
+netex:ServiceJourney skos:exactMatch tm-journeys:ServiceJourney .
+netex:DatedServiceJourney skos:exactMatch tm-journeys:DatedVehicleJourney .
+netex:Interchange skos:closeMatch tm-journeys:Connection .
+netex:StopPointInJourneyPattern skos:exactMatch tm-journeys:StopPointInJourneyPattern .
+
+## --- Calendar ---
+
+netex:DayType skos:exactMatch tm-journeys:DayType .
+netex:DayTypeAssignment skos:exactMatch tm-journeys:DayTypeAssignment .
+netex:OperatingPeriod skos:exactMatch tm-journeys:OperatingPeriod .
+netex:OperatingDay skos:exactMatch tm-journeys:OperatingDay .
+
+## --- Vehicles ---
+
+netex:Vehicle skos:closeMatch tm-journeys:Vehicle .
+
+## --- Equipment ---
+
+netex:ShelterEquipment skos:exactMatch tm-fac:ShelterEquipment .
+netex:WaitingRoomEquipment skos:exactMatch tm-fac:WaitingRoomEquipment .
+netex:SanitaryEquipment skos:exactMatch tm-fac:SanitaryEquipment .
+netex:TicketingEquipment skos:exactMatch tm-fac:TicketingEquipment .
+
+## --- Fares ---
+
+netex:TariffZone skos:closeMatch tm-commons:Zone .
+netex:FareZone skos:closeMatch tm-commons:Zone .
+
+## --- Accessibility ---
+
+netex:AccessibilityAssessment skos:exactMatch tm-fac:AccessibilityAssessment .
 
 ## =================================================================
 ## END OF ONTOLOGY
