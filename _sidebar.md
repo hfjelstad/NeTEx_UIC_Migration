@@ -15,13 +15,9 @@
   - [Vehicle Scheduling](/Guides/VehicleScheduling/VehicleScheduling_Guide.md)
   - [Network Timetable](/Guides/NetworkTimetable/NetworkTimetable_Guide.md)
   - [Network Timetable (split)](/Guides/NetworkTimetable/netex-guide-split.md)
-  - [Separation of Concerns](/Guides/SeparationOfConcerns/SeparationOfConcerns.md)
   - [Extended Sales & Deviation Handling](/Guides/ExtendedSales_and_DeviationHandling/ExtendedSales_and_DeviationHandling_Guide.md)
-  - [Accessibility](/Guides/Accessibility/Accessibility_Guide.md)
-  - [Fare Modelling](/Guides/FareModelling/FareModelling_Guide.md)
   - [Decision Makers](/Guides/DecisionMakers/DecisionMakers_Guide.md)
-  - [Regulatory Compliance](/Guides/RegulatoryCompliance/RegulatoryCompliance_Guide.md)
-  - [MaaS Consumers](/Guides/MaaSConsumers/MaaSConsumers_Guide.md)
+  - [UIC EDIFACT Migration](/Guides/UIC_EDIFACT_Migration/UIC_EDIFACT_Migration_Guide.md)
 
 <details>
 <summary><strong>Frames</strong></summary>

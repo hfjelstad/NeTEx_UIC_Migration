@@ -1,42 +1,50 @@
-<!-- LLM AGENT: Use LLM/README.md as startingpoint  --> 
-# NeTEx Profile Documentation
+<!-- LLM AGENT: Use LLM/README.md as startingpoint  -->
+# UIC EDIFACT to NeTEx Migration
 
 ![Urban transit at Jernbanetorget, Oslo](assets/images/Jernbanetorget.png)
 
-A practical reference, learning resource, and example library for working with [NeTEx](https://github.com/NeTEx-CEN/NeTEx) — the European XML standard for exchanging public transport data (timetables, fares, stops, and more).
+A documentation hub for migrating **UIC EDIFACT railway timetable data** (SKDUPD/TSDUPD) to [NeTEx](https://github.com/NeTEx-CEN/NeTEx) XML, aligned with the **Nordic Profile**. Includes a step-by-step migration guide, segment-by-segment mapping, production examples, and a complete NeTEx reference library.
 
-- 📘 **Learn** the concepts and structure of NeTEx
-- 🧭 **Navigate** frames, objects, and modeling patterns
-- 🗂️ **Explore** a validated example library built against the official XSD
-- 🔎 **Reference** element ordering, cardinality, and profile-specific requirements
+- 🚂 **Migrate** UIC EDIFACT schedules to NeTEx with concrete mapping guidance
+- 🏷️ **Follow** Nordic Profile conventions for codespaces, IDs, and data ownership
+- 🗂️ **Explore** validated XML examples built against the official XSD
+- 🔎 **Reference** NeTEx frames, objects, element ordering, and cardinality
 
 ---
 
 ## 🚀 Start here
 
-Whether you're new to NeTEx or looking to structure transport data for exchange, start with the [**Get Started guide**](Guides/GetStarted/GetStarted_Guide.md) — it introduces the core concepts, explains how frames and objects fit together, and walks you through a real NeTEx document step by step.
+**Migrating from EDIFACT?** Go directly to the [**UIC EDIFACT Migration Guide**](Guides/UIC_EDIFACT_Migration/UIC_EDIFACT_Migration_Guide.md) — it maps every EDIFACT segment to NeTEx, provides a four-phase workflow, and includes before/after examples from real production data.
 
-Already familiar with NeTEx? Jump straight to the [**Table of Contents**](LLM/Indexes/TableOfContent.md) to find the frame, object, or guide you need.
+**New to NeTEx?** Start with the [**Get Started guide**](Guides/GetStarted/GetStarted_Guide.md) and the [**Network Timetable guide**](Guides/NetworkTimetable/NetworkTimetable_Guide.md) to understand frames, objects, and file structure before diving into the migration.
+
+**Looking for a specific element?** Jump to the [**Table of Contents**](LLM/Indexes/TableOfContent.md) to find any frame, object, or guide.
 
 ---
 
 ## 🎯 What's Inside
 
-For every NeTEx frame and object you will find:
+### Migration
+
+The [UIC EDIFACT Migration Guide](Guides/UIC_EDIFACT_Migration/UIC_EDIFACT_Migration_Guide.md) covers:
+
+- Segment-by-segment mapping (PRD → ServiceJourney, POR → TimetabledPassingTime, POP → OperatingDay, etc.)
+- Code translation tables for transport modes, brands, facilities, and boarding restrictions
+- Nordic Profile conventions: operator codespaces, RICS codes, TypeOfService, external registry references
+- File structure: shared data file + per-line timetable files
+- Production examples from Finnish Railways (VR)
+
+### NeTEx Reference Library
+
+For every NeTEx frame and object:
 
 - **`Description`** — purpose, structure overview, key elements, and relationships
 - **`Table`** — element-level specification with types, cardinality per profile, and XSD paths
-- **`Example`** — one or more XML examples validated against the NeTEx 2.0 XSD
+- **`Example`** — XML examples validated against the NeTEx 2.0 XSD
 
-All examples follow the standard delivery pattern (`PublicationDelivery → dataObjects → Frame → …`), validate against the current XSD (see [Validation guide](Guides/Validation/Validation.md)), and can be provided in different profiles.
+### Guides
 
----
-
-## 🏷️ Profiles
-
-NeTEx is a large standard — a profile selects which elements to use, how they should be combined, and what level of detail is expected for a given context. Profiles make the standard practical by narrowing it down to a clear, implementable subset.
-
-This documentation uses profiles to specify cardinality and requirements per element. Each object table shows which elements are mandatory, optional, or unused for each profile, and XML examples are provided per profile where relevant.
+Topic guides covering [stop infrastructure](Guides/StopInfrastructure/StopInfrastructure_Guide.md), [journey lifecycle](Guides/JourneyLifecycle/JourneyLifecycle_Guide.md), [calendar modelling](Guides/Calendar/Calendar_Guide.md), [vehicle scheduling](Guides/VehicleScheduling/VehicleScheduling_Guide.md), [interchange](Guides/InterchangeOnly/Interchange_Guide.md), [validation](Guides/Validation/Validation.md), and more — see the sidebar for the full list.
 
 ---
 
@@ -44,20 +52,23 @@ This documentation uses profiles to specify cardinality and requirements per ele
 
 ```
 📚 Guides
- └── <GuideName>
-      └── <GuideName>.md
+ └── UIC_EDIFACT_Migration/       ← Migration guide + EDIFACT examples
+ └── <GuideName>/                 ← Topic guides (calendar, stops, journeys, …)
 
 🏗️ Frames
- └── <FrameName>
+ └── <FrameName>/
       ├── Description_<FrameName>.md
       ├── Table_<FrameName>.md
       └── Example_<FrameName>.xml
 
 📦 Objects
- └── <ObjectName>
+ └── <ObjectName>/
       ├── Description_<ObjectName>.md
       ├── Table_<ObjectName>.md
       └── Example_<ObjectName>_<Profile>.xml
-```
 
-This structure is designed to be equally usable by humans browsing the documentation and by LLMs operating as chat agents or assisting with NeTEx data modelling. 🤖
+🤖 LLM
+ └── Indexes/                     ← Ontologies, table of contents, example index
+ └── AgentGuides/                 ← Operational guides for LLM agents
+ └── Templates/                   ← Templates for new documentation
+```

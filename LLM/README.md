@@ -39,6 +39,7 @@ The agent must always consult this folder when reading, validating, or generatin
 **Essential Index Files:**
 
 - [netex-ontology.ttl](Indexes/netex-ontology.ttl) – RDF/OWL ontology of the NeTEx data model (primary machine-readable entry point — supersedes TableOfContent.md for LLM agents)
+- [uic-edifact-ontology.ttl](Indexes/uic-edifact-ontology.ttl) – RDF/OWL ontology of UIC EDIFACT (SKDUPD/TSDUPD) segments, fields, code mappings, and their relationships to NeTEx objects
 - [TableOfContent.md](Indexes/TableOfContent.md) – Complete index of all Objects, Frames, and Guides with descriptions
 - [TableOfExamples.md](Indexes/TableOfExamples.md) – Searchable list of all XML examples with brief descriptions
 
