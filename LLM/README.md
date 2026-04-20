@@ -44,8 +44,8 @@ The agent must always consult this folder when reading, validating, or generatin
 
 **Reference Materials:**
 
-- [AgentGuides/](AgentGuides/README.md) – Operational guides for LLM agents (validation, setup, workflows)
-- [Templates/](Templates/Object_Struture_and_Table_Template.md) – Templates for creating new documentation
+- [AgentGuides/](AgentGuides/NeTEx_Validation_Guide.md) – Operational guides for LLM agents (validation, setup, workflows)
+- [Templates/](Templates/Object_Structure_and_Table_Template.md) – Templates for creating new documentation
 - [Objects](../../Objects/Line/Description_Line.md) – All Object documentation
 - [Frames](../../Frames/CompositeFrame/Description_CompositeFrame.md) – All Frame documentation
 - [Guides](../../Guides/GetStarted/GetStarted_Guide.md) – Guidelines and best practices
