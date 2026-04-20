@@ -6,11 +6,15 @@ on:
     paths:
       - "Frames/**"
       - "Objects/**"
+      - "Guides/**"
+      - "_sidebar.md"
       - "scripts/check-doc-consistency.py"
   pull_request:
     paths:
       - "Frames/**"
       - "Objects/**"
+      - "Guides/**"
+      - "_sidebar.md"
       - "scripts/check-doc-consistency.py"
 
 jobs:
@@ -41,3 +45,6 @@ jobs:
 
       - name: Description-vs-Table check (Objects)
         run: python scripts/check-doc-consistency.py --desc-only --target Objects
+
+      - name: Sidebar completeness check
+        run: python scripts/check-doc-consistency.py --sidebar-only
