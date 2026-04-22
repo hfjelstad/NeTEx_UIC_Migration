@@ -2,16 +2,16 @@
 
 ## 1. 🎯 Introduction
 
-This guide is for railway operators and data engineers migrating **UIC EDIFACT schedule data** (SKDUPD/TSDUPD messages) to **NeTEx XML**, aligned with the **Nordic Profile**. It explains how every EDIFACT concept maps to NeTEx, provides a step-by-step migration workflow, and includes concrete before/after examples drawn from real Finnish Railways (VR) production data.
+This guide is for railway operators and data engineers **adopting NeTEx XML** as their timetable data format, replacing UIC EDIFACT (SKDUPD/TSDUPD messages), aligned with the **Nordic Profile**. The goal is to produce NeTEx natively — not to translate EDIFACT files, but to stop producing EDIFACT altogether. It explains how NeTEx models the concepts you know from EDIFACT, provides a step-by-step migration workflow, and includes concrete NeTEx production examples drawn from real Finnish Railways (VR) production data.
 
 **EDIFACT** (Electronic Data Interchange for Administration, Commerce and Transport) has been the UIC standard for exchanging railway timetable data via the **MERITS** system. **NeTEx** (CEN/TS 16614) is the modern European replacement, offering richer semantics, XML tooling support, and alignment with the Transmodel reference model.
 
 In this guide you will learn:
-- 🗺️ How EDIFACT segments map to NeTEx objects and frames
+- 🗺️ How to produce NeTEx objects and frames — using your EDIFACT knowledge as a reference point
 - 🏷️ Nordic Profile conventions: codespaces, ID patterns, data ownership
 - 📦 How to structure NeTEx files for railway timetable delivery
-- 🔄 A step-by-step migration workflow
-- 📋 Mapping tables for codes, facilities, and transport modes
+- 🔄 A step-by-step migration workflow for replacing your EDIFACT production pipeline
+- 📋 Lookup tables for codes, facilities, and transport modes
 - ⚠️ Common pitfalls and how to avoid them
 
 > [!TIP]
@@ -177,9 +177,9 @@ Each message typically describes **one train service** with its stops, times, op
 
 ---
 
-## 4. 🗺️ Conceptual Mapping: EDIFACT → NeTEx
+## 4. 🗺️ NeTEx Data Model: From EDIFACT Concepts to NeTEx
 
-The following diagram shows how the flat EDIFACT message expands into NeTEx's structured model:
+The following diagram shows how the concepts you know from EDIFACT are represented in NeTEx's structured model. When building your NeTEx production pipeline, these are the objects you will create:
 
 ```mermaid
 flowchart LR
@@ -241,9 +241,9 @@ flowchart LR
 
 ---
 
-## 5. 📊 Segment-by-Segment Mapping
+## 5. 📊 Producing NeTEx — Guided by EDIFACT Concepts
 
-### 5.1 PRD (Product/Train Service) → ServiceJourney + Line + Operator
+### 5.1 Train Service (PRD) → ServiceJourney + Line + Operator
 
 The PRD segment defines the train identity, mode, and operator.
 
@@ -299,7 +299,7 @@ PRD+1880:::37:::+1076**92'
 
 ---
 
-### 5.2 POP (Period of Operation) → OperatingDay + DatedServiceJourney
+### 5.2 Operating Calendar (POP) → OperatingDay + DatedServiceJourney
 
 The POP segment defines when a train runs using a date range and a bitfield.
 
@@ -370,7 +370,7 @@ When a train has different stop patterns on certain days (e.g., a shorter route 
 
 ---
 
-### 5.3 POR (Stop) → TimetabledPassingTime + ScheduledStopPoint + StopPlace
+### 5.3 Stop Times (POR) → TimetabledPassingTime + ScheduledStopPoint + StopPlace
 
 Stop times are modelled using **`TimetabledPassingTime`** elements inside the ServiceJourney's `passingTimes` collection, referencing stops via `StopPointInJourneyPatternRef`.
 
@@ -462,7 +462,7 @@ The 9-digit UIC station code maps to NeTEx as follows:
 
 ---
 
-### 5.4 TRF/ASD (Traffic Restrictions) → StopPointInJourneyPattern
+### 5.4 Boarding/Alighting Rules (TRF/ASD) → StopPointInJourneyPattern
 
 Boarding and alighting restrictions are modelled on the `StopPointInJourneyPattern` in the JourneyPattern:
 
@@ -499,7 +499,7 @@ Boarding and alighting restrictions are modelled on the `StopPointInJourneyPatte
 
 ---
 
-### 5.5 ODI/PDT (Facilities) → JourneyPart + ServiceFacilitySet
+### 5.5 On-Board Facilities (ODI/PDT) → JourneyPart + ServiceFacilitySet
 
 Facilities that apply to journey segments are modelled as `ServiceFacilitySet` objects referenced by `JourneyPart`:
 
@@ -529,7 +529,7 @@ PDT++:::92:::'
 </parts>
 ```
 
-### 5.6 TSDUPD (Stop Data) → SiteFrame
+### 5.6 Station Data (TSDUPD) → SiteFrame
 
 Station data from the TSDUPD message maps to the SiteFrame with StopPlace + Quay objects:
 
@@ -665,11 +665,11 @@ Both files declare frame defaults for timezone and coordinate system:
 
 ---
 
-## 8. 🔄 Step-by-Step Migration Workflow
+## 8. 🔄 Step-by-Step: Replacing Your EDIFACT Pipeline with NeTEx
 
 ### Phase 1: Inventory & Prerequisites
 
-1. **Catalogue EDIFACT messages** — List all SKDUPD/TSDUPD messages, train services, and operators
+1. **Catalogue your existing EDIFACT data** — List all SKDUPD/TSDUPD messages, train services, and operators to understand the scope of what NeTEx must cover
 2. **Map UIC station codes** — Create a lookup from UIC codes to NeTEx StopPlace/Quay IDs using a national stop registry (e.g., NSR/Tiamat)
 3. **Map RICS codes** — Create a lookup from RICS operator codes to NeTEx Operator objects. Store RICS as both `PrivateCode` and `keyList` KeyValue
 4. **Define your Codespace** — Choose your operator prefix (e.g., `VR`, `SJ`, `NSB`) and XmlnsUrl
@@ -681,13 +681,13 @@ Both files declare frame defaults for timezone and coordinate system:
 7. **Create SiteFrame** — Convert TSDUPD stations to StopPlace objects with `uicCode` in `keyList`, coordinates in WGS84, and `StopPlaceType = railStation`
 8. **Create ServiceCalendarFrame** — One OperatingDay per calendar date covered by any service. ID pattern: `<Codespace>:OperatingDay:<ISO date>`
 
-### Phase 3: Convert Each Train Service (Line Files)
+### Phase 3: Produce Line Files (Per Train Service)
 
 9. **Create Line** — Group related train services. Use descriptive name as LocalId
-10. **Create JourneyPattern** — Map stop sequences from POR segments. Include `ForAlighting`/`ForBoarding` from TRF/ASD. Create variants for day-of-week differences (e.g., `JourneyPattern:X` vs `JourneyPattern:Sunday`)
-11. **Create TimingLinks** — Convert distances between consecutive stops
-12. **Create ServiceJourney** — Convert PRD + POR into ServiceJourney with `passingTimes` containing `TimetabledPassingTime` elements. Each TimetabledPassingTime references a `StopPointInJourneyPatternRef` and includes `ArrivalTime` / `DepartureTime`. Include `PrivateCode`, `PublicCode`, `TransportMode`, `TransportSubmode`, `TypeOfServiceRef`. Model facilities as JourneyParts with ServiceFacilitySetRefs
-13. **Create DatedServiceJourneys** — Expand POP bit patterns. For each `1` in the bit pattern, create one DSJ linking the correct ServiceJourney variant to the OperatingDay. Select the right variant (e.g., Sunday vs weekday pattern)
+10. **Create JourneyPattern** — Define stop sequences. Include `ForAlighting`/`ForBoarding` rules (equivalent to TRF/ASD). Create variants for day-of-week differences (e.g., `JourneyPattern:X` vs `JourneyPattern:Sunday`)
+11. **Create TimingLinks** — Produce links with distances between consecutive stops
+12. **Create ServiceJourney** — Produce a ServiceJourney with `passingTimes` containing `TimetabledPassingTime` elements. Each TimetabledPassingTime references a `StopPointInJourneyPatternRef` and includes `ArrivalTime` / `DepartureTime`. Include `PrivateCode`, `PublicCode`, `TransportMode`, `TransportSubmode`, `TypeOfServiceRef`. Model facilities as JourneyParts with ServiceFacilitySetRefs
+13. **Create DatedServiceJourneys** — For each date the service runs, produce one DatedServiceJourney linking the correct ServiceJourney variant to the OperatingDay. Select the right variant (e.g., Sunday vs weekday pattern)
 
 ### Phase 4: Validate & Deliver
 
@@ -710,9 +710,11 @@ flowchart LR
 
 ---
 
-## 9. 🔀 Complete Conversion Example
+## 9. 🔀 Complete NeTEx Production Example
 
-### Input: EDIFACT SKDUPD (from [Example_SKDUPD_output.r](Example_SKDUPD_output.r))
+### Source reference: EDIFACT SKDUPD (from [Example_SKDUPD_output.r](Example_SKDUPD_output.r))
+
+The EDIFACT below represents the service data that the NeTEx output must fully express. The goal is to produce the NeTEx — the EDIFACT is provided only as a reference for what data is available.
 
 ```
 PRD+1880:::37:::+1076**92'
@@ -732,7 +734,7 @@ ODI+007602361*007602324+1*9'
 PDT++:::92:::'
 ```
 
-### Output: NeTEx XML (Nordic Profile)
+### NeTEx XML output (Nordic Profile)
 
 **Shared file** (`_shared_data.xml`):
 ```xml
@@ -999,7 +1001,7 @@ PDT++:::92:::'
 | Pitfall | Problem | Solution |
 |---------|---------|----------|
 | **UIC code varies** | EDIFACT POR uses 9-digit codes with country prefix; operator may use shorter codes | Map via StopPlace `keyList` → `uicCode`. The LocalId in ScheduledStopPoint may differ from the EDIFACT UIC code. |
-| **Calls vs passingTimes** | NeTEx supports both patterns | Use `passingTimes` with `TimetabledPassingTime` + `StopPointInJourneyPatternRef`. Calls are more complex and not recommended for UIC migration. |
+| **Calls vs passingTimes** | NeTEx supports both patterns | Use `passingTimes` with `TimetabledPassingTime` + `StopPointInJourneyPatternRef`. Note: `calls/Call` in NeTEx is formally defined as a **view** — a derived, read-optimised projection over the underlying `passingTimes` + `JourneyPattern` data, not a separate creation mechanism. Producing the `calls` view natively can yield a richer, more explicit stop representation, but correctly resolving all the implicit JourneyPattern logic it must express in full makes implementation significantly more demanding. For a first adoption of NeTEx the effort is rarely justified; `passingTimes` is the recommended production path. |
 | **Missing TypeOfService** | EDIFACT brand code has no direct NeTEx equivalent | Create `TypeOfService` objects in ResourceFrame and reference from ServiceJourney. |
 | **Flat calendar** | POP bit pattern doesn't express recurring patterns | Use individual OperatingDay + DatedServiceJourney per date. Create variant ServiceJourneys for different day patterns (weekday vs Sunday). |
 | **Missing Line grouping** | EDIFACT has no explicit line concept | Group services with the same route/brand into Line objects. |
