@@ -7,6 +7,7 @@ ScheduledStopPoint
  ├─ ValidBetween (0..1)
  │  └─ FromDate (0..1)
  ├─ Name (0..1)
+ ├─ PrivateCode (0..1)            ← e.g. UIC code for cross-file matching
  └─ TimingPointStatus (0..1)
 ```
 
@@ -17,6 +18,7 @@ ScheduledStopPoint
 | @id | ID | 1..1 | 1..1 | 1..1 | Unique identifier for the ScheduledStopPoint | ScheduledStopPoint/@id |
 | @version | String | 1..1 | 1..1 | 1..1 | Version label | ScheduledStopPoint/@version |
 | Name | String | 0..1 | 0..1 | 0..1 | Human-readable name of the stop point | ScheduledStopPoint/Name |
-| TimingPointStatus | Enum | 0..1 | 0..1 |  | Whether this is a timing point (timingPoint, notTimingPoint) | ScheduledStopPoint/TimingPointStatus |
-| ValidBetween | Period | 0..1 |  | 0..1 | Validity period for the stop point | ScheduledStopPoint/ValidBetween |
-| FromDate | DateTime | 0..1 |  | 0..1 | Start date of validity | ScheduledStopPoint/ValidBetween/FromDate |
+| PrivateCode | String | 0..1 | 0..1 | 0..1 | External code for inter-system matching. In UIC migration: `type="uicCode"` carrying the station's UIC code. Enables deterministic matching to the corresponding `StopPlace/PrivateCode` in the location file without changing `@id`. | ScheduledStopPoint/PrivateCode |
+| TimingPointStatus | Enum | 0..1 | 0..1 | | Whether this is a timing point (timingPoint, notTimingPoint) | ScheduledStopPoint/TimingPointStatus |
+| ValidBetween | Period | 0..1 | | 0..1 | Validity period for the stop point | ScheduledStopPoint/ValidBetween |
+| FromDate | DateTime | 0..1 | | 0..1 | Start date of validity | ScheduledStopPoint/ValidBetween/FromDate |

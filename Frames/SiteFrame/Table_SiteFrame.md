@@ -35,6 +35,6 @@ SiteFrame
 | tariffZones | Container | Collection of TariffZone definitions | SiteFrame/tariffZones |
 | [TariffZone](../../Objects/TariffZone/Table_TariffZone.md) | Element | Fare zone boundary | SiteFrame/tariffZones/TariffZone |
 | groupsOfStopPlaces | Container | Collection of stop place groupings | SiteFrame/groupsOfStopPlaces |
-| GroupOfStopPlaces | Element | Logical grouping of stop places | SiteFrame/groupsOfStopPlaces/GroupOfStopPlaces |
+| [GroupOfStopPlaces](../../Objects/GroupOfStopPlaces/Table_GroupOfStopPlaces.md) | Element | Logical grouping of stop places (interchange hub or regional grouping) | SiteFrame/groupsOfStopPlaces/GroupOfStopPlaces |
 | groupsOfTariffZones | Container | Collection of tariff zone groupings | SiteFrame/groupsOfTariffZones |
 | GroupOfTariffZones | Element | Logical grouping of tariff zones | SiteFrame/groupsOfTariffZones/GroupOfTariffZones |

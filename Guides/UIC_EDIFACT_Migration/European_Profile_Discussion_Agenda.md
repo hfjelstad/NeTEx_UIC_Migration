@@ -220,6 +220,55 @@ The input document (section 5) lists `CountryRef` on `scheduledStopPoint`. The N
 
 ---
 
+## Topic 11 — Where does the EU/ERA identifier live in the data model?
+
+**Day 1 outcome:** The meeting established that a cross-border identifier for stops and stations must be expressible in NeTEx, but the precise mechanism is not yet decided.
+
+### The question
+A European-level identifier (e.g. an ERA station code, a future EU-ID, or the existing UIC code as a European reference) needs to attach to a `StopPlace` (and potentially `ScheduledStopPoint`). NeTEx offers several mechanisms. The choice affects interoperability, validation, and the data governance boundary between central registries and operator deliveries.
+
+### Options for identifier placement
+
+| Mechanism | Where | Example | Considerations |
+|-----------|-------|---------|----------------|
+| **keyList / KeyValue** | `StopPlace/keyList/KeyValue` | `<Key>eraCode</Key><Value>ERA:0010:002326</Value>` | Already used for `uicCode`; extensible; key name must be standardised across all producers |
+| **AlternativeName with purpose** | `StopPlace/alternativeNames/AlternativeName` | `<NameType>translation</NameType>` | Intended for name variants, not identifiers — semantically incorrect |
+| **PrivateCode** | `StopPlace/PrivateCode` | `<PrivateCode>ERA:0010:002326</PrivateCode>` | Single slot only; already used for UIC code in Nordic examples — cannot hold two codes simultaneously |
+| **Dedicated codespace @id** | `@id` on `StopPlace` | `ERA:StopPlace:0010002326` | Cleanest for interoperability; requires ERA to operate a live registry and assign IDs before producers can publish |
+| **GroupOfStopPlaces** | `SiteFrame/groupsOfStopPlaces` | Group all national representations of one logical station | Allows grouping without changing the `@id` of existing StopPlace records; see Topic 12 |
+
+### Nordic Profile current practice
+UIC codes are stored as `keyList/KeyValue` with `Key=uicCode`. Extending this with an additional KeyValue (e.g. `Key=eraCode`) would require zero changes to the data model and is immediately implementable.
+
+### Key questions for discussion
+- Has ERA or another EU body committed to issuing a station/stop identifier registry? If so, what is the timeline?
+- Should the key name be standardised in the profile (e.g. `eraCode`, `euStationId`) or left to producers?
+- Should `ScheduledStopPoint` also carry the EU identifier via `keyList`, or is it sufficient to carry it only on `StopPlace`?
+- Is the UIC code itself sufficient as the cross-border reference for rail, given it already exists on every station?
+
+---
+
+## Topic 12 — `GroupOfStopPlaces`: logical interchange grouping and regional grouping
+
+**Day 1 outcome:** `GroupOfStopPlaces` was identified as needed but not yet documented for the European rail profile.
+
+### The question
+`GroupOfStopPlaces` allows multiple `StopPlace` records to be logically associated without changing their individual `@id` or ownership. In the rail context two distinct use cases emerged:
+
+| Use case | Example | Purpose |
+|----------|---------|---------|
+| **Logical interchange** | Oslo S (rail) + Oslo Bussterminal (bus) grouped as "Oslo central interchange" | Passenger wayfinding, connection planning, journey planners |
+| **Regional / country grouping** | All rail stations in Norway grouped for routing or tariff attribution | Network topology, `CountryRef` aggregation, ERA reporting |
+
+Both use cases are served by the same NeTEx element. The distinction is expressed via `PurposeOfGroupingRef` pointing to a defined purpose (e.g. `interchange` vs `country`).
+
+### Key questions for discussion
+- Should `GroupOfStopPlaces` with purpose `interchange` be mandatory for any multi-operator hub (where rail + bus + metro StopPlaces co-exist)?
+- Can `GroupOfStopPlaces` serve as the anchor for an EU-level cross-border identifier (see Topic 11), so that national StopPlace records are grouped under one EU-identified group rather than changing the `@id` of individual records?
+- Who owns and maintains these groups — the national stop registry, a European registry, or the operator?
+
+---
+
 ## Appendix: Quick reference — Nordic Profile vs European profile input
 
 | Topic | Nordic Profile | European profile input doc |
